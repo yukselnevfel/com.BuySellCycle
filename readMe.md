@@ -59,3 +59,10 @@
 | Linkler           | linkHeaderX   |
 | Yazı Girisi       | textBoxX      |
 | Arama Kutusu      | searchBoxX    |
+
+>>>Ortak Adımlar<<<
+> Open browser and Go to "URL"
+> Close the pop-up message
+> Verify that the Login link is visible şeklinde...
+> Click on the Login link şeklinde ...
+> Close the page  Her senaryonon sonuna yazilir.
