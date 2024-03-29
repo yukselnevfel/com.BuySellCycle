@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class VisitorHomePage extends Base{
 
+
     //Register User Login Locate Homepage>> LoginButton
     @FindBy(xpath = "//*[text()='Login']")
     public WebElement loginButton;
@@ -50,6 +51,13 @@ public class VisitorHomePage extends Base{
 
 
 
+
+
+    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
+    public WebElement linkHeaderBlog;
+
+    @FindBy(xpath = "//*[@class='close_modal']")
+    public WebElement cookieAllert;
 
 
 
