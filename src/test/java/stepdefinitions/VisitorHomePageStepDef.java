@@ -10,11 +10,71 @@ public class VisitorHomePageStepDef extends Base {
 
     //-------------Login Steps AYCA-----------------//
 
+    @Given("Verify that the {string} is visible")
+    public void verify_that_the_is_visible(String textLogin) {
+
+
+        visibleWebElement(textLogin);
+
+
+    }
+    @Given("Click on the {string}")
+    public void click_on_the(String textLogin) {
+
+
+        clickWebElement(textLogin);
 
 
 
-    
-     //-------------Login Steps FIKRET-----------------/
+
+    }
+    @Given("Verify that navigated to the login page")
+    public void verify_that_navigated_to_the_login_page() {
+
+
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+
+
+    }
+    @Given("Verify that the relevant image")
+    public void verify_that_the_relevant_image() {
+
+
+
+    }
+    @Given("Verify that the Sign-in form is visible")
+    public void verify_that_the_sign_in_form_is_visible() {
+
+
+
+    }
+    @Given("Verify that the Sign In button is visible")
+    public void verify_that_the_sign_in_button_is_visible() {
+
+
+
+    }
+    @Given("Verify that the Sign In button is clickable")
+    public void verify_that_the_sign_in_button_is_clickable() {
+
+
+
+    }
+    @Given("Verify that the Remember me checkbox is selectable")
+    public void verify_that_the_remember_me_checkbox_is_selectable() {
+
+
+
+    }
+
+
+
+
+
+
+
+
+    //-------------Login Steps FIKRET-----------------/
 
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
