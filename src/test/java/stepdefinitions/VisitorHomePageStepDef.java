@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 public class VisitorHomePageStepDef extends Base {
 
 
+
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
         Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
@@ -58,4 +59,7 @@ public class VisitorHomePageStepDef extends Base {
     public void close_the_page() {
         Driver.quitDriver();
     }
+}
+
+   
 }
