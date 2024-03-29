@@ -1,4 +1,4 @@
-@a
+@c
 Feature: There should be an informative blog page on the site
 
   Background:
