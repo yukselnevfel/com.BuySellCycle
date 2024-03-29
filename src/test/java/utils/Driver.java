@@ -23,7 +23,7 @@ public class Driver {
 
             switch (browserType){
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
+
                     driver = new ChromeDriver();
                     driver.manage().window().maximize();
                     Base.initialize();
@@ -33,6 +33,7 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     driver.manage().window().maximize();
+                    Base.initialize();
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
                     break;
 
