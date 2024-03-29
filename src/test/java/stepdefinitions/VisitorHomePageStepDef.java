@@ -15,13 +15,6 @@ public class VisitorHomePageStepDef extends Base {
     VisitorHomePage visitorHomePage = new VisitorHomePage();
     //-------------Login Steps AYCA-----------------//
 
-    @Given("Verify that the {string} is visible")
-    public void verify_that_the_is_visible(String string) {
-
-
-
-
-    }
 
     @Given("Verify that navigated to the {string}")
     public void verify_that_navigated_to_the(String string) {
