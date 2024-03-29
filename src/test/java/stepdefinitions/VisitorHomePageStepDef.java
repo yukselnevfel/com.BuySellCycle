@@ -4,12 +4,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.Base;
+import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
+import utils.ReusableMethods;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class VisitorHomePageStepDef extends Base {
+public class VisitorHomePageStepDef extends ReusableMethods {
+
+    VisitorHomePage visitorHomePage = new VisitorHomePage();
 
     //-------------Login Steps AYCA-----------------//
 
