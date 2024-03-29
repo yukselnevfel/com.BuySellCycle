@@ -7,7 +7,7 @@ public class VisitorHomePage extends Base{
 
 
     //Register User Login Locate Homepage>> LoginButton
-    @FindBy(xpath = "//*[text()='Login']")
+    @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
     @FindBy (xpath = "//*[@class='img-fluid']")
