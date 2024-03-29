@@ -1,7 +1,9 @@
 package pages;
 
 import com.github.javafaker.Faker;
+
 import org.junit.Assert;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -41,6 +43,7 @@ public abstract class Base {
         random = new Random();
     }
     //REUSABLE METHODS
+
     private static int timeout = 5;
 
     public static String getScreenshot(String name) throws IOException {
