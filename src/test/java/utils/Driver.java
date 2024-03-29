@@ -8,6 +8,8 @@ import pages.Base;
 
 import java.time.Duration;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class Driver {
 
@@ -33,7 +35,10 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     driver.manage().window().maximize();
+
+
                     Base.initialize();
+
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
                     break;
 
