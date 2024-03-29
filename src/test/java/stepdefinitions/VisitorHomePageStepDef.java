@@ -67,5 +67,20 @@ public class VisitorHomePageStepDef extends Base {
     public void close_the_page() {
         Driver.quitDriver();
     }
+
+
+    //------------- Steps SAMET -----------------/
+
+    @Given("Verify title is {string}")
+    public void verify_that_title(String title) {
+        String expectedTitle = title;
+        String actualTitle = Driver.getDriver().getTitle();
+        assertEquals(expectedTitle, actualTitle);
+    }
+
+
+
+
+
 }
 
