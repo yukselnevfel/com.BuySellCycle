@@ -18,7 +18,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
-        Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty(bSCUrl));
     }
 
     @Given("Close the pop-up message")
@@ -28,25 +28,29 @@ public class VisitorHomePageStepDef extends Base {
         }
     }
 
-    @Given("Verify that the {string} is visible")
+    @Given("Verify that the Blog link is visible")
     public void verify_that_the_is_visible() {assertTrue(visitorHomePage.linkHeaderBlog.isDisplayed());
     }
 
-    @Given("Verify that the {string} is active")
+    @Given("Verify that the Blog link is active")
     public void verify_that_the_is_active() {
         assertTrue(visitorHomePage.linkHeaderBlog.isEnabled());
     }
 
-    @Given("Click on the {string}")
-    public void click_on_the(String string) {
+    @Given("Click on the Blog link")
+    public void click_on_the() {
         visitorHomePage.linkHeaderBlog.click();
     }
 
-    @Given("Verify that navigated to the {string} Page")
-    public void verify_that_navigated_to_the_page(String string) {
+    @Given("Verify that navigated to the Blog Page")
+    public void verify_that_navigated_to_the_page() {
         String expectedURL = "https://qa.buysellcycle.com/blog";
         String actualURL = Driver.getDriver().getCurrentUrl();
         assertEquals(expectedURL, actualURL);
+    }
+    @Given("Verify that navigated to the Read More Page")
+    public void verify_that_navigated_to_the_read_more_page() {
+
     }
 
     @Given("Enter a keyword into the search texBox and press Enter")
