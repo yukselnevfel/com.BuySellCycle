@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.Base;
 import utils.Driver;
+import utils.ConfigReader;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class VisitorHomePageStepDef extends Base {
 
@@ -61,16 +64,10 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
-import pages.Base;
-import utils.ConfigReader;
-import utils.Driver;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-public class VisitorHomePageStepDef extends Base {
 
 
+    
+     //-------------Login Steps FIKRET-----------------/
 
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
@@ -121,6 +118,3 @@ public class VisitorHomePageStepDef extends Base {
     }
 }
 
-   
-
-}
