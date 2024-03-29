@@ -44,20 +44,62 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
 
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
 
     @FindBy(xpath = "//*[@class='close_modal']")
     public WebElement cookieAllert;
+
+    //==US_002 HomePage'deki linkler ve buttonlar===================
+    //US_002 TC01
+    @FindBy(xpath = "//span[text()='Track Your Order']")
+    public WebElement linkTextTrackYourOrder;
+
+    @FindBy(xpath = "//span[text()='Compare(']")
+    public WebElement linkTextCompare;
+
+    @FindBy(xpath = "//span[text()='Wishlist (']")
+    public WebElement linkTextWishList;
+
+    @FindBy(xpath = "(//span[text()='Cart ('])[1]")
+    public WebElement linkTextCart;
+
+    @FindBy(xpath = "//span[text()='New User Zone']")
+    public WebElement linkTextNewUserZone;
+
+    @FindBy(xpath = "(//span[text()='Daily Deals'])[1]")
+    public WebElement linkTextDailyDeals;
+
+    //TC02 sayfa yonlendirme
+    @FindBy(xpath = "//button[text()='Track Now']")
+    public WebElement buttonTrackNow;
+
+    @FindBy(xpath = "//h3[@class='fs-4 fw-bold mb_30']")
+    public WebElement titleProductCompare;
+
+    @FindBy(xpath = "//h3[text()='Sign In']")
+    public WebElement titleSignIn;
+
+    @FindBy(xpath = "//h3[text()='Order Summary']")
+    public WebElement titleOrderSummary;
+
+    @FindBy(xpath = "//h3[text()='Surprises for new users']")
+    public WebElement titleSurpriseForNewUsers;
+
+    @FindBy(xpath = "//h3[@class='m-0 flex-fill']")
+    public WebElement titleDealEndsIn;
+
+    //TC03anasayfa refresh
+    @FindBy(xpath = "(//img[@title='BuySellCycle'])[1]")
+    public WebElement logoSite;
+
+    String expectedTitle=" BuySellCycle | Multivendor Marketplace ";
+    String actualTitle;
+
+    //TC04
+    @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
+    public WebElement searchTextBox;
+
 
 
 

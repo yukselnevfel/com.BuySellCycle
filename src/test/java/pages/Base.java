@@ -416,4 +416,6 @@ public abstract class Base {
         WebElement visibleLogin= Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + visibleElement + "')]"));
         Assert.assertTrue(visibleLogin.isDisplayed());
     }
+
+
 }

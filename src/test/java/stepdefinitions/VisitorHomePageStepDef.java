@@ -1,5 +1,6 @@
 package stepdefinitions;
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
@@ -137,6 +138,61 @@ public class VisitorHomePageStepDef extends Base {
         String actualTitle = Driver.getDriver().getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
+
+    //===============STEPS ESRA BASLANGIC==============================
+
+    @Given("Displays the Track Your Order link on the top bar of the site")
+    public void displays_the_track_your_order_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextTrackYourOrder.isDisplayed());
+    }
+    @Given("Displays the Compare link on the top bar of the site")
+    public void displays_the_compare_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextCompare.isDisplayed());
+    }
+    @Given("Displays the Wish List link on the top bar of the site")
+    public void displays_the_wish_list_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextWishList.isDisplayed());
+    }
+    @Given("Displays the Cart link on the top bar of the site")
+    public void displays_the_cart_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextCart.isDisplayed());
+    }
+    @Given("Displays the New User Zone link on the top bar of the site")
+    public void displays_the_new_user_zone_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextNewUserZone.isDisplayed());
+    }
+    @Given("Displays the Daily Deals link on the top bar of the site")
+    public void displays_the_daily_deals_link_on_the_top_bar_of_the_site() {
+       assertTrue(visitorHomePage.linkTextDailyDeals.isDisplayed());
+    }
+
+    @Given("Click on the Track your Order link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_track_your_order_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextTrackYourOrder);
+        assertTrue(visitorHomePage.buttonTrackNow.isDisplayed());
+    }
+    @Given("Click on the Compare link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_compare_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+
+    }
+    @Given("Click on the WishList link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_wish_list_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+
+    }
+    @Given("Click on the Cart link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_cart_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+
+    }
+    @Given("Click on the New User Zone link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_new_user_zone_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+
+    }
+    @Given("Click on the Daily Deals link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_daily_deals_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+
+    }
+
+    //====================STEPS ESRA SONU============================================
 
 
 
