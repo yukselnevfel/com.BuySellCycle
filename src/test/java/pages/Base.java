@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.*;
 import utils.Driver;
 import java.io.File;
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+
+import static org.junit.Assert.assertEquals;
 
 public abstract class Base {
 
@@ -174,6 +177,7 @@ public abstract class Base {
 
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
+     *  Açılır listeden rastgele bir değer seçer ve seçilen Web Öğesini döndürür
      * @param select
      * @return
      */
@@ -416,6 +420,17 @@ public abstract class Base {
         WebElement visibleLogin= Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + visibleElement + "')]"));
         Assert.assertTrue(visibleLogin.isDisplayed());
     }
+    public  static void clickHeaderElementLink(String headerElementLink) {
 
+        WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='"+headerElementLink +"'])[1]"));
+        waitAndClick(element);
+    }
 
+    public static void checkTheTitle (String title){
+
+        String expectedText = title;
+        String actualText = Driver.getDriver().getTitle();
+        assertEquals("as expected", expectedText , actualText);
+
+    }
 }
