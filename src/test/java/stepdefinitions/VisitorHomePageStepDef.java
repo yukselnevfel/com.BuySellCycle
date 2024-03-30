@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import pages.Base;
 import pages.VisitorHomePage;
 import utils.Driver;
@@ -397,7 +398,6 @@ public class VisitorHomePageStepDef extends Base {
     public void i_should_see_the_character_status_and_picture_of(String string) {
 
     }
-
 
     @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
     public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
