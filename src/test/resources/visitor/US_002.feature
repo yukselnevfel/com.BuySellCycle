@@ -1,5 +1,7 @@
 
+
  Feature:US_002 As a user, I want easily accessible links on the homepage's top bar to perform site operations
+
 
   Background:
     * Open browser and Go to "URL"
