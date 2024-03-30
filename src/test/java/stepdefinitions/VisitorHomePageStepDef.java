@@ -3,6 +3,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.Base;
+import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 import static org.junit.Assert.assertEquals;
@@ -23,11 +24,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the {string}")
     public void click_on_the(String textLogin) {
 
-
         clickWebElement(textLogin);
-
-
-
 
     }
     @Given("Verify that navigated to the login page")
@@ -35,40 +32,90 @@ public class VisitorHomePageStepDef extends Base {
 
 
         String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
 
 
     }
     @Given("Verify that the relevant image")
     public void verify_that_the_relevant_image() {
 
+        Assert.assertTrue(visitorHomePage.imageLoginPage.isDisplayed());
 
 
     }
     @Given("Verify that the Sign-in form is visible")
     public void verify_that_the_sign_in_form_is_visible() {
 
-
+        Assert.assertTrue(visitorHomePage.loginForm.isDisplayed());
 
     }
     @Given("Verify that the Sign In button is visible")
     public void verify_that_the_sign_in_button_is_visible() {
 
-
+        Assert.assertTrue(visitorHomePage.signInButton.isDisplayed());
 
     }
     @Given("Verify that the Sign In button is clickable")
     public void verify_that_the_sign_in_button_is_clickable() {
 
+        Assert.assertTrue(visitorHomePage.signInButton.isEnabled());
 
 
     }
     @Given("Verify that the Remember me checkbox is selectable")
     public void verify_that_the_remember_me_checkbox_is_selectable() {
 
-
+        Assert.assertTrue(visitorHomePage.checkBoxRememberMe.isEnabled());
 
     }
 
+    @Given("Verify that navigated to the password reset page")
+    public void verify_that_navigated_to_the_password_reset_page() {
+
+        String expectedUrl = "https://qa.buysellcycle.com/password/reset";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Verify that navigated to the Register page")
+    public void verify_that_navigated_to_the_register_page() {
+        String expectedUrl = "https://qa.buysellcycle.com/register";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Click on the login link, Enter {string} and {string} and click sign in")
+    public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
+        visitorHomePage.loginButton.click();
+        visitorHomePage.textBoxUserEmail.click();
+        visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
+        visitorHomePage.textBoxUserPassword.click();
+        visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
+        wait(1);
+        visitorHomePage.signInButton.click();
+        String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        wait(1);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //---------------------------Ayca Login Step Finish-------------------------------------------------------------------//
 
 
 
@@ -139,6 +186,7 @@ public class VisitorHomePageStepDef extends Base {
         String actualTitle = Driver.getDriver().getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
+
 
     //===============STEPS ESRA BASLANGIC==============================
 
@@ -224,6 +272,78 @@ public class VisitorHomePageStepDef extends Base {
 
 
     //====================STEPS ESRA SONU============================================
+
+=======
+    //------------- Steps Sımge ------------------/
+
+    @Given("Verify that the Contact link is visible")
+    public void verify_that_the_contact_link_is_visible() {
+       Assert.assertTrue(visitorHomePage.linkContact.isDisplayed());
+    }
+    @Given("Click on the Contact link")
+    public void click_on_the_contact_link() {
+        visitorHomePage.linkContact.click();
+    }
+    @Given("Verify that navigated to the Contact page")
+    public void verify_that_navigated_to_the_contact_page() {
+        String expectedUrl = "https://qa.buysellcycle.com/contact-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+    @Given("Verify that the company phone number is visible under the Call or WhatsApp: heading on contact page")
+    public void verify_that_the_company_phone_number_is_visible_under_the_call_or_whats_app_heading_on_contact_page() {
+        String whatsapp=ConfigReader.getProperty("companyPhoneNumber");
+        String actualWhatsapp = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(whatsapp,actualWhatsapp);
+    }
+    @Given("Verify that the company mail is visible under the Get in touch: heading on contact page")
+    public void verify_that_the_company_mail_is_visible_under_the_get_in_touch_heading_on_contact_page() {
+        String mail=ConfigReader.getProperty("companyPhoneNumber");
+        String actualMail = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(mail,actualMail);
+    }
+    @Given("Verify that the company address is visible under the Head office: heading on contact page")
+    public void verify_that_the_company_address_is_visible_under_the_head_office_heading_on_contact_page() {
+        String address=ConfigReader.getProperty("companyPhoneNumber");
+        String actualAddress = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(address,actualAddress);
+    }
+
+
+
+
+    @Given("Verify that the Facebook, Instagram, X, Linkedin icons are visible under the Social Media: heading on contact page")
+    public void verify_that_the_facebook_instagram_x_linkedin_icons_are_visible_under_the_social_media_heading_on_contact_page() {
+        Assert.assertTrue(visitorHomePage.iconFacebook.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconX.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconLinkedin.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconInstagram.isDisplayed());
+    }
+
+
+
+
+
+
+
+    //------------- Steps NEVFEL -----------------/
+
+    @Given("Click on the Track your Order link")
+    public void click_on_the_track_your_order_link() {
+
+
+    }
+    @Given("Verify that the Order Tracking Number text is visible")
+    public void verify_that_the_order_tracking_number_text_is_visible() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isDisplayed());
+
+    }
+    @Given("Verify that Order Tracking Number is clickable")
+    public void verify_that_order_tracking_number_is_clickable() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+
+    }
 
 
 

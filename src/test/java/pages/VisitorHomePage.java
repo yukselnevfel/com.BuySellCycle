@@ -26,10 +26,10 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy (xpath = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy (xpath = "//*[@id='password']")
     public WebElement textBoxUserPassword;
 
     @FindBy (xpath = "//*[text()='Forgot Password? ']")
@@ -44,8 +44,31 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
 
+
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
+
+    @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
+    public WebElement linkContact;
+
+    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[1]")
+    public WebElement textWhatsapp;
+    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[2]")
+    public WebElement textMail;
+    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[3]")
+    public WebElement textAddress;
+    @FindBy (xpath = "//a[@href=\"http://facebook.com\"]")
+    public WebElement iconFacebook;
+    @FindBy (xpath = "//a[@href=\"http://linkedin.com\"]")
+    public WebElement iconLinkedin;
+    @FindBy (xpath = "//a[@href=\"http://x.com\"]")
+    public WebElement iconX;
+    @FindBy (xpath = "//a[@href=\"http://instagram.com\"]")
+    public WebElement iconInstagram;
+
+
+
+
 
     @FindBy(xpath = "//*[@class='close_modal']")
     public WebElement cookieAllert;
@@ -98,6 +121,15 @@ public class VisitorHomePage extends Base{
     public WebElement searchTextBox;
 
 
+
     //====================================================================================
+=======
+    //Site ust barinda kolay linkler
+    @FindBy(id = "order_number")
+    public WebElement textBoxOrderTrackingNumber;
+
+
+
+
 
 }
