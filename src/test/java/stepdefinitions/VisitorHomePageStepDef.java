@@ -151,7 +151,7 @@ public class VisitorHomePageStepDef extends Base {
     @When("I should click on the {string} on the header")
     public void i_should_click_on_the_on_the_header(String string) {
 
-
+waitAndClick();
     }
     @Then("I should be directed to the {string} page")
     public void i_should_be_directed_to_the_page(String string) {
