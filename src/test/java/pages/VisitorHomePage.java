@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class VisitorHomePage extends Base{
 
 
-    //Register User Login Locate Homepage>> LoginButton
+    //Register User Login Locate Homepage>> LoginButton AYCA LOCATE
     @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
@@ -16,7 +16,7 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Turn your ideas into reality..']")
     public WebElement textTurnIdea;
 
-    //Homepage>> LoginButton>>LoginForm
+
     @FindBy (xpath = "//*[@id='login_form']")
     public WebElement loginForm;
 
@@ -43,6 +43,11 @@ public class VisitorHomePage extends Base{
 
     @FindBy (xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
+
+    @FindBy (xpath = "//*[text()='These credentials do not match our records.']")
+    public WebElement textLoginErrorMessage;
+
+    //===============================AYCA=====================//
 
 
     @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
