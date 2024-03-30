@@ -230,6 +230,24 @@ public class VisitorHomePageStepDef extends Base {
 
 
 
+
+
+
+    //-------------Login Steps İlteriş-----------------//
+
+
+    @Given("Click on the {string} button")
+    public void click_on_the_button(String string) {
+    }
+
+    @Given("New User Zone should be displayed on the home page navBar and the page should be accessed")
+    public void new_user_zone_should_be_displayed_on_the_home_page_nav_bar_and_the_page_should_be_accessed() {
+
+    }
+
+
+
+
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Click on the Track your Order link")
@@ -605,3 +623,4 @@ public class VisitorHomePageStepDef extends Base {
 
 
 }
+
