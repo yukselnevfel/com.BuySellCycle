@@ -1,78 +1,68 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
-import utils.Driver;
 
-import static org.junit.Assert.assertEquals;
-
-public class VisitorHomePage extends Base{
+public class VisitorHomePage extends Base {
 
 
     //Register User Login Locate Homepage>> LoginButton
     @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//*[@class='img-fluid']")
+    @FindBy(xpath = "//*[@class='img-fluid']")
     public WebElement imageLoginPage;
 
-    @FindBy (xpath = "//*[text()='Turn your ideas into reality..']")
+    @FindBy(xpath = "//*[text()='Turn your ideas into reality..']")
     public WebElement textTurnIdea;
 
     //Homepage>> LoginButton>>LoginForm
-    @FindBy (xpath = "//*[@id='login_form']")
+    @FindBy(xpath = "//*[@id='login_form']")
     public WebElement loginForm;
 
-    @FindBy (xpath = "//*[@id='sign_in_btn']")
+    @FindBy(xpath = "//*[@id='sign_in_btn']")
     public WebElement signInButton;
 
-    @FindBy (xpath = "//*[text()='Remember me']")
+    @FindBy(xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy(id = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy(id = "//*[@id='password']")
     public WebElement textBoxUserPassword;
 
-    @FindBy (xpath = "//*[text()='Forgot Password? ']")
+    @FindBy(xpath = "//*[text()='Forgot Password? ']")
     public WebElement textBoxForgotPassword;
 
-    @FindBy (xpath = "//*[text()='Click Here']")
+    @FindBy(xpath = "//*[text()='Click Here']")
     public WebElement linkLoginClickHere;
 
-    @FindBy (xpath = "//*[text()='Don’t have an Account? ']")
+    @FindBy(xpath = "//*[text()='Don’t have an Account? ']")
     public WebElement textBoxHaveAnAccount;
 
-    @FindBy (xpath = "//*[text()='Sign Up']")
+    @FindBy(xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
 
 
-    @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
     public WebElement linkContact;
 
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[1]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[1]")
     public WebElement textWhatsapp;
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[2]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[2]")
     public WebElement textMail;
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[3]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[3]")
     public WebElement textAddress;
-    @FindBy (xpath = "//a[@href=\"http://facebook.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://facebook.com\"]")
     public WebElement iconFacebook;
-    @FindBy (xpath = "//a[@href=\"http://linkedin.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://linkedin.com\"]")
     public WebElement iconLinkedin;
-    @FindBy (xpath = "//a[@href=\"http://x.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://x.com\"]")
     public WebElement iconX;
-    @FindBy (xpath = "//a[@href=\"http://instagram.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://instagram.com\"]")
     public WebElement iconInstagram;
-
-
-
-
-
 
 
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
@@ -146,12 +136,15 @@ public class VisitorHomePage extends Base{
     public WebElement textBoxOrderTrackingNumber;
 
 
-
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
-@FindAll({
-        @FindBy(xpath = "//div[@class='member_info']//child::h4"),
-        @FindBy(xpath = "//div[@class='member_info']//child::p")
-})
-public WebElement team;
+    @FindAll({
+            @FindBy(xpath = "//div[@class='member_info']//child::h4"),
+            @FindBy(xpath = "//div[@class='member_info']//child::p")
+    })
+    public WebElement team;
+
+
+    public void verifyTheTeamMembers (){}
+
 }

@@ -397,6 +397,7 @@ public class VisitorHomePageStepDef extends Base {
     @Then("I should see the character, status, and picture of {string}")
     public void i_should_see_the_character_status_and_picture_of(String string) {
 
+
     }
 
     @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
