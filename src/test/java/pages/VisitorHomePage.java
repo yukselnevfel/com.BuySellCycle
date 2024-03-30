@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.Driver;
 
 public class VisitorHomePage extends Base{
 
@@ -52,7 +53,6 @@ public class VisitorHomePage extends Base{
     public WebElement cookieAllert;
 
     //  Homepage>> Headerlink>> AboutUs||
-    public By headerLinkAboout = By.xpath("(//a[text()='About Us'])[1]");
 
 
 

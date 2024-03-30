@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class VisitorHomePageStepDef extends Base {
 
-
+VisitorHomePage visitorHomePage =new VisitorHomePage();
 
     //-------------Login Steps AYCA-----------------//
 
@@ -149,9 +149,9 @@ public class VisitorHomePageStepDef extends Base {
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
-    public void i_should_click_on_the_on_the_header(String string) {
+    public void i_should_click_on_the_on_the_header(String headerElement) {
 
-waitAndClick();
+
     }
     @Then("I should be directed to the {string} page")
     public void i_should_be_directed_to_the_page(String string) {
