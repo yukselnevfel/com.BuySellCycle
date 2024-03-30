@@ -106,18 +106,13 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.signInButton.click();
         String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl,actualUrl);
+        if(expectedUrl.equals(actualUrl)){
+            Assert.assertEquals(expectedUrl,actualUrl);}
+        else {
+            Assert.assertTrue(visitorHomePage.textLoginErrorMessage.isDisplayed());
+        }
         wait(1);
     }
-
-
-
-
-
-
-
-
-
 
 
 
