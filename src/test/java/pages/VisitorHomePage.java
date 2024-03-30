@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class VisitorHomePage extends Base{
 
 
-    //Register User Login Locate Homepage>> LoginButton
+    //Register User Login Locate Homepage>> LoginButton AYCA LOCATE
     @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
@@ -22,7 +22,7 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Turn your ideas into reality..']")
     public WebElement textTurnIdea;
 
-    //Homepage>> LoginButton>>LoginForm
+
     @FindBy (xpath = "//*[@id='login_form']")
     public WebElement loginForm;
 
@@ -49,6 +49,11 @@ public class VisitorHomePage extends Base{
 
     @FindBy (xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
+
+    @FindBy (xpath = "//*[text()='These credentials do not match our records.']")
+    public WebElement textLoginErrorMessage;
+
+    //===============================AYCA=====================//
 
 
     @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
@@ -141,9 +146,18 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
     public WebElement searchTextBox;
 
-    //Site ust barinda kolay linkler
+    //TC02 Site ust barinda kolay linkler ve gidilen yerler
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
+
+    @FindBy(xpath = "//*[text()='Track Now']")
+    public WebElement trackNowButton;
+
+    @FindBy(xpath = "//*[text()='The selected order number is invalid.']")
+    public WebElement labelOrderNumberUnvalidText;
+
+    @FindBy(id = "guest_id")
+    public WebElement textBoxSecretID;
 
 
 
