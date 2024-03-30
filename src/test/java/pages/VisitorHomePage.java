@@ -50,7 +50,7 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//*[@class='close_modal']")
     public WebElement cookieAllert;
 
-    //==US_002 HomePage'deki linkler ve buttonlar===================
+    //==US_002 HomePage'deki linkler ve buttonlar Esra===================
     //US_002 TC01
     @FindBy(xpath = "//span[text()='Track Your Order']")
     public WebElement linkTextTrackYourOrder;
@@ -93,14 +93,11 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//img[@title='BuySellCycle'])[1]")
     public WebElement logoSite;
 
-    String expectedTitle=" BuySellCycle | Multivendor Marketplace ";
-    String actualTitle;
-
     //TC04
     @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
     public WebElement searchTextBox;
 
 
-
+    //====================================================================================
 
 }
