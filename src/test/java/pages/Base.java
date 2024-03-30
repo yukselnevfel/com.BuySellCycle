@@ -122,8 +122,6 @@ public abstract class Base {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
-
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
