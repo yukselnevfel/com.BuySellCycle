@@ -1,6 +1,8 @@
 package stepdefinitions;
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
 import pages.Base;
+import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 import static org.junit.Assert.assertEquals;
@@ -138,6 +140,52 @@ public class VisitorHomePageStepDef extends Base {
         assertEquals(expectedTitle, actualTitle);
     }
 
+    //------------- Steps Sımge ------------------/
+
+    @Given("Verify that the Contact link is visible")
+    public void verify_that_the_contact_link_is_visible() {
+       Assert.assertTrue(visitorHomePage.linkContact.isDisplayed());
+    }
+    @Given("Click on the Contact link")
+    public void click_on_the_contact_link() {
+        visitorHomePage.linkContact.click();
+    }
+    @Given("Verify that navigated to the Contact page")
+    public void verify_that_navigated_to_the_contact_page() {
+        String expectedUrl = "https://qa.buysellcycle.com/contact-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+    @Given("Verify that the company phone number is visible under the Call or WhatsApp: heading on contact page")
+    public void verify_that_the_company_phone_number_is_visible_under_the_call_or_whats_app_heading_on_contact_page() {
+        String whatsapp=ConfigReader.getProperty("companyPhoneNumber");
+        String actualWhatsapp = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(whatsapp,actualWhatsapp);
+    }
+    @Given("Verify that the company mail is visible under the Get in touch: heading on contact page")
+    public void verify_that_the_company_mail_is_visible_under_the_get_in_touch_heading_on_contact_page() {
+        String mail=ConfigReader.getProperty("companyPhoneNumber");
+        String actualMail = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(mail,actualMail);
+    }
+    @Given("Verify that the company address is visible under the Head office: heading on contact page")
+    public void verify_that_the_company_address_is_visible_under_the_head_office_heading_on_contact_page() {
+        String address=ConfigReader.getProperty("companyPhoneNumber");
+        String actualAddress = visitorHomePage.textWhatsapp.getText();
+        Assert.assertEquals(address,actualAddress);
+    }
+
+
+
+
+    @Given("Verify that the Facebook, Instagram, X, Linkedin icons are visible under the Social Media: heading on contact page")
+    public void verify_that_the_facebook_instagram_x_linkedin_icons_are_visible_under_the_social_media_heading_on_contact_page() {
+        Assert.assertTrue(visitorHomePage.iconFacebook.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconX.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconLinkedin.isDisplayed());
+        Assert.assertTrue(visitorHomePage.iconInstagram.isDisplayed());
+    }
 
 
 
