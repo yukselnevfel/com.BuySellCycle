@@ -70,8 +70,26 @@ public class VisitorHomePage extends Base{
 
 
 
+
+
+    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
+    public WebElement linkHeaderBlog;
     @FindBy(xpath = "//*[@class='close_modal']")
     public WebElement cookieAllert;
+    @FindBy(xpath = "//*[text()='+ Read more']")
+    public WebElement linkReadMore;
+    @FindBy(xpath = "(//h4[@class='font_18 f_w_700 mb_10'])[1]")
+    public WebElement labelCategoryText;
+    @FindBy(xpath = "//*[@class='form-control search_input']")
+    public WebElement blogSearchBox;
+    @FindBy(xpath = "(//h4)[12]")
+    public WebElement labelMetaverseText;
+    @FindBy(xpath = "(//*[@class='label_name f_w_400'])[2]")
+    public WebElement selectCategoryPost;
+    @FindBy(xpath = "//*[text()='shopping']")
+    public WebElement blogKeyword;
+    @FindBy(xpath = "(//h4)[20]")
+    public WebElement popularCategoryBlog;
 
     //==US_002 HomePage'deki linkler ve buttonlar Esra===================
     //US_002 TC01
