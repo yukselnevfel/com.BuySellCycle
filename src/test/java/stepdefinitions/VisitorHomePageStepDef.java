@@ -1,5 +1,6 @@
 package stepdefinitions;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.Base;
 import pages.VisitorHomePage;
@@ -186,6 +187,93 @@ public class VisitorHomePageStepDef extends Base {
         assertEquals(expectedTitle, actualTitle);
     }
 
+
+    //===============STEPS ESRA BASLANGIC==============================
+
+    @Given("Displays the Track Your Order link on the top bar of the site")
+    public void displays_the_track_your_order_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextTrackYourOrder.isDisplayed());
+    }
+    @Given("Displays the Compare link on the top bar of the site")
+    public void displays_the_compare_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextCompare.isDisplayed());
+    }
+    @Given("Displays the Wish List link on the top bar of the site")
+    public void displays_the_wish_list_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextWishList.isDisplayed());
+    }
+    @Given("Displays the Cart link on the top bar of the site")
+    public void displays_the_cart_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextCart.isDisplayed());
+    }
+    @Given("Displays the New User Zone link on the top bar of the site")
+    public void displays_the_new_user_zone_link_on_the_top_bar_of_the_site() {
+        assertTrue(visitorHomePage.linkTextNewUserZone.isDisplayed());
+    }
+    @Given("Displays the Daily Deals link on the top bar of the site")
+    public void displays_the_daily_deals_link_on_the_top_bar_of_the_site() {
+       assertTrue(visitorHomePage.linkTextDailyDeals.isDisplayed());
+    }
+
+    @Given("Click on the Track your Order link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_track_your_order_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextTrackYourOrder);
+        assertTrue(visitorHomePage.buttonTrackNow.isDisplayed());
+    }
+    @Given("Click on the Compare link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_compare_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextCompare);
+        assertTrue(visitorHomePage.titleProductCompare.isDisplayed());
+    }
+    @Given("Click on the WishList link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_wish_list_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextWishList);
+        assertTrue(visitorHomePage.titleSignIn.isDisplayed());
+    }
+    @Given("Click on the Cart link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_cart_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextCart);
+        assertTrue(visitorHomePage.titleOrderSummary.isDisplayed());
+    }
+    @Given("Click on the New User Zone link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_new_user_zone_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextNewUserZone);
+        assertTrue(visitorHomePage.titleSurpriseForNewUsers.isDisplayed());
+    }
+    @Given("Click on the Daily Deals link on the top bar of the site and you will be redirected to the relevant page")
+    public void click_on_the_daily_deals_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.linkTextDailyDeals);
+        assertTrue(visitorHomePage.titleDealEndsIn.isDisplayed());
+    }
+
+    @When("Return to Home page")
+    public void returnToHomePage() {
+        Driver.getDriver().navigate().back();
+    }
+
+    @Given("Clicks on the Site logo")
+    public void clicks_on_the_site_logo() {
+        clickWithJS(visitorHomePage.logoSite);
+    }
+    @Given("Refreshes the home page")
+    public void refreshes_the_home_page() {
+
+        String expectedTitle="BuySellCycle | Multivendor Marketplace";
+        String actualTitle=Driver.getDriver().getTitle();
+        assertEquals(expectedTitle,actualTitle);
+    }
+
+
+
+
+
+
+
+
+
+    //====================STEPS ESRA SONU============================================
+
+=======
     //------------- Steps Sımge ------------------/
 
     @Given("Verify that the Contact link is visible")
@@ -256,6 +344,7 @@ public class VisitorHomePageStepDef extends Base {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
 
     }
+
 
 
 
