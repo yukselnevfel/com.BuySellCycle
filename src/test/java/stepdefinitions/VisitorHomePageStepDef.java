@@ -1,6 +1,9 @@
 package stepdefinitions;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
@@ -210,23 +213,53 @@ public class VisitorHomePageStepDef extends Base {
         Driver.quitDriver();
     }
 
-    //------------- Steps NEVFEL -----------------/
+    //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Click on the Track your Order link")
     public void click_on_the_track_your_order_link() {
-
-
+        clickWithJS(visitorHomePage.linkTextTrackYourOrder);
     }
     @Given("Verify that the Order Tracking Number text is visible")
     public void verify_that_the_order_tracking_number_text_is_visible() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isDisplayed());
-
     }
     @Given("Verify that Order Tracking Number is clickable")
     public void verify_that_order_tracking_number_is_clickable() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+    }
+
+    @Given("Verify that Track Now button is visible")
+    public void verify_that_track_now_button_is_visible() {
+
+       assertTrue( visitorHomePage.trackNowButton.isDisplayed());
+    }
+    @Given("Verify that Track Now button is clickable")
+    public void verify_that_track_now_button_is_clickable() {
+        clickWithJS(visitorHomePage.trackNowButton);
+        assertTrue(visitorHomePage.trackNowButton.isEnabled());
+    }
+
+
+    @Given("Enter a unvalid {string} password in the Order Tracking Number field")
+    public void enter_a_unvalid_password_in_the_order_tracking_number_field(String unvalidpass) {
+        visitorHomePage.textBoxOrderTrackingNumber.sendKeys(unvalidpass);
 
     }
+    @Given("Enter a unvalid {string} password in the Secret ID")
+    public void enter_a_unvalid_password_in_the_secret_id(String unvalidID) {
+       visitorHomePage.textBoxSecretID.sendKeys(unvalidID);
+    }
+    @Given("Click on the Track Now")
+    public void click_on_the_track_now() {
+        clickWithJS(visitorHomePage.trackNowButton);
+
+    }
+    @Given("Show warning message on the page")
+    public void show_warning_message_on_the_page() {
+        visitorHomePage.labelOrderNumberUnvalidText.isDisplayed();
+
+    }
+
 
     //------------- Steps Sımge ------------------/
     @Given("Verify that the Contact link is visible")
