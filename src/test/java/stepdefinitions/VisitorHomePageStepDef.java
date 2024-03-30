@@ -150,12 +150,11 @@ VisitorHomePage visitorHomePage =new VisitorHomePage();
 
     @When("I should click on the {string} on the header")
     public void i_should_click_on_the_on_the_header(String headerElement) {
-
-
+        clickHeaderElementLink(headerElement);
     }
     @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String string) {
-
+    public void i_should_be_directed_to_the_page(String page) {
+        checkTheTitle(page);
     }
     @Then("I should see the character, status, and picture of {string}")
     public void i_should_see_the_character_status_and_picture_of(String string) {

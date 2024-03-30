@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
+import static org.junit.Assert.assertEquals;
+
 public abstract class Base {
 
 
@@ -419,6 +421,17 @@ public abstract class Base {
         WebElement visibleLogin= Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + visibleElement + "')]"));
         Assert.assertTrue(visibleLogin.isDisplayed());
     }
+    public  static void clickHeaderElementLink(String headerElementLink) {
 
+        WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='"+headerElementLink +"'])[1]"));
+        waitAndClick(element);
+    }
 
+    public static void checkTheTitle (String title){
+
+        String expectedText = title;
+        String actualText = Driver.getDriver().getTitle();
+        assertEquals("as expected", expectedText , actualText);
+
+    }
 }

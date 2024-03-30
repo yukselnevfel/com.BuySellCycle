@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Driver;
 
+import static org.junit.Assert.assertEquals;
+
 public class VisitorHomePage extends Base{
 
 
