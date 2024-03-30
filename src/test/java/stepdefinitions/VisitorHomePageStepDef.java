@@ -3,9 +3,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -104,7 +109,7 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
-//====================steps Esra Baslangic================================
+//====================STEPS ESRA BASLANGIC=============================================
 
     @Given("Displays the Track Your Order link on the top bar of the site")
     public void displays_the_track_your_order_link_on_the_top_bar_of_the_site() {
@@ -189,6 +194,139 @@ public class VisitorHomePageStepDef extends Base {
         String actualTitle = Driver.getDriver().getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
+
+    @When("Click to the search box")
+    public void clickToTheSearchBox() {
+        clickWithJS(visitorHomePage.searchTextBox);
+    }
+
+    @When("User searches for products in the search box")
+    public void userSearchesForProductsInTheSearchBox() {
+        waitAndSendText(visitorHomePage.searchTextBox,"Belt");
+        wait(2);
+
+    }
+
+    @When("Displays All Categories dropdown")
+    public void displaysAllCategoriesDropdown() {
+        assertTrue(visitorHomePage.linkAllCategories.isDisplayed());
+    }
+
+    @When("Click All Categories dropdown menu")
+    public void clickAllCategoriesDropdownMenu() {
+       clickWithJS(visitorHomePage.linkAllCategories);
+    }
+
+    @When("Displays the subheadings of the dropdown menu that opens")
+    public void displaysTheSubheadingsOfTheDropdownMenuThatOpens() {
+        //AllCategories alt basliklarini goruntuler
+        wait(2);
+        assertTrue(visitorHomePage.linkElectronics.isDisplayed());
+        assertTrue(visitorHomePage.linkFashion.isDisplayed());
+        assertTrue(visitorHomePage.linkBaby.isDisplayed());
+        assertTrue(visitorHomePage.linkHomeFurniture.isDisplayed());
+        assertTrue(visitorHomePage.linkSporOutdoor.isDisplayed());
+        assertTrue(visitorHomePage.linkAccessories.isDisplayed());
+        assertTrue(visitorHomePage.linkBeauty.isDisplayed());
+        assertTrue(visitorHomePage.linkBookStationery.isDisplayed());
+        assertTrue(visitorHomePage.linkHobiMusic.isDisplayed());
+        assertTrue(visitorHomePage.linkSupermarket.isDisplayed());
+        assertTrue(visitorHomePage.linkAutoGardenDiyStore.isDisplayed());
+    }
+
+    @Given("Click the Electronics link")
+    public void click_the_electronics_link() {
+
+    }
+    @Given("Displays Electronics subcategories")
+    public void displays_electronics_subcategories() {
+
+    }
+    @Given("Click the Fashion link")
+    public void click_the_fashion_link() {
+
+    }
+    @Given("Displays Fashion subcategories")
+    public void displays_fashion_subcategories() {
+
+    }
+    @Given("Click the Baby link")
+    public void click_the_baby_link() {
+
+    }
+    @Given("Displays Baby subcategories")
+    public void displays_baby_subcategories
+    }
+    @Given("Click the Home-Furniture link")
+    public void click_the_home_furniture_link() {
+
+    }
+    @Given("Displays  Home-Furniture subcategories")
+    public void displays_home_furniture_subcategories() {
+
+    }
+    @Given("Click the Sport-Outdoor link")
+    public void click_the_sport_outdoor_link() {
+
+    }
+    @Given("Displays Sport-Outdoor subcategories")
+    public void displays_sport_outdoor_subcategories() {
+
+    }
+    @Given("Click the Accessories link")
+    public void click_the_accessories_link() {
+
+    }
+    @Given("Displays Accessories subcategories")
+    public void displays_accessories_subcategories() {
+
+    }
+    @Given("Click the Beauty link")
+    public void click_the_beauty_link() {
+
+    }
+    @Given("Displays Beauty subcategories")
+    public void displays_beauty_subcategories() {
+
+    }
+    @Given("Click the Book-Stationery link")
+    public void click_the_book_stationery_link() {
+
+    }
+    @Given("Displays Book-Stationery subcategories")
+    public void displays_book_stationery_subcategories() {
+
+    }
+    @Given("Click the Hobi-Music link")
+    public void click_the_hobi_music_link() {
+
+    }
+    @Given("Displays Hobi-Music subcategories")
+    public void displays_hobi_music_subcategories() {
+
+    }
+    @Given("Click the Supermarket link")
+    public void click_the_supermarket_link() {
+
+    }
+    @Given("Displays Supermarket subcategories")
+    public void displays_supermarket_subcategories() {
+
+    }
+    @Given("Click the Auto-Garden-DiyStore link")
+    public void click_the_auto_garden_diy_store_link() {
+
+    }
+    @Given("Displays Auto-Garden-DiyStore subcategories")
+    public void displays_auto_garden_diy_store_subcategories() {
+
+    }
+
+
+
+
+
+    //=============STEPS ESRA SONU=================================
 
 
 }

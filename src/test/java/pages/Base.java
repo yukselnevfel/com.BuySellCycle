@@ -174,6 +174,7 @@ public abstract class Base {
 
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
+     *  Açılır listeden rastgele bir değer seçer ve seçilen Web Öğesini döndürür
      * @param select
      * @return
      */

@@ -1,5 +1,5 @@
 
-Feature:US_002 As a user, I want easily accessible links on the homepage's top bar to perform site operations
+ Feature:US_002 As a user, I want easily accessible links on the homepage's top bar to perform site operations
 
   Background:
     * Open browser and Go to "URL"
@@ -27,9 +27,15 @@ Feature:US_002 As a user, I want easily accessible links on the homepage's top b
     * Return to Home page
     * Click on the Daily Deals link on the top bar of the site and you will be redirected to the relevant page
     * Close the page
-  @esra
+
+
   Scenario: TC_03 Clicking on the site logo and accessing the home page
     * Clicks on the Site logo
     * Refreshes the home page
+    * Close the page
+
+  Scenario: TC_04 Viewing and searching the Search textbox
+    * Click to the search box
+    * User searches for products in the search box
     * Close the page
 
