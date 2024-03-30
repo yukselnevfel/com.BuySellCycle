@@ -1,6 +1,9 @@
 package stepdefinitions;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
