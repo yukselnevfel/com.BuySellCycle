@@ -32,10 +32,10 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy (xpath = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy (xpath="//*[@id='password']")
     public WebElement textBoxUserPassword;
 
     @FindBy (xpath = "//*[text()='Forgot Password? ']")
@@ -52,6 +52,110 @@ public class VisitorHomePage extends Base{
 
     @FindBy (xpath = "//*[text()='These credentials do not match our records.']")
     public WebElement textLoginErrorMessage;
+
+    //---US-13 Slider Locate-----//
+    @FindBy (xpath = "(//div[@class='owl-dot'])[1]")
+    public WebElement imageSlider;
+
+    @FindBy (xpath = "//div[@class='owl-dot active']")
+    public WebElement secondSlideNavigatorButton;
+
+    @FindBy (xpath = "(//div[@class='owl-dot'])[2]")
+    public WebElement thirdSlideNavigatorButton;
+
+    @FindBy (xpath = "(//div[@class='owl-dot'])[1]")
+    public WebElement firstSlideNavigatorButton;
+
+    @FindBy (xpath = "//*[@title='sport']")
+    public WebElement imageSecondSlider;
+
+    @FindBy (xpath = "//*[@title='Electronics']")
+    public WebElement imageThirdSlider;
+
+    @FindBy (xpath = "//*[@title='woman fashion']")
+    public WebElement imageFirstSlider;
+
+    @FindBy (xpath = "(//*[@title='BuySellCycle'])[1]")
+    public WebElement homeHeaderButton;
+
+    // -----US-16 Footer Locate AYCA------- //
+
+    @FindBy (xpath = "//*[@class='home_three_footer']")
+    public WebElement tableFooter;
+
+    @FindBy (xpath = "(//a[text()='About Us'])[3]")
+    public WebElement linkFooterAboutUs;
+
+    @FindBy (xpath = "(//a[text()='Blog'])[3]")
+    public WebElement linkFooterBlog;
+
+    @FindBy (xpath = "//a[text()='Dashboard']")
+    public WebElement linkFooterDashboard;
+
+    @FindBy (xpath = "//a[text()='My Profile']")
+    public WebElement linkFooterMyProfile;
+
+    @FindBy (xpath = "//a[text()='My Order']")
+    public WebElement linkFooterMyOrder;
+
+    @FindBy (xpath = "/html/body/footer/div[2]/div/div[2]/div/div/text()")
+    public WebElement textFooterCopyRight;
+
+    @FindBy (xpath = "//*[text()='Google Play']")
+    public WebElement linkFooterGooglePlay;
+
+    @FindBy (xpath = "//*[text()='Apple Store']")
+    public WebElement linkFooterAppleStore;
+
+    @FindBy (xpath = "//*[text()='GET A QUICK QUOTE']")
+    public WebElement textFooterGetQuickQuite;
+
+    @FindBy (xpath = "(//*[@class='form-control'])[1]")
+    public WebElement textBoxFooterEmail;
+
+    @FindBy (xpath = "//*[@id='subscribeBtn']")
+    public WebElement subscribeButton;
+
+    @FindBy (xpath = "//*[text()='Help & Contact']")
+    public WebElement linkFooterHelpContact;
+
+    @FindBy (xpath = "//*[text()='Track Order']")
+    public WebElement linkFooterTrackOrder;
+
+    @FindBy (xpath = "//*[text()='Return & Exchange']")
+    public WebElement linkFooterReturnExchange;
+
+
+    @FindBy (xpath = "//*[@class='fab fa-youtube']")
+    public WebElement linkFooterYoutube;
+
+    @FindBy (xpath = "//*[@class='fab fa-linkedin']")
+    public WebElement linkFooterLinkedin;
+
+    @FindBy (xpath = "//*[@class='fab fa-instagram']")
+    public WebElement linkFooterInstagram;
+
+    @FindBy (xpath = "//*[@class='fab fa-facebook-square']")
+    public WebElement linkFooterFacebook;
+
+    @FindBy (xpath = "//*[text()='You Are Already Subscribed.']")
+    public WebElement textFooterAlreadySubscribed;
+
+    @FindBy (xpath = "//*[text()='Subscribe successfully! Thanks For Subscribe.']")
+    public WebElement textFooterSubscribeSuccessfully;
+
+    @FindBy (xpath = "//*[@id='back-top']")
+    public WebElement goTopButton;
+
+    //------US_26 User Dashboar Support Ticket Locate AYCA--------//
+
+    @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+    public WebElement linkDashboardSupportTicket;
+
+
+
+
+
 
     //===============================AYCA=====================//
 

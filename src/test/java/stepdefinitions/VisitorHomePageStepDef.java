@@ -1,4 +1,5 @@
 package stepdefinitions;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -35,23 +36,17 @@ public class VisitorHomePageStepDef extends Base {
 
         clickWebElement(textLogin);
 
-
-
-
     }
     @Given("Verify that navigated to the login page")
     public void verify_that_navigated_to_the_login_page() {
 
-
         String expectedUrl = "https://qa.buysellcycle.com/login";
-
 
     }
     @Given("Verify that the relevant image")
     public void verify_that_the_relevant_image() {
 
         Assert.assertTrue(visitorHomePage.imageLoginPage.isDisplayed());
-
 
     }
     @Given("Verify that the Sign-in form is visible")
@@ -117,6 +112,64 @@ public class VisitorHomePageStepDef extends Base {
         }
         wait(1);
     }
+
+    // AYCA SLIDER IMAGES CHECK  //
+
+    @Given("Verify that slider image, second navigation button and third navigation button is visible")
+    public void verify_that_and_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
+        Assert.assertTrue(visitorHomePage.firstSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.secondSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.thirdSlideNavigatorButton.isDisplayed());
+
+    }
+    @Given("Click on the navigation button and Verify that image is visible")
+    public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        visitorHomePage.secondSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        visitorHomePage.thirdSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        visitorHomePage.firstSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+
+    }
+
+    @Given("Verify the slider images are visible automaticly")
+    public void verify_the_slider_images_are_visible_automaticly() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        wait(3);
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
+    }
+
+
+    @Given("Click on the slider images in order and Verifying that navigate to the image Page")
+    public void click_on_the_slider_images_in_order_and_verifying_that_navigate_to_the_image_page() {
+
+        visitorHomePage.imageFirstSlider.click();
+
+
+    }
+
+
 
 
 
