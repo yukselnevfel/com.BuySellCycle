@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.*;
 import utils.Driver;
 import java.io.File;
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -118,6 +119,8 @@ public abstract class Base {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+
 
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
@@ -416,4 +419,11 @@ public abstract class Base {
         WebElement visibleLogin= Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + visibleElement + "')]"));
         Assert.assertTrue(visibleLogin.isDisplayed());
     }
+
+
+
+
+
+
+
 }

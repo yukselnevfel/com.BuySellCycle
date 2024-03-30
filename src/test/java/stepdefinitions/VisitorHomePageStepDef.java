@@ -1,12 +1,18 @@
 package stepdefinitions;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.Base;
+import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class VisitorHomePageStepDef extends Base {
+
+
 
     //-------------Login Steps AYCA-----------------//
 
@@ -139,8 +145,37 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
+ //---------------- Steps Asli----------------------/
+    //US_8 - AboutPage
+
+    @When("I should click on the {string} on the header")
+    public void i_should_click_on_the_on_the_header(String string) {
 
 
+    }
+    @Then("I should be directed to the {string} page")
+    public void i_should_be_directed_to_the_page(String string) {
 
+    }
+    @Then("I should see the character, status, and picture of {string}")
+    public void i_should_see_the_character_status_and_picture_of(String string) {
+
+    }
+
+
+    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
+    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
+
+    }
+
+    @And("I should see each section contains a numeric value representing the relevant metric")
+    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    }
+
+    @Then("I should see that the numeric values are clearly visible and legible")
+    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
+    }
+
+    //---------------- Steps Asli----------------------/
 }
 
