@@ -45,9 +45,6 @@ public class VisitorHomePage extends Base{
     public WebElement linkLoginSignUp;
 
 
-    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
-    public WebElement linkHeaderBlog;
-
     @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
     public WebElement linkContact;
 
@@ -138,10 +135,6 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
     public WebElement searchTextBox;
 
-
-
-    //====================================================================================
-=======
     //Site ust barinda kolay linkler
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
