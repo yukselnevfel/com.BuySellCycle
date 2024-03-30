@@ -23,11 +23,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the {string}")
     public void click_on_the(String textLogin) {
 
-
         clickWebElement(textLogin);
-
-
-
 
     }
     @Given("Verify that navigated to the login page")
@@ -35,40 +31,90 @@ public class VisitorHomePageStepDef extends Base {
 
 
         String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
 
 
     }
     @Given("Verify that the relevant image")
     public void verify_that_the_relevant_image() {
 
+        Assert.assertTrue(visitorHomePage.imageLoginPage.isDisplayed());
 
 
     }
     @Given("Verify that the Sign-in form is visible")
     public void verify_that_the_sign_in_form_is_visible() {
 
-
+        Assert.assertTrue(visitorHomePage.loginForm.isDisplayed());
 
     }
     @Given("Verify that the Sign In button is visible")
     public void verify_that_the_sign_in_button_is_visible() {
 
-
+        Assert.assertTrue(visitorHomePage.signInButton.isDisplayed());
 
     }
     @Given("Verify that the Sign In button is clickable")
     public void verify_that_the_sign_in_button_is_clickable() {
 
+        Assert.assertTrue(visitorHomePage.signInButton.isEnabled());
 
 
     }
     @Given("Verify that the Remember me checkbox is selectable")
     public void verify_that_the_remember_me_checkbox_is_selectable() {
 
-
+        Assert.assertTrue(visitorHomePage.checkBoxRememberMe.isEnabled());
 
     }
 
+    @Given("Verify that navigated to the password reset page")
+    public void verify_that_navigated_to_the_password_reset_page() {
+
+        String expectedUrl = "https://qa.buysellcycle.com/password/reset";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Verify that navigated to the Register page")
+    public void verify_that_navigated_to_the_register_page() {
+        String expectedUrl = "https://qa.buysellcycle.com/register";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Click on the login link, Enter {string} and {string} and click sign in")
+    public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
+        visitorHomePage.loginButton.click();
+        visitorHomePage.textBoxUserEmail.click();
+        visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
+        visitorHomePage.textBoxUserPassword.click();
+        visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
+        wait(1);
+        visitorHomePage.signInButton.click();
+        String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        wait(1);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //---------------------------Ayca Login Step Finish-------------------------------------------------------------------//
 
 
 
@@ -185,6 +231,30 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.iconX.isDisplayed());
         Assert.assertTrue(visitorHomePage.iconLinkedin.isDisplayed());
         Assert.assertTrue(visitorHomePage.iconInstagram.isDisplayed());
+    }
+
+
+
+
+
+
+
+    //------------- Steps NEVFEL -----------------/
+
+    @Given("Click on the Track your Order link")
+    public void click_on_the_track_your_order_link() {
+
+
+    }
+    @Given("Verify that the Order Tracking Number text is visible")
+    public void verify_that_the_order_tracking_number_text_is_visible() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isDisplayed());
+
+    }
+    @Given("Verify that Order Tracking Number is clickable")
+    public void verify_that_order_tracking_number_is_clickable() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+
     }
 
 

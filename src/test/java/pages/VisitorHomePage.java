@@ -26,10 +26,10 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy (xpath = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy (xpath = "//*[@id='password']")
     public WebElement textBoxUserPassword;
 
     @FindBy (xpath = "//*[text()='Forgot Password? ']")
@@ -78,6 +78,12 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "//*[@class='close_modal']")
     public WebElement cookieAllert;
+
+
+    //Site ust barinda kolay linkler
+    @FindBy(id = "order_number")
+    public WebElement textBoxOrderTrackingNumber;
+
 
 
 
