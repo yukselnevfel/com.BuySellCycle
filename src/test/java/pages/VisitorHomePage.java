@@ -140,9 +140,18 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
     public WebElement searchTextBox;
 
-    //Site ust barinda kolay linkler
+    //TC02 Site ust barinda kolay linkler ve gidilen yerler
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
+
+    @FindBy(xpath = "//*[text()='Track Now']")
+    public WebElement trackNowButton;
+
+    @FindBy(xpath = "//*[text()='The selected order number is invalid.']")
+    public WebElement labelOrderNumberUnvalidText;
+
+    @FindBy(id = "guest_id")
+    public WebElement textBoxSecretID;
 
 
 
