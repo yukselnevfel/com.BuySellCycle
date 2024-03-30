@@ -353,7 +353,7 @@ public class VisitorHomePageStepDef extends Base {
     }
 
     //---------------- Steps Asli----------------------/
-}
+
 
 
 
@@ -503,78 +503,92 @@ public class VisitorHomePageStepDef extends Base {
 
     }
     @Given("Displays Baby subcategories")
-    public void displays_baby_subcategories
+    public void displays_baby_subcategories() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Home-Furniture link")
     public void click_the_home_furniture_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays  Home-Furniture subcategories")
     public void displays_home_furniture_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Sport-Outdoor link")
     public void click_the_sport_outdoor_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Sport-Outdoor subcategories")
     public void displays_sport_outdoor_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Accessories link")
     public void click_the_accessories_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Accessories subcategories")
     public void displays_accessories_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Beauty link")
     public void click_the_beauty_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Beauty subcategories")
     public void displays_beauty_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Book-Stationery link")
     public void click_the_book_stationery_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Book-Stationery subcategories")
     public void displays_book_stationery_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Hobi-Music link")
     public void click_the_hobi_music_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Hobi-Music subcategories")
     public void displays_hobi_music_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Supermarket link")
     public void click_the_supermarket_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Supermarket subcategories")
     public void displays_supermarket_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Click the Auto-Garden-DiyStore link")
     public void click_the_auto_garden_diy_store_link() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
     @Given("Displays Auto-Garden-DiyStore subcategories")
     public void displays_auto_garden_diy_store_subcategories() {
-
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 
-
-
-
-
-    //=============STEPS ESRA SONU=================================
+    //=============STEPS ESRA SONU=================================//
 
 
 }
