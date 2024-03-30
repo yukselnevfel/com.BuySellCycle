@@ -189,5 +189,29 @@ public class VisitorHomePageStepDef extends Base {
 
 
 
+
+
+
+    //------------- Steps NEVFEL -----------------/
+
+    @Given("Click on the Track your Order link")
+    public void click_on_the_track_your_order_link() {
+
+
+    }
+    @Given("Verify that the Order Tracking Number text is visible")
+    public void verify_that_the_order_tracking_number_text_is_visible() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isDisplayed());
+
+    }
+    @Given("Verify that Order Tracking Number is clickable")
+    public void verify_that_order_tracking_number_is_clickable() {
+        assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+
+    }
+
+
+
+
 }
 

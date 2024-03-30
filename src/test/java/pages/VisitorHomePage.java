@@ -60,5 +60,11 @@ public class VisitorHomePage extends Base{
     public WebElement cookieAllert;
 
 
+    //Site ust barinda kolay linkler
+    @FindBy(id = "order_number")
+    public WebElement textBoxOrderTrackingNumber;
+
+
+
 
 }
