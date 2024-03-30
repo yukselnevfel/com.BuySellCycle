@@ -5,10 +5,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pages.Base;
 import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -126,6 +131,7 @@ public class VisitorHomePageStepDef extends Base {
 
      //-------------Login Steps FIKRET-----------------/
 
+
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
         Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
@@ -139,7 +145,8 @@ public class VisitorHomePageStepDef extends Base {
     }
 
     @Given("Verify that the Blog link is visible")
-    public void verify_that_the_is_visible() {assertTrue(visitorHomePage.linkHeaderBlog.isDisplayed());
+    public void verify_that_the_is_visible() {
+        assertTrue(visitorHomePage.linkHeaderBlog.isDisplayed());
     }
 
     @Given("Verify that the Blog link is active")
@@ -154,8 +161,9 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify that navigated to the Blog Page")
     public void verify_that_navigated_to_the_page() {
-           assertEquals("https://qa.buysellcycle.com/blog", Driver.getDriver().getCurrentUrl());
+        assertEquals("https://qa.buysellcycle.com/blog", Driver.getDriver().getCurrentUrl());
     }
+
     @Given("Verify that navigated to the Read More Page")
     public void verify_that_navigated_to_the_read_more_page() {
         clickWithJS(visitorHomePage.linkReadMore);
@@ -164,17 +172,19 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Enter a keyword into the search texBox and press Enter")
     public void enter_a_keyword_into_the_tex_box_and_press() {
-        visitorHomePage.blogSearchBox.sendKeys("metaverse "+ Keys.ENTER);
+        visitorHomePage.blogSearchBox.sendKeys("metaverse " + Keys.ENTER);
     }
 
     @Given("Verify that the search results are relevant to the entered keyword")
     public void verify_that_the_search_results_are_relevant_to_the_entered_keyword() {
         assertTrue(visitorHomePage.labelMetaverseText.getText().contains("Metaverse"));
     }
+
     @When("Select a category from the Category section")
     public void select_a_category_from_the_category_section() {
         clickWithJS(visitorHomePage.selectCategoryPost);
     }
+
     @Then("Verify that blogs related to the selected category are listed")
     public void verify_that_blogs_related_to_the_selected_category_are_listed() {
         assertEquals("https://qa.buysellcycle.com/blog/category/posts/e-commerce-7", Driver.getDriver().getCurrentUrl());
@@ -184,6 +194,7 @@ public class VisitorHomePageStepDef extends Base {
     public void select_a_keyword_from_the_keyword_section() {
         visitorHomePage.blogKeyword.sendKeys("shopping");
     }
+
     @Then("Verify that relevant blogs are listed based on the selected keyword")
     public void verify_that_relevant_blogs_are_listed_based_on_the_selected_keyword() {
         String actualTagName = visitorHomePage.blogKeyword.getTagName();
@@ -195,6 +206,7 @@ public class VisitorHomePageStepDef extends Base {
     public void select_a_category_from_the_popular_posts_section() {
         clickWithJS(visitorHomePage.popularCategoryBlog);
     }
+
     @Then("Verify that the page with the selected blog post has been accessed")
     public void verify_that_the_page_with_the_selected_blog_post_has_been_accessed() {
         assertTrue(Driver.getDriver().getCurrentUrl().startsWith("https://qa.buysellcycle.com/blog/post/"));
@@ -206,6 +218,8 @@ public class VisitorHomePageStepDef extends Base {
     public void close_the_page() {
         Driver.quitDriver();
     }
+
+
 
     //=========================== STEPS  NEVFEL ====================================/
 
@@ -296,7 +310,54 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.iconInstagram.isDisplayed());
     }
 
-//====================STEPS ESRA BASLANGIC================================
+
+
+
+    //------------- Steps SAMET -----------------/
+
+    @Given("Verify title is {string}")
+    public void verify_that_title(String title) {
+        String expectedTitle = title;
+        String actualTitle = Driver.getDriver().getTitle();
+        assertEquals(expectedTitle, actualTitle);
+    }
+
+
+ //---------------- Steps Asli----------------------/
+    //US_8 - AboutPage
+
+    @When("I should click on the {string} on the header")
+    public void i_should_click_on_the_on_the_header(String headerElement) {
+        clickHeaderElementLink(headerElement);
+    }
+    @Then("I should be directed to the {string} page")
+    public void i_should_be_directed_to_the_page(String page) {
+        checkTheTitle(page);
+    }
+    @Then("I should see the character, status, and picture of {string}")
+    public void i_should_see_the_character_status_and_picture_of(String string) {
+
+    }
+
+    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
+    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
+
+    }
+
+    @And("I should see each section contains a numeric value representing the relevant metric")
+    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    }
+
+    @Then("I should see that the numeric values are clearly visible and legible")
+    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
+    }
+
+    //---------------- Steps Asli----------------------/
+}
+
+
+
+//====================STEPS ESRA BASLANGIC=============================================
 
     @Given("Displays the Track Your Order link on the top bar of the site")
     public void displays_the_track_your_order_link_on_the_top_bar_of_the_site() {
@@ -394,49 +455,126 @@ public class VisitorHomePageStepDef extends Base {
 
     }
 
+    @When("Displays All Categories dropdown")
+    public void displaysAllCategoriesDropdown() {
+        assertTrue(visitorHomePage.linkAllCategories.isDisplayed());
+    }
+
+    @When("Click All Categories dropdown menu")
+    public void clickAllCategoriesDropdownMenu() {
+       clickWithJS(visitorHomePage.linkAllCategories);
+    }
+
+    @When("Displays the subheadings of the dropdown menu that opens")
+    public void displaysTheSubheadingsOfTheDropdownMenuThatOpens() {
+        //AllCategories alt basliklarini goruntuler
+        wait(2);
+        assertTrue(visitorHomePage.linkElectronics.isDisplayed());
+        assertTrue(visitorHomePage.linkFashion.isDisplayed());
+        assertTrue(visitorHomePage.linkBaby.isDisplayed());
+        assertTrue(visitorHomePage.linkHomeFurniture.isDisplayed());
+        assertTrue(visitorHomePage.linkSporOutdoor.isDisplayed());
+        assertTrue(visitorHomePage.linkAccessories.isDisplayed());
+        assertTrue(visitorHomePage.linkBeauty.isDisplayed());
+        assertTrue(visitorHomePage.linkBookStationery.isDisplayed());
+        assertTrue(visitorHomePage.linkHobiMusic.isDisplayed());
+        assertTrue(visitorHomePage.linkSupermarket.isDisplayed());
+        assertTrue(visitorHomePage.linkAutoGardenDiyStore.isDisplayed());
+    }
+
+    @Given("Click the Electronics link")
+    public void click_the_electronics_link() {
+
+    }
+    @Given("Displays Electronics subcategories")
+    public void displays_electronics_subcategories() {
+
+    }
+    @Given("Click the Fashion link")
+    public void click_the_fashion_link() {
+
+    }
+    @Given("Displays Fashion subcategories")
+    public void displays_fashion_subcategories() {
+
+    }
+    @Given("Click the Baby link")
+    public void click_the_baby_link() {
+
+    }
+    @Given("Displays Baby subcategories")
+    public void displays_baby_subcategories
+    }
+    @Given("Click the Home-Furniture link")
+    public void click_the_home_furniture_link() {
+
+    }
+    @Given("Displays  Home-Furniture subcategories")
+    public void displays_home_furniture_subcategories() {
+
+    }
+    @Given("Click the Sport-Outdoor link")
+    public void click_the_sport_outdoor_link() {
+
+    }
+    @Given("Displays Sport-Outdoor subcategories")
+    public void displays_sport_outdoor_subcategories() {
+
+    }
+    @Given("Click the Accessories link")
+    public void click_the_accessories_link() {
+
+    }
+    @Given("Displays Accessories subcategories")
+    public void displays_accessories_subcategories() {
+
+    }
+    @Given("Click the Beauty link")
+    public void click_the_beauty_link() {
+
+    }
+    @Given("Displays Beauty subcategories")
+    public void displays_beauty_subcategories() {
+
+    }
+    @Given("Click the Book-Stationery link")
+    public void click_the_book_stationery_link() {
+
+    }
+    @Given("Displays Book-Stationery subcategories")
+    public void displays_book_stationery_subcategories() {
+
+    }
+    @Given("Click the Hobi-Music link")
+    public void click_the_hobi_music_link() {
+
+    }
+    @Given("Displays Hobi-Music subcategories")
+    public void displays_hobi_music_subcategories() {
+
+    }
+    @Given("Click the Supermarket link")
+    public void click_the_supermarket_link() {
+
+    }
+    @Given("Displays Supermarket subcategories")
+    public void displays_supermarket_subcategories() {
+
+    }
+    @Given("Click the Auto-Garden-DiyStore link")
+    public void click_the_auto_garden_diy_store_link() {
+
+    }
+    @Given("Displays Auto-Garden-DiyStore subcategories")
+    public void displays_auto_garden_diy_store_subcategories() {
+
+    }
+
+
+
+
 
     //=============STEPS ESRA SONU=================================
 
 
-    //------------- Steps SAMET -----------------/
-
-    @Given("Verify title is {string}")
-    public void verify_that_title(String title) {
-        String expectedTitle = title;
-        String actualTitle = Driver.getDriver().getTitle();
-        assertEquals(expectedTitle, actualTitle);
-    }
-
-
- //---------------- Steps Asli----------------------/
-    //US_8 - AboutPage
-
-    @When("I should click on the {string} on the header")
-    public void i_should_click_on_the_on_the_header(String headerElement) {
-        clickHeaderElementLink(headerElement);
-    }
-    @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String page) {
-        checkTheTitle(page);
-    }
-    @Then("I should see the character, status, and picture of {string}")
-    public void i_should_see_the_character_status_and_picture_of(String string) {
-
-    }
-
-    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
-    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
-
-    }
-
-    @And("I should see each section contains a numeric value representing the relevant metric")
-    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
-    }
-
-    @Then("I should see that the numeric values are clearly visible and legible")
-    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
-    }
-
-    //---------------- Steps Asli----------------------/
 }
-

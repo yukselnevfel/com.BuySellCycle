@@ -99,7 +99,7 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//h4)[20]")
     public WebElement popularCategoryBlog;
 
-    //==US_002 HomePage'deki linkler ve buttonlar Esra===================
+    //========US_002 HomePage'deki linkler ve buttonlar Esra===================
     //US_002 TC01
     @FindBy(xpath = "//span[text()='Track Your Order']")
     public WebElement linkTextTrackYourOrder;
@@ -146,7 +146,53 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//input[@class='form-control category_box_input lh-base']")
     public WebElement searchTextBox;
 
+
+    //AllCategories ve alt menuleri linkleri
+    @FindBy(xpath = "//a[@class='Categories_togler']")
+    public WebElement linkAllCategories;
+
+    @FindBy(xpath = "//*[@class='fas fa-mobile-alt']")
+    public WebElement linkElectronics;
+
+    @FindBy(xpath = "//i[@class='fas fa-tshirt']")
+    public WebElement linkFashion;
+
+    @FindBy(xpath = "//i[@class='far fa-grin-squint']")
+    public WebElement linkBaby;
+
+    @FindBy(xpath = "//i[@class='fas fa-couch']")
+    public WebElement linkHomeFurniture;
+
+    @FindBy(xpath = "//i[@class='fas fa-basketball-ball']")
+    public WebElement linkSporOutdoor;
+
+    @FindBy(xpath = "//i[@class='fas fa-gem']")
+    public WebElement linkAccessories;
+
+    @FindBy(xpath = "//i[@class='fas fa-tint']")
+    public WebElement linkBeauty;
+
+    @FindBy(xpath = "//i[@class='fas fa-book-reader']")
+    public WebElement linkBookStationery;
+
+    @FindBy(xpath = "//i[@class='fas fa-music']")
+    public WebElement linkHobiMusic;
+
+    @FindBy(xpath = "//i[@class='fas fa-shopping-basket']")
+    public WebElement linkSupermarket;
+
+    @FindBy(xpath = "//i[@class='fas fa-car']")
+    public WebElement linkAutoGardenDiyStore;
+
+
+
+
+
+
+    //Site ust barinda kolay linkler
+
     //TC02 Site ust barinda kolay linkler ve gidilen yerler
+
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
 
@@ -163,9 +209,14 @@ public class VisitorHomePage extends Base{
 
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
+
+
+
+
 @FindAll({
         @FindBy(xpath = "//div[@class='member_info']//child::h4"),
         @FindBy(xpath = "//div[@class='member_info']//child::p")
 })
 public WebElement team;
+
 }

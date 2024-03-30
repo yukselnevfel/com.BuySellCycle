@@ -1,4 +1,7 @@
-Feature:US_002 As a user, I want easily accessible links on the homepage's top bar to perform site operations
+
+
+ Feature:US_002 As a user, I want easily accessible links on the homepage's top bar to perform site operations
+
 
   Background:
     * Open browser and Go to "URL"
@@ -32,8 +35,9 @@ Feature:US_002 As a user, I want easily accessible links on the homepage's top b
     * Clicks on the Site logo
     * Refreshes the home page
     * Close the page
-  @esra
+
   Scenario: TC_04 Viewing and searching the Search textbox
     * Click to the search box
     * User searches for products in the search box
     * Close the page
+
