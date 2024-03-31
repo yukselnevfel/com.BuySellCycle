@@ -183,11 +183,6 @@ public class VisitorHomePage extends Base {
     public WebElement iconInstagram;
 
 
-
-
-
-
-
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
     @FindBy(xpath = "//*[@class='close_modal']")
@@ -309,13 +304,40 @@ public class VisitorHomePage extends Base {
     @FindBy(id = "guest_id")
     public WebElement textBoxSecretID;
 
-
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
     @FindBys({
             @FindBy(xpath = "//div[@class='member_info']//child::h4")
     })
     public List<WebElement> teamMemberNameList;
+
+    // -------------------------Beytullah's Locates----------------------------
+    // New Product Deals >> Best Deals Page
+    @FindBy(xpath = "//*[text()='New Product Deals']")
+    public WebElement linkNewProductDeals;
+
+    @FindBy(xpath = "(//*[text()=\"Women's Apparel\"])[2]")
+    public WebElement checkBoxWoman;
+    @FindBy(xpath = "(//*[text()=\"Telephone\"])[2]")
+    public WebElement checkBoxTelephone;
+    @FindBy(xpath = "(//*[@class=\"far fa-star\"])[5]")
+    public WebElement buttonStar;
+    @FindBy(xpath = "//*[@class='font_16 f_w_500 mr_10 mb-0']")
+    public WebElement labelProductnumber;
+    @FindBy(xpath = "//*[@title='List View']")
+    public WebElement buttonlistWiew;
+    @FindBy(xpath = "(//*[@class='product_widget5 mb_30 list_style_product'])[1]")
+    public WebElement elementFirstProduct;
+    @FindBy(xpath = "(//*[@class='current'])[3]")
+    public WebElement ddmItems;
+    @FindBy(xpath = "//*[@data-value='12']")
+    public WebElement ddmSecondItem;
+    @FindBy(xpath = "(//*[@class='current'])[4]")
+    public WebElement ddmSorting;
+    @FindBy(xpath = "//*[@data-value='low_to_high']")
+    public WebElement ddmFifthSorting;
+    @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
+    public List<WebElement> textProductprice;
 
     @FindBys({
             @FindBy(xpath = "//div[@class='member_info']//child::p")
@@ -369,6 +391,16 @@ public class VisitorHomePage extends Base {
 
         Assert.assertTrue(found);
     }
+
+
+    // -------------------------End of Beytullah's Locates----------------------------
+
+
+    @FindAll({
+            @FindBy(xpath = "//div[@class='member_info']//child::h4"),
+            @FindBy(xpath = "//div[@class='member_info']//child::p")
+    })
+    public WebElement team;
 }
 
 

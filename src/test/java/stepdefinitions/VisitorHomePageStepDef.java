@@ -15,6 +15,7 @@ import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -871,6 +872,99 @@ public class VisitorHomePageStepDef extends Base {
 
     //=============STEPS ESRA SONU=================================//
 
+    //===================== Beytullah's Steps =========================
+    @Given("User verifies that the New Product Deals link is visible")
+    public void user_verifies_that_the_new_product_deals_link_is_visible() {
+        Assert.assertTrue(visitorHomePage.linkNewProductDeals.isDisplayed());
+    }
+
+    @Given("User clicks on the New Product Deals link")
+    public void user_clicks_on_the_new_product_deals_link() {
+        waitAndClick(visitorHomePage.linkNewProductDeals);
+    }
+
+    @Given("User verifies that navigated to the BEST DEALS page")
+    public void user_verifies_that_navigated_to_the_best_deals_page() {
+
+        String expUrl = "https://qa.buysellcycle.com/category/best_deals?item=product";
+        String actUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expUrl, actUrl);
+    }
+
+    @Given("User verifies that the filters is visible on the left side")
+    public void user_verifies_that_the_filters_is_visible_on_the_left_side() {
+
+        Assert.assertTrue(visitorHomePage.checkBoxWoman.isDisplayed());
+        Assert.assertTrue(visitorHomePage.checkBoxTelephone.isDisplayed());
+    }
+
+    @Given("User clicks filters and verifies that the filters fulfill their functions")
+    public void user_clicks_filters_and_verifies_that_the_filters_fulfill_their_functions() {
+        waitAndClick(visitorHomePage.checkBoxWoman);
+        wait(5);
+
+    }
+
+    @Given("User verifies that the Product number id visible")
+    public void user_verifies_that_the_product_number_id_visible() {
+        String productNumber = visitorHomePage.labelProductnumber.getText();
+        productNumber = productNumber.replaceAll("\\D", "");
+        int intProductNumber = Integer.parseInt(productNumber);
+        Assert.assertTrue(intProductNumber > 0);
+    }
+
+    @Given("Verify that the Listing button, items DDM and sorting DDM is visible")
+    public void verify_that_the_listing_button_items_ddm_and_sorting_ddm_is_visible() {
+        Assert.assertTrue(visitorHomePage.buttonlistWiew.isDisplayed());
+        Assert.assertTrue(visitorHomePage.ddmItems.isDisplayed());
+        Assert.assertTrue(visitorHomePage.ddmSorting.isDisplayed());
+    }
+
+    @Given("User clicks on the Listing button and verifies that button works")
+    public void user_clicks_on_the_listing_button_and_verifies_that_button_works() {
+        clickWithJS(visitorHomePage.buttonlistWiew);
+        Assert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed());
+        wait(5);
+    }
+
+    @Given("User clicks on the items DDM and clicks on second item")
+    public void user_clicks_on_the_items_ddm_and_clicks_second_item() {
+        clickWithJS(visitorHomePage.ddmItems);
+        clickWithJS(visitorHomePage.ddmSecondItem);
+        wait(3);
+        String pageSizeType = visitorHomePage.labelProductnumber.getText();
+        pageSizeType = pageSizeType.substring(8, 14);
+        String expPageSizeType = "1 - 12";
+        String actPageSizeType = pageSizeType;
+        Assert.assertEquals(expPageSizeType, actPageSizeType);
+    }
+
+    @Given("User verifies that items DDM works")
+    public void user_verifies_that_items_ddm_works() {
+        List<Integer> productPrice=new ArrayList<>();
+
+        for (int i = 0; i < visitorHomePage.textProductprice.size(); i++) {
+
+
+        }
+
+        String strProductPrice = visitorHomePage.labelProductnumber.getText();
+        System.out.println("strProductPrice = " + strProductPrice);
+
+    }
+
+    @Given("User clicks on the sorting DDM and clicks on fifth item")
+    public void user_clicks_on_the_sorting_ddm_and_clicks_fifth_item() {
+
+    }
+
+    @Given("User verifies that sorting DDM works")
+    public void user_verifies_that_sorting_ddm_works() {
+
+    }
+
+
+// ====================== End Of Beytullah's Steps End =====================
 
 }
 
