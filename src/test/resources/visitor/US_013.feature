@@ -13,7 +13,7 @@ Scenario: Visibility of Slider Images on the Homepage Manual Transition Between 
 
   * Verify the slider images are visible automaticly
   * Close the page
-  @ayca
+
  Scenario: Click on the slider images and navigated the relevant page
   * Click on the slider images in order and Verifying that navigate to the image Page
   * Close the page

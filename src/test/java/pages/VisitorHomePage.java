@@ -98,7 +98,7 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//a[text()='My Order']")
     public WebElement linkFooterMyOrder;
 
-    @FindBy (xpath = "/html/body/footer/div[2]/div/div[2]/div/div/text()")
+    @FindBy (xpath = "//div[@class='copy_right_text d-flex align-items-center gap_20 flex-wrap justify-content-between']")
     public WebElement textFooterCopyRight;
 
     @FindBy (xpath = "//*[text()='Google Play']")
