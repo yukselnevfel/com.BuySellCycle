@@ -1,4 +1,6 @@
 package stepdefinitions;
+import com.sun.source.tree.AssertTree;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,6 +23,8 @@ public class VisitorHomePageStepDef extends Base {
 
     //-------------Login Steps AYCA-----------------//
 
+    String originalWindowHandle;
+
     @Given("Verify that the {string} is visible")
     public void verify_that_the_is_visible(String textLogin) {
 
@@ -35,23 +39,17 @@ public class VisitorHomePageStepDef extends Base {
 
         clickWebElement(textLogin);
 
-
-
-
     }
     @Given("Verify that navigated to the login page")
     public void verify_that_navigated_to_the_login_page() {
 
-
         String expectedUrl = "https://qa.buysellcycle.com/login";
-
 
     }
     @Given("Verify that the relevant image")
     public void verify_that_the_relevant_image() {
 
         Assert.assertTrue(visitorHomePage.imageLoginPage.isDisplayed());
-
 
     }
     @Given("Verify that the Sign-in form is visible")
@@ -107,7 +105,8 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.textBoxUserPassword.click();
         visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
         wait(1);
-        visitorHomePage.signInButton.click();
+        scrollIntoViewJS(visitorHomePage.signInButton);
+        clickWithJS(visitorHomePage.signInButton);
         String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         if(expectedUrl.equals(actualUrl)){
@@ -117,6 +116,257 @@ public class VisitorHomePageStepDef extends Base {
         }
         wait(1);
     }
+
+    // AYCA SLIDER IMAGES CHECK  //
+
+    @Given("Verify that slider image, second navigation button and third navigation button is visible")
+    public void verify_that_and_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
+        Assert.assertTrue(visitorHomePage.firstSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.secondSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.thirdSlideNavigatorButton.isDisplayed());
+
+    }
+    @Given("Click on the navigation button and Verify that image is visible")
+    public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        visitorHomePage.secondSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        visitorHomePage.thirdSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        visitorHomePage.firstSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+
+    }
+
+    @Given("Verify the slider images are visible automaticly")
+    public void verify_the_slider_images_are_visible_automaticly() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        wait(3);
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
+    }
+
+
+    @Given("Click on the slider images in order and Verifying that navigate to the image Page")
+    public void click_on_the_slider_images_in_order_and_verifying_that_navigate_to_the_image_page() {
+
+        visitorHomePage.imageFirstSlider.click();
+
+
+    }
+
+    //---------AYCA FOOTER LINK CHECK-------------//
+    @Given("Scroll down to the bottom of the home page.Verify that the About Us, Blog, Dashboard, My Profile, My Order, Help&Contact, Track Order, Return&Exchange,Track Order, Return&Exchange link are visible on footer table.")
+    public void scroll_down_to_the_bottom_of_the_home_page_verify_that_the_about_us_blog_dashboard_my_profile_my_order_help_contact_track_order_return_exchange_track_order_return_exchange_link_are_visible_on_footer_table() {
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        Assert.assertTrue(visitorHomePage.linkFooterAboutUs.isDisplayed());
+
+    }
+    @Given("Click on the About Us link and verify the navigate to About Us Page.")
+    public void click_on_the_about_us_link_and_verify_the_navigate_to_about_us_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterAboutUs);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/about-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Blog link and verify the navigate to Blog Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_blog_link_and_verify_the_navigate_to_blog_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterBlog);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/blog";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Dashboard link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_dashboard_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterDashboard);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the My Profile link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_my_profile_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterMyProfile);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the My Order link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_my_order_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterMyOrder);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Help&Contact link and verify the navigate to Contact Us Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_help_contact_link_and_verify_the_navigate_to_contact_us_page() {
+
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterHelpContact);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/contact-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Track Order link and verify the navigate to Track Order Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_track_order_link_and_verify_the_navigate_to_track_order_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterTrackOrder);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/track-order";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Return&Exchange link and verify the navigate to Return&Exchange Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_return_exchange_link_and_verify_the_navigate_to_return_exchange_page() {
+
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterReturnExchange);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/return-exchange";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Enter an email on address field on subscribe and click the subscribe button.")
+    public void scroll_down_to_the_bottom_of_the_home_page_enter_an_email_on_address_field_on_subscribe_and_click_the_subscribe_button() {
+        scrollIntoViewJS(visitorHomePage.textFooterGetQuickQuite);
+        wait(1);
+        clickWithJS(visitorHomePage.textBoxFooterEmail);
+        visitorHomePage.textBoxFooterEmail.sendKeys(faker.internet().emailAddress());
+        wait(1);
+        clickWithJS(visitorHomePage.subscribeButton);
+        wait(1);
+        Assert.assertTrue(visitorHomePage.textFooterSubscribeSuccessfully.isDisplayed());
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Enter a registered email on address field on subscribe and click the subscribe button.")
+    public void scroll_down_to_the_bottom_of_the_home_page_enter_a_registered_email_on_address_field_on_subscribe_and_click_the_subscribe_button() {
+
+        scrollIntoViewJS(visitorHomePage.textFooterGetQuickQuite);
+        wait(1);
+        clickWithJS(visitorHomePage.textBoxFooterEmail);
+        visitorHomePage.textBoxFooterEmail.sendKeys(ConfigReader.getProperty("aycaCustomerEmail"));
+        wait(1);
+        clickWithJS(visitorHomePage.subscribeButton);
+        wait(1);
+        Assert.assertTrue(visitorHomePage.textFooterAlreadySubscribed.isDisplayed());
+
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Click on the Google Play link and verify that the navigate to Google Store Page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_google_play_link_and_verify_that_the_navigate_to_google_store_page() {
+        scrollIntoViewJS(visitorHomePage.linkFooterGooglePlay);
+        wait(1);
+        clickWithJS(visitorHomePage.linkFooterGooglePlay);
+        wait(1);
+        String expectedUrlGoogle = "https://play.google.com/store/games";
+        String actualUrlGoogle = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrlGoogle,actualUrlGoogle);
+
+    }
+    @Given("Return to the website")
+    public void return_to_the_website() {
+        Driver.getDriver().navigate().back();
+    }
+    @Given("Scroll down to the bottom of the home page. Click on the The Apple Store link and verify that the navigate to The Apple Store Page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_the_apple_store_link_and_verify_that_the_navigate_to_the_apple_store_page() {
+
+        scrollIntoViewJS(visitorHomePage.linkFooterAppleStore);
+        clickWithJS(visitorHomePage.linkFooterAppleStore);
+        wait(1);
+        String expectedUrlApple = "https://www.apple.com/app-store/";
+        String actualUrlApple = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrlApple,actualUrlApple);
+
+
+    }
+
+
+
+    @Given("Scroll down to the bottom of the home page. Verify that the enf of the footer text is visible")
+    public void scroll_down_to_the_bottom_of_the_home_page_verify_that_the_enf_of_the_footer_text_is_visible() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        Assert.assertTrue(visitorHomePage.textFooterCopyRight.isDisplayed());
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Click on the go to top button and verify that reached the top of the page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_button_and_verify_that_reached_the_top_of_the_page() {
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        waitAndClick(visitorHomePage.goTopButton);
+        wait(2);
+        Assert.assertTrue(visitorHomePage.homeHeaderButton.isDisplayed());
+
+    }
+
+
 
 
 
@@ -605,6 +855,8 @@ public class VisitorHomePageStepDef extends Base {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
+
 
     //=============STEPS ESRA SONU=================================//
 
