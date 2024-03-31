@@ -183,6 +183,11 @@ public class VisitorHomePage extends Base {
     public WebElement iconInstagram;
 
 
+
+
+
+
+
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
     @FindBy(xpath = "//*[@class='close_modal']")
