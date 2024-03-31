@@ -15,6 +15,7 @@ import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
