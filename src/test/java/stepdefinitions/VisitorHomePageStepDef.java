@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -99,6 +100,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the login link, Enter {string} and {string} and click sign in")
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
+        wait(2);
         visitorHomePage.loginButton.click();
         visitorHomePage.textBoxUserEmail.click();
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
@@ -595,30 +597,39 @@ public class VisitorHomePageStepDef extends Base {
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
-    public void i_should_click_on_the_on_the_header(String headerElement) {
-        clickHeaderElementLink(headerElement);
+    public void i_should_click_on_the_on_the_header(String headerMenuElement) {
+        clickHeaderElementLink(headerMenuElement);
     }
     @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String page) {
-        checkTheTitle(page);
+    public void i_should_be_directed_to_the_page(String pageName) {
+        waitForPageToLoad(2);
+        checkTheTitle(pageName);
     }
     @Then("I should see the character, status, and picture of {string}")
-    public void i_should_see_the_character_status_and_picture_of(String string) {
+    public void i_should_see_the_character_status_and_picture_of(String teamMember) {
+        visitorHomePage.verifyTheTeamMembersInfo(teamMember);
 
     }
 
-    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
-    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
+    @Given("I am on the {string} Page")
+    public void iAmOnThePage(String page) {
 
+        checkTheTitle(page);
     }
 
-    @And("I should see each section contains a numeric value representing the relevant metric")
-    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    @When("I should see relevant {string} about the site")
+    public void iShouldSeeRelevantAboutTheSite(String section) {
     }
 
-    @Then("I should see that the numeric values are clearly visible and legible")
-    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
+    @Then("I should be able to modify the displayed information")
+    public void iShouldBeAbleToModifyTheDisplayedInformation() {
     }
+
+    @When("I should see relevant {string} about the Payment Page")
+    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
+        visitorHomePage.verifyTheInformationsVisibility(information);
+    }
+
 
     //---------------- Steps Asli----------------------/
 

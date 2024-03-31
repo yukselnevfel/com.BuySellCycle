@@ -1,56 +1,60 @@
 package pages;
 
-import org.openqa.selenium.By;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import utils.Driver;
 
+import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-public class VisitorHomePage extends Base{
+public class VisitorHomePage extends Base {
 
 
     //Register User Login Locate Homepage>> LoginButton AYCA LOCATE
     @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//*[@class='img-fluid']")
+    @FindBy(xpath = "//*[@class='img-fluid']")
     public WebElement imageLoginPage;
 
-    @FindBy (xpath = "//*[text()='Turn your ideas into reality..']")
+    @FindBy(xpath = "//*[text()='Turn your ideas into reality..']")
     public WebElement textTurnIdea;
 
 
-    @FindBy (xpath = "//*[@id='login_form']")
+    @FindBy(xpath = "//*[@id='login_form']")
     public WebElement loginForm;
 
-    @FindBy (xpath = "//*[@id='sign_in_btn']")
+    @FindBy(xpath = "//*[@id='sign_in_btn']")
     public WebElement signInButton;
 
-    @FindBy (xpath = "//*[text()='Remember me']")
+    @FindBy(xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (xpath = "//*[@id='text']")
+    @FindBy(id = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
     @FindBy (xpath="//*[@id='password']")
     public WebElement textBoxUserPassword;
 
-    @FindBy (xpath = "//*[text()='Forgot Password? ']")
+    @FindBy(xpath = "//*[text()='Forgot Password? ']")
     public WebElement textBoxForgotPassword;
 
-    @FindBy (xpath = "//*[text()='Click Here']")
+    @FindBy(xpath = "//*[text()='Click Here']")
     public WebElement linkLoginClickHere;
 
-    @FindBy (xpath = "//*[text()='Don’t have an Account? ']")
+    @FindBy(xpath = "//*[text()='Don’t have an Account? ']")
     public WebElement textBoxHaveAnAccount;
 
-    @FindBy (xpath = "//*[text()='Sign Up']")
+    @FindBy(xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
 
-    @FindBy (xpath = "//*[text()='These credentials do not match our records.']")
+    @FindBy(xpath = "//*[text()='These credentials do not match our records.']")
     public WebElement textLoginErrorMessage;
 
     //---US-13 Slider Locate-----//
@@ -289,10 +293,6 @@ public class VisitorHomePage extends Base{
     public WebElement linkAutoGardenDiyStore;
 
 
-
-
-
-
     //Site ust barinda kolay linkler
 
     //TC02 Site ust barinda kolay linkler ve gidilen yerler
@@ -310,17 +310,68 @@ public class VisitorHomePage extends Base{
     public WebElement textBoxSecretID;
 
 
-
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
+    @FindBys({
+            @FindBy(xpath = "//div[@class='member_info']//child::h4")
+    })
+    public List<WebElement> teamMemberNameList;
+
+    @FindBys({
+            @FindBy(xpath = "//div[@class='member_info']//child::p")
+    })
+    public List<WebElement> teamMemberStatues;
+
+    @FindBys({
+            @FindBy(xpath = "//div[@class='single_member mb_21']//child::img")
+    })
+    public List<WebElement> teamMemberFotos;
 
 
+    public void verifyTheTeamMembersInfo(String teamMember) {
 
+        boolean isNamePresent = false;
+        for (WebElement member : teamMemberNameList) {
+            if (member.getText().equals(teamMember)) {
+                isNamePresent = true;
+                break;
+            }
+        }
 
-@FindAll({
-        @FindBy(xpath = "//div[@class='member_info']//child::h4"),
-        @FindBy(xpath = "//div[@class='member_info']//child::p")
+        Assert.assertTrue(teamMember, isNamePresent);
+        Assert.assertEquals(teamMemberStatues.size(),
+                teamMemberNameList.size());
+
+        Assert.assertEquals(teamMemberFotos.size(), teamMemberNameList.size());
+    }
+
+    @FindBy(xpath = "//button[text()='Continue To Shipping']")
+    public WebElement ContinueToShippingButton;
+
+    @FindAll({
+            @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
 })
-public WebElement team;
+    public List<WebElement> informationList;
 
+
+    public void verifyTheInformationsVisibility (String searchText) {
+
+        boolean found = false;
+
+        for (WebElement element : informationList) {
+            String text = element.getText();
+
+            if (text.contains(searchText)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
+    }
 }
+
+
+
+
+
