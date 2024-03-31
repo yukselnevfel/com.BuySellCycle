@@ -1,6 +1,12 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -23,6 +29,30 @@ public class UserDashboard extends Base{
         for (int i = 0; i < number; i++) {
             tablePurchaseHistory.get(number).isDisplayed();
         }
+    }
+    @FindBy(xpath = "//button[text()='Continue To Shipping']")
+    public WebElement ContinueToShippingButton;
+
+    @FindAll({
+            @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
+    })
+    public List<WebElement> informationList;
+
+
+    public void verifyTheInformationsVisibility (String searchText) {
+
+        boolean found = false;
+
+        for (WebElement element : informationList) {
+            String text = element.getText();
+
+            if (text.contains(searchText)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
     }
 
 }

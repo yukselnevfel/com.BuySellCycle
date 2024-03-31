@@ -14,7 +14,7 @@ Feature: Checkout and Payment Process
   Scenario Outline: Modify Ship to and Contact Information on Payment Page
     Given I am on the "Payment" Page
     When I should see relevant "<information>" about the Payment Page
-    Then I should be able to modify the displayed information
+    Then I should be able to modify the displayed "<information>"
     Examples:
        | information          |
        | Contact              |

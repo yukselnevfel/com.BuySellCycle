@@ -617,18 +617,7 @@ public class VisitorHomePageStepDef extends Base {
         checkTheTitle(page);
     }
 
-    @When("I should see relevant {string} about the site")
-    public void iShouldSeeRelevantAboutTheSite(String section) {
-    }
 
-    @Then("I should be able to modify the displayed information")
-    public void iShouldBeAbleToModifyTheDisplayedInformation() {
-    }
-
-    @When("I should see relevant {string} about the Payment Page")
-    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
-        visitorHomePage.verifyTheInformationsVisibility(information);
-    }
 
 
     //---------------- Steps Asli----------------------/
