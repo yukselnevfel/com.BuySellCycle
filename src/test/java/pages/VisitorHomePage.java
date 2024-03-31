@@ -41,7 +41,7 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Forgot Password? ']")
     public WebElement textBoxForgotPassword;
 
-    @FindBy (xpath = "//*[text()='Click Here']")
+    @FindBy (xpath = "Show 12 Item’s")
     public WebElement linkLoginClickHere;
 
     @FindBy (xpath = "//*[text()='Don’t have an Account? ']")

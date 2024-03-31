@@ -24,20 +24,12 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Verify that the {string} is visible")
     public void verify_that_the_is_visible(String textLogin) {
 
-
         visibleWebElement(textLogin);
-
 
     }
     @Given("Click on the {string}")
     public void click_on_the(String textLogin) {
-
-
         clickWebElement(textLogin);
-
-
-
-
     }
     @Given("Verify that navigated to the login page")
     public void verify_that_navigated_to_the_login_page() {
@@ -333,7 +325,7 @@ public class VisitorHomePageStepDef extends Base {
 
     //------------- Steps SAMET -----------------/
 
-    @Given("Verify title is {string}")
+    @Given("Verify that title is {string}")
     public void verify_that_title(String title) {
         String expectedTitle = title;
         String actualTitle = Driver.getDriver().getTitle();
