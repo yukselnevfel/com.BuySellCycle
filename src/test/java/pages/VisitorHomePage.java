@@ -236,7 +236,33 @@ public class VisitorHomePage extends Base {
         Assert.assertEquals(teamMemberFotos.size(), teamMemberNameList.size());
     }
 
+    @FindBy(xpath = "//button[text()='Continue To Shipping']")
+    public WebElement ContinueToShippingButton;
 
+    @FindAll({
+            @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
+})
+    public List<WebElement> informationList;
+
+
+    public void verifyTheInformationsVisibility (String searchText) {
+
+        boolean found = false;
+
+        for (WebElement element : informationList) {
+            String text = element.getText();
+
+            if (text.contains(searchText)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
     }
+}
+
+
+
 
 

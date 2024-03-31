@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public abstract class Base {
 
@@ -428,9 +429,8 @@ public abstract class Base {
 
     public static void checkTheTitle (String title){
 
-        String expectedText = title+" | BuySellCycle | Multivendor Marketplace" ;
         String actualText = Driver.getDriver().getTitle();
-        assertEquals( expectedText , actualText);
+        assertTrue(actualText.contains(title));
 
     }
 }

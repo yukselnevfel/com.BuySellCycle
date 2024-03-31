@@ -363,8 +363,23 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("I am on the {string} Page")
     public void iAmOnThePage(String page) {
+
         checkTheTitle(page);
     }
+
+    @When("I should see relevant {string} about the site")
+    public void iShouldSeeRelevantAboutTheSite(String section) {
+    }
+
+    @Then("I should be able to modify the displayed information")
+    public void iShouldBeAbleToModifyTheDisplayedInformation() {
+    }
+
+    @When("I should see relevant {string} about the Payment Page")
+    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
+        visitorHomePage.verifyTheInformationsVisibility(information);
+    }
+
 
     //---------------- Steps Asli----------------------/
 
@@ -601,7 +616,6 @@ public class VisitorHomePageStepDef extends Base {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
 
 
 

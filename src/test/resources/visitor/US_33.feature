@@ -7,14 +7,20 @@ Feature: Checkout and Payment Process
 @asliU33
   Scenario: Navigate from Checkout to Payment Page
     Given I am on the "Checkout" Page
-    When Click on the "Proceed to Payment"
+    When Click on the "Continue To Shipping"
     Then I should be directed to the "Payment" page
 
 
-  Scenario: Modify Ship to and Contact Information on Payment Page
+  Scenario Outline: Modify Ship to and Contact Information on Payment Page
     Given I am on the "Payment" Page
-    When I view the Ship to and Contact information section
+    When I should see relevant "<information>" about the Payment Page
     Then I should be able to modify the displayed information
+    Examples:
+       | information          |
+       | Contact              |
+       | Ship to              |
+
+
 
   Scenario: Select Payment and Billing Address Types
     Given I am on the "Payment" Page
