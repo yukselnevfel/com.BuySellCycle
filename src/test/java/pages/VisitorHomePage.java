@@ -36,7 +36,7 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy(id = "//*[@id='text']")
+    @FindBy(xpath = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
     @FindBy (xpath="//*[@id='password']")

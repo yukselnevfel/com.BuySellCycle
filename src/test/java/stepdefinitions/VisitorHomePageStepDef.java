@@ -103,12 +103,12 @@ public class VisitorHomePageStepDef extends Base {
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
         wait(2);
         visitorHomePage.loginButton.click();
-        visitorHomePage.textBoxUserEmail.click();
+        clickWithJS(visitorHomePage.textBoxUserEmail);
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
-        visitorHomePage.textBoxUserPassword.click();
+        clickWithJS(visitorHomePage.textBoxUserPassword);
         visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
-        wait(1);
         scrollIntoViewJS(visitorHomePage.signInButton);
+        wait(1);
         clickWithJS(visitorHomePage.signInButton);
         String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
