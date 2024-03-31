@@ -7,77 +7,74 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import utils.Driver;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-public class VisitorHomePage extends Base{
+public class VisitorHomePage extends Base {
 
 
     //Register User Login Locate Homepage>> LoginButton AYCA LOCATE
     @FindBy(xpath = "(//*[text()='Login'])[1]")
     public WebElement loginButton;
 
-    @FindBy (xpath = "//*[@class='img-fluid']")
+    @FindBy(xpath = "//*[@class='img-fluid']")
     public WebElement imageLoginPage;
 
-    @FindBy (xpath = "//*[text()='Turn your ideas into reality..']")
+    @FindBy(xpath = "//*[text()='Turn your ideas into reality..']")
     public WebElement textTurnIdea;
 
 
-    @FindBy (xpath = "//*[@id='login_form']")
+    @FindBy(xpath = "//*[@id='login_form']")
     public WebElement loginForm;
 
-    @FindBy (xpath = "//*[@id='sign_in_btn']")
+    @FindBy(xpath = "//*[@id='sign_in_btn']")
     public WebElement signInButton;
 
-    @FindBy (xpath = "//*[text()='Remember me']")
+    @FindBy(xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy(id = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy(id = "//*[@id='password']")
     public WebElement textBoxUserPassword;
 
-    @FindBy (xpath = "//*[text()='Forgot Password? ']")
+    @FindBy(xpath = "//*[text()='Forgot Password? ']")
     public WebElement textBoxForgotPassword;
 
-    @FindBy (xpath = "//*[text()='Click Here']")
+    @FindBy(xpath = "//*[text()='Click Here']")
     public WebElement linkLoginClickHere;
 
-    @FindBy (xpath = "//*[text()='Don’t have an Account? ']")
+    @FindBy(xpath = "//*[text()='Don’t have an Account? ']")
     public WebElement textBoxHaveAnAccount;
 
-    @FindBy (xpath = "//*[text()='Sign Up']")
+    @FindBy(xpath = "//*[text()='Sign Up']")
     public WebElement linkLoginSignUp;
 
-    @FindBy (xpath = "//*[text()='These credentials do not match our records.']")
+    @FindBy(xpath = "//*[text()='These credentials do not match our records.']")
     public WebElement textLoginErrorMessage;
 
     //===============================AYCA=====================//
 
 
-    @FindBy (xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
     public WebElement linkContact;
 
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[1]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[1]")
     public WebElement textWhatsapp;
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[2]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[2]")
     public WebElement textMail;
-    @FindBy (xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[3]")
+    @FindBy(xpath = "(//h4[@class=\"contact_box_desc mb-0\"])[3]")
     public WebElement textAddress;
-    @FindBy (xpath = "//a[@href=\"http://facebook.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://facebook.com\"]")
     public WebElement iconFacebook;
-    @FindBy (xpath = "//a[@href=\"http://linkedin.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://linkedin.com\"]")
     public WebElement iconLinkedin;
-    @FindBy (xpath = "//a[@href=\"http://x.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://x.com\"]")
     public WebElement iconX;
-    @FindBy (xpath = "//a[@href=\"http://instagram.com\"]")
+    @FindBy(xpath = "//a[@href=\"http://instagram.com\"]")
     public WebElement iconInstagram;
-
-
-
-
-
 
 
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
@@ -185,10 +182,6 @@ public class VisitorHomePage extends Base{
     public WebElement linkAutoGardenDiyStore;
 
 
-
-
-
-
     //Site ust barinda kolay linkler
 
     //TC02 Site ust barinda kolay linkler ve gidilen yerler
@@ -205,18 +198,45 @@ public class VisitorHomePage extends Base{
     @FindBy(id = "guest_id")
     public WebElement textBoxSecretID;
 
-
-
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
 
+    // -------------------------Beytullah's Locates----------------------------
+    // New Product Deals >> Best Deals Page
+    @FindBy(xpath = "//*[text()='New Product Deals']")
+    public WebElement linkNewProductDeals;
+
+    @FindBy(xpath = "(//*[text()=\"Women's Apparel\"])[2]")
+    public WebElement checkBoxWoman;
+    @FindBy(xpath = "(//*[text()=\"Telephone\"])[2]")
+    public WebElement checkBoxTelephone;
+    @FindBy(xpath = "(//*[@class=\"far fa-star\"])[5]")
+    public WebElement buttonStar;
+    @FindBy(xpath = "//*[@class='font_16 f_w_500 mr_10 mb-0']")
+    public WebElement labelProductnumber;
+    @FindBy(xpath = "//*[@title='List View']")
+    public WebElement buttonlistWiew;
+    @FindBy(xpath = "(//*[@class='product_widget5 mb_30 list_style_product'])[1]")
+    public WebElement elementFirstProduct;
+    @FindBy(xpath = "(//*[@class='current'])[3]")
+    public WebElement ddmItems;
+    @FindBy(xpath = "//*[@data-value='12']")
+    public WebElement ddmSecondItem;
+    @FindBy(xpath = "(//*[@class='current'])[4]")
+    public WebElement ddmSorting;
+    @FindBy(xpath = "//*[@data-value='low_to_high']")
+    public WebElement ddmFifthSorting;
+    @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
+    public List<WebElement> textProductprice;
 
 
 
-@FindAll({
-        @FindBy(xpath = "//div[@class='member_info']//child::h4"),
-        @FindBy(xpath = "//div[@class='member_info']//child::p")
-})
-public WebElement team;
+    // -------------------------End of Beytullah's Locates----------------------------
 
+
+    @FindAll({
+            @FindBy(xpath = "//div[@class='member_info']//child::h4"),
+            @FindBy(xpath = "//div[@class='member_info']//child::p")
+    })
+    public WebElement team;
 }
