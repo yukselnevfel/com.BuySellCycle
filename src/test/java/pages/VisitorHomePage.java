@@ -184,7 +184,41 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//i[@class='fas fa-car']")
     public WebElement linkAutoGardenDiyStore;
 
+    @FindBy(xpath = "//a[text()='Telephone']")
+    public WebElement textTelephone;
 
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[7]")
+    public WebElement titleWomanApparel;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[13]")
+    public WebElement titleBabyRoom;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[18]")
+    public WebElement titleFurniture;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[24]")
+    public WebElement titleSportwearShoes;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[30]")
+    public WebElement titleBag;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[36]")
+    public WebElement titleMakeup;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[41]")
+    public WebElement titleBooks;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[43]")
+    public WebElement titleToys;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[47]")
+    public WebElement titleHouseCleaning;
+
+    @FindBy(xpath = "(//a[@class='mega_metu_title'])[53]")
+    public WebElement titleConstructionMarket;
+
+    @FindBy(xpath = "//a[text()='Mobile Phone']")
+    public WebElement textMobilePhone;
 
 
 
