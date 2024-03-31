@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -117,15 +118,6 @@ public class VisitorHomePageStepDef extends Base {
         }
         wait(1);
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -354,30 +346,21 @@ public class VisitorHomePageStepDef extends Base {
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
-    public void i_should_click_on_the_on_the_header(String headerElement) {
-        clickHeaderElementLink(headerElement);
+    public void i_should_click_on_the_on_the_header(String headerMenuElement) {
+        clickHeaderElementLink(headerMenuElement);
     }
     @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String page) {
-        checkTheTitle(page);
+    public void i_should_be_directed_to_the_page(String pageName) {
+        waitForPageToLoad(2);
+        checkTheTitle(pageName);
     }
     @Then("I should see the character, status, and picture of {string}")
-    public void i_should_see_the_character_status_and_picture_of(String string) {
+    public void i_should_see_the_character_status_and_picture_of(String teamMember) {
+        visitorHomePage.verifyTheTeamMembersInfo(teamMember);
 
     }
 
-    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
-    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
 
-    }
-
-    @And("I should see each section contains a numeric value representing the relevant metric")
-    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
-    }
-
-    @Then("I should see that the numeric values are clearly visible and legible")
-    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
-    }
 
     //---------------- Steps Asli----------------------/
 
@@ -608,16 +591,14 @@ public class VisitorHomePageStepDef extends Base {
     public void click_the_auto_garden_diy_store_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
-    @Then("I should see the character, status, and picture of {string}")
-    public void i_should_see_the_character_status_and_picture_of(String string) {
-
-
     }
     @Given("Displays Auto-Garden-DiyStore subcategories")
     public void displays_auto_garden_diy_store_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
+
 
     //=============STEPS ESRA SONU=================================//
 

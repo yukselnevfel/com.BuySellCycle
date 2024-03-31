@@ -428,9 +428,9 @@ public abstract class Base {
 
     public static void checkTheTitle (String title){
 
-        String expectedText = title;
+        String expectedText = title+" | BuySellCycle | Multivendor Marketplace" ;
         String actualText = Driver.getDriver().getTitle();
-        assertEquals("as expected", expectedText , actualText);
+        assertEquals( expectedText , actualText);
 
     }
 }

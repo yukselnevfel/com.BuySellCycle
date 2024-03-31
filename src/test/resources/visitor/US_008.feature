@@ -8,8 +8,8 @@ Feature: As a user, I would like the site to have an About Us page so that I can
 
   Scenario Outline: Viewing information on the About Us page
     Given I should see relevant section about the site, such as its mission, "<Clients Worldwide>" , "<Successful Project>" , "<Successful Project>" , "<Work Employed>" and "<Planning Services>"
-    And I should see each section contains a numeric value representing the relevant metric
-    Then I should see that the numeric values are clearly visible and legible
+    Then I should see each section contains a numeric value representing the relevant metric
+
     Examples:
       | Clients Worldwide | Successful Project | Work Employed | Planning Services |
 
