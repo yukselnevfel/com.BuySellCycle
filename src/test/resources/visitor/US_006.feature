@@ -36,6 +36,10 @@ Feature: US_006 As a user, I want to be able to see all the categories on the si
     * Displays Auto-Garden-DiyStore subcategories
     * Close the page
 
+  Scenario: TC_04 Click on sub-menus of menus under All Categories dropdown and redirect to related pages
+    * Click All Categories dropdown menu
+
+
 
 
 
