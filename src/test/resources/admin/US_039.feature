@@ -1,0 +1,1 @@
+Feature: As an administrator, I would like to have a product list page to access the product lists on the site.

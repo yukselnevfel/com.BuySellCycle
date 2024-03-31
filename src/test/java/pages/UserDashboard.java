@@ -23,7 +23,35 @@ public class UserDashboard extends Base{
         for (int i = 0; i < number; i++) {
             tablePurchaseHistory.get(number).isDisplayed();
         }
+
     }
+     //________________________ valid user Login____________________-
+    @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
+    @FindBy(xpath = "//*[@id='password']") public WebElement loginPassword;
+    @FindBy(xpath = "//*[@id='sign_in_btn']") public WebElement sigInButton;
+    //________________________ WishList____________________-
+    @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[3]") public WebElement myWishListMenu;
+    @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[1]/h5") public WebElement resultsWishlist;
+    @FindBy(xpath = "(//*[@class=\"current\"])[3]") public WebElement show8Items;
+    @FindBy(xpath = "(//*[@class=\"option\"])[1]") public WebElement show12Items;
+    @FindBy(xpath = "(//*[@class=\"option\"])[2]") public WebElement show16Items;
+    @FindBy(xpath = "(//*[@class=\"current\"])[4]") public WebElement newDDM;
+    @FindBy(xpath = "(//*[@class=\"option\"])[6]") public WebElement priceLowToHigh;
+    @FindBy(xpath = "(//*[@class=\"option\"])[7]") public WebElement priceHighToLow;
+    @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[1]/div/div[3]/div/p/strong") public WebElement pruduct1;
+    @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[2]/div/div[3]/div/p/strong") public WebElement pruduct2;
+    @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[3]/div/div[3]/div/p/strong") public WebElement pruduct3;
+    @FindBy(xpath = "//i[@title=\"Compare\"]") public WebElement comparePruduct;
+    @FindBy(xpath = "id=\"add_to_compare_btn\"") public WebElement addToCompare;
+
+
+
+
+
+
+
+
+
     //
     //Dashboard link and user detail informations
     @FindBy(xpath = "(//*[text()='Dashboard'])[1]")
@@ -83,4 +111,4 @@ public class UserDashboard extends Base{
 
 
 
-}
+    }
