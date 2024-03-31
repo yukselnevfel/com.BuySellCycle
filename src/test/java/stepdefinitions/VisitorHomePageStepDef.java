@@ -1,10 +1,12 @@
 package stepdefinitions;
-
+import com.sun.source.tree.AssertTree;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -13,7 +15,6 @@ import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -21,8 +22,9 @@ import static org.junit.Assert.assertTrue;
 
 public class VisitorHomePageStepDef extends Base {
 
-
     //-------------Login Steps AYCA-----------------//
+
+    String originalWindowHandle;
 
     @Given("Verify that the {string} is visible")
     public void verify_that_the_is_visible(String textLogin) {
@@ -32,33 +34,25 @@ public class VisitorHomePageStepDef extends Base {
 
 
     }
-
     @Given("Click on the {string}")
     public void click_on_the(String textLogin) {
 
 
         clickWebElement(textLogin);
 
-
     }
-
     @Given("Verify that navigated to the login page")
     public void verify_that_navigated_to_the_login_page() {
 
-
         String expectedUrl = "https://qa.buysellcycle.com/login";
 
-
     }
-
     @Given("Verify that the relevant image")
     public void verify_that_the_relevant_image() {
 
         Assert.assertTrue(visitorHomePage.imageLoginPage.isDisplayed());
 
-
     }
-
     @Given("Verify that the Sign-in form is visible")
     public void verify_that_the_sign_in_form_is_visible() {
 
@@ -66,7 +60,6 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.loginForm.isDisplayed());
 
     }
-
     @Given("Verify that the Sign In button is visible")
     public void verify_that_the_sign_in_button_is_visible() {
 
@@ -74,7 +67,6 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.signInButton.isDisplayed());
 
     }
-
     @Given("Verify that the Sign In button is clickable")
     public void verify_that_the_sign_in_button_is_clickable() {
 
@@ -82,7 +74,6 @@ public class VisitorHomePageStepDef extends Base {
 
 
     }
-
     @Given("Verify that the Remember me checkbox is selectable")
     public void verify_that_the_remember_me_checkbox_is_selectable() {
 
@@ -95,7 +86,7 @@ public class VisitorHomePageStepDef extends Base {
 
         String expectedUrl = "https://qa.buysellcycle.com/password/reset";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl, actualUrl);
+        Assert.assertEquals(expectedUrl,actualUrl);
 
     }
 
@@ -103,34 +94,294 @@ public class VisitorHomePageStepDef extends Base {
     public void verify_that_navigated_to_the_register_page() {
         String expectedUrl = "https://qa.buysellcycle.com/register";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl, actualUrl);
+        Assert.assertEquals(expectedUrl,actualUrl);
 
     }
 
     @Given("Click on the login link, Enter {string} and {string} and click sign in")
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
+        wait(2);
         visitorHomePage.loginButton.click();
         visitorHomePage.textBoxUserEmail.click();
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
         visitorHomePage.textBoxUserPassword.click();
         visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
         wait(1);
-        visitorHomePage.signInButton.click();
-        String expectedUrl = "https://qa.buysellcycle.com/profile/dashboard";
+        scrollIntoViewJS(visitorHomePage.signInButton);
+        clickWithJS(visitorHomePage.signInButton);
+        String expectedUrl="https://qa.buysellcycle.com/profile/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        if (expectedUrl.equals(actualUrl)) {
-            Assert.assertEquals(expectedUrl, actualUrl);
-        } else {
+        if(expectedUrl.equals(actualUrl)){
+            Assert.assertEquals(expectedUrl,actualUrl);}
+        else {
             Assert.assertTrue(visitorHomePage.textLoginErrorMessage.isDisplayed());
         }
         wait(1);
     }
 
+    // AYCA SLIDER IMAGES CHECK  //
+
+    @Given("Verify that slider image, second navigation button and third navigation button is visible")
+    public void verify_that_and_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
+        Assert.assertTrue(visitorHomePage.firstSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.secondSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.thirdSlideNavigatorButton.isDisplayed());
+
+    }
+    @Given("Click on the navigation button and Verify that image is visible")
+    public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        visitorHomePage.secondSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        visitorHomePage.thirdSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        visitorHomePage.firstSlideNavigatorButton.click();
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+
+    }
+
+    @Given("Verify the slider images are visible automaticly")
+    public void verify_the_slider_images_are_visible_automaticly() {
+
+        wait(5);
+        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
+            visitorHomePage.cookieAllert.click();
+        }
+        wait(3);
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        wait(5);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
+    }
+
+
+    @Given("Click on the slider images in order and Verifying that navigate to the image Page")
+    public void click_on_the_slider_images_in_order_and_verifying_that_navigate_to_the_image_page() {
+
+        visitorHomePage.imageFirstSlider.click();
+
+
+    }
+
+    //---------AYCA FOOTER LINK CHECK-------------//
+    @Given("Scroll down to the bottom of the home page.Verify that the About Us, Blog, Dashboard, My Profile, My Order, Help&Contact, Track Order, Return&Exchange,Track Order, Return&Exchange link are visible on footer table.")
+    public void scroll_down_to_the_bottom_of_the_home_page_verify_that_the_about_us_blog_dashboard_my_profile_my_order_help_contact_track_order_return_exchange_track_order_return_exchange_link_are_visible_on_footer_table() {
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        Assert.assertTrue(visitorHomePage.linkFooterAboutUs.isDisplayed());
+
+    }
+    @Given("Click on the About Us link and verify the navigate to About Us Page.")
+    public void click_on_the_about_us_link_and_verify_the_navigate_to_about_us_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterAboutUs);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/about-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Blog link and verify the navigate to Blog Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_blog_link_and_verify_the_navigate_to_blog_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterBlog);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/blog";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Dashboard link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_dashboard_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterDashboard);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the My Profile link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_my_profile_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterMyProfile);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the My Order link and verify the navigate to Sign In Page.Click on the website logo.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_my_order_link_and_verify_the_navigate_to_sign_in_page_click_on_the() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterMyOrder);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/login";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        clickWithJS(visitorHomePage.logoSite);
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Help&Contact link and verify the navigate to Contact Us Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_help_contact_link_and_verify_the_navigate_to_contact_us_page() {
+
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterHelpContact);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/contact-us";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+
+
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Track Order link and verify the navigate to Track Order Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_track_order_link_and_verify_the_navigate_to_track_order_page() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterTrackOrder);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/track-order";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+    @Given("Scroll down to the bottom of the home page.Click on the Return&Exchange link and verify the navigate to Return&Exchange Page.")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_return_exchange_link_and_verify_the_navigate_to_return_exchange_page() {
+
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        clickWithJS(visitorHomePage.linkFooterReturnExchange);
+        wait(2);
+        String expectedUrl = "https://qa.buysellcycle.com/return-exchange";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Enter an email on address field on subscribe and click the subscribe button.")
+    public void scroll_down_to_the_bottom_of_the_home_page_enter_an_email_on_address_field_on_subscribe_and_click_the_subscribe_button() {
+        scrollIntoViewJS(visitorHomePage.textFooterGetQuickQuite);
+        wait(1);
+        clickWithJS(visitorHomePage.textBoxFooterEmail);
+        visitorHomePage.textBoxFooterEmail.sendKeys(faker.internet().emailAddress());
+        wait(1);
+        clickWithJS(visitorHomePage.subscribeButton);
+        wait(1);
+        Assert.assertTrue(visitorHomePage.textFooterSubscribeSuccessfully.isDisplayed());
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Enter a registered email on address field on subscribe and click the subscribe button.")
+    public void scroll_down_to_the_bottom_of_the_home_page_enter_a_registered_email_on_address_field_on_subscribe_and_click_the_subscribe_button() {
+
+        scrollIntoViewJS(visitorHomePage.textFooterGetQuickQuite);
+        wait(1);
+        clickWithJS(visitorHomePage.textBoxFooterEmail);
+        visitorHomePage.textBoxFooterEmail.sendKeys(ConfigReader.getProperty("aycaCustomerEmail"));
+        wait(1);
+        clickWithJS(visitorHomePage.subscribeButton);
+        wait(1);
+        Assert.assertTrue(visitorHomePage.textFooterAlreadySubscribed.isDisplayed());
+
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Click on the Google Play link and verify that the navigate to Google Store Page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_google_play_link_and_verify_that_the_navigate_to_google_store_page() {
+        scrollIntoViewJS(visitorHomePage.linkFooterGooglePlay);
+        wait(1);
+        clickWithJS(visitorHomePage.linkFooterGooglePlay);
+        wait(1);
+        String expectedUrlGoogle = "https://play.google.com/store/games";
+        String actualUrlGoogle = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrlGoogle,actualUrlGoogle);
+
+    }
+    @Given("Return to the website")
+    public void return_to_the_website() {
+        Driver.getDriver().navigate().back();
+    }
+    @Given("Scroll down to the bottom of the home page. Click on the The Apple Store link and verify that the navigate to The Apple Store Page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_the_apple_store_link_and_verify_that_the_navigate_to_the_apple_store_page() {
+
+        scrollIntoViewJS(visitorHomePage.linkFooterAppleStore);
+        clickWithJS(visitorHomePage.linkFooterAppleStore);
+        wait(1);
+        String expectedUrlApple = "https://www.apple.com/app-store/";
+        String actualUrlApple = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrlApple,actualUrlApple);
+
+
+    }
+
+
+
+    @Given("Scroll down to the bottom of the home page. Verify that the enf of the footer text is visible")
+    public void scroll_down_to_the_bottom_of_the_home_page_verify_that_the_enf_of_the_footer_text_is_visible() {
+
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        Assert.assertTrue(visitorHomePage.textFooterCopyRight.isDisplayed());
+
+    }
+
+    @Given("Scroll down to the bottom of the home page. Click on the go to top button and verify that reached the top of the page")
+    public void scroll_down_to_the_bottom_of_the_home_page_click_on_the_button_and_verify_that_reached_the_top_of_the_page() {
+        scrollIntoViewJS(visitorHomePage.tableFooter);
+        wait(2);
+        waitAndClick(visitorHomePage.goTopButton);
+        wait(2);
+        Assert.assertTrue(visitorHomePage.homeHeaderButton.isDisplayed());
+
+    }
+
+
+
+
+
 
     //---------------------------Ayca Login Step Finish-------------------------------------------------------------------//
 
 
-    //-------------Login Steps FIKRET-----------------/
+
+
+
+
+
+     //-------------Login Steps FIKRET-----------------/
 
 
     @Given("Open browser and Go to {string}")
@@ -221,6 +472,10 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
+
+
+
+
     //-------------Login Steps İlteriş-----------------//
 
 
@@ -234,18 +489,18 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
+
+
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Click on the Track your Order link")
     public void click_on_the_track_your_order_link() {
         clickWithJS(visitorHomePage.linkTextTrackYourOrder);
     }
-
     @Given("Verify that the Order Tracking Number text is visible")
     public void verify_that_the_order_tracking_number_text_is_visible() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isDisplayed());
     }
-
     @Given("Verify that Order Tracking Number is clickable")
     public void verify_that_order_tracking_number_is_clickable() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
@@ -254,9 +509,8 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Verify that Track Now button is visible")
     public void verify_that_track_now_button_is_visible() {
 
-        assertTrue(visitorHomePage.trackNowButton.isDisplayed());
+       assertTrue( visitorHomePage.trackNowButton.isDisplayed());
     }
-
     @Given("Verify that Track Now button is clickable")
     public void verify_that_track_now_button_is_clickable() {
         clickWithJS(visitorHomePage.trackNowButton);
@@ -269,18 +523,15 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.textBoxOrderTrackingNumber.sendKeys(unvalidpass);
 
     }
-
     @Given("Enter a unvalid {string} password in the Secret ID")
     public void enter_a_unvalid_password_in_the_secret_id(String unvalidID) {
-        visitorHomePage.textBoxSecretID.sendKeys(unvalidID);
+       visitorHomePage.textBoxSecretID.sendKeys(unvalidID);
     }
-
     @Given("Click on the Track Now")
     public void click_on_the_track_now() {
         clickWithJS(visitorHomePage.trackNowButton);
 
     }
-
     @Given("Show warning message on the page")
     public void show_warning_message_on_the_page() {
         visitorHomePage.labelOrderNumberUnvalidText.isDisplayed();
@@ -291,42 +542,36 @@ public class VisitorHomePageStepDef extends Base {
     //------------- Steps Sımge ------------------/
     @Given("Verify that the Contact link is visible")
     public void verify_that_the_contact_link_is_visible() {
-        Assert.assertTrue(visitorHomePage.linkContact.isDisplayed());
+       Assert.assertTrue(visitorHomePage.linkContact.isDisplayed());
     }
-
     @Given("Click on the Contact link")
     public void click_on_the_contact_link() {
         visitorHomePage.linkContact.click();
     }
-
     @Given("Verify that navigated to the Contact page")
     public void verify_that_navigated_to_the_contact_page() {
         String expectedUrl = "https://qa.buysellcycle.com/contact-us";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedUrl, actualUrl);
+        Assert.assertEquals(expectedUrl,actualUrl);
     }
-
     @Given("Verify that the company phone number is visible under the Call or WhatsApp: heading on contact page")
     public void verify_that_the_company_phone_number_is_visible_under_the_call_or_whats_app_heading_on_contact_page() {
-        String whatsapp = ConfigReader.getProperty("companyPhoneNumber");
+        String whatsapp=ConfigReader.getProperty("companyPhoneNumber");
         String actualWhatsapp = visitorHomePage.textWhatsapp.getText();
-        Assert.assertEquals(whatsapp, actualWhatsapp);
+        Assert.assertEquals(whatsapp,actualWhatsapp);
     }
-
     @Given("Verify that the company mail is visible under the Get in touch: heading on contact page")
     public void verify_that_the_company_mail_is_visible_under_the_get_in_touch_heading_on_contact_page() {
-        String mail = ConfigReader.getProperty("companyPhoneNumber");
+        String mail=ConfigReader.getProperty("companyPhoneNumber");
         String actualMail = visitorHomePage.textWhatsapp.getText();
-        Assert.assertEquals(mail, actualMail);
+        Assert.assertEquals(mail,actualMail);
     }
-
     @Given("Verify that the company address is visible under the Head office: heading on contact page")
     public void verify_that_the_company_address_is_visible_under_the_head_office_heading_on_contact_page() {
-        String address = ConfigReader.getProperty("companyPhoneNumber");
+        String address=ConfigReader.getProperty("companyPhoneNumber");
         String actualAddress = visitorHomePage.textWhatsapp.getText();
-        Assert.assertEquals(address, actualAddress);
+        Assert.assertEquals(address,actualAddress);
     }
-
     @Given("Verify that the Facebook, Instagram, X, Linkedin icons are visible under the Social Media: heading on contact page")
     public void verify_that_the_facebook_instagram_x_linkedin_icons_are_visible_under_the_social_media_heading_on_contact_page() {
         Assert.assertTrue(visitorHomePage.iconFacebook.isDisplayed());
@@ -334,6 +579,8 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.iconLinkedin.isDisplayed());
         Assert.assertTrue(visitorHomePage.iconInstagram.isDisplayed());
     }
+
+
 
 
     //------------- Steps SAMET -----------------/
@@ -346,38 +593,47 @@ public class VisitorHomePageStepDef extends Base {
     }
 
 
-    //---------------- Steps Asli----------------------/
+ //---------------- Steps Asli----------------------/
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
-    public void i_should_click_on_the_on_the_header(String headerElement) {
-        clickHeaderElementLink(headerElement);
+    public void i_should_click_on_the_on_the_header(String headerMenuElement) {
+        clickHeaderElementLink(headerMenuElement);
+    }
+    @Then("I should be directed to the {string} page")
+    public void i_should_be_directed_to_the_page(String pageName) {
+        waitForPageToLoad(2);
+        checkTheTitle(pageName);
+    }
+    @Then("I should see the character, status, and picture of {string}")
+    public void i_should_see_the_character_status_and_picture_of(String teamMember) {
+        visitorHomePage.verifyTheTeamMembersInfo(teamMember);
+
     }
 
-    @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String page) {
+    @Given("I am on the {string} Page")
+    public void iAmOnThePage(String page) {
+
         checkTheTitle(page);
     }
 
-    @Then("I should see the character, status, and picture of {string}")
-    public void i_should_see_the_character_status_and_picture_of(String string) {
-
+    @When("I should see relevant {string} about the site")
+    public void iShouldSeeRelevantAboutTheSite(String section) {
     }
 
-    @Given("I should see relevant section about the site, such as its mission, {string} , {string} , {string} , {string} and {string}")
-    public void iShouldSeeRelevantSectionAboutTheSiteSuchAsItsMissionAnd(String arg0, String arg1, String arg2, String arg3, String arg4) {
-
+    @Then("I should be able to modify the displayed information")
+    public void iShouldBeAbleToModifyTheDisplayedInformation() {
     }
 
-    @And("I should see each section contains a numeric value representing the relevant metric")
-    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    @When("I should see relevant {string} about the Payment Page")
+    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
+        visitorHomePage.verifyTheInformationsVisibility(information);
     }
 
-    @Then("I should see that the numeric values are clearly visible and legible")
-    public void iShouldSeeThatTheNumericValuesAreClearlyVisibleAndLegible() {
-    }
 
     //---------------- Steps Asli----------------------/
+
+
 
 
 //====================STEPS ESRA BASLANGIC=============================================
@@ -473,7 +729,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @When("User searches for products in the search box")
     public void userSearchesForProductsInTheSearchBox() {
-        waitAndSendText(visitorHomePage.searchTextBox, "Belt");
+        waitAndSendText(visitorHomePage.searchTextBox,"Belt");
         wait(2);
 
     }
@@ -485,7 +741,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @When("Click All Categories dropdown menu")
     public void clickAllCategoriesDropdownMenu() {
-        clickWithJS(visitorHomePage.linkAllCategories);
+       clickWithJS(visitorHomePage.linkAllCategories);
     }
 
     @When("Displays the subheadings of the dropdown menu that opens")
@@ -509,128 +765,109 @@ public class VisitorHomePageStepDef extends Base {
     public void click_the_electronics_link() {
 
     }
-
     @Given("Displays Electronics subcategories")
     public void displays_electronics_subcategories() {
 
     }
-
     @Given("Click the Fashion link")
     public void click_the_fashion_link() {
 
     }
-
     @Given("Displays Fashion subcategories")
     public void displays_fashion_subcategories() {
 
     }
-
     @Given("Click the Baby link")
     public void click_the_baby_link() {
 
     }
-
     @Given("Displays Baby subcategories")
     public void displays_baby_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Home-Furniture link")
     public void click_the_home_furniture_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays  Home-Furniture subcategories")
     public void displays_home_furniture_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Sport-Outdoor link")
     public void click_the_sport_outdoor_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Sport-Outdoor subcategories")
     public void displays_sport_outdoor_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Accessories link")
     public void click_the_accessories_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Accessories subcategories")
     public void displays_accessories_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Beauty link")
     public void click_the_beauty_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Beauty subcategories")
     public void displays_beauty_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Book-Stationery link")
     public void click_the_book_stationery_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Book-Stationery subcategories")
     public void displays_book_stationery_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Hobi-Music link")
     public void click_the_hobi_music_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Hobi-Music subcategories")
     public void displays_hobi_music_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Supermarket link")
     public void click_the_supermarket_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Supermarket subcategories")
     public void displays_supermarket_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Click the Auto-Garden-DiyStore link")
     public void click_the_auto_garden_diy_store_link() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
     @Given("Displays Auto-Garden-DiyStore subcategories")
     public void displays_auto_garden_diy_store_subcategories() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
+
 
     //=============STEPS ESRA SONU=================================//
 

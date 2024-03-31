@@ -1,4 +1,4 @@
-@asli
+
 Feature: As a user, I would like the site to have an About Us page so that I can learn more about the site I shop on.
 
   Background: : Accessing the About page
@@ -7,14 +7,20 @@ Feature: As a user, I would like the site to have an About Us page so that I can
     Then  I should be directed to the "About Us" page
 
   Scenario Outline: Viewing information on the About Us page
-    Given I should see relevant section about the site, such as its mission, "<Clients Worldwide>" , "<Successful Project>" , "<Successful Project>" , "<Work Employed>" and "<Planning Services>"
-    And I should see each section contains a numeric value representing the relevant metric
-    Then I should see that the numeric values are clearly visible and legible
+    Given I am on the "About" Page
+    When I should see relevant "<sections>" about the site
+    Then I should see each section contains a numeric value representing the relevant metric
+
     Examples:
-      | Clients Worldwide | Successful Project | Work Employed | Planning Services |
+      | sections           |
+      | Clients Worldwide  |
+      | Successful Project |
+      | Work Employed      |
+      | Planning Services  |
 
-
+  @asli
   Scenario Outline: Viewing Specific Team Members on the About Us Page
+    Given I am on the "About" Page
     Then I should see the character, status, and picture of "<team_member>"
     Examples:
       | team_member    |
