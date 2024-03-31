@@ -7,7 +7,8 @@ Feature: As a user, I would like the site to have an About Us page so that I can
     Then  I should be directed to the "About Us" page
 
   Scenario Outline: Viewing information on the About Us page
-    Given I should see relevant section about the site, such as its mission, "<Clients Worldwide>" , "<Successful Project>" , "<Successful Project>" , "<Work Employed>" and "<Planning Services>"
+    Given I am on the "About" Page
+    When I should see relevant section about the site, such as its mission, "<Clients Worldwide>" , "<Successful Project>" , "<Successful Project>" , "<Work Employed>" and "<Planning Services>"
     Then I should see each section contains a numeric value representing the relevant metric
 
     Examples:
@@ -15,6 +16,7 @@ Feature: As a user, I would like the site to have an About Us page so that I can
 
 
   Scenario Outline: Viewing Specific Team Members on the About Us Page
+    Given I am on the "About" page
     Then I should see the character, status, and picture of "<team_member>"
     Examples:
       | team_member    |

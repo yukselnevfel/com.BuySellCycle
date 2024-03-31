@@ -102,6 +102,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the login link, Enter {string} and {string} and click sign in")
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
+        wait(2);
         visitorHomePage.loginButton.click();
         visitorHomePage.textBoxUserEmail.click();
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
@@ -360,7 +361,10 @@ public class VisitorHomePageStepDef extends Base {
 
     }
 
-
+    @Given("I am on the {string} Page")
+    public void iAmOnThePage(String page) {
+        checkTheTitle(page);
+    }
 
     //---------------- Steps Asli----------------------/
 
@@ -597,6 +601,7 @@ public class VisitorHomePageStepDef extends Base {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
 
 
 
