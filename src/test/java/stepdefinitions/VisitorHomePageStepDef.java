@@ -703,10 +703,10 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("User verifies that items DDM works")
     public void user_verifies_that_items_ddm_works() {
-        List<Integer> productPrice=new ArrayList<>()
+        List<Integer> productPrice=new ArrayList<>();
 
         for (int i = 0; i < visitorHomePage.textProductprice.size(); i++) {
-            productPrice+=visitorHomePage.textProductprice.get(i).;
+
 
         }
 
