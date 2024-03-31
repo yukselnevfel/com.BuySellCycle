@@ -32,10 +32,10 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//*[text()='Remember me']")
     public WebElement checkBoxRememberMe;
 
-    @FindBy (id = "//*[@id='text']")
+    @FindBy (xpath = "//*[@id='text']")
     public WebElement textBoxUserEmail;
 
-    @FindBy (id="//*[@id='password']")
+    @FindBy (xpath="//*[@id='password']")
     public WebElement textBoxUserPassword;
 
     @FindBy (xpath = "//*[text()='Forgot Password? ']")
@@ -204,6 +204,11 @@ public class VisitorHomePage extends Base{
 
     @FindBy(id = "guest_id")
     public WebElement textBoxSecretID;
+
+    @FindBy(xpath = "(//*[@class='d-flex align-items-center flex-wrap gap_5'])[3]")
+    public WebElement labelOrderStatusText;
+
+
 
 
 
