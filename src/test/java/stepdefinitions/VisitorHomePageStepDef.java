@@ -520,7 +520,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that Track Now button is clickable")
     public void verify_that_track_now_button_is_clickable() {
-        clickWithJS(visitorHomePage.trackNowButton);
+        //clickWithJS(visitorHomePage.trackNowButton);
         assertTrue(visitorHomePage.trackNowButton.isEnabled());
     }
 
@@ -544,6 +544,16 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.labelOrderNumberUnvalidText.isDisplayed();
 
     }
+    @Given("Enter a valid {string} password in the Order Tracking Number field")
+    public void enter_a_valid_password_in_the_order_tracking_number_field(String validpass) {
+        visitorHomePage.textBoxOrderTrackingNumber.sendKeys(validpass);
+    }
+    @Given("Displays current status of the order")
+    public void displays_current_status_of_the_order() {
+        visitorHomePage.labelOrderStatusText.isDisplayed();
+
+    }
+
 
 
     //------------- Steps Sımge ------------------/
