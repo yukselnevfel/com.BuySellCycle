@@ -62,6 +62,73 @@ public class VisitorHomePage extends Base{
     @FindBy (xpath = "//a[@href=\"http://instagram.com\"]")
     public WebElement iconInstagram;
 
+    @FindBy (xpath = "//input[@id=\"name\"]")
+    public WebElement textBoxName;
+    @FindBy (xpath = "//input[@id=\"email\"]")
+    public WebElement textBoxEmail;
+    @FindBy (xpath = "//textarea[@id=\"message\"]")
+    public WebElement textBoxMessage;
+    @FindBy (xpath = " (//span[@class=\"current\"])[3]")
+    public WebElement checkBoxOrder;
+    @FindBy (xpath = "(//li[@data-value=\"2\"])[2]")
+    public WebElement linkPayment;
+    @FindBy (xpath = "//button[@id=\"contactBtn\"]")
+    public WebElement linkSendMessage;
+    @FindBy (xpath = "//div[@class=\"contact_info\"]")
+    public WebElement textGetinTouch;
+    @FindBy(xpath = "//*[@class='toast-message']")
+    public WebElement successfullAllert;
+    @FindBy (xpath="(//h4[@id='filter_category_title'])[1]")
+    public WebElement labelElectronics;
+
+    @FindBy (xpath="//button[text()=\"Telephone\"]")
+    public WebElement labelTelephone;
+
+    @FindBy (xpath="//button[@id='tab_link_34']")
+    public WebElement labelTVPictureSound;
+    @FindBy (xpath="//button[@id='tab_link_35']")
+    public WebElement labelPhotoCamera;
+    @FindBy (xpath="//button[@id='tab_link_36']")
+    public WebElement labelComputerTablet;
+    @FindBy (xpath="//button[@id='tab_link_37']")
+    public WebElement labelSpecialforPlayers;
+    @FindBy (xpath="//button[@id='tab_link_38']")
+    public WebElement labelElectronicAccessories;
+    @FindBy (xpath="//div[@class=\"product_details_wrapper\"]")
+    public WebElement detailOfQuickView;
+
+
+
+    @FindBy (xpath="(//a[@data-product-sku='1373'])[1]")
+    public WebElement iconCompare ;
+
+    @FindBy (xpath="(//a[@id='wishlistbtn_1373'])[1]")
+    public WebElement iconWishlist;
+
+    @FindBy (xpath="(//a[@data-product_id='1373'])[2]")
+    public WebElement iconQuickView ;
+
+    @FindBy (xpath="(//a[@data-product-id='1373'])[2]")
+    public WebElement iconAddToCart;
+
+    @FindBy (xpath="(//span[text()='More Deals'])[1]")
+    public WebElement linkMoreDeals;
+
+    @FindBy (xpath="(//a[@data-product-sku='1534'])[1]")
+    public WebElement iconCompareElectronics;
+
+    @FindBy (xpath="(//a[@id='wishlistbtn_1534'])[1]")
+    public WebElement iconWishlistElectronics;
+
+    @FindBy (xpath="(//a[@data-product_id='1534'])[2]")
+    public WebElement iconQuickViewElectronics;
+
+    @FindBy (xpath="(//a[@data-product-sku='1534'])[2]")
+    public WebElement iconAddToCartElectronics;
+    @FindBy (xpath="(//div[@class=\"product_widget5 style4 mb-0 style5\"])[1]")
+    public WebElement imagePhone;
+    @FindBy (xpath="(//div[@class=\"product_widget5 style4 mb-0 style5\"])[9]")
+    public WebElement imageTV;
 
 
 
@@ -73,7 +140,15 @@ public class VisitorHomePage extends Base{
 
 
 
-    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
+
+
+
+
+
+
+
+
+            @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
 
     @FindBy(xpath = "//*[@class='close_modal']")
