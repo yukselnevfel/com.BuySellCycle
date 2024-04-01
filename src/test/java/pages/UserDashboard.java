@@ -139,6 +139,9 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//*[@class='total_amount d-flex align-items-center flex-wrap']")
     public WebElement labelTotalPrice;
 
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
+
 
 
     }

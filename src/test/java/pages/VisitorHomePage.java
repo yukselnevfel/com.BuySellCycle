@@ -489,8 +489,6 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement buttonAddingCompare;
     @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
     public WebElement buttonAddingToCart;
-    @FindBy(xpath = "//*[@id='code']")
-    public WebElement labelReferralCode;
 
 
 

@@ -1211,7 +1211,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("User verifies that sorting DDM works")
     public void user_verifies_that_sorting_ddm_works() {
-
+        System.out.println("int list= "+intListeOlustur(visitorHomePage.textProductprice));
     }
     @Given("User verifies that the Counter is visible")
     public void user_verifies_that_the_counter_is_visible() {
@@ -1223,7 +1223,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that referral code is visible")
     public void verify_that_referral_code_is_visible() {
-        Assert.assertTrue(visitorHomePage.labelReferralCode.isDisplayed());
+        Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
     }
 
 
