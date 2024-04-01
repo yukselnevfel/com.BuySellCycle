@@ -31,6 +31,7 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//*[@id='sign_in_btn']") public WebElement sigInButton;
     //________________________ WishList____________________-
     @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[3]") public WebElement myWishListMenu;
+    @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[7]") public WebElement myCouponsListMenu;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[1]/h5") public WebElement resultsWishlist;
     @FindBy(xpath = "(//*[@class=\"current\"])[3]") public WebElement show8Items;
     @FindBy(xpath = "(//*[@class=\"option\"])[1]") public WebElement show12Items;
@@ -42,18 +43,33 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[2]/div/div[3]/div/p/strong") public WebElement pruduct2;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[3]/div/div[3]/div/p/strong") public WebElement pruduct3;
     @FindBy(xpath = "//i[@title=\"Compare\"]") public WebElement comparePruduct;
+    @FindBy(xpath = "//i[@title=\"Quick View\"]") public WebElement quickViewButton;
+    @FindBy(xpath = "//i[@title=\"Delete\"]") public WebElement deleteButton;
     @FindBy(id = "add_to_compare_btn") public WebElement addToCompare;
     @FindBy(xpath = "//*[@class=\"compare_count\"]") public WebElement compareCount;
+    @FindBy(xpath = "//*[@class=\"product_details_img\"]") public WebElement puroductDetails;
+    @FindBy(id ="add_to_cart_btn_modal") public WebElement addToCart;
+    @FindBy(id ="dataDeleteBtn") public WebElement dataDeleteBtn;
+   @FindBy(xpath = "//*[text()='Item added to your cart']") public WebElement itemAdded;
+   @FindBy(xpath = "(//*[@class=\"close_modal_icon\"])[3]") public WebElement closePage;
+   @FindBy(xpath = "(//*[@class=\"close_modal_icon\"])[2]") public WebElement closePage2;
+   @FindBy(xpath = "//*[@class='fas fa-chevron-right']") public WebElement nextPage;
+
+
+    //________________________ Add Couppons____________________-
+   @FindBy(xpath = "//*[@placeholder=\"Code\"]") public WebElement codePlaceHolder;
+   @FindBy(xpath = "//button[@class=\"amaz_primary_btn style2 text-nowrap \"]") public WebElement addCouppon;
+   @FindBy(xpath = "//*[@id=\"couponDiv\"]/div/div/table/tbody/tr/td[3]") public WebElement coupponCode;
+   @FindBy(xpath = "(//*[@width=\"15\"])[2]") public WebElement coppyCode;
+   @FindBy(id = "Path_4222") public WebElement deleteCouppon;
+   @FindBy(xpath = "(//*[@type=\"submit\"])[3]") public WebElement deleteSure;
+   @FindBy(xpath = "//*[@id=\"couponDiv\"]/p") public WebElement emptyList;
 
 
 
 
 
 
-
-
-
-    //
     //Dashboard link and user detail informations
     @FindBy(xpath = "(//*[text()='Dashboard'])[1]")
     public WebElement linkHeaderDashboard;
