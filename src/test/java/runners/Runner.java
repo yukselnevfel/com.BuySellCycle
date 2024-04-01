@@ -5,6 +5,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
+import java.security.KeyStore;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
@@ -16,7 +18,11 @@ import org.junit.runner.RunWith;
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
 
-        tags = "@e2e",
+        tags = "@login",
+
+
+      
+       
 
         dryRun =false
 

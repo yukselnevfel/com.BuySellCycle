@@ -205,10 +205,23 @@ public class VisitorHomePage extends Base{
     public WebElement labelElectronicAccessories;
     @FindBy(xpath = "//div[@class=\"product_details_wrapper\"]")
     public WebElement detailOfQuickView;
+    @FindBy (xpath="//h3[@class=\"branding_text\"]")
+    public WebElement labelElectronicsPage;
+    @FindBy (xpath="(//div[@class=\"product_widget5 mb_30 style5 w-100\"])[1]")
+    public WebElement imageElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"ti-control-shuffle\"])[1]")
+    public WebElement iconCompareElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"far fa-heart\"])[1]")
+    public WebElement iconWishlistElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"ti-eye\"])[1]")
+    public WebElement iconQuickViewElectronicsPage;
+    @FindBy (xpath="(//a[@title=\"Add to Cart\"])[1]")
+    public WebElement iconAddToCartElectronicsPage;
+    @FindBy (xpath="(//div[@class=\"col-md-6\"])[2]")
+    public WebElement linkBuyNowElectronicsPage;
+    @FindBy (xpath="(//a[@data-product-sku='1373'])[1]")
+    public WebElement iconCompare ;
 
-
-    @FindBy(xpath = "(//a[@data-product-sku='1373'])[1]")
-    public WebElement iconCompare;
 
     @FindBy(xpath = "(//a[@id='wishlistbtn_1373'])[1]")
     public WebElement iconWishlist;
@@ -218,6 +231,8 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//a[@data-product-id='1373'])[2]")
     public WebElement iconAddToCart;
+    @FindBy (xpath="//div[@class=\"product_checked_box d-flex flex-column justify-content-center align-items-center\"]")
+    public WebElement alertAddToCart;
 
     @FindBy(xpath = "(//span[text()='More Deals'])[1]")
     public WebElement linkMoreDeals;
