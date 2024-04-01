@@ -105,6 +105,18 @@ public class UserDashboard extends Base{
     public WebElement labelTotalPrice;
 
 
+   //---- SUPPORT TICKET AYCA--------//
+
+   @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+   public WebElement linkSupportTicket;
+
+   @FindBy (xpath = "//tr/th")
+    public WebElement labelTicketTitle;
+
+
+
+
+
 
 
 
