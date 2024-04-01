@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Base;
+import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
@@ -99,6 +100,12 @@ public class UserDashboardStepDef extends Base {
 
     @Then("I should be able to modify the displayed {string}")
     public void iShouldBeAbleToModifyTheDisplayed(String arg0) {
+    }
+
+
+    @When("I click on the {string} button")
+    public void iClickOnTheButton(String arg0) {
+        clickWithJS(userDashboard.continueToShippingButton);
     }
 
     //Asli
@@ -304,7 +311,6 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.labelTotalPrice.isDisplayed());
 
     }
-
 
 
 }

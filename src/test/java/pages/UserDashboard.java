@@ -31,9 +31,8 @@ public class UserDashboard extends Base{
         }
 
     }
-
-    @FindBy(xpath = "//button[text()='Continue To Shipping']")
-    public WebElement ContinueToShippingButton;
+@FindBy(xpath = "button[text()='Continue To Shipping']")
+public WebElement continueToShippingButton;
 
     @FindAll({
             @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")

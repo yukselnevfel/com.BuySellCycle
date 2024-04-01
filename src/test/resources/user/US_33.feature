@@ -2,12 +2,14 @@ Feature: Checkout and Payment Process
 
   Background: : Accessing the About page
     Given Open browser and Go to "URL"
-    Then Click on the login link, Enter "asliCostumerEmail" and "password" and click sign in
+    When Click on the login link, Enter "asliCostumerEmail" and "password" and click sign in
+    Then Click on the Cart link on the top bar of the site and you will be redirected to the relevant page
+
 
 @asliU33
   Scenario: Navigate from Checkout to Payment Page
     Given I am on the "Checkout" Page
-    When Click on the "Continue To Shipping"
+    When I click on the "Continue to shipping" button
     Then I should be directed to the "Payment" page
 
 
