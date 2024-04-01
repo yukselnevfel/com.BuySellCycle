@@ -1,7 +1,10 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Locale;
 
 public class VisitorHomePage extends Base{
 
@@ -67,8 +70,10 @@ public class VisitorHomePage extends Base{
 
 
 
-
-
+    @FindBy(xpath = "//a[text()='shopping']")
+    public WebElement labelShoppingText;
+    @FindBy(xpath = "//*[@class='font_14 f_w_500 m-0']")
+    public WebElement labelTagShoppingText;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/blog']")
     public WebElement linkHeaderBlog;
     @FindBy(xpath = "//*[@class='close_modal']")
@@ -138,6 +143,58 @@ public class VisitorHomePage extends Base{
     //Site ust barinda kolay linkler
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
+
+    //===================US_004==================
+    @FindBy(xpath = "//*[text()='/ Register']")
+    public WebElement linkRegister;
+    @FindBy(xpath = "//*[@src='https://qa.buysellcycle.com/public/frontend/amazy/img/banner/login_img.png']")
+    public WebElement logoBuySell;
+    @FindBy(xpath = "//*[@class='img-fluid']")
+    public WebElement picturePNG;
+    @FindBy(xpath = "//*[text() = 'Turn your ideas into reality.']")
+    public WebElement labelPictureText;
+    @FindBy(xpath = "//*[@class='amazy_login_form']")
+    public WebElement tableRegisterForm;
+    @FindBy(id = "first_name")
+    public WebElement textBoxFirstName;
+    @FindBy(id = "last_name")
+    public WebElement textBoxLastName;
+    @FindBy(id = "email")
+    public WebElement textBoxEmail;
+    @FindBy(id = "password-confirm")
+    public WebElement textBoxPasswordConfirm;
+    @FindBy(id = "sign_in_btn")
+    public WebElement signUpButton;
+    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/login']")
+    public WebElement linkSignIn;
+    @FindBy(xpath = "//*[text()='Registration successfull, Please wait for active your account']")
+    public WebElement labelRegistrationAlert;
+    @FindBy(xpath = "(//*[@class='text-danger'])[1]")
+    public WebElement labelNameError;
+    @FindBy(xpath = "(//*[@class='text-danger'])[3]")
+    public WebElement labelEmailandPhoneError;
+    @FindBy(xpath = "(//*[@class='text-danger'])[5]")
+    public WebElement labelPasswordError;
+    @FindBy(xpath = "//*[text()='Sign Up']")
+    public WebElement labelSignUpText;
+    @FindBy(xpath = "//*[@class='label_name f_w_400']")
+    public WebElement signUpRadyoButton;
+    @FindBy(xpath = "//*[@class='m-0']")
+    public WebElement labelSignInText;
+    @FindBy(xpath = "//*[@aria-live='assertive']")
+    public WebElement rBERROR;
+    @FindBy(xpath = "//*[text()='Error']")
+    public WebElement radyoButtonError;
+    public String generateRandomPhoneNumber() {
+        faker = new Faker(new Locale("tr-TR"));
+        String phone =  faker.phoneNumber().phoneNumber();
+        return phone;
+    }
+    public String generateRandomEmail() {
+        String email = faker.internet().emailAddress();
+        return email;
+    }
+
 
 
 
