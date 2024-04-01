@@ -8,10 +8,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import pages.Base;
 import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -19,6 +25,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
+
+
 
       //============================ SAMET =============================
 
@@ -375,28 +383,47 @@ public class UserDashboardStepDef extends Base {
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
     public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
 
-        scrollIntoViewJS(userDashboard.linkSupportTicket);
+        wait(1);
+        Actions action = new Actions(Driver.getDriver());
+        action.scrollToElement(userDashboard.linkSupportTicket);
+        wait(1);
         Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
-
+        clickWithJS(userDashboard.linkSupportTicket);
 
 
     }
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
-
-
+        String expectedSupportTicketUrl = "https://qa.buysellcycle.com/support-ticket";
+        String actualSupportTicketUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
 
 
     }
+
 
     @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
-    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String string) {
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String title) {
+
+
+            boolean isTitlePresent = false;
+            List<WebElement> tickets = Driver.getDriver().findElements(By.xpath("//*[contains(text(),'" + title + "')]"));
+
+            for (WebElement ticket : tickets) {
+                WebElement titleElement = ticket.findElement(By.cssSelector("//*[contains(text(),'" + title + "')]"));
+                if (titleElement != null && !titleElement.getText().isEmpty()) {
+                    isTitlePresent = true;
+                    break;
+                }
+            }
+            Assert.assertTrue("The title '" + title + "' is not present in any of the tickets in the list.", isTitlePresent);
+        }
 
 
 
 
-    }
+
 
 
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")

@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
 
-        tags = "@ayca2",
+        tags = "@login",
 
         dryRun =false
 
