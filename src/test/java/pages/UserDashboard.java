@@ -207,6 +207,9 @@ public WebElement continueToShippingButton;
    @FindBy (xpath = "//tr/th")
     public WebElement labelTicketTitle;
 
+   @FindBy(xpath = "selector-for-your-ticket-list")
+    private List<WebElement> ticketListElements;
+
 
 
 
