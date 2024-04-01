@@ -1015,108 +1015,114 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click the Electronics link")
     public void click_the_electronics_link() {
-
+        actions.moveToElement(visitorHomePage.linkElectronics).perform();
     }
     @Given("Displays Electronics subcategories")
     public void displays_electronics_subcategories() {
-
+        actions.moveToElement(visitorHomePage.textTelephone).perform();
+        waitForVisibility(visitorHomePage.textTelephone,2);
+        assertTrue(visitorHomePage.textTelephone.isDisplayed());
     }
     @Given("Click the Fashion link")
     public void click_the_fashion_link() {
-
+        actions.moveToElement(visitorHomePage.linkFashion).perform();
     }
     @Given("Displays Fashion subcategories")
     public void displays_fashion_subcategories() {
-
+        actions.moveToElement(visitorHomePage.titleWomanApparel).perform();
+        waitForVisibility(visitorHomePage.titleWomanApparel,2);
+        assertTrue(visitorHomePage.titleWomanApparel.isDisplayed());
     }
     @Given("Click the Baby link")
     public void click_the_baby_link() {
-
+        actions.moveToElement(visitorHomePage.linkBaby).perform();
     }
     @Given("Displays Baby subcategories")
     public void displays_baby_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBabyRoom).perform();
+        waitForVisibility(visitorHomePage.titleBabyRoom,2);
+        assertTrue(visitorHomePage.titleBabyRoom.isDisplayed());
     }
     @Given("Click the Home-Furniture link")
     public void click_the_home_furniture_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkHomeFurniture).perform();
     }
     @Given("Displays  Home-Furniture subcategories")
     public void displays_home_furniture_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleFurniture).perform();
+        waitForVisibility(visitorHomePage.titleFurniture,2);
+        assertTrue(visitorHomePage.titleFurniture.isDisplayed());
     }
     @Given("Click the Sport-Outdoor link")
     public void click_the_sport_outdoor_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkSporOutdoor).perform();
     }
     @Given("Displays Sport-Outdoor subcategories")
     public void displays_sport_outdoor_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleSportwearShoes).perform();
+        waitForVisibility(visitorHomePage.titleSportwearShoes,2);
+        assertTrue(visitorHomePage.titleSportwearShoes.isDisplayed());
     }
     @Given("Click the Accessories link")
     public void click_the_accessories_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkAccessories).perform();
     }
     @Given("Displays Accessories subcategories")
     public void displays_accessories_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBag).perform();
+        waitForVisibility(visitorHomePage.titleBag,2);
+        assertTrue(visitorHomePage.titleBag.isDisplayed());
     }
     @Given("Click the Beauty link")
     public void click_the_beauty_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkBeauty).perform();
     }
     @Given("Displays Beauty subcategories")
     public void displays_beauty_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleMakeup).perform();
+        waitForVisibility(visitorHomePage.titleMakeup,2);
+        assertTrue(visitorHomePage.titleMakeup.isDisplayed());
     }
     @Given("Click the Book-Stationery link")
     public void click_the_book_stationery_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkBookStationery).perform();
     }
     @Given("Displays Book-Stationery subcategories")
     public void displays_book_stationery_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBooks).perform();
+        waitForVisibility(visitorHomePage.titleBooks,2);
+        assertTrue(visitorHomePage.titleBooks.isDisplayed());
     }
     @Given("Click the Hobi-Music link")
     public void click_the_hobi_music_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkHobiMusic).perform();
+
     }
     @Given("Displays Hobi-Music subcategories")
     public void displays_hobi_music_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleToys).perform();
+        waitForVisibility(visitorHomePage.titleToys,2);
+        assertTrue(visitorHomePage.titleToys.isDisplayed());
     }
     @Given("Click the Supermarket link")
     public void click_the_supermarket_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkSupermarket).perform();
     }
     @Given("Displays Supermarket subcategories")
     public void displays_supermarket_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleHouseCleaning).perform();
+        waitForVisibility(visitorHomePage.titleHouseCleaning,2);
+        assertTrue(visitorHomePage.titleHouseCleaning.isDisplayed());
     }
     @Given("Click the Auto-Garden-DiyStore link")
     public void click_the_auto_garden_diy_store_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkAutoGardenDiyStore).perform();
     }
     @Given("Displays Auto-Garden-DiyStore subcategories")
     public void displays_auto_garden_diy_store_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleConstructionMarket).perform();
+        waitForVisibility(visitorHomePage.titleConstructionMarket,2);
+        assertTrue(visitorHomePage.titleConstructionMarket.isDisplayed());
     }
 
 
