@@ -31,8 +31,11 @@ public class UserDashboard extends Base{
         }
 
     }
-@FindBy(xpath = "button[text()='Continue To Shipping']")
+@FindBy(xpath = "//button[text()='Continue To Shipping']")
 public WebElement continueToShippingButton;
+
+    @FindBy(xpath = "(//*[text()='Cart ('])[1]")
+    public WebElement cartLinkOnTheTop;
 
     @FindAll({
             @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
@@ -55,6 +58,14 @@ public WebElement continueToShippingButton;
 
         Assert.assertTrue(found);
     }
+
+    @FindBy (xpath = "//*[@class='single_shipingV3_info d-flex align-items-start']//*[text()='Contact']")
+    public WebElement contactInfo;
+
+    @FindBy (xpath = "//*[@class='single_shipingV3_info d-flex align-items-start']//*[text()='Ship to']")
+    public WebElement shipToInfo;
+
+
 
 
      //________________________ valid user Login____________________-

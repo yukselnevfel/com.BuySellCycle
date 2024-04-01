@@ -1,18 +1,12 @@
 package stepdefinitions;
-import com.sun.source.tree.AssertTree;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.JavascriptExecutor;
+
 import pages.Base;
-import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
@@ -868,7 +862,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("I am on the {string} Page")
     public void iAmOnThePage(String page) {
-
+        waitForPageToLoad(2);
         checkTheTitle(page);
     }
 

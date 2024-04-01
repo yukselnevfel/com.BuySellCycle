@@ -105,7 +105,7 @@ public class UserDashboardStepDef extends Base {
 
     @When("I click on the {string} button")
     public void iClickOnTheButton(String arg0) {
-        clickWithJS(userDashboard.continueToShippingButton);
+
     }
 
     //Asli
@@ -313,6 +313,27 @@ public class UserDashboardStepDef extends Base {
     }
 
 
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
+    }
+
+
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
+    }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
 }
 
 
