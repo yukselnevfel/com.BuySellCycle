@@ -27,8 +27,10 @@ public class UserDashboard extends Base{
         }
 
     }
-@FindBy(xpath = "//button[text()='Continue To Shipping']")
-public WebElement continueToShippingButton;
+
+    // Checkout Process- Asli
+    @FindBy(xpath = "//button[text()='Continue To Shipping']")
+    public WebElement continueToShippingButton;
 
     @FindBy(xpath = "(//*[text()='Cart ('])[1]")
     public WebElement cartLinkOnTheTop;
@@ -54,6 +56,11 @@ public WebElement continueToShippingButton;
 
         Assert.assertTrue(found);
     }
+
+
+
+
+    //Checkout Process Asli- Son
     @FindBy(xpath = "(//*[@class='nice-select-search-box'])[3]")
     public WebElement allHistoryFilter;
     @FindBy(xpath = "//*[@data-value='confirm']")
@@ -71,6 +78,9 @@ public WebElement continueToShippingButton;
             @FindBy(xpath = "//*[@class='accordion-item']")
     })
     public List<WebElement> radioButtonListOnSelectPaymentPage;
+
+    @FindBy(xpath = "//*[@class='primary_checkbox d-inline-flex style4 gap_10 w-100'])[2]")
+    public WebElement payNowButton;
 
     @FindBy (xpath = "//*[text()='Order Now']")
     public WebElement orderNowButton;
@@ -185,14 +195,6 @@ public WebElement continueToShippingButton;
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
-
-
-
-
-
-
-
-
 
 
     }

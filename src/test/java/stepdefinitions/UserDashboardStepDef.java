@@ -514,10 +514,11 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.orderNowButton);
     }
 
-
-
-
- }
+    @When("Click on the Pay Now buttonlink")
+    public void clickOnThePayNowButtonlink() {
+        waitAndClick(userDashboard.payNowButton);
+    }
+}
 
 
 
