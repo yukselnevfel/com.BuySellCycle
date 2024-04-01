@@ -128,7 +128,7 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-}
+
 
     //=========================== STEPS  NEVFEL ====================================/
 
@@ -222,6 +222,27 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.labelTotalPrice.isDisplayed());
 
     }
+
+
+
+
+
+    //==============STEPS ESRA BASLANGIC================================
+    @Given("Scroll down to the bottom of the dashboard page")
+    public void scroll_down_to_the_bottom_of_the_dashboard_page() {
+        scrollIntoViewJS(userDashboard.buttonNotification);
+    }
+    @Given("Clicks on the Notification link and goes to the relevant page")
+    public void clicks_on_the_notification_link_and_goes_to_the_relevant_page() {
+        clickWithJS(userDashboard.buttonNotification);
+        String expectedURL="https://qa.buysellcycle.com/profile/notifications";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+
+
+
+    //================STEPS ESRA SONU=====================================
 
 
 

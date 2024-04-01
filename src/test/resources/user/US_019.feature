@@ -1,4 +1,4 @@
-@us19
+ @us19
 Feature:As a registered user, I would like to have a My Wishlist page on my Dashboard where I can view the products I like
 
   Scenario: The My Wishlist menu title appears in the Dashboard sideBar and should be active

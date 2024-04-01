@@ -9,7 +9,7 @@ Feature: US_006 As a user, I want to be able to see all the categories on the si
     * Click All Categories dropdown menu
     * Displays the subheadings of the dropdown menu that opens
     * Close the page
-  @esra
+
   Scenario: TC_03 Displaying sub-menus of menus under All Categories dropdown
     * Click All Categories dropdown menu
     * Click the Electronics link

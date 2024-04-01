@@ -105,7 +105,9 @@ public class UserDashboard extends Base{
     public WebElement labelTotalPrice;
 
 
-
+    //=========Notifications links ve buttons=======================
+     @FindBy(xpath = "(//a[@class='position-relative d-flex align-items-center'])[11]")
+      public WebElement buttonNotification;
 
 
 
