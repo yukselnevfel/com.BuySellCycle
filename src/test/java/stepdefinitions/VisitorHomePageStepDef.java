@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+//import jdk.incubator.foreign.CLinker;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -107,8 +108,9 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the login link, Enter {string} and {string} and click sign in")
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
-        wait(2);
+        wait(1);
         visitorHomePage.loginButton.click();
+        wait(1);
         clickWithJS(visitorHomePage.textBoxUserEmail);
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
         clickWithJS(visitorHomePage.textBoxUserPassword);
@@ -680,15 +682,12 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.textBoxEmail.sendKeys(faker.internet().emailAddress());
 
     }
-    @Given("Order kutusu tıklanır ve payment seçilir")
-    public void order_kutusu_tıklanır_ve_payment_seçilir() {
-    visitorHomePage.checkBoxOrder.click();
-    wait(1);
-    }
+
     @Given("Click on the Order and Payment is selected on contact page")
     public void click_on_the_order_and_payment_is_selected_on_contact_page() {
+        visitorHomePage.checkBoxOrder.click();
         visitorHomePage.linkPayment.click();
-
+        wait(1);
     }
     @Given("Click on the Write Messages textbox on contact page")
     public void click_on_the_write_messages_textbox_on_contact_page() {
@@ -817,11 +816,90 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the detail window for the relevant product has opened")
     public void verify_that_the_detail_window_for_the_relevant_product_has_opened() {
-      String quickViewDetail=visitorHomePage.detailOfQuickView.getText();
-      Assert.assertTrue(quickViewDetail.contains("Phone"));
+        Assert.assertTrue(visitorHomePage.linkBuyNowElectronicsPage.isDisplayed());
+      //String quickViewDetail=visitorHomePage.detailOfQuickView.getText();
+     // Assert.assertTrue(quickViewDetail.contains("Phone"));
+    }
+    @Given("Verify that the add to cart icon is visible for the first product in Electronics category on homepage")
+    public void verify_that_the_add_to_cart_icon_is_visible_for_the_first_product_in_electronics_category_on_homepage() {
+       Assert.assertTrue(visitorHomePage.iconAddToCart.isDisplayed());
+    }
+    @Given("Click on the add to cart icon for the first product in Electronics category on homepage")
+    public void click_on_the_add_to_cart_icon_for_the_first_product_in_electronics_category_on_homepage() {
+     clickWithJS(visitorHomePage.iconAddToCart);
+     wait(1);
+    }
+    @Given("Verify that the Item added to your cart warning is visible")
+    public void verify_that_the_item_added_to_your_cart_warning_is_visible() {
+
+        Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
+    }
+    @Given("Verify that the Deal More link is visible in Electronics category on homepage")
+    public void verify_that_the_deal_more_link_is_visible_in_electronics_category_on_homepage() {
+       Assert.assertTrue(visitorHomePage.linkMoreDeals.isDisplayed());
+    }
+    @Given("Click on the Deal More link in Electronics category on homepage")
+    public void click_on_the_deal_more_link_in_electronics_category_on_homepage() {
+       clickWithJS(visitorHomePage.linkMoreDeals);
+       wait(1);
+    }
+    @Given("Verify that the electronic category page is opened")
+    public void verify_that_the_electronic_category_page_is_opened() {
+       Assert.assertTrue(visitorHomePage.labelElectronicsPage.isDisplayed());
+    }
+    @Given("Verify that the wishlist icon is visible for the first product on Electronics category page")
+    public void verify_that_the_wishlist_icon_is_visible_for_the_first_product_on_electronics_category_page() {
+        Assert.assertTrue(visitorHomePage.imageElectronicsPage.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageElectronicsPage).perform();
+        wait(2);
+        Assert.assertTrue(visitorHomePage.iconWishlistElectronicsPage.isDisplayed());
+    }
+    @Given("Click on the wishlist icon for the first product on Electronics category page")
+    public void click_on_the_wishlist_icon_for_the_first_product_on_electronics_category_page() {
+     clickWithJS(visitorHomePage.iconWishlistElectronicsPage);
+     wait(1);
+    }
+    @Given("Verify that the quick view icon is visible for the first product on Electronics category page")
+    public void verify_that_the_quick_view_icon_is_visible_for_the_first_product_on_electronics_category_page() {
+        Assert.assertTrue(visitorHomePage.imageElectronicsPage.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageElectronicsPage).perform();
+        wait(2);
+       Assert.assertTrue(visitorHomePage.iconQuickViewElectronicsPage.isDisplayed());
+    }
+    @Given("Click on the quick view icon for the first product on Electronics category page")
+    public void click_on_the_quick_view_icon_for_the_first_product_on_electronics_category_page() {
+        clickWithJS(visitorHomePage.iconQuickViewElectronicsPage);
+        wait(2);
+    }
+    @Given("Verify that the compare icon is visible for the first product on Electronics category page")
+    public void verify_that_the_compare_icon_is_visible_for_the_first_product_on_electronics_category_page() {
+        Assert.assertTrue(visitorHomePage.imageElectronicsPage.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageElectronicsPage).perform();
+        wait(2);
+        Assert.assertTrue(visitorHomePage.iconCompareElectronicsPage.isDisplayed());
+    }
+    @Given("Click on the compare icon for the first product on Electronics category page")
+    public void click_on_the_compare_icon_for_the_first_product_on_electronics_category_page() {
+        clickWithJS(visitorHomePage.iconCompareElectronicsPage);
+        wait(1);
+    }
+    @Given("Verify that the add to cart icon is visible for the first product on Electronics category page")
+    public void verify_that_the_add_to_cart_icon_is_visible_for_the_first_product_on_electronics_category_page() {
+        Assert.assertTrue(visitorHomePage.imageElectronicsPage.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageElectronicsPage).perform();
+        wait(2);
+        Assert.assertTrue(visitorHomePage.iconAddToCartElectronicsPage.isDisplayed());
+    }
+    @Given("Click on the add to cart icon for the first product on Electronics category page")
+    public void click_on_the_add_to_cart_icon_for_the_first_product_on_electronics_category_page() {
+       clickWithJS(visitorHomePage.iconAddToCartElectronicsPage);
+       wait(2);
     }
 
 
+
+
+//---------------- Simge Steps Sonu --------------/
 
 
 

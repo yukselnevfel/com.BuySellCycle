@@ -63,7 +63,6 @@ Feature: As a user, I would like to have a contact page on the site so that I ca
      * Random name is entered
      * Click on the Enter Email Address textbox on contact page
      * Random mail is entered
-     * Order kutusu tıklanır ve payment seçilir
      * Click on the Order and Payment is selected on contact page
      * Click on the Write Messages textbox on contact page
      * Random message is entered
