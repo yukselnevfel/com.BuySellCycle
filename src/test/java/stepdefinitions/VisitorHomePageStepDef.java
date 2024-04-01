@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.JavascriptExecutor;
 import pages.Base;
@@ -109,6 +110,7 @@ public class VisitorHomePageStepDef extends Base {
     public void click_on_the_login_link_enter_and_and_click_sign_in(String customerEmail, String password) {
         wait(2);
         visitorHomePage.loginButton.click();
+        wait(2);
         clickWithJS(visitorHomePage.textBoxUserEmail);
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(customerEmail));
         clickWithJS(visitorHomePage.textBoxUserPassword);
@@ -1211,6 +1213,19 @@ public class VisitorHomePageStepDef extends Base {
     public void user_verifies_that_sorting_ddm_works() {
 
     }
+    @Given("User verifies that the Counter is visible")
+    public void user_verifies_that_the_counter_is_visible() {
+        Assert.assertTrue(visitorHomePage.labelcounter.isDisplayed());
+    }
+    @Given("User verifies that First product is visible")
+    public void user_verifies_that_first_product_is_visible() {
+        Assert.assertTrue(visitorHomePage.linkFirstProduct.isDisplayed());
+    }
+    @Given("Verify that referral code is visible")
+    public void verify_that_referral_code_is_visible() {
+        Assert.assertTrue(visitorHomePage.labelReferralCode.isDisplayed());
+    }
+
 
 
 // ====================== End Of Beytullah's Steps End =====================

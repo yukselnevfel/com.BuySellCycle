@@ -477,10 +477,26 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement ddmFifthSorting;
     @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
     public List<WebElement> textProductprice;
+    @FindBy(xpath = "//*[@id='count_down']")
+    public WebElement labelcounter;
+    @FindBy(xpath = "(//*[@class='lazyload'])[1]")
+    public WebElement linkFirstProduct;
+    @FindBy(xpath = "(//*[@class='lazyload'])[1]")
+    public WebElement buttonWiew;
+    @FindBy(xpath = "//*[@id='wishlist_btn']")
+    public WebElement buttonAddingWishList;
+    @FindBy(xpath = "//*[@id='add_to_compare_btn']")
+    public WebElement buttonAddingCompare;
+    @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
+    public WebElement buttonAddingToCart;
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
 
+
+
+    // -------------------------End of Beytullah's Locates----------------------------
 
 }
-    // -------------------------End of Beytullah's Locates----------------------------
 
 
 

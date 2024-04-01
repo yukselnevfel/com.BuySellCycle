@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
 
-        tags = "@asli",
-        dryRun = false
+        tags = "@us25/3",
+        dryRun = true
 
 
 )
