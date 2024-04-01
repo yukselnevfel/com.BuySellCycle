@@ -862,6 +862,9 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.verifyTheTeamMembersInfo(teamMember);
 
     }
+    @When("I should see relevant {string} about the site")
+    public void iShouldSeeRelevantAboutTheSite(String section) {
+    }
 
     @Given("I am on the {string} Page")
     public void iAmOnThePage(String page) {

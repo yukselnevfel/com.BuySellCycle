@@ -33,9 +33,6 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.myWishListMenu.isDisplayed());
     }
     //Asli
-    @When("I should see relevant {string} about the site")
-    public void iShouldSeeRelevantAboutTheSite(String section) {
-    }
 
     @Then("I should be able to modify the displayed information")
     public void iShouldBeAbleToModifyTheDisplayedInformation() {
@@ -44,7 +41,7 @@ public class UserDashboardStepDef extends Base {
 
     @When("I should see relevant {string} about the Payment Page")
     public void iShouldSeeRelevantAboutThePaymentPage(String information) {
-        visitorHomePage.verifyTheInformationsVisibility(information);
+        userDashboard.verifyTheInformationsVisibility(information);
     }
 
     @When("I navigate to the Payment and Billing address section")

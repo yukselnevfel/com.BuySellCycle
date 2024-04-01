@@ -430,19 +430,6 @@ public class VisitorHomePage extends Base {
 @FindBy(xpath = "//div[@class='container mt_30 mb_30 min-vh-50']")
 public WebElement teamOnAboutPage;
 
-public void verifyTheInformationsVisibility (String searchText) {
-    boolean found = false;
-    for (WebElement element : informationList) {
-        String text = element.getText();
-
-        if (text.contains(searchText)) {
-            found = true;
-            break;
-        }
-    }
-
-    Assert.assertTrue(found);
-}
 
 public void verifyTheTeamMembersInfo(String teamMember) {
 
