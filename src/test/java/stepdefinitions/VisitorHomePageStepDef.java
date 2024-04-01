@@ -837,7 +837,7 @@ public class VisitorHomePageStepDef extends Base {
 
     //------------- Steps SAMET -----------------/
 
-    @Given("Verify title is {string}")
+    @Given("Verify that title is {string}")
     public void verify_that_title(String title) {
         String expectedTitle = title;
         String actualTitle = Driver.getDriver().getTitle();
