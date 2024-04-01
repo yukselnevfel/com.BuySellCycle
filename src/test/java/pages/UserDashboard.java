@@ -42,7 +42,8 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[2]/div/div[3]/div/p/strong") public WebElement pruduct2;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[3]/div/div[3]/div/p/strong") public WebElement pruduct3;
     @FindBy(xpath = "//i[@title=\"Compare\"]") public WebElement comparePruduct;
-    @FindBy(xpath = "id=\"add_to_compare_btn\"") public WebElement addToCompare;
+    @FindBy(id = "add_to_compare_btn") public WebElement addToCompare;
+    @FindBy(xpath = "//*[@class=\"compare_count\"]") public WebElement compareCount;
 
 
 

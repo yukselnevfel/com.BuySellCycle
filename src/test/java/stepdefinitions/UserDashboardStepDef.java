@@ -109,10 +109,17 @@ public class UserDashboardStepDef extends Base {
     public void add_a_product_to_the_compare_list_and_verify_that_it_has_been_added() {
      actions.moveToElement(userDashboard.comparePruduct).perform();
         userDashboard.comparePruduct.click();
+        wait(1);
         userDashboard.addToCompare.click();
+        wait(2);
+        String count = userDashboard.compareCount.getText().replaceAll("//D","");
+        int countCompare = Integer.parseInt(count);
+        System.out.println("countCompare = " + countCompare);
+        assertTrue(countCompare>0);
     }
     @Given("Click the Quick View button and verify that the product information is displayed")
     public void click_the_quick_view_button_and_verify_that_the_product_information_is_displayed() {
+
 
     }
     @Given("Click the Add To Cart button and confirm that the product has been added to the cart")
@@ -123,5 +130,10 @@ public class UserDashboardStepDef extends Base {
     public void click_on_the_delete_button_and_confirm_that_the_product_has_been_deleted_from_wishlist() {
 
     }
+
+
+
+
+
 
 }
