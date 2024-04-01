@@ -1,6 +1,6 @@
-
-Feature: As a registered user, I would like to have a page on my Dashboard where I can view my orders.
 @simge
+Feature: As a registered user, I would like to have a page on my Dashboard where I can view my orders.
+
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
