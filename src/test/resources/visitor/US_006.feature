@@ -50,3 +50,4 @@ Feature: US_006 As a user, I want to be able to see all the categories on the si
 
 
 
+
