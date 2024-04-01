@@ -31,7 +31,7 @@ Feature: As a user, I would like to be able to log in with the email and passwor
   * Click on the "Sign Up"
   * Verify that navigated to the Register page
   * Close the page
-  @login
+  @ayca2
   Scenario: LOGIN Valid email and valid password are entered and the Sign In button is clicked, the system should log in
 
   * Click on the login link, Enter "aycaCustomerEmail" and "password" and click sign in

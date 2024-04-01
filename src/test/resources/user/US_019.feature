@@ -1,6 +1,8 @@
+
 @us19
 Feature:As a registered user, I would like to have a My Wishlist page on my Dashboar
         where I can view the products I like
+
   Scenario: The My Wishlist menu title appears in the Dashboard sideBar and should be active
     * Log in to the page with valid "userSamet" and "password" information.
     * Verify that the My Wishlist menu is visible
