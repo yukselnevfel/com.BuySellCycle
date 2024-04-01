@@ -76,7 +76,8 @@ public class UserDashboardStepDef extends Base {
     }
 
     @Then("I should see the message {string}")
-    public void iShouldSeeTheMessage(String arg0) {
+    public void iShouldSeeTheMessage(String message) {
+
     }
 
     @And("the Order Number should be displayed")
@@ -382,7 +383,11 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.proceedToCheckoutButton);
     }
 
+    @When("Click on the Order Now buttonlink")
+    public void clickOnTheOrderNowButtonlink() {
+        waitAndClick(userDashboard.orderNowButton);
     }
+}
 
 
 

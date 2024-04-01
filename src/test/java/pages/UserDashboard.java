@@ -61,8 +61,8 @@ public WebElement continueToShippingButton;
     })
     public List<WebElement> radioButtonListOnSelectPaymentPage;
 
-    @FindBy (xpath = "//*[@id='payment_btn_trigger' and text()= 'Pay now']")
-    public WebElement PayNowButton;
+    @FindBy (xpath = "//*[text()='Order Now']")
+    public WebElement orderNowButton;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
