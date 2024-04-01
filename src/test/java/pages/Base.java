@@ -176,6 +176,20 @@ public abstract class Base {
         }
     }
 
+    public void verifySelectableItems(List<WebElement> list, String selectItem){
+        boolean found=false;
+        for (WebElement element : list) {
+            String text = element.getText();
+
+            if (text.contains(selectItem)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
+    }
+
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
      *  Açılır listeden rastgele bir değer seçer ve seçilen Web Öğesini döndürür

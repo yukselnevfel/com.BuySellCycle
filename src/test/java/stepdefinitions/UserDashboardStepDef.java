@@ -52,6 +52,7 @@ public class UserDashboardStepDef extends Base {
 
     @Then("I should be able to select different address types")
     public void iShouldBeAbleToSelectDifferentAddressTypes() {
+
     }
 
     @Then("I should see the Order Summary information displayed correctly")
@@ -96,10 +97,6 @@ public class UserDashboardStepDef extends Base {
 
     @Then("the site should return to the home page")
     public void theSiteShouldReturnToTheHomePage() {
-    }
-
-    @Then("I should be able to modify the displayed {string}")
-    public void iShouldBeAbleToModifyTheDisplayed(String arg0) {
     }
 
 

@@ -7,13 +7,12 @@ Feature: Checkout and Payment Process
     And Click on the "Cart" link on the top
     Then Click on the Proceed to Checkout buttonlink
     When I submit on the Continue to shipping button
-    Then I should be directed to the "Payment" page
+    Then I am on the "Payment" Page
 
-  @asli033
+
   Scenario Outline: Modify Ship to and Contact Information on Payment Page
     Given I am on the "Payment" Page
     When I should see relevant "<information>" about the Payment Page
-    And I should be able to modify the displayed "<information>"
     Then Click on the Logout link
     Examples:
        | information          |
@@ -21,7 +20,7 @@ Feature: Checkout and Payment Process
        | Ship to              |
 
 
-  @asli033
+
   Scenario: Select Payment and Billing Address Types
     Given I am on the "Payment" Page
     When I navigate to the Payment and Billing address section
@@ -36,14 +35,12 @@ Feature: Checkout and Payment Process
     When I apply coupons
     Then they should be redeemable
 
+  @asli033
   Scenario: Navigate from Payment Page to Order Completion
     Given I am on the "Payment" Page
-    When Click on the "Order Now"
-    Then I should be redirected to the order completion page immediately
-
-  Scenario: Verify Order Completion Page
-    Given I have completed the order
-    Then I should see the message "Thank you for your purchase!"
+    When Click on the "Pay Now"
+    Then I am on the " Checkout Summary " Page
+    Given I should see the message "Thank you for your purchase!"
     And the Order Number should be displayed
     And the Order summary (items purchased) should be displayed
     And I should have access to the my-purchase-order-details page

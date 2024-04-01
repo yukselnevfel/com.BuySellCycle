@@ -846,11 +846,7 @@ public class VisitorHomePageStepDef extends Base {
     public void i_should_click_on_the_on_the_header(String headerMenuElement) {
         clickHeaderElementLink(headerMenuElement);
     }
-    @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String pageName) {
-        waitForPageToLoad(2);
-        checkTheTitle(pageName);
-    }
+
     @Then("I should see the character, status, and picture of {string}")
     public void i_should_see_the_character_status_and_picture_of(String teamMember) {
         visitorHomePage.verifyTheTeamMembersInfo(teamMember);
