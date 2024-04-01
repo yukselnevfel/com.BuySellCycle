@@ -29,7 +29,7 @@ public class Driver {
                     driver = new ChromeDriver();
                     driver.manage().window().maximize();
                     Base.initialize();
-                    //   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();

@@ -1,19 +1,14 @@
 package stepdefinitions;
-import com.sun.source.tree.AssertTree;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
+
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 //import jdk.incubator.foreign.CLinker;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.JavascriptExecutor;
+
 import pages.Base;
-import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
@@ -22,6 +17,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Locale;
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 public class VisitorHomePageStepDef extends Base {
 
@@ -393,6 +393,160 @@ public class VisitorHomePageStepDef extends Base {
      //-------------Login Steps FIKRET-----------------/
 
 
+    @Given("the user verifies that the Register button link is visible on the home page")
+    public void the_user_verifies_that_the_register_button_link_is_visible_on_the_home_page() {
+        assertTrue(visitorHomePage.linkRegister.isDisplayed());
+    }
+
+    @Given("the user verifies that the Register button link is active on the home page")
+    public void the_user_verifies_that_the_register_button_link_is_active_on_the_home_page() {
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        assertTrue(visitorHomePage.linkRegister.isEnabled());
+    }
+
+    @Given("the user clicks the Register button link on the home page")
+    public void the_user_clicks_the_register_button_link_on_the_home_page() {
+        clickWithJS(visitorHomePage.linkRegister);
+    }
+
+    @Given("the user verifies the image and text in the right section")
+    public void the_user_verifies_the_image_and_text_in_the_right_section() {
+        assertTrue(visitorHomePage.labelPictureText.isDisplayed());
+        assertTrue(visitorHomePage.picturePNG.isDisplayed());
+    }
+
+    @Given("the user validates the signUp form in the left section")
+    public void the_user_validates_the_sign_up_form_in_the_left_section() {
+        assertTrue(visitorHomePage.tableRegisterForm.isDisplayed());
+    }
+
+    @Given("the user verifies that the SignUp button is visible and active")
+    public void the_user_verifies_that_the_sign_up_button_is_visible_and_active() {
+        assertTrue(visitorHomePage.signUpButton.isDisplayed());
+        assertTrue(visitorHomePage.signUpButton.isEnabled());
+    }
+
+    @Given("the user leaves all fields blank in the SignUp form and clicks the SignUp button")
+    public void the_user_leaves_all_fields_blank_in_the_sign_up_form() {
+        clickWithJS(visitorHomePage.signUpButton);
+    }
+
+    @Given("the user confirmed that registration failed")
+    public void the_user_clicks_the_sign_up_button() {
+        assertEquals(visitorHomePage.labelSignUpText.getText(), "Sign Up");
+    }
+
+    @Given("the user Terms of Service and Privacy Policy checkbox radioBotton click")
+    public void the_user_terms_of_service_and_privacy_policy_checkbox_radio_botton_click() {
+        clickWithJS(visitorHomePage.signUpRadyoButton);
+    }
+
+    @Given("the user clicks SignUp button link")
+    public void the_user_clicks_sign_up_button_link() {
+        clickWithJS(visitorHomePage.signUpButton);
+    }
+
+
+    @Given("the user enters a number in a valid telephone format")
+    public void the_user_enters_a_number_in_a_valid_telephone_format() {
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomPhoneNumber());
+    }
+
+    @Given("It is confirmed that registration valid phone format")
+    public void it_is_confirmed_that_registration_valid_phone_format() {
+        assertFalse(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @Given("the user enters a valid email address")
+    public void the_user_enters_a_valid_email_address() {
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomEmail());
+    }
+
+    @Given("It is confirmed that registration valid email format")
+    public void it_is_confirmed_that_registration_valid_email_format() {
+        assertFalse(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @Given("the user enters a valid password {string} that meets criteria")
+    public void the_user_enters_a_valid_password_that_meets_criteria(String password) {
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+    }
+
+    @Given("the user confirms that it does not receive error message")
+    public void the_user_confirms_that_it_does_not_receive_error_message() {
+        assertFalse(visitorHomePage.labelPasswordError.isDisplayed());
+    }
+
+    @Given("the user clicks the SignIn buttonLink")
+    public void the_user_clicks_the_sign_in_button_link() {
+        clickWithJS(visitorHomePage.linkSignIn);
+    }
+
+    @Given("the user verifies that it is possible to navigate to the SignIn page")
+    public void the_user_verifies_that_it_is_possible_to_navigate_to_the_sign_in_page() {
+        assertTrue(visitorHomePage.labelSignInText.isDisplayed());
+    }
+
+
+    @Given("the user enters an invalid {string} email")
+    public void the_user_enters_an_invalid_email(String email) {
+        visitorHomePage.textBoxEmail.sendKeys(email);
+    }
+
+    @Given("It is confirmed that registration failed due to invalid email format")
+    public void it_is_confirmed_that_registration_failed_due_to_invalid_email_format() {
+        assertTrue(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+
+    @Given("the user enters a password {string} that does not meet criteria")
+    public void the_user_enters_a_password_that_does_not_meet_criteria(String password) {
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+    }
+
+    @Given("It is confirmed that registration failed due to weak password")
+    public void it_is_confirmed_that_registration_failed_due_to_weak_password() {
+        assertTrue(visitorHomePage.labelPasswordError.isDisplayed());
+    }
+
+    @Given("the user enters a number in an invalid phone format {string}")
+    public void the_user_enters_a_number_in_an_invalid_phone_format(String phone) {
+        visitorHomePage.textBoxEmail.sendKeys(phone);
+    }
+
+    @Given("It is confirmed that registration failed due to invalid phone format")
+    public void it_is_confirmed_that_registration_failed_due_to_invalid_phone_format() {
+        assertTrue(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @When("the user selects the Terms of Service and Privacy Policy checkbox")
+    public void the_user_selects_the_terms_of_service_and_privacy_policy_checkbox() {
+        clickWithJS(visitorHomePage.signUpRadyoButton);
+    }
+
+    @Given("the user confirmed that registration failed checkButton")
+    public void the_user_confirmed_that_registration_failed_check_button() {
+        assertTrue(visitorHomePage.radyoButtonError.isDisplayed());
+    }
+
+
+    @Given("the user enters {string} {string} {string}")
+    public void the_user_enters(String firstname, String lastname, String password) {
+        visitorHomePage.textBoxFirstName.sendKeys(firstname);
+        visitorHomePage.textBoxLastName.sendKeys(lastname);
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomEmail());
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+
+    }
+
+    @Then("the user should be successfully registered and redirected to the sign-in page")
+    public void the_user_should_be_successfully_registered_and_redirected_to_the_sign_in_page() {
+        assertTrue(visitorHomePage.loginButton.isDisplayed());
+    }
+
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
         Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
@@ -453,14 +607,14 @@ public class VisitorHomePageStepDef extends Base {
 
     @When("Select a keyword from the Keyword section")
     public void select_a_keyword_from_the_keyword_section() {
-        visitorHomePage.blogKeyword.sendKeys("shopping");
+        clickWithJS(visitorHomePage.labelShoppingText);
     }
 
     @Then("Verify that relevant blogs are listed based on the selected keyword")
     public void verify_that_relevant_blogs_are_listed_based_on_the_selected_keyword() {
-        String actualTagName = visitorHomePage.blogKeyword.getTagName();
-        String expectedTagName = "shopping";
-        assert actualTagName.equals(expectedTagName) : "Something went wrong";
+
+        clickWithJS(visitorHomePage.linkReadMore);
+        assertTrue(visitorHomePage.labelTagShoppingText.isDisplayed());
     }
 
     @When("Select a category from the Popular Posts section")
@@ -490,7 +644,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the {string} button")
     public void click_on_the_button(String string) {
-    }
+      }
 
     @Given("New User Zone should be displayed on the home page navBar and the page should be accessed")
     public void new_user_zone_should_be_displayed_on_the_home_page_nav_bar_and_the_page_should_be_accessed() {
@@ -522,7 +676,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that Track Now button is clickable")
     public void verify_that_track_now_button_is_clickable() {
-        clickWithJS(visitorHomePage.trackNowButton);
+        //clickWithJS(visitorHomePage.trackNowButton);
         assertTrue(visitorHomePage.trackNowButton.isEnabled());
     }
 
@@ -546,6 +700,16 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.labelOrderNumberUnvalidText.isDisplayed();
 
     }
+    @Given("Enter a valid {string} password in the Order Tracking Number field")
+    public void enter_a_valid_password_in_the_order_tracking_number_field(String validpass) {
+        visitorHomePage.textBoxOrderTrackingNumber.sendKeys(validpass);
+    }
+    @Given("Displays current status of the order")
+    public void displays_current_status_of_the_order() {
+        visitorHomePage.labelOrderStatusText.isDisplayed();
+
+    }
+
 
 
     //------------- Steps Sımge ------------------/
@@ -905,7 +1069,7 @@ public class VisitorHomePageStepDef extends Base {
 
     //------------- Steps SAMET -----------------/
 
-    @Given("Verify title is {string}")
+    @Given("Verify that title is {string}")
     public void verify_that_title(String title) {
         String expectedTitle = title;
         String actualTitle = Driver.getDriver().getTitle();
@@ -920,35 +1084,23 @@ public class VisitorHomePageStepDef extends Base {
     public void i_should_click_on_the_on_the_header(String headerMenuElement) {
         clickHeaderElementLink(headerMenuElement);
     }
-    @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String pageName) {
-        waitForPageToLoad(2);
-        checkTheTitle(pageName);
-    }
+
     @Then("I should see the character, status, and picture of {string}")
     public void i_should_see_the_character_status_and_picture_of(String teamMember) {
         visitorHomePage.verifyTheTeamMembersInfo(teamMember);
 
     }
-
-    @Given("I am on the {string} Page")
-    public void iAmOnThePage(String page) {
-
-        checkTheTitle(page);
-    }
-
     @When("I should see relevant {string} about the site")
     public void iShouldSeeRelevantAboutTheSite(String section) {
     }
 
-    @Then("I should be able to modify the displayed information")
-    public void iShouldBeAbleToModifyTheDisplayedInformation() {
+    @Given("I am on the {string} Page")
+    public void iAmOnThePage(String page) {
+        waitForPageToLoad(2);
+        checkTheTitle(page);
     }
 
-    @When("I should see relevant {string} about the Payment Page")
-    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
-        visitorHomePage.verifyTheInformationsVisibility(information);
-    }
+
 
 
     //---------------- Steps Asli----------------------/
@@ -1083,113 +1235,159 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click the Electronics link")
     public void click_the_electronics_link() {
-
+        actions.moveToElement(visitorHomePage.linkElectronics).perform();
     }
+
     @Given("Displays Electronics subcategories")
     public void displays_electronics_subcategories() {
-
+        actions.moveToElement(visitorHomePage.textTelephone).perform();
+        waitForVisibility(visitorHomePage.textTelephone,2);
+        assertTrue(visitorHomePage.textTelephone.isDisplayed());
     }
     @Given("Click the Fashion link")
     public void click_the_fashion_link() {
-
+        actions.moveToElement(visitorHomePage.linkFashion).perform();
     }
     @Given("Displays Fashion subcategories")
     public void displays_fashion_subcategories() {
-
+        actions.moveToElement(visitorHomePage.titleWomanApparel).perform();
+        waitForVisibility(visitorHomePage.titleWomanApparel,2);
+        assertTrue(visitorHomePage.titleWomanApparel.isDisplayed());
     }
     @Given("Click the Baby link")
     public void click_the_baby_link() {
-
+        actions.moveToElement(visitorHomePage.linkBaby).perform();
     }
     @Given("Displays Baby subcategories")
     public void displays_baby_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBabyRoom).perform();
+        waitForVisibility(visitorHomePage.titleBabyRoom,2);
+        assertTrue(visitorHomePage.titleBabyRoom.isDisplayed());
     }
     @Given("Click the Home-Furniture link")
     public void click_the_home_furniture_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkHomeFurniture).perform();
     }
     @Given("Displays  Home-Furniture subcategories")
     public void displays_home_furniture_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleFurniture).perform();
+        waitForVisibility(visitorHomePage.titleFurniture,2);
+        assertTrue(visitorHomePage.titleFurniture.isDisplayed());
     }
     @Given("Click the Sport-Outdoor link")
     public void click_the_sport_outdoor_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkSporOutdoor).perform();
     }
     @Given("Displays Sport-Outdoor subcategories")
     public void displays_sport_outdoor_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleSportwearShoes).perform();
+        waitForVisibility(visitorHomePage.titleSportwearShoes,2);
+        assertTrue(visitorHomePage.titleSportwearShoes.isDisplayed());
     }
     @Given("Click the Accessories link")
     public void click_the_accessories_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkAccessories).perform();
     }
     @Given("Displays Accessories subcategories")
     public void displays_accessories_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBag).perform();
+        waitForVisibility(visitorHomePage.titleBag,2);
+        assertTrue(visitorHomePage.titleBag.isDisplayed());
     }
     @Given("Click the Beauty link")
     public void click_the_beauty_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkBeauty).perform();
     }
     @Given("Displays Beauty subcategories")
     public void displays_beauty_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleMakeup).perform();
+        waitForVisibility(visitorHomePage.titleMakeup,2);
+        assertTrue(visitorHomePage.titleMakeup.isDisplayed());
     }
     @Given("Click the Book-Stationery link")
     public void click_the_book_stationery_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkBookStationery).perform();
     }
     @Given("Displays Book-Stationery subcategories")
     public void displays_book_stationery_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleBooks).perform();
+        waitForVisibility(visitorHomePage.titleBooks,2);
+        assertTrue(visitorHomePage.titleBooks.isDisplayed());
     }
     @Given("Click the Hobi-Music link")
     public void click_the_hobi_music_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkHobiMusic).perform();
+
     }
     @Given("Displays Hobi-Music subcategories")
     public void displays_hobi_music_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleToys).perform();
+        waitForVisibility(visitorHomePage.titleToys,2);
+        assertTrue(visitorHomePage.titleToys.isDisplayed());
     }
     @Given("Click the Supermarket link")
     public void click_the_supermarket_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkSupermarket).perform();
     }
     @Given("Displays Supermarket subcategories")
     public void displays_supermarket_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleHouseCleaning).perform();
+        waitForVisibility(visitorHomePage.titleHouseCleaning,2);
+        assertTrue(visitorHomePage.titleHouseCleaning.isDisplayed());
     }
     @Given("Click the Auto-Garden-DiyStore link")
     public void click_the_auto_garden_diy_store_link() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.linkAutoGardenDiyStore).perform();
     }
     @Given("Displays Auto-Garden-DiyStore subcategories")
     public void displays_auto_garden_diy_store_subcategories() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        actions.moveToElement(visitorHomePage.titleConstructionMarket).perform();
+        waitForVisibility(visitorHomePage.titleConstructionMarket,2);
+        assertTrue(visitorHomePage.titleConstructionMarket.isDisplayed());
+    }
+
+    @When("Click on the Mobile Phone and go to relevant page.")
+    public void clickOnTheMobilePhoneAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textMobilePhone).perform();
+        clickWithJS(visitorHomePage.textMobilePhone);
+        String expectedUrl="https://qa.buysellcycle.com/category/mobile-phone-?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Woman Dress and go to relevant page.")
+    public void clickOnTheWomanDressAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textWomanDress).perform();
+        clickWithJS(visitorHomePage.textWomanDress);
+        String expectedUrl="https://qa.buysellcycle.com/category/w-dress?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Baby Cradle and go to relevant page.")
+    public void clickOnTheBabyCradleAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textBabyCradle).perform();
+        clickWithJS(visitorHomePage.textBabyCradle);
+        String expectedUrl="https://qa.buysellcycle.com/category/baby-cradle?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Living Room and go to relevant page.")
+    public void clickOnTheLivingRoomAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textLivingRoom).perform();
+        clickWithJS(visitorHomePage.textLivingRoom);
+        String expectedUrl="https://qa.buysellcycle.com/category/living-room?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
     }
 
 
 
     //=============STEPS ESRA SONU=================================//
+
+
+
 
     //===================== Beytullah's Steps =========================
     @Given("User verifies that the New Product Deals link is visible")
@@ -1281,6 +1479,8 @@ public class VisitorHomePageStepDef extends Base {
     public void user_verifies_that_sorting_ddm_works() {
 
     }
+
+
 
 
 // ====================== End Of Beytullah's Steps End =====================

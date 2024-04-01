@@ -18,11 +18,9 @@ import java.security.KeyStore;
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
 
+        tags = "@ayca2",
 
-
-        tags = "@simge",
-
-        dryRun = false
+        dryRun =false
 
 
 
