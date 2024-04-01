@@ -81,12 +81,6 @@ public class UserDashboard extends Base{
 
 
 
-
-
-
-
-
-
     //Dashboard link and user detail informations
     @FindBy(xpath = "(//*[text()='Dashboard'])[1]")
     public WebElement linkHeaderDashboard;
@@ -138,6 +132,33 @@ public class UserDashboard extends Base{
 
     @FindBy(xpath = "//*[@class='total_amount d-flex align-items-center flex-wrap']")
     public WebElement labelTotalPrice;
+
+
+    //=========Notifications links ve buttons=======================
+     @FindBy(xpath = "(//a[@class='position-relative d-flex align-items-center'])[11]")
+      public WebElement buttonNotification;
+
+
+     @FindBy(xpath = "(//span[@class='font_14 f_w_500 mute_text'])[2]")
+      public WebElement textNotification;
+
+     @FindBy(xpath = "(//span[@class='font_14 f_w_500 mute_text'])[3]")
+      public WebElement dateNotification;
+
+     @FindBy(xpath = "(//a[@class='amaz_badge_btn4 text-nowrap text-capitalize text-center'])[1]")
+      public WebElement buttonView;
+
+     @FindBy(xpath = "(//h4[@class='font_14 f_w_500 m-0 lh-base'])[1]")
+      public WebElement textOrderId;
+
+     @FindBy(xpath = "//*[@class='amaz_primary_btn style7 text-nowrap radius_3px']")
+      public WebElement buttonSetting;
+
+     @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
+      public WebElement buttonEventType;
+
+
+
 
 
 
