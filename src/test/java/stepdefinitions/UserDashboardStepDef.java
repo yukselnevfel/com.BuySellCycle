@@ -44,7 +44,7 @@ public class UserDashboardStepDef extends Base {
 
     @When("I should see relevant {string} about the Payment Page")
     public void iShouldSeeRelevantAboutThePaymentPage(String information) {
-        userDashboard.verifyTheInformationsVisibility(information);
+        visitorHomePage.verifyTheInformationsVisibility(information);
     }
 
     @When("I navigate to the Payment and Billing address section")
