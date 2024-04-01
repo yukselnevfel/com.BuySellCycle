@@ -1017,6 +1017,7 @@ public class VisitorHomePageStepDef extends Base {
     public void click_the_electronics_link() {
         actions.moveToElement(visitorHomePage.linkElectronics).perform();
     }
+
     @Given("Displays Electronics subcategories")
     public void displays_electronics_subcategories() {
         actions.moveToElement(visitorHomePage.textTelephone).perform();
@@ -1125,9 +1126,48 @@ public class VisitorHomePageStepDef extends Base {
         assertTrue(visitorHomePage.titleConstructionMarket.isDisplayed());
     }
 
+    @When("Click on the Mobile Phone and go to relevant page.")
+    public void clickOnTheMobilePhoneAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textMobilePhone).perform();
+        clickWithJS(visitorHomePage.textMobilePhone);
+        String expectedUrl="https://qa.buysellcycle.com/category/mobile-phone-?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Woman Dress and go to relevant page.")
+    public void clickOnTheWomanDressAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textWomanDress).perform();
+        clickWithJS(visitorHomePage.textWomanDress);
+        String expectedUrl="https://qa.buysellcycle.com/category/w-dress?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Baby Cradle and go to relevant page.")
+    public void clickOnTheBabyCradleAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textBabyCradle).perform();
+        clickWithJS(visitorHomePage.textBabyCradle);
+        String expectedUrl="https://qa.buysellcycle.com/category/baby-cradle?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
+    @When("Click on the Living Room and go to relevant page.")
+    public void clickOnTheLivingRoomAndGoToRelevantPage() {
+        actions.moveToElement(visitorHomePage.textLivingRoom).perform();
+        clickWithJS(visitorHomePage.textLivingRoom);
+        String expectedUrl="https://qa.buysellcycle.com/category/living-room?item=category";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedUrl,actualUrl);
+    }
+
 
 
     //=============STEPS ESRA SONU=================================//
+
+
+
 
     //===================== Beytullah's Steps =========================
     @Given("User verifies that the New Product Deals link is visible")
@@ -1219,6 +1259,8 @@ public class VisitorHomePageStepDef extends Base {
     public void user_verifies_that_sorting_ddm_works() {
 
     }
+
+
 
 
 // ====================== End Of Beytullah's Steps End =====================

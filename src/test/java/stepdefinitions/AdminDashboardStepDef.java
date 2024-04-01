@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,7 @@ import utils.ConfigReader;
 import utils.Driver;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AdminDashboardStepDef extends Base {
     // -------------------------Beytullah---------------------------------
@@ -37,4 +39,58 @@ public class AdminDashboardStepDef extends Base {
     }
 
     // -------------------------Beytullah---------------------------------
+
+
+
+    //================STEPS ESRA BASLANGIC===================================
+
+    @When("Scroll down to the bottom of the Admin dashboard page")
+    public void scrollDownToTheBottomOfTheAdminDashboardPage() {
+        wait(1);
+        scrollIntoViewJS(adminDashboard.textAccount);
+    }
+
+    @Given("Admin clicks Account link from Dashboard side bar")
+    public void admin_clicks_account_link_from_dashboard_side_bar() {
+       clickWithJS(adminDashboard.textAccount);
+    }
+
+    @When("Click on the Transaction link from the submenus and go to the relevant page")
+    public void clickOnTheTransactionLinkFromTheSubmenusAndGoToTheRelevantPage() {
+        clickWithJS(adminDashboard.textTransaction);
+        String expectedURL="https://qa.buysellcycle.com/account/transaction";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+
+    @When("Click the search button in the Select Criteria window")
+    public void clickTheSearchButtonInTheSelectCriteriaWindow() {
+        clickWithJS(adminDashboard.searchSelectCriteria);
+    }
+
+    @When("Select the start and end dates and click the Apply button")
+    public void selectTheStartAndEndDatesAndClickTheApplyButton() {
+        clickWithJS(adminDashboard.buttonStartDate);
+        clickWithJS(adminDashboard.buttonEndDate);
+        clickWithJS(adminDashboard.buttonApply);
+    }
+
+    @When("Displays Date,Chart of Accounts,Bank Accounts,Title,Credit,Debit information according to the date range selected in the Transaction sub-window")
+    public void displaysDateChartOfAccountsBankAccountsTitleCreditDebitInformationAccordingToTheDateRangeSelectedInTheTransactionSubWindow() {
+        assertTrue(adminDashboard.dateTransaction.isDisplayed());
+        assertTrue(adminDashboard.chartOfAccountTransaction.isDisplayed());
+        assertTrue(adminDashboard.titleTransaction.isDisplayed());
+        assertTrue(adminDashboard.creditTransaction.isDisplayed());
+
+    }
+
+    @When("Clicks the Search text box on the Transaction page and performs a page search")
+    public void clicksTheSearchTextBoxOnTheTransactionPageAndPerformsAPageSearch() {
+        clickWithJS(adminDashboard.buttonSearch);
+        waitAndSendText(adminDashboard.buttonSearch,"Order Manage");
+        hover(adminDashboard.menuSearch);
+    }
+
+
+    //===============STEPS ESRA SONU==========================================
 }
