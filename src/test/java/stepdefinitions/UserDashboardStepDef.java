@@ -381,7 +381,7 @@ public class UserDashboardStepDef extends Base {
     public void clickOnTheProceedToCheckoutButtonlink() {
         waitAndClick(userDashboard.proceedToCheckoutButton);
     }
-}
+
     }
 
 
