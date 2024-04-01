@@ -140,6 +140,18 @@ public WebElement continueToShippingButton;
     public WebElement labelTotalPrice;
 
 
+   //---- SUPPORT TICKET AYCA--------//
+
+   @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+   public WebElement linkSupportTicket;
+
+   @FindBy (xpath = "//tr/th")
+    public WebElement labelTicketTitle;
+
+
+
+
+
     //=========Notifications links ve buttons=======================
      @FindBy(xpath = "(//a[@class='position-relative d-flex align-items-center'])[11]")
       public WebElement buttonNotification;
@@ -162,6 +174,10 @@ public WebElement continueToShippingButton;
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
+
+
+
+
 
 
 

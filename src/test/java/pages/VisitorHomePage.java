@@ -147,13 +147,7 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "//*[@id='back-top']")
     public WebElement goTopButton;
 
-    //------US_26 User Dashboar Support Ticket Locate AYCA--------//
 
-    @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
-    public WebElement linkDashboardSupportTicket;
-
-
-    //===============================AYCA=====================//
 
 
     @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")

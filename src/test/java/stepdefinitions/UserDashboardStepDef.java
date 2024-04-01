@@ -370,6 +370,52 @@ public class UserDashboardStepDef extends Base {
 
     //=================STEPS ESRA SONU========================================
 
+    //----------------AYCA Support Ticket-----------------------//
+
+    @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
+    public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
+
+        scrollIntoViewJS(userDashboard.linkSupportTicket);
+        Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
+
+
+
+    }
+    @Given("Verify that the navigate to Support Ticket Page.")
+    public void verify_that_the_navigate_to_support_ticket_page() {
+
+
+
+
+
+    }
+
+    @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String string) {
+
+
+
+
+    }
+
+
+    @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")
+    public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu_and_verify_that_the_navigate_to_support_ticket_page() {
+
+
+
+    }
+    @Given("Click on the ticket {string} button")
+    public void click_on_the_ticket_button(String string) {
+
+
+
+
+    }
+    @Given("Verify that Status, Priority, Category  text is displayed")
+    public void verify_that_status_priority_category_text_is_displayed() {
+
+
 
 
 
@@ -388,6 +434,10 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.orderNowButton);
     }
 }
+
+
+
+ }
 
 
 
