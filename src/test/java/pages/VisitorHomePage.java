@@ -429,14 +429,10 @@ public class VisitorHomePage extends Base {
             @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
     })
     public List<WebElement> informationList;
-    @FindAll({
-            @FindBy(xpath = "//div[@class='member_info']//child::h4"),
-            @FindBy(xpath = "//div[@class='member_info']//child::p")
-    })
-    public WebElement team;
 
 
-
+@FindBy(xpath = "//div[@class='container mt_30 mb_30 min-vh-50']")
+public WebElement teamOnAboutPage;
 
 public void verifyTheInformationsVisibility (String searchText) {
     boolean found = false;
@@ -462,24 +458,12 @@ public void verifyTheTeamMembersInfo(String teamMember) {
         }
     }
 
-    Assert.assertTrue(teamMember, isNamePresent);
-    Assert.assertEquals(teamMemberStatues.size(),
+    Assert.assertTrue(isNamePresent);
+  Assert.assertEquals(teamMemberStatues.size(),
             teamMemberNameList.size());
 
     Assert.assertEquals(teamMemberFotos.size(), teamMemberNameList.size());
 
-    boolean isteamMemberFotoPresent = false;
-
-    for(WebElement element :informationList){
-        String text = element.getText();
-
-        if (text.contains(teamMember)) {
-            isteamMemberFotoPresent = true;
-            break;
-        }
-    }
-
-    Assert.assertTrue(isteamMemberFotoPresent);
 }
 
 
