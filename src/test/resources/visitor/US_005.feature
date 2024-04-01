@@ -31,12 +31,37 @@ Feature: As a user, I would like to be able to log in with the email and passwor
   * Click on the "Sign Up"
   * Verify that navigated to the Register page
   * Close the page
-
-  @ayca
+  @login
   Scenario: LOGIN Valid email and valid password are entered and the Sign In button is clicked, the system should log in
 
   * Click on the login link, Enter "aycaCustomerEmail" and "password" and click sign in
   * Close the page
+
+  Scenario: Valid PHONE NUMBER and password are entered and the Sign In button is clicked, the system should log in
+
+    * Click on the login link, Enter "aycaCustomerPhone" and "password" and click sign in
+    * Close the page
+
+  Scenario: valid mail, invalid password are entered into the login form and error messages should be displayed
+
+    * Click on the login link, Enter "aycaCustomerEmail" and "invalidPassword" and click sign in
+    * Close the page
+
+  Scenario: invalid mail, valid password are entered into the login form and error messages should be displayed
+
+    * Click on the login link, Enter "invalidCustomerEmail" and "password" and click sign in
+    * Close the page
+
+  Scenario: valid phone number and invalid password are entered and the Sign In button is clicked, the system should log in
+
+    * Click on the login link, Enter "aycaCustomerPhone" and "invalidPassword" and click sign in
+    * Close the page
+
+  Scenario: invalid phone number and valid password are entered and the Sign In button is clicked, the system should log in
+
+    * Click on the login link, Enter "invalidPhoneNumber" and "password" and click sign in
+    * Close the page
+
 
 
 
