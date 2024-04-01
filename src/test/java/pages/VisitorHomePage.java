@@ -441,7 +441,7 @@ public class VisitorHomePage extends Base{
     @FindBy(id = "last_name")
     public WebElement textBoxLastName;
     @FindBy(id = "email")
-    public WebElement textBoxEmail;
+    public WebElement textRegisterBoxEmail;
     @FindBy(id = "password-confirm")
     public WebElement textBoxPasswordConfirm;
     @FindBy(id = "sign_in_btn")
