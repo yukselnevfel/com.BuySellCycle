@@ -417,7 +417,7 @@ public class UserDashboardStepDef extends Base {
 
 
 
-
+    }
 
     @When("I submit on the Continue to shipping button")
     public void iSubmitOnTheContinueToShippingButton() {
@@ -433,7 +433,7 @@ public class UserDashboardStepDef extends Base {
     public void clickOnTheOrderNowButtonlink() {
         waitAndClick(userDashboard.orderNowButton);
     }
-}
+
 
 
 
