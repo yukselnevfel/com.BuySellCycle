@@ -192,7 +192,7 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.paymentTypeText.getText().contains("No Gateway"));
     }
 
-}
+
 
     @Given("Verify that page url is {string}")
     public void verify_that_page_url_is(String url) {
