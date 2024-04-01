@@ -407,6 +407,10 @@ public class VisitorHomePage extends Base {
 
 
 
+
+
+
+
     //Site ust barinda kolay linkler
 
     //TC02 Site ust barinda kolay linkler ve gidilen yerler
@@ -422,6 +426,13 @@ public class VisitorHomePage extends Base {
 
     @FindBy(id = "guest_id")
     public WebElement textBoxSecretID;
+
+    @FindBy(xpath = "(//*[@class='d-flex align-items-center flex-wrap gap_5'])[3]")
+    public WebElement labelOrderStatusText;
+
+
+
+
 
     //  Homepage>> Headerlink>> AboutUs- Asli||
 
