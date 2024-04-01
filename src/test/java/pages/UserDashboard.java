@@ -1,13 +1,10 @@
 package pages;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 import java.util.List;
 
@@ -31,9 +28,11 @@ public class UserDashboard extends Base{
         }
 
     }
+@FindBy(xpath = "//button[text()='Continue To Shipping']")
+public WebElement continueToShippingButton;
 
-    @FindBy(xpath = "//button[text()='Continue To Shipping']")
-    public WebElement ContinueToShippingButton;
+    @FindBy(xpath = "(//*[text()='Cart ('])[1]")
+    public WebElement cartLinkOnTheTop;
 
     @FindAll({
             @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
@@ -57,6 +56,13 @@ public class UserDashboard extends Base{
         Assert.assertTrue(found);
     }
 
+    @FindBys({
+            @FindBy(xpath = "//*[@class='accordion-item']")
+    })
+    public List<WebElement> radioButtonListOnSelectPaymentPage;
+
+    @FindBy (xpath = "//*[text()='Order Now']")
+    public WebElement orderNowButton;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;

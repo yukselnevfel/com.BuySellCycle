@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Base;
+import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
@@ -75,7 +76,8 @@ public class UserDashboardStepDef extends Base {
     }
 
     @Then("I should see the message {string}")
-    public void iShouldSeeTheMessage(String arg0) {
+    public void iShouldSeeTheMessage(String message) {
+
     }
 
     @And("the Order Number should be displayed")
@@ -98,8 +100,10 @@ public class UserDashboardStepDef extends Base {
     public void theSiteShouldReturnToTheHomePage() {
     }
 
-    @Then("I should be able to modify the displayed {string}")
-    public void iShouldBeAbleToModifyTheDisplayed(String arg0) {
+
+    @When("I click on the {string} button")
+    public void iClickOnTheButton(String arg0) {
+
     }
 
     //Asli
@@ -307,6 +311,16 @@ public class UserDashboardStepDef extends Base {
     }
 
 
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
+    }
     //===============STEPS ESRA BASLADI=========================================
 
     @Given("Scroll down to the bottom of the dashboard page")
@@ -404,7 +418,22 @@ public class UserDashboardStepDef extends Base {
 
 
 
+
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
     }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
+
+    @When("Click on the Order Now buttonlink")
+    public void clickOnTheOrderNowButtonlink() {
+        waitAndClick(userDashboard.orderNowButton);
+    }
+}
 
 
 

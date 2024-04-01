@@ -176,6 +176,20 @@ public abstract class Base {
         }
     }
 
+    public void verifySelectableItems(List<WebElement> list, String selectItem){
+        boolean found=false;
+        for (WebElement element : list) {
+            String text = element.getText();
+
+            if (text.contains(selectItem)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
+    }
+
     /**
      * Selects a random value from a dropdown list and returns the selected Web Element
      *  Açılır listeden rastgele bir değer seçer ve seçilen Web Öğesini döndürür
@@ -304,6 +318,19 @@ public abstract class Base {
         }
     }
 
+    public static void waitAndSubmit (WebElement element){
+        for (int i = 0; i < timeout; i++) {
+            try {
+                element.click();
+                return;
+            } catch (WebDriverException e) {
+                wait(1);
+            }
+        }
+
+
+    }
+
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -430,7 +457,10 @@ public abstract class Base {
     public static void checkTheTitle (String title){
 
         String actualText = Driver.getDriver().getTitle();
+        System.out.println(actualText);
         assertTrue(actualText.contains(title));
 
     }
+
+
 }

@@ -1,18 +1,12 @@
 package stepdefinitions;
-import com.sun.source.tree.AssertTree;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.JavascriptExecutor;
+
 import pages.Base;
-import pages.VisitorHomePage;
 import utils.Driver;
 import utils.ConfigReader;
 
@@ -488,7 +482,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the {string} button")
     public void click_on_the_button(String string) {
-    }
+      }
 
     @Given("New User Zone should be displayed on the home page navBar and the page should be accessed")
     public void new_user_zone_should_be_displayed_on_the_home_page_nav_bar_and_the_page_should_be_accessed() {
@@ -852,11 +846,7 @@ public class VisitorHomePageStepDef extends Base {
     public void i_should_click_on_the_on_the_header(String headerMenuElement) {
         clickHeaderElementLink(headerMenuElement);
     }
-    @Then("I should be directed to the {string} page")
-    public void i_should_be_directed_to_the_page(String pageName) {
-        waitForPageToLoad(2);
-        checkTheTitle(pageName);
-    }
+
     @Then("I should see the character, status, and picture of {string}")
     public void i_should_see_the_character_status_and_picture_of(String teamMember) {
         visitorHomePage.verifyTheTeamMembersInfo(teamMember);
@@ -868,7 +858,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("I am on the {string} Page")
     public void iAmOnThePage(String page) {
-
+        waitForPageToLoad(2);
         checkTheTitle(page);
     }
 
