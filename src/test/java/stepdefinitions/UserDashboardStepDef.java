@@ -4,6 +4,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.Base;
 import utils.ConfigReader;
 import utils.Driver;
@@ -29,6 +33,77 @@ public class UserDashboardStepDef extends Base {
     public void verify_that_the_my_wishlist_menu_is_visible() {
         assertTrue(userDashboard.myWishListMenu.isDisplayed());
     }
+    //Asli
+
+    @Then("I should be able to modify the displayed information")
+    public void iShouldBeAbleToModifyTheDisplayedInformation() {
+
+    }
+
+    @When("I should see relevant {string} about the Payment Page")
+    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
+        userDashboard.verifyTheInformationsVisibility(information);
+    }
+
+    @When("I navigate to the Payment and Billing address section")
+    public void iNavigateToThePaymentAndBillingAddressSection() {
+
+    }
+
+    @Then("I should be able to select different address types")
+    public void iShouldBeAbleToSelectDifferentAddressTypes() {
+    }
+
+    @Then("I should see the Order Summary information displayed correctly")
+    public void iShouldSeeTheOrderSummaryInformationDisplayedCorrectly() {
+    }
+
+    @When("I apply coupons")
+    public void iApplyCoupons() {
+    }
+
+    @Then("they should be redeemable")
+    public void theyShouldBeRedeemable() {
+    }
+
+    @Then("I should be redirected to the order completion page immediately")
+    public void iShouldBeRedirectedToTheOrderCompletionPageImmediately() {
+    }
+
+    @Given("I have completed the order")
+    public void iHaveCompletedTheOrder() {
+    }
+
+    @Then("I should see the message {string}")
+    public void iShouldSeeTheMessage(String arg0) {
+    }
+
+    @And("the Order Number should be displayed")
+    public void theOrderNumberShouldBeDisplayed() {
+    }
+
+    @And("the Order summary \\(items purchased) should be displayed")
+    public void theOrderSummaryItemsPurchasedShouldBeDisplayed() {
+    }
+
+    @And("I should have access to the my-purchase-order-details page")
+    public void iShouldHaveAccessToTheMyPurchaseOrderDetailsPage() {
+    }
+
+    @When("I finish the transaction")
+    public void iFinishTheTransaction() {
+    }
+
+    @Then("the site should return to the home page")
+    public void theSiteShouldReturnToTheHomePage() {
+    }
+
+    @Then("I should be able to modify the displayed {string}")
+    public void iShouldBeAbleToModifyTheDisplayed(String arg0) {
+    }
+
+    //Asli
+
 
     @Given("Click on My Wishlist")
     public void click_on_my_wishlist() {
@@ -114,10 +189,17 @@ public class UserDashboardStepDef extends Base {
     public void add_a_product_to_the_compare_list_and_verify_that_it_has_been_added() {
      actions.moveToElement(userDashboard.comparePruduct).perform();
         userDashboard.comparePruduct.click();
+        wait(1);
         userDashboard.addToCompare.click();
+        wait(2);
+        String count = userDashboard.compareCount.getText().replaceAll("//D","");
+        int countCompare = Integer.parseInt(count);
+        System.out.println("countCompare = " + countCompare);
+        assertTrue(countCompare>0);
     }
     @Given("Click the Quick View button and verify that the product information is displayed")
     public void click_the_quick_view_button_and_verify_that_the_product_information_is_displayed() {
+
 
     }
     @Given("Click the Add To Cart button and confirm that the product has been added to the cart")

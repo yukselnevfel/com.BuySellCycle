@@ -1,6 +1,12 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -25,6 +31,33 @@ public class UserDashboard extends Base{
         }
 
     }
+
+    @FindBy(xpath = "//button[text()='Continue To Shipping']")
+    public WebElement ContinueToShippingButton;
+
+    @FindAll({
+            @FindBy(xpath = "//div[@class='single_shipingV3_info d-flex align-items-start']")
+    })
+    public List<WebElement> informationList;
+
+
+    public void verifyTheInformationsVisibility (String searchText) {
+
+        boolean found = false;
+
+        for (WebElement element : informationList) {
+            String text = element.getText();
+
+            if (text.contains(searchText)) {
+                found = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(found);
+    }
+
+
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
     @FindBy(xpath = "//*[@id='password']") public WebElement loginPassword;
@@ -42,17 +75,12 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[2]/div/div[3]/div/p/strong") public WebElement pruduct2;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[3]/div/div[3]/div/p/strong") public WebElement pruduct3;
     @FindBy(xpath = "//i[@title=\"Compare\"]") public WebElement comparePruduct;
-    @FindBy(xpath = "id=\"add_to_compare_btn\"") public WebElement addToCompare;
+    @FindBy(id = "add_to_compare_btn") public WebElement addToCompare;
+    @FindBy(xpath = "//*[@class=\"compare_count\"]") public WebElement compareCount;
 
 
 
 
-
-
-
-
-
-    //
     //Dashboard link and user detail informations
     @FindBy(xpath = "(//*[text()='Dashboard'])[1]")
     public WebElement linkHeaderDashboard;
@@ -78,6 +106,7 @@ public class UserDashboard extends Base{
 
    @FindBy(xpath = "(//*[@class='col-lg-6 '])[2]")
    public WebElement columnMyWishlist;
+
 
    @FindBy(xpath = "(//*[@class='col-lg-6 '])[3]")
    public WebElement columnRecentOrder;
@@ -109,6 +138,7 @@ public class UserDashboard extends Base{
      @FindBy(xpath = "(//a[@class='position-relative d-flex align-items-center'])[11]")
       public WebElement buttonNotification;
 
+
      @FindBy(xpath = "(//span[@class='font_14 f_w_500 mute_text'])[2]")
       public WebElement textNotification;
 
@@ -126,6 +156,7 @@ public class UserDashboard extends Base{
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
+
 
 
 

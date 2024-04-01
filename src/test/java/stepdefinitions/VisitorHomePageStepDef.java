@@ -837,7 +837,7 @@ public class VisitorHomePageStepDef extends Base {
 
     //------------- Steps SAMET -----------------/
 
-    @Given("Verify title is {string}")
+    @Given("Verify that title is {string}")
     public void verify_that_title(String title) {
         String expectedTitle = title;
         String actualTitle = Driver.getDriver().getTitle();
@@ -862,6 +862,9 @@ public class VisitorHomePageStepDef extends Base {
         visitorHomePage.verifyTheTeamMembersInfo(teamMember);
 
     }
+    @When("I should see relevant {string} about the site")
+    public void iShouldSeeRelevantAboutTheSite(String section) {
+    }
 
     @Given("I am on the {string} Page")
     public void iAmOnThePage(String page) {
@@ -869,18 +872,7 @@ public class VisitorHomePageStepDef extends Base {
         checkTheTitle(page);
     }
 
-    @When("I should see relevant {string} about the site")
-    public void iShouldSeeRelevantAboutTheSite(String section) {
-    }
 
-    @Then("I should be able to modify the displayed information")
-    public void iShouldBeAbleToModifyTheDisplayedInformation() {
-    }
-
-    @When("I should see relevant {string} about the Payment Page")
-    public void iShouldSeeRelevantAboutThePaymentPage(String information) {
-        visitorHomePage.verifyTheInformationsVisibility(information);
-    }
 
 
     //---------------- Steps Asli----------------------/
