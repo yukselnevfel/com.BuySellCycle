@@ -383,6 +383,39 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "//a[text()='Mobile Phone']")
     public WebElement textMobilePhone;
 
+    @FindBy(xpath = "//a[text()='Woman Dress']")
+    public WebElement textWomanDress;
+
+
+    @FindBy(xpath = "//a[text()='Baby cradle']")
+    public WebElement textBabyCradle;
+
+    @FindBy(xpath = "//a[text()='Living Room']")
+    public WebElement textLivingRoom;
+
+    @FindBy(xpath = "//a[text()='Sportswear-Sneakers']")
+    public WebElement textSportswear;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[6]/ul/li[1]/ul/li[1]/a")
+    public WebElement womansBag;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[7]/ul/li[1]/ul/li[1]/a")
+    public WebElement eyeMakeup;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[8]/ul/li[1]/ul/li[1]/a")
+    public WebElement examPreparationBooks;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[9]/ul/li[1]/ul/li[1]/a")
+    public WebElement puzzle;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[10]/ul/li[1]/ul/li[1]/a")
+    public WebElement washing;
+
+    @FindBy(xpath = " //*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[11]/ul/li[1]/ul/li[1]/a")
+    public WebElement powerTools;
+
+
+
 
     //Site ust barinda kolay linkler
 

@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -52,7 +53,6 @@ public class UserDashboardStepDef extends Base {
 
     @Then("I should be able to select different address types")
     public void iShouldBeAbleToSelectDifferentAddressTypes() {
-
     }
 
     @Then("I should see the Order Summary information displayed correctly")
@@ -320,6 +320,56 @@ public class UserDashboardStepDef extends Base {
     public void iAmOnTheCheckoutPage() {
         waitForPageToLoad(2);
     }
+    //===============STEPS ESRA BASLADI=========================================
+
+    @Given("Scroll down to the bottom of the dashboard page")
+    public void scroll_down_to_the_bottom_of_the_dashboard_page() {
+       scrollIntoViewJS(userDashboard.buttonNotification);
+    }
+    @Given("Clicks on the Notification link and goes to the relevant page")
+    public void clicks_on_the_notification_link_and_goes_to_the_relevant_page() {
+       clickWithJS(userDashboard.buttonNotification);
+       String expectedURL="https://qa.buysellcycle.com/profile/notifications";
+       String actualURL=Driver.getDriver().getCurrentUrl();
+       assertEquals(expectedURL,actualURL);
+    }
+
+    @When("Displays Title and Date information of incoming notifications")
+    public void displaysTitleAndDateInformationOfIncomingNotifications() {
+        assertTrue(userDashboard.textNotification.isDisplayed());
+        assertTrue(userDashboard.dateNotification.isDisplayed());
+    }
+
+    @When("Clicks on the View button and goes to the relevant page")
+    public void clicksOnTheViewButtonAndGoesToTheRelevantPage() {
+        clickWithJS(userDashboard.buttonView);
+        assertTrue(userDashboard.textOrderId.isDisplayed());
+    }
+
+    @Given("Return to notifications page")
+    public void return_to_notifications_page() {
+        Driver.getDriver().navigate().back();
+    }
+    @Given("Click on the Setting button and reach the relevant page")
+    public void click_on_the_button_and_reach_the_relevant_page() {
+       clickWithJS(userDashboard.buttonSetting);
+       String expectedURL="https://qa.buysellcycle.com/profile/notification_setting";
+       String actualURL=Driver.getDriver().getCurrentUrl();
+       assertEquals(expectedURL,actualURL);
+
+    }
+    @Given("Updates the Types of Events in the Setting list")
+    public void updates_the_types_of_events_in_the_setting_list() {
+        clickWithJS(userDashboard.buttonEventType);
+        wait(3);
+        String expectedMessage="Updated successfully!";
+        String actualMessage=visitorHomePage.successfullAllert.getText();
+        assertEquals(expectedMessage,actualMessage);
+    }
+
+    //=================STEPS ESRA SONU========================================
+
+
 
 
     @When("I submit on the Continue to shipping button")
@@ -332,6 +382,7 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.proceedToCheckoutButton);
     }
 }
+    }
 
 
 
