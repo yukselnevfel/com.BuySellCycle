@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,6 +16,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Locale;
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 public class VisitorHomePageStepDef extends Base {
 
@@ -385,6 +391,160 @@ public class VisitorHomePageStepDef extends Base {
      //-------------Login Steps FIKRET-----------------/
 
 
+    @Given("the user verifies that the Register button link is visible on the home page")
+    public void the_user_verifies_that_the_register_button_link_is_visible_on_the_home_page() {
+        assertTrue(visitorHomePage.linkRegister.isDisplayed());
+    }
+
+    @Given("the user verifies that the Register button link is active on the home page")
+    public void the_user_verifies_that_the_register_button_link_is_active_on_the_home_page() {
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        assertTrue(visitorHomePage.linkRegister.isEnabled());
+    }
+
+    @Given("the user clicks the Register button link on the home page")
+    public void the_user_clicks_the_register_button_link_on_the_home_page() {
+        clickWithJS(visitorHomePage.linkRegister);
+    }
+
+    @Given("the user verifies the image and text in the right section")
+    public void the_user_verifies_the_image_and_text_in_the_right_section() {
+        assertTrue(visitorHomePage.labelPictureText.isDisplayed());
+        assertTrue(visitorHomePage.picturePNG.isDisplayed());
+    }
+
+    @Given("the user validates the signUp form in the left section")
+    public void the_user_validates_the_sign_up_form_in_the_left_section() {
+        assertTrue(visitorHomePage.tableRegisterForm.isDisplayed());
+    }
+
+    @Given("the user verifies that the SignUp button is visible and active")
+    public void the_user_verifies_that_the_sign_up_button_is_visible_and_active() {
+        assertTrue(visitorHomePage.signUpButton.isDisplayed());
+        assertTrue(visitorHomePage.signUpButton.isEnabled());
+    }
+
+    @Given("the user leaves all fields blank in the SignUp form and clicks the SignUp button")
+    public void the_user_leaves_all_fields_blank_in_the_sign_up_form() {
+        clickWithJS(visitorHomePage.signUpButton);
+    }
+
+    @Given("the user confirmed that registration failed")
+    public void the_user_clicks_the_sign_up_button() {
+        assertEquals(visitorHomePage.labelSignUpText.getText(), "Sign Up");
+    }
+
+    @Given("the user Terms of Service and Privacy Policy checkbox radioBotton click")
+    public void the_user_terms_of_service_and_privacy_policy_checkbox_radio_botton_click() {
+        clickWithJS(visitorHomePage.signUpRadyoButton);
+    }
+
+    @Given("the user clicks SignUp button link")
+    public void the_user_clicks_sign_up_button_link() {
+        clickWithJS(visitorHomePage.signUpButton);
+    }
+
+
+    @Given("the user enters a number in a valid telephone format")
+    public void the_user_enters_a_number_in_a_valid_telephone_format() {
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomPhoneNumber());
+    }
+
+    @Given("It is confirmed that registration valid phone format")
+    public void it_is_confirmed_that_registration_valid_phone_format() {
+        assertFalse(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @Given("the user enters a valid email address")
+    public void the_user_enters_a_valid_email_address() {
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomEmail());
+    }
+
+    @Given("It is confirmed that registration valid email format")
+    public void it_is_confirmed_that_registration_valid_email_format() {
+        assertFalse(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @Given("the user enters a valid password {string} that meets criteria")
+    public void the_user_enters_a_valid_password_that_meets_criteria(String password) {
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+    }
+
+    @Given("the user confirms that it does not receive error message")
+    public void the_user_confirms_that_it_does_not_receive_error_message() {
+        assertFalse(visitorHomePage.labelPasswordError.isDisplayed());
+    }
+
+    @Given("the user clicks the SignIn buttonLink")
+    public void the_user_clicks_the_sign_in_button_link() {
+        clickWithJS(visitorHomePage.linkSignIn);
+    }
+
+    @Given("the user verifies that it is possible to navigate to the SignIn page")
+    public void the_user_verifies_that_it_is_possible_to_navigate_to_the_sign_in_page() {
+        assertTrue(visitorHomePage.labelSignInText.isDisplayed());
+    }
+
+
+    @Given("the user enters an invalid {string} email")
+    public void the_user_enters_an_invalid_email(String email) {
+        visitorHomePage.textBoxEmail.sendKeys(email);
+    }
+
+    @Given("It is confirmed that registration failed due to invalid email format")
+    public void it_is_confirmed_that_registration_failed_due_to_invalid_email_format() {
+        assertTrue(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+
+    @Given("the user enters a password {string} that does not meet criteria")
+    public void the_user_enters_a_password_that_does_not_meet_criteria(String password) {
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+    }
+
+    @Given("It is confirmed that registration failed due to weak password")
+    public void it_is_confirmed_that_registration_failed_due_to_weak_password() {
+        assertTrue(visitorHomePage.labelPasswordError.isDisplayed());
+    }
+
+    @Given("the user enters a number in an invalid phone format {string}")
+    public void the_user_enters_a_number_in_an_invalid_phone_format(String phone) {
+        visitorHomePage.textBoxEmail.sendKeys(phone);
+    }
+
+    @Given("It is confirmed that registration failed due to invalid phone format")
+    public void it_is_confirmed_that_registration_failed_due_to_invalid_phone_format() {
+        assertTrue(visitorHomePage.labelEmailandPhoneError.isDisplayed());
+    }
+
+    @When("the user selects the Terms of Service and Privacy Policy checkbox")
+    public void the_user_selects_the_terms_of_service_and_privacy_policy_checkbox() {
+        clickWithJS(visitorHomePage.signUpRadyoButton);
+    }
+
+    @Given("the user confirmed that registration failed checkButton")
+    public void the_user_confirmed_that_registration_failed_check_button() {
+        assertTrue(visitorHomePage.radyoButtonError.isDisplayed());
+    }
+
+
+    @Given("the user enters {string} {string} {string}")
+    public void the_user_enters(String firstname, String lastname, String password) {
+        visitorHomePage.textBoxFirstName.sendKeys(firstname);
+        visitorHomePage.textBoxLastName.sendKeys(lastname);
+        visitorHomePage.textBoxEmail.sendKeys(visitorHomePage.generateRandomEmail());
+        visitorHomePage.textBoxUserPassword.sendKeys(password);
+        visitorHomePage.textBoxPasswordConfirm.sendKeys(password);
+
+    }
+
+    @Then("the user should be successfully registered and redirected to the sign-in page")
+    public void the_user_should_be_successfully_registered_and_redirected_to_the_sign_in_page() {
+        assertTrue(visitorHomePage.loginButton.isDisplayed());
+    }
+
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
         Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
@@ -445,14 +605,14 @@ public class VisitorHomePageStepDef extends Base {
 
     @When("Select a keyword from the Keyword section")
     public void select_a_keyword_from_the_keyword_section() {
-        visitorHomePage.blogKeyword.sendKeys("shopping");
+        clickWithJS(visitorHomePage.labelShoppingText);
     }
 
     @Then("Verify that relevant blogs are listed based on the selected keyword")
     public void verify_that_relevant_blogs_are_listed_based_on_the_selected_keyword() {
-        String actualTagName = visitorHomePage.blogKeyword.getTagName();
-        String expectedTagName = "shopping";
-        assert actualTagName.equals(expectedTagName) : "Something went wrong";
+
+        clickWithJS(visitorHomePage.linkReadMore);
+        assertTrue(visitorHomePage.labelTagShoppingText.isDisplayed());
     }
 
     @When("Select a category from the Popular Posts section")
