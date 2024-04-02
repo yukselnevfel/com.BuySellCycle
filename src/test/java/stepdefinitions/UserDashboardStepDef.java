@@ -238,6 +238,38 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
+    }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
+
+    @When("Click on the {string} buttonlink")
+    public void clickOnTheButtonlink(String payMethod) {
+        userDashboard.orderPayButton(payMethod);
+    }
+
+    @And("I should be able to select the Snipe Payment Method")
+    public void iShouldBeAbleToSelectTheSnipePaymentMethod() {
+        waitAndClick(userDashboard.stripePayment);
+    }
+
+
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
+    }
+
     //Asli
 
 
@@ -679,19 +711,6 @@ public class UserDashboardStepDef extends Base {
     }
 
 
-
-
-
-    @Then("Click on the {string} link on the top")
-    public void clickOnTheLinkOnTheTop(String arg0) {
-        clickWithJS(userDashboard.cartLinkOnTheTop);
-        wait(2);
-    }
-
-    @Given("I am on the \\{Checkout} Page")
-    public void iAmOnTheCheckoutPage() {
-        waitForPageToLoad(2);
-    }
     //===============STEPS ESRA BASLADI=========================================
 
     @Given("Scroll down to the bottom of the dashboard page")
@@ -809,25 +828,43 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-    @When("I submit on the Continue to shipping button")
-    public void iSubmitOnTheContinueToShippingButton() {
-        waitAndClick(userDashboard.continueToShippingButton);
+
+    @When("Click on the Pay Now buttonlink")
+    public void clickOnThePayNowButtonlink() {
+        scrollIntoViewJS(userDashboard.payNowButton);
+        waitAndClick(userDashboard.payNowButton);
     }
 
-    @Then("Click on the Proceed to Checkout buttonlink")
-    public void clickOnTheProceedToCheckoutButtonlink() {
-        waitAndClick(userDashboard.proceedToCheckoutButton);
+    @And("I should be able to click on email box on Stripe Payment")
+    public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
+        waitAndClick(userDashboard.emailStripePayment);
+    }
+
+    @And("I should be able to enter {string} on the email box")
+    public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
+        waitAndSendText(userDashboard.emailStripePayment, email);
+    }
+
+    @When("I should be able to enter {string} on the card number box")
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
+
+    }
+
+    @When("I should be able to enter {string} on the exp box")
+    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
+
+    }
+
+    @Then("I should be able to enter {string} on the cvc box")
+    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
     }
 
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
+        scrollIntoViewJS(userDashboard.orderNowButton);
         waitAndClick(userDashboard.orderNowButton);
     }
-
-
-
-
- }
+}
 
 
 

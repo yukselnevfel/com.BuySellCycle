@@ -1498,7 +1498,15 @@ public class VisitorHomePageStepDef extends Base {
 
     }
 
+    @Then("I should be directed to the {string} page")
+    public void iShouldBeDirectedToThePage(String page) {
+        waitForPageToLoad(3);
+        checkTheTitle(page);
+    }
 
+    @Then("I should see each section contains a numeric value representing the relevant metric")
+    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    }
 
 
 // ====================== End Of Beytullah's Steps End =====================
