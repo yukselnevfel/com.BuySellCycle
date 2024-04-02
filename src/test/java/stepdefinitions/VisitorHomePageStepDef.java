@@ -130,7 +130,7 @@ public class VisitorHomePageStepDef extends Base {
 
     // AYCA SLIDER IMAGES CHECK  //
 
-    @Given("Verify that slider image, second navigation button and third navigation button is visible")
+    @Given("Verify that slider image and slider navigation buttons are visible")
     public void verify_that_and_is_visible() {
 
         wait(5);
@@ -138,39 +138,31 @@ public class VisitorHomePageStepDef extends Base {
             visitorHomePage.cookieAllert.click();
         }
         Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
-        Assert.assertTrue(visitorHomePage.firstSlideNavigatorButton.isDisplayed());
-        Assert.assertTrue(visitorHomePage.secondSlideNavigatorButton.isDisplayed());
-        Assert.assertTrue(visitorHomePage.thirdSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.navigationButtons.isDisplayed());
+
 
     }
     @Given("Click on the navigation button and Verify that image is visible")
     public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
 
-        wait(5);
-        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
-            visitorHomePage.cookieAllert.click();
-        }
-        visitorHomePage.secondSlideNavigatorButton.click();
+        wait(2);
+        waitAndClick(visitorHomePage.secondSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        visitorHomePage.thirdSlideNavigatorButton.click();
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        visitorHomePage.firstSlideNavigatorButton.click();
-        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        waitAndClick(visitorHomePage.firstSlideNavigatorButton);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
 
     }
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-
-        wait(5);
-        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
-            visitorHomePage.cookieAllert.click();
-        }
-        wait(3);
+        wait(6);
         Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        wait(5);
-        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        wait(5);
+        wait(6);
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
+        wait(6);
         Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
 
     }
@@ -179,7 +171,32 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the slider images in order and Verifying that navigate to the image Page")
     public void click_on_the_slider_images_in_order_and_verifying_that_navigate_to_the_image_page() {
 
-        visitorHomePage.imageFirstSlider.click();
+        clickWithJS(visitorHomePage.imageFirstSlider);
+        ArrayList<String> tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        String expectedUrl = "https://qa.buysellcycle.com/category/fashion?item=category";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+
+        clickWithJS(visitorHomePage.secondSlideNavigatorButton);
+        clickWithJS(visitorHomePage.imageSecondSlider);
+        tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        expectedUrl = "https://qa.buysellcycle.com/category/sport-outdoor?item=category";
+        actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+
+        clickWithJS(visitorHomePage.thirdSlideNavigatorButton);
+        clickWithJS(visitorHomePage.imageThirdSlider);
+        tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        expectedUrl = "https://qa.buysellcycle.com/category/electronics?item=category";
+        actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+        wait(2);
 
 
     }
@@ -667,10 +684,12 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Verify that Order Tracking Number is clickable")
     public void verify_that_order_tracking_number_is_clickable() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+        wait(2);
     }
 
     @Given("Verify that Track Now button is visible")
     public void verify_that_track_now_button_is_visible() {
+        wait(1);
 
        assertTrue( visitorHomePage.trackNowButton.isDisplayed());
     }
@@ -693,6 +712,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the Track Now")
     public void click_on_the_track_now() {
         clickWithJS(visitorHomePage.trackNowButton);
+        wait(2);
 
     }
     @Given("Show warning message on the page")
@@ -703,6 +723,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Enter a valid {string} password in the Order Tracking Number field")
     public void enter_a_valid_password_in_the_order_tracking_number_field(String validpass) {
         visitorHomePage.textBoxOrderTrackingNumber.sendKeys(validpass);
+        wait(2);
     }
     @Given("Displays current status of the order")
     public void displays_current_status_of_the_order() {
@@ -959,6 +980,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the Please Login First warning is visible")
     public void verify_that_the_please_login_first_warning_is_visible() {
+        wait(3);
         String expectedMessage="Please login first";
         String actualMessage=visitorHomePage.successfullAllert.getText();
         Assert.assertEquals(expectedMessage,actualMessage);
@@ -1230,6 +1252,7 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     public void click_on_the_cart_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
         clickWithJS(visitorHomePage.linkTextCart);
         assertTrue(visitorHomePage.titleOrderSummary.isDisplayed());
+        wait(2);
     }
 
     @Given("Click on the New User Zone link on the top bar of the site and you will be redirected to the relevant page")
@@ -1449,6 +1472,53 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
         String actualUrl=Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,actualUrl);
     }
+        //US_014 STEPS
+    @Given("Click the View All button next to the Best Deals menu item and navigates to the relevant page")
+    public void click_the_view_all_button_next_to_the_best_deals_menu_item_and_navigates_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.buttonViewAll);
+        String expectedURL="https://qa.buysellcycle.com/category/best_deals?item=product";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+    @Given("Displays the products in the Best Deals menu")
+    public void displays_the_products_in_the_best_deals_menu() {
+        assertTrue(visitorHomePage.imageBag.isDisplayed());
+        assertTrue(visitorHomePage.image.isDisplayed());
+        assertTrue(visitorHomePage.imageChicco.isDisplayed());
+    }
+
+    @Given("Add products from the Best Deals menu on the home page body to the cart")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddToCart);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonClose);
+
+    }
+    @Given("Select products in the Best Deals menu in the body section of the home page for comparison")
+    public void select_products_in_the_best_deals_menu_in_the_body_section_of_the_home_page_for_comparison() {
+        //assertTrue(visitorHomePage.imageBag.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageBag).perform();
+        wait(2);
+        assertTrue(visitorHomePage.buttonCompare.isDisplayed());
+
+    }
+    @When("Verify that the product added to compare list successfully is visible")
+    public void verifyThatTheProductAddedToCompareListSuccussfullyIsVisible() {
+        wait(3);
+        String expectedMessage="Product added to compare list successfully";
+        String actualMessage=visitorHomePage.successfullAllert.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
+    }
+
+
+    @Given("Add products from the Best Deals menu on the home page body to the favorites list")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_favorites_list_and_displays() {
+        clickWithJS(visitorHomePage.buttonWishList);
+    }
+
+
+
 
 
 
@@ -1547,8 +1617,28 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     public void user_verifies_that_sorting_ddm_works() {
 
     }
+    @Given("User verifies that the Counter is visible")
+    public void user_verifies_that_the_counter_is_visible() {
+        Assert.assertTrue(visitorHomePage.labelcounter.isDisplayed());
+    }
+    @Given("User verifies that First product is visible")
+    public void user_verifies_that_first_product_is_visible() {
+        Assert.assertTrue(visitorHomePage.linkFirstProduct.isDisplayed());
+    }
+    @Given("Verify that referral code is visible")
+    public void verify_that_referral_code_is_visible() {
+        Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
+    }
 
+    @Then("I should be directed to the {string} page")
+    public void iShouldBeDirectedToThePage(String page) {
+        waitForPageToLoad(3);
+        checkTheTitle(page);
+    }
 
+    @Then("I should see each section contains a numeric value representing the relevant metric")
+    public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
+    }
 
 
 // ====================== End Of Beytullah's Steps End =====================
