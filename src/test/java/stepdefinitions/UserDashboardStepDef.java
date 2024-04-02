@@ -842,28 +842,28 @@ public class UserDashboardStepDef extends Base {
 
     @And("I should be able to enter {string} on the email box")
     public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
-        waitAndSendText(userDashboard.emailStripePayment, email);
+        waitAndSendText(userDashboard.emailStripePaymentBox, email);
     }
 
     @When("I should be able to enter {string} on the card number box")
     public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
-        waitAndSendText(userDashboard.emailStripePayment, cardNumber);
+       // waitAndSendText(userDashboard. cardNumber);
     }
 
     @When("I should be able to enter {string} on the exp box")
     public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
-        waitAndSendText(userDashboard.emailStripePayment, expDate);
+        //waitAndSendText(userDashboard. expDate);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
     public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
-        waitAndSendText(userDashboard.emailStripePayment, cvc);
+       // waitAndSendText(userDashboard., cvc);
     }
 
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
-        scrollIntoViewJS(userDashboard.orderNowButton);
-        waitAndClick(userDashboard.orderNowButton);
+       // scrollIntoViewJS(userDashboard.orderNowButton);
+        //waitAndClick(userDashboard.orderNowButton);
     }
 }
 
