@@ -958,11 +958,13 @@ public class UserDashboardStepDef extends Base {
     public void clickOnThePayNowButtonlink() {
         scrollIntoViewJS(userDashboard.payNowButton);
         waitAndClick(userDashboard.payNowButton);
-        Driver.getDriver().switchTo().frame(userDashboard.stripePaymentIframe);
+
     }
 
     @And("I should be able to click on email box on Stripe Payment")
     public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
+        //Driver.getDriver().switchTo().frame
+        System.out.println("iframe is changed");
         waitAndClick(userDashboard.emailStripePaymentBox);
     }
 
