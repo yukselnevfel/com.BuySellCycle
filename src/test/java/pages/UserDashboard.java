@@ -1,5 +1,9 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -26,6 +30,44 @@ public class UserDashboard extends Base{
 
     @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[3]")
     public WebElement linkMyOrder;
+    @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[2]")
+    public WebElement linkMyWishlist;
+    @FindBy(xpath = "(//div[@class=\"nice-select amaz_select4\"])[2]")
+    public WebElement linkNewBar;
+    @FindBy(xpath = "//li[@data-value=\"new\"]")
+    public WebElement linkNew;
+    @FindBy(xpath = "//li[@data-value=\"old\"]")
+    public WebElement linkOld;
+    @FindBy(xpath = "//li[@data-value=\"low_to_high\"]")
+    public WebElement linkLowtoHigh;
+    @FindBy(xpath = "//li[@data-value=\"high_to_low\"]")
+    public WebElement linkHightoLow;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[1]")
+    public WebElement imageFirst;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[2]")
+    public WebElement imageSecond;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/yuzuk\"])[2]")
+    public WebElement linkFirstProduct;
+    //@FindBy (xpath="(//div[@class='product_widget5 mb_30 style5 w-100'])[1]")
+   // public WebElement linkFirstProduct;
+    @FindBy (xpath="(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/blue-dress-1\"])[2]")
+    public WebElement linkSecondProduct;
+
+
+   @FindBy(xpath = "(//div[@class=\"product_widget5 mb_30 style5\"])[1]")
+    public WebElement linkFirstProductinWishlist;
+  // @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/glee-baby-stroller\"])[2]")
+  // public WebElement linkFirstProductinWishlist;
+    public String selectedSecondProduct;
+    public String selectedFirstProduct ;
+    public String actualFirstProduct;
+    @FindBy(xpath = "//a[@href=\"https://qa.buysellcycle.com/my-wishlist\"]")
+    public WebElement linkWishlistHeader;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/category/best_deals?item=product\"])[1]")
+    public WebElement linkNewProductDeals;
+
+    @FindBy(xpath = "//h5[@class=\"font_14 f_w_400 flex-fill mb-0\"]")
+    public WebElement textOfResult;
     @FindBy(xpath = "//button[@id=\"home-tab\"]")
     public WebElement linkAll;
     @FindBy(xpath = "//button[@id=\"Pay-tab\"]")
@@ -240,17 +282,41 @@ public WebElement continueToShippingButton;
 
    //---- SUPPORT TICKET AYCA--------//
 
-   @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+   @FindBy (xpath = "//*[@title='ads bar']")
+   public WebElement imageAdsBar;
+
+   @FindBy (xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[12]/a")
    public WebElement linkSupportTicket;
 
-   @FindBy (xpath = "//tr/th")
-    public WebElement labelTicketTitle;
+   @FindBy (xpath = "//*[text()='Status']")
+   public WebElement labelStatus;
 
-   @FindBy(xpath = "selector-for-your-ticket-list")
-    private List<WebElement> ticketListElements;
+   @FindBy (xpath = "//*[text()='Priority']")
+   public WebElement labelPriority;
 
+    @FindBy (xpath = "(//*[text()='Category'])[2]")
+    public WebElement labelCategory;
 
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[2]/div/table/tbody/tr/td[6]/a")
+    public WebElement actionDetailSupportTicketButton;
 
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[1]")
+    public WebElement labelCustomerMessage;
+
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[2]")
+    public WebElement labelAdminMessage;
+
+    @FindBy(id = "replay_box_toggler")
+    public WebElement replyButton;
+
+    @FindBy (xpath = "//*[@class='note-editable']")
+    public WebElement replyMessageBox;
+
+    @FindBy (xpath = "//*[text()='Reply now']")
+    public WebElement replyNowButton;
+
+    @FindBy (xpath = "/html/body/script[4]/text()")
+    public WebElement successMessagePopup;
 
 
     //=========Notifications links ve buttons=======================
@@ -275,6 +341,24 @@ public WebElement continueToShippingButton;
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
+
+
+     // User Dashboard Page Left Panel
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
+
+
+    @FindBy(xpath = "//*[@data-name='Stripe']")
+    public WebElement stripeCheckRadioButton;
+    @FindBy(xpath = "//*[@id='payment_btn_trigger']")
+    public WebElement payNow;
+    @FindBy(xpath = "//*[@class='close right']")
+    public WebElement stripeEscape;
+    @FindBy(xpath = "//*[@id='card_number']")
+    public WebElement stripeCardNumberTextBox;
+
+
+
 
 
 

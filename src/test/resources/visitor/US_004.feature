@@ -3,7 +3,7 @@ Feature: US_004 User Registration on the Site
 
   Background:
     * Open browser and Go to "URL"
-    * Close the pop-up message
+
 
   Scenario: TC_01 - Verify Register Button on Home Page
     * the user verifies that the Register button link is visible on the home page

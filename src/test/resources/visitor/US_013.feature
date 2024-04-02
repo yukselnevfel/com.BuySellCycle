@@ -1,11 +1,11 @@
-
+@slide
 
 Feature: As a user, I would like to have functional sliders on the home page where I can get information about the products.
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
 
-@slide
+
 Scenario: Visibility of Slider Images on the Homepage Manual Transition Between Slider Images
  * Verify that slider image and slider navigation buttons are visible
  * Click on the navigation button and Verify that image is visible
@@ -14,7 +14,7 @@ Scenario: Visibility of Slider Images on the Homepage Manual Transition Between 
  Scenario: Automatic Cycling of Slider Images
   * Verify the slider images are visible automaticly
   * Close the page
-@slide
+
  Scenario: Click on the slider images and navigated the relevant page
   * Click on the slider images in order and Verifying that navigate to the image Page
   * Close the page

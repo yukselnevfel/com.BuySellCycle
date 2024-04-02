@@ -17,7 +17,7 @@ Feature: As a registered user, I would like to have a page on my dashboard
     * Click on the Add Coupon button
     * Verify that the "couponCode" has been added
     * Close the page
-  @samet
+
   Scenario: Coupons that the user has previously collected should be listed as Collected Coupons list,
             and the coupons in the list should be copied and deleted from the list.
     * Log in to the page with valid "userSamet" and "password" information.

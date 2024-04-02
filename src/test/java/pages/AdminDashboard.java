@@ -8,6 +8,9 @@ public class AdminDashboard extends Base{
     // -------------------------Beytullah's Locates----------------------------
     @FindBy(xpath = "(//input[@type='text'])[1]")
     public WebElement searchBoxAdminDashboard;
+    //*[@class='toast-message']
+    @FindBy(xpath = "//*[@class='toast-message']")
+    public WebElement popUpMessage;
 
 // -------------------------End of Beytullah's Locates----------------------------
 
@@ -74,6 +77,8 @@ public class AdminDashboard extends Base{
     public WebElement notificiationReadAllButton;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/profile/notifications']")
     public WebElement notificiationViewButton;
+    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/customer/active-customer-list']")
+    public WebElement demoRegesterVievButton;
     @FindBy(xpath = "//*[text()='Notifications']")
     public WebElement notificationListText;
     @FindBy(xpath = "//*[@class='sorting_1']")
@@ -82,6 +87,16 @@ public class AdminDashboard extends Base{
     public WebElement notificiationRelevantViewButton;
     @FindBy(xpath = "//*[@class='btn btn-secondary dropdown-toggle']")
     public WebElement notificiationRelevantSelectButton;
+    @FindBy(xpath = "//span[2]/div/button")
+    public WebElement confirmedSelectButton;
+    @FindBy(xpath = "(//tbody/tr[1]/td[1])[2]")
+    public WebElement confirmedActionButton;
+    @FindBy(xpath = "(//td[1])[1]")
+    public WebElement pendingActionButton;
+    @FindBy(xpath = "//span[2]//a")
+    public WebElement confirmedDetailsSelectButton;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[1]")
+    public WebElement confirmedOrderConfirmText;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/ordermanage/sales-details/142']")
     public WebElement notificiationRelevantDetailsButton;
     @FindBy(xpath = "//*[text()='Order Confirmation']")
@@ -104,6 +119,35 @@ public class AdminDashboard extends Base{
     public WebElement confirmUpdateButton;
     @FindBy(xpath = "//*[@class='toast-message']")
     public WebElement updateSuccesfully;
+    @FindBy(xpath = "//*[@class='sorting_1']")
+    public WebElement pendingOrderAction;
+    @FindBy(xpath = "(//*[text()='Confirm'])[2]")
+    public WebElement confirmedOrderSelect;
+    @FindBy(xpath = "(//*[@class='update_active_status'])[1]")
+    public WebElement confirmedRegisterSelect;
+    @FindBy(xpath = "//*[@placeholder='Quick Search']")
+    public WebElement pendingQuickSearch;
+    @FindBy(xpath = "//*[text()='nobady@nobady.com']")
+    public WebElement quickSearchResultText;
+    @FindBy(xpath = "//*[text()='Confirmed Orders']")
+    public WebElement confirmedOrderButtonLink;
+    @FindBy(xpath = "(//tr[1]/td[1])[3]")
+    public WebElement completedActionButton;
+    @FindBy(xpath = "//span[2]/div/button")
+    public WebElement completedSelectButton;
+    @FindBy(xpath = "//span[2]/div/div/a")
+    public WebElement completedDetail;
+    @FindBy(xpath = "//*[text()='Completed Orders']")
+    public WebElement completedOrderButtonLink;
+    @FindBy(xpath = "(//*[@placeholder='Quick Search'])[2]")
+    public WebElement confirmedQuickSearch;
+    @FindBy(xpath = "(//label/input)[4]")
+    public WebElement paymentSerchBox;
+    @FindBy(xpath = "//*[text()='Pending Payment Orders']")
+    public WebElement paymentOrderButtonLink;
+
+
+
 
 
 //US37 AdminDashboard Side Bar'daki ilgili locate'ler
