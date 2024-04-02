@@ -680,10 +680,12 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Verify that Order Tracking Number is clickable")
     public void verify_that_order_tracking_number_is_clickable() {
         assertTrue(visitorHomePage.textBoxOrderTrackingNumber.isEnabled());
+        wait(2);
     }
 
     @Given("Verify that Track Now button is visible")
     public void verify_that_track_now_button_is_visible() {
+        wait(1);
 
        assertTrue( visitorHomePage.trackNowButton.isDisplayed());
     }
@@ -706,6 +708,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the Track Now")
     public void click_on_the_track_now() {
         clickWithJS(visitorHomePage.trackNowButton);
+        wait(2);
 
     }
     @Given("Show warning message on the page")
@@ -716,6 +719,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Enter a valid {string} password in the Order Tracking Number field")
     public void enter_a_valid_password_in_the_order_tracking_number_field(String validpass) {
         visitorHomePage.textBoxOrderTrackingNumber.sendKeys(validpass);
+        wait(2);
     }
     @Given("Displays current status of the order")
     public void displays_current_status_of_the_order() {
@@ -1175,6 +1179,7 @@ public class VisitorHomePageStepDef extends Base {
     public void click_on_the_cart_link_on_the_top_bar_of_the_site_and_you_will_be_redirected_to_the_relevant_page() {
         clickWithJS(visitorHomePage.linkTextCart);
         assertTrue(visitorHomePage.titleOrderSummary.isDisplayed());
+        wait(2);
     }
 
     @Given("Click on the New User Zone link on the top bar of the site and you will be redirected to the relevant page")
