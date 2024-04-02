@@ -1,24 +1,46 @@
 package stepdefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
+import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
+
+
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+
+import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
 //------------------------- SIMGE STEPS BASLANGIC ---------------------------//
@@ -336,6 +358,26 @@ public class UserDashboardStepDef extends Base {
     }
 
     //-------------Login Steps FIKRET-----------------/
+    @Then("Stripe select")
+    public void stripe_select() {
+        clickWithJS(userDashboard.stripeCheckRadioButton);
+    }
+
+    @When("Click paynow button")
+    public void Click_paynow_button() {
+        clickWithJS(userDashboard.payNow);
+
+    }
+
+
+    @When("Close on stripe window")
+    public void close_on_stripe_window() {
+        Driver.getDriver().switchTo().frame(0);
+        userDashboard.stripeCardNumberTextBox.sendKeys("4242 42");
+        wait(6);
+        clickWithJS(userDashboard.stripeEscape);
+    }
+
     @And("{int} saniye bekler")
     public void saniyeBekler(int saniye) {
 
@@ -350,6 +392,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_should_see_the_menu_in_the_dashboard_sidebar() {
        assertTrue(userDashboard.linkPurchaseHistory.isDisplayed());
     }
+
     @Then("the user verifies that the Purchase History link is active")
     public void the_user_verifies_that_the_link_is_active() {
         assertTrue(userDashboard.linkPurchaseHistory.isEnabled());
@@ -359,6 +402,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_clicks_on_the_link_in_the_dashboard_sidebar() {
         clickWithJS(userDashboard.linkPurchaseHistory);
     }
+
     @Then("the user verifies the presence of details such as Details, Amount, Delivery Status, Payment Status, and Action")
     public void the_user_verifies_the_presence_of_details_such_as_details_amount_delivery_status_payment_status_and_action() {
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -370,6 +414,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.allHistoryFilter);
         clickWithJS(userDashboard.pendingPurchase);
     }
+
     @Then("the user verifies that the filtering is applied correctly")
     public void the_user_verifies_that_the_filtering_is_applied_correctly() {
         assertTrue(userDashboard.pendingText.isDisplayed());
@@ -380,6 +425,7 @@ public class UserDashboardStepDef extends Base {
 
         clickWithJS(userDashboard.iconDownload);
     }
+
     @Then("the user verifies that the invoice is downloaded successfully")
     public void the_user_verifies_that_the_invoice_is_downloaded_successfully() {
         String dosyaYolu = "C:\\Users\\ZEYBEK\\Downloads\\Documents\\20240323000043.pdf";
@@ -391,6 +437,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.iconBurgerPurchase);
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
+
     @Then("the user verifies the displayed invoice details such as Order code, Package code, Delivery Process, Order Details, Order Summary, and Payment Type")
     public void the_user_verifies_the_displayed_invoice_details_such_as_order_code_package_code_delivery_process_order_details_order_summary_and_payment_type() {
         System.out.println(userDashboard.invoicePageText.getText());
@@ -402,7 +449,6 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.invoicePageText.getText().contains("Delivered"));
         assertTrue(userDashboard.paymentTypeText.getText().contains("No Gateway"));
     }
-
 
 
     @Given("Verify that page url is {string}")
