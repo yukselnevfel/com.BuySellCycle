@@ -106,6 +106,18 @@ public class AdminDashboard extends Base{
     public WebElement updateSuccesfully;
 
 
+//US37 AdminDashboard Side Bar'daki ilgili locate'ler
+    @FindBy(xpath = "(//*[@class='nav_title'])[4]")
+    public WebElement labelCustomer;
+    @FindBy(xpath = "//*[text()='All Customer']")
+    public WebElement labelAllCutomer;
+    @FindBy(xpath = "//*[@id='all_customer']")
+    public WebElement columnAllCustomerList;
+    @FindBy(xpath = "//*[@*='Quick Search']")
+    public WebElement searchBoxQuickSearch;
+    @FindBy(xpath = "(//*[@id='active_checkbox265'])[1]")
+    public WebElement iconIsActive;
+
 
 
 

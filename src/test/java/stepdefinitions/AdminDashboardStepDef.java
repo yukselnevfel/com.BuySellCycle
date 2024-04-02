@@ -235,6 +235,28 @@ public class AdminDashboardStepDef extends Base {
 
 
 
+     //-------------Login Steps NEVFEL-----------------/
+
+    @Given("Click on the  Customer  in Dashboard side bar")
+    public void click_on_the_customer_in_dashboard_side_bar() {
+        clickWithJS(adminDashboard.labelCustomer);
+    }
+    @Given("Click on the All Customer")
+    public void click_on_the_all_customer() {
+        clickWithJS(adminDashboard.labelAllCutomer);
+        wait(1);
+    }
+    @Given("Verify that All Costumer List")
+    public void verify_that_all_costumer_list() {
+        assertTrue(adminDashboard.columnAllCustomerList.isDisplayed());
+        wait(1);
+    }
+    @Given("Quick Search Text Box searches {string} with a valid mail")
+    public void quick_search_text_box_searches_with_a_valid_mail(String validmaill) {
+        adminDashboard.searchBoxQuickSearch.sendKeys(validmaill);
+
+    }
+
 
 
 
