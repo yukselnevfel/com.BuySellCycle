@@ -17,7 +17,6 @@ Feature: Checkout Process
     When  I should be able to enter "cardNumber" on the card number box
     When  I should be able to enter "expDate" on the exp box
     Then  I should be able to enter "cvp" on the cvc box
-    Then
     Given I should see the message <message>
     And the Order Number should be displayed
     Examples:

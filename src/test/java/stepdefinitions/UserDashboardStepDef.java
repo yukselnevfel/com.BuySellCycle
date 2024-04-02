@@ -858,6 +858,12 @@ public class UserDashboardStepDef extends Base {
     @Then("I should be able to enter {string} on the cvc box")
     public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
     }
+
+    @When("Click on the Order Now buttonlink")
+    public void clickOnTheOrderNowButtonlink() {
+        scrollIntoViewJS(userDashboard.orderNowButton);
+        waitAndClick(userDashboard.orderNowButton);
+    }
 }
 
 
