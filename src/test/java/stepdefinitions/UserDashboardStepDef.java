@@ -837,7 +837,7 @@ public class UserDashboardStepDef extends Base {
 
     @And("I should be able to click on email box on Stripe Payment")
     public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
-        waitAndClick(userDashboard.emailStripePayment);
+        waitAndClick(userDashboard.emailStripePaymentBox);
     }
 
     @And("I should be able to enter {string} on the email box")
@@ -846,17 +846,18 @@ public class UserDashboardStepDef extends Base {
     }
 
     @When("I should be able to enter {string} on the card number box")
-    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
-
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
+        waitAndSendText(userDashboard.emailStripePayment, cardNumber);
     }
 
     @When("I should be able to enter {string} on the exp box")
-    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
-
+    public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
+        waitAndSendText(userDashboard.emailStripePayment, expDate);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
-    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
+    public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
+        waitAndSendText(userDashboard.emailStripePayment, cvc);
     }
 
     @When("Click on the Order Now buttonlink")

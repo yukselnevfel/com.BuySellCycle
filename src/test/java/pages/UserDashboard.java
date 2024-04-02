@@ -115,10 +115,12 @@ public WebElement continueToShippingButton;
     }
 
     @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
-    public WebElement emailStripePayment;
+    public WebElement emailStripePaymentBox;
 
     @FindBy (id = "submitButton")
     public WebElement submitPayment;
+
+
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
