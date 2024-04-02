@@ -1,14 +1,12 @@
 
-
+@footer
 Feature: As a user, I would like to have a footer section to view useful links and site access.
 
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
 
-  Scenario: The footer section should be displayed on the home page.Useful links
-  (About Us, Blog, Dashboard, My Profile, My Order, Help&Contact, Track Order, Return&Exchange)
-  should be visible and active in the footer section.
+  Scenario: The footer section should be displayed on the home page.Useful links should be visible and active in the footer section.
 
     * Scroll down to the bottom of the home page.Verify that the About Us, Blog, Dashboard, My Profile, My Order, Help&Contact, Track Order, Return&Exchange,Track Order, Return&Exchange link are visible on footer table.
     * Click on the About Us link and verify the navigate to About Us Page.
@@ -21,8 +19,7 @@ Feature: As a user, I would like to have a footer section to view useful links a
     * Scroll down to the bottom of the home page.Click on the Return&Exchange link and verify the navigate to Return&Exchange Page.
     * Close the page
 
-  Scenario: You should be able to subscribe to bulletins from the subscriber section in the footer.
-
+  Scenario: Visitor should be able to subscribe to bulletins from the subscriber section in the footer.
     * Scroll down to the bottom of the home page. Enter an email on address field on subscribe and click the subscribe button.
     * Close the page
 
@@ -40,7 +37,7 @@ Feature: As a user, I would like to have a footer section to view useful links a
    * Close the page
 
 
-  @ayca
+
   Scenario: "Copyright © 2024. All rights reserved." text should be visible in the footer section.
    * Scroll down to the bottom of the home page. Verify that the enf of the footer text is visible
    * Close the page

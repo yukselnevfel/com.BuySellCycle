@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,24 +15,223 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
 import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
+
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
+//------------------------- SIMGE STEPS BASLANGIC ---------------------------//
+    @Given("Verify that My Order link is visible in the Dashboard side bar")
+    public void verify_that_my_order_link_is_visible_in_the_dashboard_side_bar() {
+        Assert.assertTrue(userDashboard.linkMyOrder.isDisplayed());
+    }
+    @Given("Click on the My Order link in the Dashboard side bar")
+    public void click_on_the_my_order_link_in_the_dashboard_side_bar() {
+       clickWithJS(userDashboard.linkMyOrder);
+    }
+    @Given("Verify that the All link is visible and clickable")
+    public void verify_that_the_all_link_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkAll.isDisplayed());
+        Assert.assertTrue(userDashboard.linkAll.isEnabled());
+    }
+    @Given("Verify that the To Pay link is visible and clickable")
+    public void verify_that_the_to_pay_link_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkToPay.isDisplayed());
+        Assert.assertTrue(userDashboard.linkToPay.isEnabled());
+    }
+    @Given("Verify that the To Ship link is visible and clickable")
+    public void verify_that_the_to_ship_link_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkToShip.isDisplayed());
+        Assert.assertTrue(userDashboard.linkToShip.isEnabled());
+    }
+    @Given("Verify that the To Receive link is visible and clickable")
+    public void verify_that_the_to_receive_link_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkToReceive.isDisplayed());
+        Assert.assertTrue(userDashboard.linkToReceive.isEnabled());
+    }
+    @Given("Verify that the number of products to be listed is visible and clickable")
+    public void verify_that_the_number_of_products_to_be_listed_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkProductNumber.isDisplayed());
+        Assert.assertTrue(userDashboard.linkProductNumber.isEnabled());
+    }
+    @Given("Verify that the Cancel Order button is visible and clickable, If the order status is not confirmed")
+    public void verify_that_the_cancel_order_button_is_visible_and_clickable_if_the_order_status_is_not_confirmed() {
+        wait(2);
+        if (!userDashboard.textStatus.getText().contains("Completed")){
+           Assert.assertTrue(userDashboard.linkCancelOrder.isDisplayed());
+           Assert.assertTrue(userDashboard.linkCancelOrder.isEnabled());
+        }
+    }
+    @Given("Verify that the Order Details button is visible and clickable")
+    public void verify_that_the_order_details_button_is_visible_and_clickable() {
+        Assert.assertTrue(userDashboard.linkOrderDetail.isDisplayed());
+        Assert.assertTrue(userDashboard.linkOrderDetail.isEnabled());
+    }
+    @Given("Click on the Order Details link")
+    public void click_on_the_order_details_link() {
+       clickWithJS(userDashboard.linkOrderDetail);
+    }
+    @Given("Verify that the Package title is visible")
+    public void verify_that_the_package_title_is_visible() {
+        visibleWebElement("Package");
+
+
+    }
+    @Given("Verify that the Sold By title is visible")
+    public void verify_that_the_sold_by_title_is_visible() {
+        visibleWebElement("Sold By");
+    }
+    @Given("Verify that the Price title is visible")
+    public void verify_that_the_price_title_is_visible() {
+        visibleWebElement("Price");
+    }
+    @Given("Verify that the Shipping Info title is visible")
+    public void verify_that_the_shipping_info_title_is_visible() {
+        visibleWebElement("Shipping Info");
+    }
+    @Given("Verify that the Billing Info title is visible")
+    public void verify_that_the_billing_info_title_is_visible() {
+        visibleWebElement("Billing Info");
+    }
+    @Given("Verify that the Payment Info title is visible")
+    public void verify_that_the_payment_info_title_is_visible() {
+        visibleWebElement("Payment Info");
+    }
+    @Given("Verify that the Cancel Order button on detail page is visible and clickable, If the order status is not confirmed")
+    public void verify_that_the_cancel_order_button_on_detail_page_is_visible_and_clickable_if_the_order_status_is_not_confirmed() {
+        scrollIntoViewJS(userDashboard.linkCancelOrderDetailPage);
+        if (!userDashboard.textStatus.getText().contains("Completed")){
+            Assert.assertTrue(userDashboard.linkCancelOrderDetailPage.isEnabled());
+            Assert.assertTrue(userDashboard.linkCancelOrderDetailPage.isEnabled());
+        }
+    }
+    @Given("Verify that the Order ID title is visible")
+    public void verify_that_the_order_id_title_is_visible() {
+    Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Order ID"));
+    }
+    @Given("Verify that the Status title is visible")
+    public void verify_that_the_status_title_is_visible() {
+        Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Status"));
+    }
+    @Given("Verify that the Order Date title is visible")
+    public void verify_that_the_order_date_title_is_visible() {
+        Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Order date"));
+    }
+    @Given("Verify that the Order Amount title is visible")
+    public void verify_that_the_order_amount_title_is_visible() {
+        Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Order amount"));
+    }
+    @Given("Verify that the Paid By title is visible")
+    public void verify_that_the_paid_by_title_is_visible() {
+        Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Paid By"));
+    }
+    @Given("Verify that My Wishlist link is visible in the Dashboard side bar")
+    public void verify_that_my_wishlist_link_is_visible_in_the_dashboard_side_bar() {
+        Assert.assertTrue(userDashboard.linkMyWishlist.isDisplayed());
+    }
+    @Given("Click on the My Wishlist link in the Dashboard side bar")
+    public void click_on_the_my_wishlist_link_in_the_dashboard_side_bar() {
+      clickWithJS(userDashboard.linkMyWishlist);
+    }
+    @Given("Verify that the products added to the Wishlist are listed")
+    public void verify_that_the_products_added_to_the_wishlist_are_listed() {
+     String result = String.valueOf(userDashboard.textOfResult.getText().subSequence(17,26));
+     int resultt = Integer.parseInt(result.replaceAll("\\D",""));
+       Assert.assertTrue(resultt>0);
+    }
+    @Given("Verify that the New bar is visible")
+    public void verify_that_the_new_bar_is_visible() {
+        Assert.assertTrue(userDashboard.linkNewBar.isDisplayed());
+    }
+    @Given("Click on the New bar")
+    public void click_on_the_new_bar() {
+       clickWithJS(userDashboard.linkNewBar);
+    }
+    @Given("Click on the New button")
+    public void click_on_the_new_button() {
+       clickWithJS(userDashboard.linkNew);
+    }
+    @Given("Click on the New Product Deals")
+    public void click_on_the_new_product_deals() {
+      clickWithJS(userDashboard.linkNewProductDeals);
+    }
+    String select;
+    @Given("Add to wishlist first product")
+    public void add_to_wishlist_first_product() {
+       actions.moveToElement(userDashboard.imageFirst).perform();
+       wait(1);
+       clickWithJS(visitorHomePage.iconWishlist);
+       userDashboard.selectedFirstProduct = userDashboard.linkFirstProduct.getText();
+
+    }
+    @Given("Add to wishlist second product")
+    public void add_to_wishlist_second_product() {
+        actions.moveToElement(userDashboard.imageSecond).perform();
+        wait(1);
+        clickWithJS(visitorHomePage.iconSecondWishlist);
+        userDashboard.selectedSecondProduct = userDashboard.linkSecondProduct.getText();
+
+    }
+
+    @Given("Click on the Wishlist link in the header")
+    public void click_on_the_wishlist_link_in_the_header() {
+       clickWithJS(userDashboard.linkWishlistHeader);
+    }
+
+    @Given("Verify that the products are sorted from newest to oldest")
+    public void verify_that_the_products_are_sorted_from_newest_to_oldest() {
+      userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println(userDashboard.selectedFirstProduct);
+      Assert.assertTrue(userDashboard.actualFirstProduct.contains(userDashboard.selectedFirstProduct));
+    }
+    @Given("Click on the Old button")
+    public void click_on_the_old_button() {
+       clickWithJS(userDashboard.linkOld);
+       wait(2);
+    }
+    @Given("Verify that the products are sorted from oldest to newest")
+    public void verify_that_the_products_are_sorted_from_oldest_to_newest() {
+        userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println();
+        System.out.println();
+        System.out.println(userDashboard.selectedSecondProduct);
+
+       Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
+    }
+
+
+
+
+
+    //----------------------------SIMGE STEPS BITIS--------------------------//}
 
     //============================ SAMET =============================
+
 
     @Given("Log in to the page with valid {string} and {string} information.")
     public void log_in_to_the_page_with_valid_and_information(String user, String password) {
@@ -117,6 +317,38 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
+    }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
+
+    @When("Click on the {string} buttonlink")
+    public void clickOnTheButtonlink(String payMethod) {
+        userDashboard.orderPayButton(payMethod);
+    }
+
+    @And("I should be able to select the Snipe Payment Method")
+    public void iShouldBeAbleToSelectTheSnipePaymentMethod() {
+        waitAndClick(userDashboard.stripePayment);
+    }
+
+
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
+    }
+
     //Asli
 
 
@@ -150,7 +382,7 @@ public class UserDashboardStepDef extends Base {
     public void saniyeBekler(int saniye) {
 
         try {
-            Thread.sleep(saniye * 1000);
+            Thread.sleep(saniye*1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -158,7 +390,7 @@ public class UserDashboardStepDef extends Base {
 
     @Then("the user should see the Purchase History menu in the Dashboard sidebar")
     public void the_user_should_see_the_menu_in_the_dashboard_sidebar() {
-        assertTrue(userDashboard.linkPurchaseHistory.isDisplayed());
+       assertTrue(userDashboard.linkPurchaseHistory.isDisplayed());
     }
 
     @Then("the user verifies that the Purchase History link is active")
@@ -237,6 +469,7 @@ public class UserDashboardStepDef extends Base {
     public void sayfada_adet_urun_oldugu_dogrulanir(Integer int1) {
         String sonuc = userDashboard.resultsWishlist.getText();
         int result = Integer.parseInt(sonuc.substring(11, 15).replaceAll("\\D", ""));
+        System.out.println(result);
         assertTrue(result == int1);
         wait(1);
     }
@@ -312,20 +545,113 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click the Quick View button and verify that the product information is displayed")
     public void click_the_quick_view_button_and_verify_that_the_product_information_is_displayed() {
-
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        userDashboard.quickViewButton.click();
+        wait(3);
+        assertTrue(userDashboard.puroductDetails.isDisplayed());
+        userDashboard.closePage.click();
 
     }
 
     @Given("Click the Add To Cart button and confirm that the product has been added to the cart")
     public void click_the_add_to_cart_button_and_confirm_that_the_product_has_been_added_to_the_cart() {
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        wait(3);
+        userDashboard.quickViewButton.click();
+        wait(3);
+        userDashboard.addToCart.click();
+        wait(3);
+        String message = userDashboard.itemAdded.getText();
+        assertTrue(message.contains("Item added to your cart"));
+        userDashboard.closePage2.click();
 
     }
 
     @Given("Click on the Delete button and confirm that the product has been deleted from Wishlist")
     public void click_on_the_delete_button_and_confirm_that_the_product_has_been_deleted_from_wishlist() {
+        String sonuc = userDashboard.resultsWishlist.getText();
+        int result = Integer.parseInt(sonuc.substring(17).replaceAll("\\D", ""));
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        wait(2);
+        userDashboard.deleteButton.click();
+        wait(1);
+        userDashboard.dataDeleteBtn.click();
+        wait(5);
+        sonuc = userDashboard.resultsWishlist.getText();
+        int result2 = Integer.parseInt(sonuc.substring(17).replaceAll("\\D", ""));
+        System.out.println(result2 + "   " + result);
+        assertTrue(result2 < result);
+    }
+
+    @Given("Go on the next page")
+    public void go_on_the_next_page() {
+        waitAndClick(userDashboard.nextPage);
+        wait(3);
+    }
+
+    @Given("Verify that the My Couppons menu is visible")
+    public void verify_that_the_my_couppon_menu_is_visible() {
+        assertTrue(userDashboard.myCouponsListMenu.isDisplayed());
+    }
+
+    @Given("Click on My Couppons")
+    public void click_on_my_couppon() {
+        waitAndClick(userDashboard.myCouponsListMenu);
+    }
+
+    @Given("Write {string} in the code section")
+    public void write_in_the_code_section(String code) {
+        userDashboard.codePlaceHolder.sendKeys(ConfigReader.getProperty(code));
+    }
+
+    @Given("Click on the Add Coupon button")
+    public void click_on_the_add_coupon_button() {
+        waitAndClick(userDashboard.addCouppon);
+        wait(3);
+    }
+
+    @Given("Verify that the Add Coupons is visible")
+    public void verify_that_the_add_coupons_is_visible() {
+        assertTrue(userDashboard.addCouppon.isDisplayed());
+    }
+
+    @Given("Verify that the {string} has been added")
+    public void verify_that_the_has_been_added(String code) {
+        String actualCode = userDashboard.coupponCode.getText();
+        String expectedCode = ConfigReader.getProperty(code);
+        assertEquals(expectedCode, actualCode);
+    }
+
+    @Given("Verify that coupons are listed under the Collected Coupons heading")
+    public void verify_that_coupons_are_listed_under_the_collected_coupons_heading() {
+        assertTrue(userDashboard.coupponCode.isDisplayed());
+    }
+
+    @Given("Click on the copy icon under the Action heading of the coupon")
+    public void click_on_the_copy_icon_under_the_action_heading_of_the_coupon() {
+        waitAndClick(userDashboard.coppyCode);
+        wait(2);
+    }
+
+    @Given("Confirms that copying has occurred")
+    public void confirms_that_copying_has_occurred() {
+        assertTrue(userDashboard.coupponCode.isDisplayed());
 
     }
 
+    @Given("Click on the delete icon under the Action heading of the coupon")
+    public void click_on_the_delete_icon_under_the_action_heading_of_the_coupon() {
+        userDashboard.deleteCouppon.click(); wait(1);
+        userDashboard.deleteSure.click(); wait(3);
+
+    }
+
+    @Given("Verify that the deletion has occurred")
+    public void verify_that_the_deletion_has_occurred() {
+
+        assertTrue(userDashboard.emptyList.isDisplayed());
+
+    }
 
     //=========================== STEPS  NEVFEL ====================================/
 
@@ -415,7 +741,9 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Proceed to Checkout button")
     public void click_on_the_proceed_to_checkout_button() {
+        scrollIntoViewJS(userDashboard.proceedToCheckoutButton);
         clickWithJS(userDashboard.proceedToCheckoutButton);
+        wait(2);
     }
 
     @Given("Displays the information of the product she wants to buy on the navigated page")
@@ -429,30 +757,74 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @Given("Scrolls the page until you see the Contact Information heading")
+    public void scrolls_the_page_until_you_see_the_contact_information_heading() {
+        scrollIntoViewJS(userDashboard.labelContactInformationTitle);
+        wait(1);
+    }
+    @Given("Verify that contact details are displayed")
+    public void verify_that_contact_details_are_displayed() {
+        assertTrue(userDashboard.labelContactInformationTitle.isDisplayed());
+        wait(1);
+    }
+    @Given("Click on the subscriber button")
+    public void click_on_the_subscriber_button() {
+        clickWithJS(userDashboard.radioButtonSubscriber);
+        wait(1);
 
-    @Then("Click on the {string} link on the top")
-    public void clickOnTheLinkOnTheTop(String arg0) {
-        clickWithJS(userDashboard.cartLinkOnTheTop);
+    }
+    @Given("Click on the Note textbox")
+    public void click_on_the_note_textbox() {
+        scrollIntoViewJS(userDashboard.textBoxNote);
+        clickWithJS(userDashboard.textBoxNote);
+
+    }
+    @Given("Enters message {string} in Note section")
+    public void enters_message_in_note_section(String note) {
+        userDashboard.textBoxNote.sendKeys(note);
+        wait(1);
+    }
+
+    @Given("Scrolls the page until you see the Continue To Shipping Button")
+    public void scrolls_the_page_until_you_see_the_continue_to_shipping_button() {
+        scrollIntoViewJS(userDashboard.continueToShippingButton);
+        wait(2);
+
+    }
+    @Given("Verify that the Return To Cart button is active")
+    public void verify_that_the_return_to_cart_button_is_active() {
+        userDashboard.returnToCartButton.isEnabled();
         wait(2);
     }
+    @Given("Click on the Continue To Shipping")
+    public void click_on_the_continue_to_shipping() {
+        clickWithJS(userDashboard.continueToShippingButton);
+        wait(1);
 
-    @Given("I am on the \\{Checkout} Page")
-    public void iAmOnTheCheckoutPage() {
-        waitForPageToLoad(2);
     }
+    @Given("Verify that there is an obligation to check the checkBox {string}")
+    public void verify_that_there_is_an_obligation_to_check_the_check_box(String text) {
+        String expectedResult=text;
+        String actualResult=userDashboard.labelWarningText.getText();
+        assertEquals(expectedResult,actualResult);
+
+
+
+    }
+
+
     //===============STEPS ESRA BASLADI=========================================
 
     @Given("Scroll down to the bottom of the dashboard page")
     public void scroll_down_to_the_bottom_of_the_dashboard_page() {
-        scrollIntoViewJS(userDashboard.buttonNotification);
+       scrollIntoViewJS(userDashboard.buttonNotification);
     }
-
     @Given("Clicks on the Notification link and goes to the relevant page")
     public void clicks_on_the_notification_link_and_goes_to_the_relevant_page() {
-        clickWithJS(userDashboard.buttonNotification);
-        String expectedURL = "https://qa.buysellcycle.com/profile/notifications";
-        String actualURL = Driver.getDriver().getCurrentUrl();
-        assertEquals(expectedURL, actualURL);
+       clickWithJS(userDashboard.buttonNotification);
+       String expectedURL="https://qa.buysellcycle.com/profile/notifications";
+       String actualURL=Driver.getDriver().getCurrentUrl();
+       assertEquals(expectedURL,actualURL);
     }
 
     @When("Displays Title and Date information of incoming notifications")
@@ -474,10 +846,10 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Setting button and reach the relevant page")
     public void click_on_the_button_and_reach_the_relevant_page() {
-        clickWithJS(userDashboard.buttonSetting);
-        String expectedURL = "https://qa.buysellcycle.com/profile/notification_setting";
-        String actualURL = Driver.getDriver().getCurrentUrl();
-        assertEquals(expectedURL, actualURL);
+       clickWithJS(userDashboard.buttonSetting);
+       String expectedURL="https://qa.buysellcycle.com/profile/notification_setting";
+       String actualURL=Driver.getDriver().getCurrentUrl();
+       assertEquals(expectedURL,actualURL);
 
     }
 
@@ -485,9 +857,9 @@ public class UserDashboardStepDef extends Base {
     public void updates_the_types_of_events_in_the_setting_list() {
         clickWithJS(userDashboard.buttonEventType);
         wait(3);
-        String expectedMessage = "Updated successfully!";
-        String actualMessage = visitorHomePage.successfullAllert.getText();
-        assertEquals(expectedMessage, actualMessage);
+        String expectedMessage="Updated successfully!";
+        String actualMessage=visitorHomePage.successfullAllert.getText();
+        assertEquals(expectedMessage,actualMessage);
     }
 
     //=================STEPS ESRA SONU========================================
@@ -497,60 +869,129 @@ public class UserDashboardStepDef extends Base {
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
     public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
 
-        scrollIntoViewJS(userDashboard.linkSupportTicket);
-        Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
-
+       scrollIntoViewJS(userDashboard.imageAdsBar);
+        wait(1);
+        assertTrue(userDashboard.linkSupportTicket.isDisplayed());
+        clickWithJS(userDashboard.linkSupportTicket);
+        wait(2);
 
     }
 
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
-
-    }
-
-    @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
-    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String string) {
+        String expectedSupportTicketUrl = "https://qa.buysellcycle.com/support-ticket";
+        String actualSupportTicketUrl = Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
 
 
     }
 
 
-    @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")
-    public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu_and_verify_that_the_navigate_to_support_ticket_page() {
+    @Given("Verify that the Tickets should be listed with title information in All Submitted Ticket List.")
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list() {
+
+        wait(2);
+        List<String> requiredTitles = Arrays.asList("Ticket ID", "Subject", "Priority", "Last Update");
+        List<WebElement> headers = Driver.getDriver().findElements(By.xpath("//table/thead/tr/th"));
+        for (String title : requiredTitles) {
+            boolean isTitlePresent = headers.stream().anyMatch(th -> th.getText().equalsIgnoreCase(title));
+            Assert.assertTrue("The title '" + title + "' is not present in the ticket list.", isTitlePresent);
+        }
+
+        System.out.println("all title displayed");
+     }
 
 
+
+
+    @Given("Click on the ticket View button")
+    public void click_on_the_ticket_button() {
+
+        clickWithJS(userDashboard.actionDetailSupportTicketButton);
+        wait(2);
     }
-
-    @Given("Click on the ticket {string} button")
-    public void click_on_the_ticket_button(String string) {
-
-
-    }
-
     @Given("Verify that Status, Priority, Category  text is displayed")
     public void verify_that_status_priority_category_text_is_displayed() {
 
 
+        assertTrue(userDashboard.labelStatus.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelPriority.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelCategory.isDisplayed());
+        wait(1);
+        System.out.println("all category displayed");
+
+
     }
 
-    @When("I submit on the Continue to shipping button")
-    public void iSubmitOnTheContinueToShippingButton() {
-        waitAndClick(userDashboard.continueToShippingButton);
+    @Given("User should be able to display admin return message")
+    public void user_should_be_able_to_display_admin_return_message() {
+
+       assertTrue(userDashboard.labelCustomerMessage.isDisplayed());
+
+    }
+    @Given("User should be able to respond to admin message")
+    public void user_should_be_able_to_respond_to_admin_message() {
+        clickWithJS(userDashboard.replyButton);
+        wait(1);
+        userDashboard.replyMessageBox.sendKeys("deneme mesaj");
+        wait(1);
+        clickWithJS(userDashboard.replyNowButton);
+        wait(1);
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5)); // 10 saniye kadar bekle
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
+
+
     }
 
-    @Then("Click on the Proceed to Checkout buttonlink")
-    public void clickOnTheProceedToCheckoutButtonlink() {
-        waitAndClick(userDashboard.proceedToCheckoutButton);
+
+    @When("Click on the Pay Now buttonlink")
+    public void clickOnThePayNowButtonlink() {
+        scrollIntoViewJS(userDashboard.payNowButton);
+        waitAndClick(userDashboard.payNowButton);
+    }
+
+    @And("I should be able to click on email box on Stripe Payment")
+    public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
+        waitAndClick(userDashboard.emailStripePayment);
+    }
+
+    @And("I should be able to enter {string} on the email box")
+    public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
+        waitAndSendText(userDashboard.emailStripePayment, email);
+    }
+
+    @When("I should be able to enter {string} on the card number box")
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
+
+    }
+
+    @When("I should be able to enter {string} on the exp box")
+    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
+
+    }
+
+    @Then("I should be able to enter {string} on the cvc box")
+    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
     }
 
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
+        scrollIntoViewJS(userDashboard.orderNowButton);
         waitAndClick(userDashboard.orderNowButton);
     }
-
-
 }
+
+
 
 
 
