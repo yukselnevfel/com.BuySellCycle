@@ -72,13 +72,13 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//div[@class='owl-dot active']")
     public WebElement firstSlideNavigatorButton;
 
-    @FindBy(xpath = "//*[@title='sport']")
+    @FindBy(xpath = "(//*[@title='sport'])[2]")
     public WebElement imageSecondSlider;
 
-    @FindBy(xpath = "//*[@title='Electronics']")
+    @FindBy(xpath = "(//*[@title='Electronics'])[2]")
     public WebElement imageThirdSlider;
 
-    @FindBy(xpath = "//*[@title='woman fashion']")
+    @FindBy(xpath = "(//*[@title='woman fashion'])[2]")
     public WebElement imageFirstSlider;
 
     @FindBy(xpath = "(//*[@title='BuySellCycle'])[1]")
