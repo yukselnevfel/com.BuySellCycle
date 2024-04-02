@@ -771,6 +771,35 @@ public class UserDashboardStepDef extends Base {
     }
 
 
+    @When("Click on the Pay Now buttonlink")
+    public void clickOnThePayNowButtonlink() {
+        scrollIntoViewJS(userDashboard.payNowButton);
+        waitAndClick(userDashboard.payNowButton);
+    }
+
+    @And("I should be able to click on email box on Stripe Payment")
+    public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
+        waitAndClick(userDashboard.emailStripePayment);
+    }
+
+    @And("I should be able to enter {string} on the email box")
+    public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
+        waitAndSendText(userDashboard.emailStripePayment, email);
+    }
+
+    @When("I should be able to enter {string} on the card number box")
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
+        
+    }
+
+    @When("I should be able to enter {string} on the exp box")
+    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
+        
+    }
+
+    @Then("I should be able to enter {string} on the cvc box")
+    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
+    }
 }
 
 

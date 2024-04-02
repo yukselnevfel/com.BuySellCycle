@@ -78,13 +78,19 @@ public class UserDashboard extends Base {
     @FindBy (xpath= "(//label[@class='primary_checkbox d-inline-flex style4 gap_10 w-100'])[2]")
     public WebElement stripePayment;
 
-    @FindBy(xpath = "//*[text()='Order Now']")
+    @FindBy(xpath = "//*[contains(text(),'Pay now')]")
     public WebElement payNowButton;
 
     public void orderPayButton (String string){
         WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='+string+'])"));
         waitAndClick(element);
     }
+
+    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
+    public WebElement emailStripePayment;
+
+    @FindBy (id = "submitButton")
+    public WebElement submitPayment;
 
     //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']")
