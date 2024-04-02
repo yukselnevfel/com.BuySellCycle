@@ -603,11 +603,31 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
     public WebElement buttonAddingToCart;
 
-
-
     // -------------------------End of Beytullah's Locates----------------------------
 
+    // -------------------------SAMET----------------------------
+
+@FindBy(xpath = "(//*[@title=\"Add to Cart\"])[28]") public WebElement addToCartPrdct;
+@FindBy(xpath = "//*[@id=\"cart_add_modal\"]/div/div/div/div/div[3]/a") public WebElement viewCart;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[1]") public WebElement prd;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[2]") public WebElement prs;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[3]") public WebElement qnt;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[4]") public WebElement sbttl;
+@FindBy(xpath = "//*[@class=\"summery_pro_content\"]") public WebElement pruductDetail;
+@FindBy(xpath = "/html/body/div/div[1]/div/p") public WebElement  sorry;
+@FindBy(xpath = "(//*[@type=\"button\"])[2]") public WebElement  plusButton;
+@FindBy(xpath = "//*[@width=\"12.249\"]") public WebElement  deleteProductButton;
+@FindBy(xpath = "//*[@id=\"cart_form\"]/div/div/div[1]/div[2]/ul/li/div/div[4]/h4") public WebElement  productPrice;
+@FindBy(xpath = "//*[@id=\"cart_details_div\"]/div/div/div/div/div[3]/div[2]/span") public WebElement  discount;
+@FindBy(id = "qty_743") public WebElement  productAdet;
+@FindBy(className = "product_not_found") public WebElement product_not_found;
+
+
+
 }
+
+
+
 
 
 
