@@ -426,6 +426,7 @@ public class VisitorHomePage extends Base{
     public WebElement textBoxOrderTrackingNumber;
 
     //===================US_004==================
+
     @FindBy(xpath = "//*[text()='/ Register']")
     public WebElement linkRegister;
     @FindBy(xpath = "//*[@src='https://qa.buysellcycle.com/public/frontend/amazy/img/banner/login_img.png']")
@@ -563,6 +564,7 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement ddmFifthSorting;
     @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
     public List<WebElement> textProductprice;
+
 
 
 }

@@ -7,7 +7,7 @@ Feature: US_044 Admin Order Management
     * Enter "fikretAdminEmail" and "password" and click sign in
     * clicks on the Order Manage menu link
     * clicks on the Total Order submenu link
-    #* navigates to the Total Order page
+
 
   Scenario: TC_01 - Accessing the Total Order page from the Dashboard Side Bar
     * verifies that the Total Order page is accessible
@@ -36,17 +36,17 @@ Feature: US_044 Admin Order Management
 
   Scenario: TC_06 - Searching in Pending Orders List
     * enters a search query in the Quick Search text box in the Pending Orders List
+    * 2 saniye bekler
     * verifies that results matching the search query are displayed
     * Close the page
 
   Scenario: TC_07 - Searching in Confirmed Orders List
     * selects the Confirmed Orders option
     * enters a search query in the Quick Search text box in the Confirmed Orders List
-    * verifies that results matching the search query are displayed
+    * verifies that results matching the search query3 are displayed
     * Close the page
 
   Scenario: TC_08 - Accessing detailed information of a confirmed order
-    * selects a confirmed order from the list
     * clicks on the Details option to view detailed information
     * verifies that detailed information of the selected confirmed order is displayed
     * Close the page
@@ -54,12 +54,12 @@ Feature: US_044 Admin Order Management
   Scenario: TC_09 - Searching in Completed Orders List
     * selects the Completed Orders option
     * enters a search query in the Quick Search text box in the Completed Orders List
-    * verifies that results matching the search query are displayed
+    * verifies that results matching the search query2 are displayed
     * Close the page
 
   Scenario: TC_10 - Accessing detailed information of a completed order
     * selects a completed order from the list
-    * clicks on the Details option to view detailed information
+    * clicks on the completed Details option to view detailed information
     * verifies that detailed information of the selected completed order is displayed
     * Close the page
 
@@ -71,7 +71,7 @@ Feature: US_044 Admin Order Management
 
   Scenario: TC_12 - Accessing detailed information of a pending payment order
     * selects a pending payment order from the list
-    * clicks on the Details option to view detailed information
+    * clicks on the payment Details option to view detailed information
     * verifies that detailed information of the selected pending payment order is displayed
     * Close the page
 
