@@ -18,15 +18,9 @@ import java.security.KeyStore;
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
 
-        tags = "@nnn",
 
-
-
-
-
+        tags = "@slide",
         dryRun =false
-
-
 
 )
 
