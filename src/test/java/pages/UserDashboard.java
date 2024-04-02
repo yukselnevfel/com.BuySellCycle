@@ -1,10 +1,16 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import utils.Driver;
 
 import java.util.List;
 
@@ -24,6 +30,44 @@ public class UserDashboard extends Base{
 
     @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[3]")
     public WebElement linkMyOrder;
+    @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[2]")
+    public WebElement linkMyWishlist;
+    @FindBy(xpath = "(//div[@class=\"nice-select amaz_select4\"])[2]")
+    public WebElement linkNewBar;
+    @FindBy(xpath = "//li[@data-value=\"new\"]")
+    public WebElement linkNew;
+    @FindBy(xpath = "//li[@data-value=\"old\"]")
+    public WebElement linkOld;
+    @FindBy(xpath = "//li[@data-value=\"low_to_high\"]")
+    public WebElement linkLowtoHigh;
+    @FindBy(xpath = "//li[@data-value=\"high_to_low\"]")
+    public WebElement linkHightoLow;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[1]")
+    public WebElement imageFirst;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[2]")
+    public WebElement imageSecond;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/yuzuk\"])[2]")
+    public WebElement linkFirstProduct;
+    //@FindBy (xpath="(//div[@class='product_widget5 mb_30 style5 w-100'])[1]")
+   // public WebElement linkFirstProduct;
+    @FindBy (xpath="(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/blue-dress-1\"])[2]")
+    public WebElement linkSecondProduct;
+
+
+   @FindBy(xpath = "(//div[@class=\"product_widget5 mb_30 style5\"])[1]")
+    public WebElement linkFirstProductinWishlist;
+  // @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/glee-baby-stroller\"])[2]")
+  // public WebElement linkFirstProductinWishlist;
+    public String selectedSecondProduct;
+    public String selectedFirstProduct ;
+    public String actualFirstProduct;
+    @FindBy(xpath = "//a[@href=\"https://qa.buysellcycle.com/my-wishlist\"]")
+    public WebElement linkWishlistHeader;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/category/best_deals?item=product\"])[1]")
+    public WebElement linkNewProductDeals;
+
+    @FindBy(xpath = "//h5[@class=\"font_14 f_w_400 flex-fill mb-0\"]")
+    public WebElement textOfResult;
     @FindBy(xpath = "//button[@id=\"home-tab\"]")
     public WebElement linkAll;
     @FindBy(xpath = "//button[@id=\"Pay-tab\"]")
@@ -95,14 +139,28 @@ public WebElement continueToShippingButton;
     public WebElement invoicePageText;
     @FindBy(xpath = "//*[text()='No Gateway']")
     public WebElement paymentTypeText;
-
     @FindBys({
             @FindBy(xpath = "//*[@class='accordion-item']")
     })
     public List<WebElement> radioButtonListOnSelectPaymentPage;
-
-    @FindBy (xpath = "//*[text()='Order Now']")
+    @FindBy(xpath = "//*[text()='Order Now']")
     public WebElement orderNowButton;
+    @FindBy (xpath= "(//label[@class='primary_checkbox d-inline-flex style4 gap_10 w-100'])[2]")
+    public WebElement stripePayment;
+
+    @FindBy(xpath = "//*[contains(text(),'Pay now')]")
+    public WebElement payNowButton;
+
+    public void orderPayButton (String string){
+        WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='+string+'])"));
+        waitAndClick(element);
+    }
+
+    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
+    public WebElement emailStripePayment;
+
+    @FindBy (id = "submitButton")
+    public WebElement submitPayment;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
@@ -285,6 +343,9 @@ public WebElement continueToShippingButton;
       public WebElement buttonEventType;
 
 
+     // User Dashboard Page Left Panel
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
 
 
 

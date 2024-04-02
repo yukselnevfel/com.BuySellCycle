@@ -437,7 +437,7 @@ public abstract class Base {
         return stringlerList;
     }
 
-    public  static void clickWebElement(String textName) {
+     public  static void clickWebElement(String textName) {
 
         WebElement element = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + textName + "')]"));
         waitAndClick(element);

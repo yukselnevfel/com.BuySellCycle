@@ -42,8 +42,8 @@ Feature: Checkout and Payment Process
     Then I am on the "Checkout Summary" Page
     Given I should see the message "Thank you for your purchase!"
     And the Order Number should be displayed
-    And the Order summary (items purchased) should be displayed
-    And I should have access to the my-purchase-order-details page
+    When the Order summary (items purchased) should be displayed
+    Then I should have access to the my-purchase-order-details page
 
   Scenario: Return to Home Page After Order Completion
     Given I have completed the order

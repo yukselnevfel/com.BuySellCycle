@@ -24,17 +24,17 @@ public class AdminDashboardStepDef extends Base {
     @Given("Open browser and go to {string}, enter {string}, {string} and click sign in")
     public void open_browser_and_go_to_enter_and_click_sign_in(String adminUrl, String adminMail, String password) {
         Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
-        visitorHomePage.textBoxUserEmail.click();
+        clickWithJS(visitorHomePage.textBoxUserEmail);
 
         visitorHomePage.textBoxUserEmail.sendKeys(ConfigReader.getProperty(adminMail));
-        visitorHomePage.textBoxUserPassword.click();
+        clickWithJS(visitorHomePage.textBoxUserPassword);
         visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
 
-        visitorHomePage.signInButton.click();
-        String expectedUrl="https://qa.buysellcycle.com/admin-dashboard";
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-        assertEquals(expectedUrl,actualUrl);
-        wait(1);
+        clickWithJS(visitorHomePage.signInButton);
+       
+        String expectedMessage="Logged In Successfully!";
+        String actualMessage=adminDashboard.popUpMessage.getText();
+        assertEquals(expectedMessage,actualMessage);
 
     }
     @Given("User searches {string} on the admin Dashboard and verifies that the search result is true")
@@ -42,7 +42,7 @@ public class AdminDashboardStepDef extends Base {
         adminDashboard.searchBoxAdminDashboard.sendKeys(searchText);
         String expText="Follow seller History";
         String actText=adminDashboard.searchBoxAdminDashboard.getText();
-        Assert.assertEquals(expText,actText);
+        assertEquals(expText,actText);
     }
 
     // -------------------------Beytullah---------------------------------
