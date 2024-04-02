@@ -238,6 +238,38 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
+    }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
+
+    @When("Click on the {string} buttonlink")
+    public void clickOnTheButtonlink(String payMethod) {
+        userDashboard.orderPayButton(payMethod);
+    }
+
+    @And("I should be able to select the Snipe Payment Method")
+    public void iShouldBeAbleToSelectTheSnipePaymentMethod() {
+        waitAndClick(userDashboard.stripePayment);
+    }
+
+
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
+    }
+
     //Asli
 
 
@@ -621,20 +653,6 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-
-
-
-
-    @Then("Click on the {string} link on the top")
-    public void clickOnTheLinkOnTheTop(String arg0) {
-        clickWithJS(userDashboard.cartLinkOnTheTop);
-        wait(2);
-    }
-
-    @Given("I am on the \\{Checkout} Page")
-    public void iAmOnTheCheckoutPage() {
-        waitForPageToLoad(2);
-    }
     //===============STEPS ESRA BASLADI=========================================
 
     @Given("Scroll down to the bottom of the dashboard page")
@@ -752,25 +770,7 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-    @When("I submit on the Continue to shipping button")
-    public void iSubmitOnTheContinueToShippingButton() {
-        waitAndClick(userDashboard.continueToShippingButton);
-    }
 
-    @Then("Click on the Proceed to Checkout buttonlink")
-    public void clickOnTheProceedToCheckoutButtonlink() {
-        waitAndClick(userDashboard.proceedToCheckoutButton);
-    }
-
-    @When("Click on the Order Now buttonlink")
-    public void clickOnTheOrderNowButtonlink() {
-        waitAndClick(userDashboard.orderNowButton);
-    }
-
-    @When("Click on the Pay Now buttonlink")
-    public void clickOnThePayNowButtonlink() {
-        waitAndClick(userDashboard.payNowButton);
-    }
 }
 
 

@@ -38,7 +38,7 @@ Feature: Checkout and Payment Process
   @asli033
   Scenario: Navigate from Payment Page to Order Completion
     Given I am on the "Payment" Page
-    When Click on the Order Now buttonlink
+    When Click on the "Order Now" buttonlink
     Then I am on the "Checkout Summary" Page
     Given I should see the message "Thank you for your purchase!"
     And the Order Number should be displayed
