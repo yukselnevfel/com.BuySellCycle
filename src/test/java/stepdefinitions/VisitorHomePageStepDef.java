@@ -976,6 +976,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the Please Login First warning is visible")
     public void verify_that_the_please_login_first_warning_is_visible() {
+        wait(3);
         String expectedMessage="Please login first";
         String actualMessage=visitorHomePage.successfullAllert.getText();
         Assert.assertEquals(expectedMessage,actualMessage);
@@ -1399,6 +1400,53 @@ public class VisitorHomePageStepDef extends Base {
         String actualUrl=Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,actualUrl);
     }
+        //US_014 STEPS
+    @Given("Click the View All button next to the Best Deals menu item and navigates to the relevant page")
+    public void click_the_view_all_button_next_to_the_best_deals_menu_item_and_navigates_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.buttonViewAll);
+        String expectedURL="https://qa.buysellcycle.com/category/best_deals?item=product";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+    @Given("Displays the products in the Best Deals menu")
+    public void displays_the_products_in_the_best_deals_menu() {
+        assertTrue(visitorHomePage.imageBag.isDisplayed());
+        assertTrue(visitorHomePage.image.isDisplayed());
+        assertTrue(visitorHomePage.imageChicco.isDisplayed());
+    }
+
+    @Given("Add products from the Best Deals menu on the home page body to the cart")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddToCart);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonClose);
+
+    }
+    @Given("Select products in the Best Deals menu in the body section of the home page for comparison")
+    public void select_products_in_the_best_deals_menu_in_the_body_section_of_the_home_page_for_comparison() {
+        //assertTrue(visitorHomePage.imageBag.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageBag).perform();
+        wait(2);
+        assertTrue(visitorHomePage.buttonCompare.isDisplayed());
+
+    }
+    @When("Verify that the product added to compare list successfully is visible")
+    public void verifyThatTheProductAddedToCompareListSuccussfullyIsVisible() {
+        wait(3);
+        String expectedMessage="Product added to compare list successfully";
+        String actualMessage=visitorHomePage.successfullAllert.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
+    }
+
+
+    @Given("Add products from the Best Deals menu on the home page body to the favorites list")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_favorites_list_and_displays() {
+        clickWithJS(visitorHomePage.buttonWishList);
+    }
+
+
+
 
 
 

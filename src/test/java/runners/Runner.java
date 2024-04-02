@@ -19,10 +19,9 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@slide",
+        tags = "@esra",
+
         dryRun =false
-
-
 
 )
 
