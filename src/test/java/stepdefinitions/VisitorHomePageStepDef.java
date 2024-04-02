@@ -140,15 +140,17 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
         Assert.assertTrue(visitorHomePage.navigationButtons.isDisplayed());
 
+
     }
     @Given("Click on the navigation button and Verify that image is visible")
     public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
 
-        clickWithJS(visitorHomePage.secondSlideNavigatorButton);
+        wait(2);
+        waitAndClick(visitorHomePage.secondSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        clickWithJS(visitorHomePage.thirdSlideNavigatorButton);
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        clickWithJS(visitorHomePage.firstSlideNavigatorButton);
+        waitAndClick(visitorHomePage.firstSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
 
 
@@ -156,8 +158,12 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-
-
+        wait(6);
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        wait(6);
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
+        wait(6);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
 
     }
 
@@ -191,8 +197,6 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertEquals(expectedUrl, actualUrl);
         Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
         wait(2);
-
-
 
 
     }
@@ -976,6 +980,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the Please Login First warning is visible")
     public void verify_that_the_please_login_first_warning_is_visible() {
+        wait(3);
         String expectedMessage="Please login first";
         String actualMessage=visitorHomePage.successfullAllert.getText();
         Assert.assertEquals(expectedMessage,actualMessage);
@@ -1092,9 +1097,77 @@ public class VisitorHomePageStepDef extends Base {
         String actualTitle = Driver.getDriver().getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
+    @Given("Add an item to the cart")
+    public void add_an_item_to_the_cart() {
+        waitAndClick(visitorHomePage.addToCartPrdct);
+        waitAndClick(visitorHomePage.viewCart);
+    }
+    @Given("Verify that PRODUCTS, PRICE, QUANTITY, SUBTOTAL information appears")
+    public void verify_that_products_price_quantity_subtotal_information_appears() {
+assertTrue(visitorHomePage.prd.isDisplayed());
+assertTrue(visitorHomePage.prs.isDisplayed());
+assertTrue(visitorHomePage.qnt.isDisplayed());
+assertTrue(visitorHomePage.sbttl.isDisplayed());
+
+    }
+    @Given("Click on the product")
+    public void click_on_the_product() {
+    waitAndClick(visitorHomePage.pruductDetail);
+    }
+
+    @Given("Verify that you have navigated to the product detail page")
+    public void verify_that_you_have_navigated_to_the_product_detail_page() {
+        System.out.println(visitorHomePage.sorry.getText());
+    assertFalse(visitorHomePage.sorry.getText().contains("Sorry"));
+    }
+    static  int fiyat=0;
+    static  int fiyat2=0;
+    @Given("Click on the + button to the right of the product and verify that the product quantity increased by one")
+    public void click_on_the_button_to_the_right_of_the_product() {
+        wait(2);
+        String price=visitorHomePage.productPrice.getText().substring(1).replaceAll("\\D", "");
+        System.out.println("price = " + price);
+        fiyat=Integer.parseInt(price);
+        //String tane=visitorHomePage.productAdet.getText();
+       // System.out.println("tane = " + tane);
+       // int adet= Integer.parseInt(tane);
+       waitAndClick(visitorHomePage.plusButton);
+        //int adet2= Integer.parseInt(visitorHomePage.productAdet.getText());
+       // assertEquals(adet2, adet + 1);
+    }
+    @Given("Verify that the product price has doubled")
+    public void verify_that_the_product_price_has_doubled() {
+        wait(2);
+        String price=visitorHomePage.productPrice.getText().substring(1).replaceAll("\\D", "");
+        System.out.println("price = " + price);
+        fiyat2=Integer.parseInt(price);
+        assertEquals(fiyat2,fiyat*2);
+    }
+    @Given("Click on the delete button to the right of the product")
+    public void click_on_the_delete_button_to_the_right_of_the_product() {
+       visitorHomePage.deleteProductButton.click();
+    }
+    @Given("Verify that the product has been deleted")
+    public void verify_that_the_product_has_been_deleted() {
+     assertTrue(visitorHomePage.product_not_found.isDisplayed());
+    }
+
+    @Given("Click on the View Cart")
+    public void click_on_the_view_cart() {
+
+    }
+    @Given("Click on Return to Cart")
+    public void click_on_return_to_cart() {
+
+    }
+    @Given("Click on the Continue Shopping link")
+    public void click_on_the_continue_shopping_link() {
+
+    }
 
 
- //---------------- Steps Asli----------------------/
+
+    //---------------- Steps Asli----------------------/
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
@@ -1399,6 +1472,53 @@ public class VisitorHomePageStepDef extends Base {
         String actualUrl=Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,actualUrl);
     }
+        //US_014 STEPS
+    @Given("Click the View All button next to the Best Deals menu item and navigates to the relevant page")
+    public void click_the_view_all_button_next_to_the_best_deals_menu_item_and_navigates_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.buttonViewAll);
+        String expectedURL="https://qa.buysellcycle.com/category/best_deals?item=product";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+    @Given("Displays the products in the Best Deals menu")
+    public void displays_the_products_in_the_best_deals_menu() {
+        assertTrue(visitorHomePage.imageBag.isDisplayed());
+        assertTrue(visitorHomePage.image.isDisplayed());
+        assertTrue(visitorHomePage.imageChicco.isDisplayed());
+    }
+
+    @Given("Add products from the Best Deals menu on the home page body to the cart")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddToCart);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonClose);
+
+    }
+    @Given("Select products in the Best Deals menu in the body section of the home page for comparison")
+    public void select_products_in_the_best_deals_menu_in_the_body_section_of_the_home_page_for_comparison() {
+        //assertTrue(visitorHomePage.imageBag.isDisplayed());
+        actions.moveToElement(visitorHomePage.imageBag).perform();
+        wait(2);
+        assertTrue(visitorHomePage.buttonCompare.isDisplayed());
+
+    }
+    @When("Verify that the product added to compare list successfully is visible")
+    public void verifyThatTheProductAddedToCompareListSuccussfullyIsVisible() {
+        wait(3);
+        String expectedMessage="Product added to compare list successfully";
+        String actualMessage=visitorHomePage.successfullAllert.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
+    }
+
+
+    @Given("Add products from the Best Deals menu on the home page body to the favorites list")
+    public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_favorites_list_and_displays() {
+        clickWithJS(visitorHomePage.buttonWishList);
+    }
+
+
+
 
 
 
@@ -1496,6 +1616,18 @@ public class VisitorHomePageStepDef extends Base {
     @Given("User verifies that sorting DDM works")
     public void user_verifies_that_sorting_ddm_works() {
 
+    }
+    @Given("User verifies that the Counter is visible")
+    public void user_verifies_that_the_counter_is_visible() {
+        Assert.assertTrue(visitorHomePage.labelcounter.isDisplayed());
+    }
+    @Given("User verifies that First product is visible")
+    public void user_verifies_that_first_product_is_visible() {
+        Assert.assertTrue(visitorHomePage.linkFirstProduct.isDisplayed());
+    }
+    @Given("Verify that referral code is visible")
+    public void verify_that_referral_code_is_visible() {
+        Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
     }
 
     @Then("I should be directed to the {string} page")

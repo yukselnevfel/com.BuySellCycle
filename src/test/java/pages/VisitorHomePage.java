@@ -72,13 +72,13 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//div[@class='owl-dot active']")
     public WebElement firstSlideNavigatorButton;
 
-    @FindBy(xpath = "//*[@title='sport']")
+    @FindBy(xpath = "(//*[@title='sport'])[2]")
     public WebElement imageSecondSlider;
 
-    @FindBy(xpath = "//*[@title='Electronics']")
+    @FindBy(xpath = "(//*[@title='Electronics'])[2]")
     public WebElement imageThirdSlider;
 
-    @FindBy(xpath = "//*[@title='woman fashion']")
+    @FindBy(xpath = "(//*[@title='woman fashion'])[2]")
     public WebElement imageFirstSlider;
 
     @FindBy(xpath = "(//*[@title='BuySellCycle'])[1]")
@@ -226,8 +226,10 @@ public class VisitorHomePage extends Base{
     public WebElement iconCompare ;
 
 
-    @FindBy(xpath = "(//a[@id='wishlistbtn_1373'])[1]")
+    @FindBy(xpath = "(//i[@class=\"far fa-heart\"])[1]")
     public WebElement iconWishlist;
+    @FindBy(xpath = "(//i[@class=\"far fa-heart\"])[2]")
+    public WebElement iconSecondWishlist;
 
     @FindBy(xpath = "(//a[@data-product_id='1373'])[2]")
     public WebElement iconQuickView;
@@ -412,32 +414,39 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//a[text()='Living Room']")
     public WebElement textLivingRoom;
 
-    @FindBy(xpath = "//a[text()='Sportswear-Sneakers']")
-    public WebElement textSportswear;
+    //===US_014 HOMEPAGE LINK BUTTONLARI=========================
+    @FindBy(xpath = "(//span[text()='View All'])[1]")
+    public WebElement buttonViewAll;
 
-    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[6]/ul/li[1]/ul/li[1]/a")
-    public WebElement womansBag;
+    @FindBy(xpath = "(//img[@class='lazyload'])[1]")
+    public WebElement imageBag;
 
-    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[7]/ul/li[1]/ul/li[1]/a")
-    public WebElement eyeMakeup;
+    @FindBy(xpath = "(//img[@class='lazyload'])[2]")
+    public WebElement image;
 
-    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[8]/ul/li[1]/ul/li[1]/a")
-    public WebElement examPreparationBooks;
+    @FindBy(xpath = "(//img[@class='lazyload'])[3]")
+    public WebElement imageChicco;
 
-    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[9]/ul/li[1]/ul/li[1]/a")
-    public WebElement puzzle;
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[1]")
+    public WebElement buttonAddToCart;
 
-    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[10]/ul/li[1]/ul/li[1]/a")
-    public WebElement washing;
+    @FindBy(xpath = "//*[text()='Item added to your cart']")
+    public WebElement  textSucces;
 
-    @FindBy(xpath = " //*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[11]/ul/li[1]/ul/li[1]/a")
-    public WebElement powerTools;
+    @FindBy(xpath = "(//i[@class='ti-close'])[5]")
+    public WebElement buttonClose;
+
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[1]")
+    public WebElement buttonCompare;
+
+    @FindBy(xpath = "(//i[@title='Wishlist'])[1]")
+    public WebElement buttonWishList;
+
 
 
 
 
     //Site ust barinda kolay linkler
-
     //TC02 Site ust barinda kolay linkler ve gidilen yerler
 
     @FindBy(id = "order_number")
@@ -581,10 +590,44 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement ddmFifthSorting;
     @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
     public List<WebElement> textProductprice;
+    @FindBy(xpath = "//*[@id='count_down']")
+    public WebElement labelcounter;
+    @FindBy(xpath = "(//*[@class='lazyload'])[1]")
+    public WebElement linkFirstProduct;
+    @FindBy(xpath = "(//*[@class='lazyload'])[1]")
+    public WebElement buttonWiew;
+    @FindBy(xpath = "//*[@id='wishlist_btn']")
+    public WebElement buttonAddingWishList;
+    @FindBy(xpath = "//*[@id='add_to_compare_btn']")
+    public WebElement buttonAddingCompare;
+    @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
+    public WebElement buttonAddingToCart;
+
+    // -------------------------End of Beytullah's Locates----------------------------
+
+    // -------------------------SAMET----------------------------
+
+@FindBy(xpath = "(//*[@title=\"Add to Cart\"])[28]") public WebElement addToCartPrdct;
+@FindBy(xpath = "//*[@id=\"cart_add_modal\"]/div/div/div/div/div[3]/a") public WebElement viewCart;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[1]") public WebElement prd;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[2]") public WebElement prs;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[3]") public WebElement qnt;
+@FindBy(xpath = "(//*[@class=\"font_14 f_w_700 m-0 text-nowrap priamry_text text-uppercase\"])[4]") public WebElement sbttl;
+@FindBy(xpath = "//*[@class=\"summery_pro_content\"]") public WebElement pruductDetail;
+@FindBy(xpath = "/html/body/div/div[1]/div/p") public WebElement  sorry;
+@FindBy(xpath = "(//*[@type=\"button\"])[2]") public WebElement  plusButton;
+@FindBy(xpath = "//*[@width=\"12.249\"]") public WebElement  deleteProductButton;
+@FindBy(xpath = "//*[@id=\"cart_form\"]/div/div/div[1]/div[2]/ul/li/div/div[4]/h4") public WebElement  productPrice;
+@FindBy(xpath = "//*[@id=\"cart_details_div\"]/div/div/div/div/div[3]/div[2]/span") public WebElement  discount;
+@FindBy(id = "qty_743") public WebElement  productAdet;
+@FindBy(className = "product_not_found") public WebElement product_not_found;
+
 
 
 }
-    // -------------------------End of Beytullah's Locates----------------------------
+
+
+
 
 
 

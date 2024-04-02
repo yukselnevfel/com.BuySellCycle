@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,12 +18,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
 import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
 
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -142,8 +147,81 @@ public class UserDashboardStepDef extends Base {
     public void verify_that_the_paid_by_title_is_visible() {
         Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Paid By"));
     }
+    @Given("Verify that My Wishlist link is visible in the Dashboard side bar")
+    public void verify_that_my_wishlist_link_is_visible_in_the_dashboard_side_bar() {
+        Assert.assertTrue(userDashboard.linkMyWishlist.isDisplayed());
+    }
+    @Given("Click on the My Wishlist link in the Dashboard side bar")
+    public void click_on_the_my_wishlist_link_in_the_dashboard_side_bar() {
+      clickWithJS(userDashboard.linkMyWishlist);
+    }
+    @Given("Verify that the products added to the Wishlist are listed")
+    public void verify_that_the_products_added_to_the_wishlist_are_listed() {
+     String result = String.valueOf(userDashboard.textOfResult.getText().subSequence(17,26));
+     int resultt = Integer.parseInt(result.replaceAll("\\D",""));
+       Assert.assertTrue(resultt>0);
+    }
+    @Given("Verify that the New bar is visible")
+    public void verify_that_the_new_bar_is_visible() {
+        Assert.assertTrue(userDashboard.linkNewBar.isDisplayed());
+    }
+    @Given("Click on the New bar")
+    public void click_on_the_new_bar() {
+       clickWithJS(userDashboard.linkNewBar);
+    }
+    @Given("Click on the New button")
+    public void click_on_the_new_button() {
+       clickWithJS(userDashboard.linkNew);
+    }
+    @Given("Click on the New Product Deals")
+    public void click_on_the_new_product_deals() {
+      clickWithJS(userDashboard.linkNewProductDeals);
+    }
+    String select;
+    @Given("Add to wishlist first product")
+    public void add_to_wishlist_first_product() {
+       actions.moveToElement(userDashboard.imageFirst).perform();
+       wait(1);
+       clickWithJS(visitorHomePage.iconWishlist);
+       userDashboard.selectedFirstProduct = userDashboard.linkFirstProduct.getText();
 
+    }
+    @Given("Add to wishlist second product")
+    public void add_to_wishlist_second_product() {
+        actions.moveToElement(userDashboard.imageSecond).perform();
+        wait(1);
+        clickWithJS(visitorHomePage.iconSecondWishlist);
+        userDashboard.selectedSecondProduct = userDashboard.linkSecondProduct.getText();
 
+    }
+
+    @Given("Click on the Wishlist link in the header")
+    public void click_on_the_wishlist_link_in_the_header() {
+       clickWithJS(userDashboard.linkWishlistHeader);
+    }
+
+    @Given("Verify that the products are sorted from newest to oldest")
+    public void verify_that_the_products_are_sorted_from_newest_to_oldest() {
+      userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println(userDashboard.selectedFirstProduct);
+      Assert.assertTrue(userDashboard.actualFirstProduct.contains(userDashboard.selectedFirstProduct));
+    }
+    @Given("Click on the Old button")
+    public void click_on_the_old_button() {
+       clickWithJS(userDashboard.linkOld);
+       wait(2);
+    }
+    @Given("Verify that the products are sorted from oldest to newest")
+    public void verify_that_the_products_are_sorted_from_oldest_to_newest() {
+        userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println();
+        System.out.println();
+        System.out.println(userDashboard.selectedSecondProduct);
+
+       Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
+    }
 
 
 
@@ -765,12 +843,11 @@ public class UserDashboardStepDef extends Base {
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
     public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
 
+       scrollIntoViewJS(userDashboard.imageAdsBar);
         wait(1);
-        Actions action = new Actions(Driver.getDriver());
-        action.scrollToElement(userDashboard.linkSupportTicket);
-        wait(1);
-        Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
+        assertTrue(userDashboard.linkSupportTicket.isDisplayed());
         clickWithJS(userDashboard.linkSupportTicket);
+        wait(2);
 
 
     }
@@ -779,51 +856,74 @@ public class UserDashboardStepDef extends Base {
 
         String expectedSupportTicketUrl = "https://qa.buysellcycle.com/support-ticket";
         String actualSupportTicketUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
+        assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
 
 
     }
 
 
-    @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
-    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String title) {
+    @Given("Verify that the Tickets should be listed with title information in All Submitted Ticket List.")
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list() {
 
-
-            boolean isTitlePresent = false;
-            List<WebElement> tickets = Driver.getDriver().findElements(By.xpath("//*[contains(text(),'" + title + "')]"));
-
-            for (WebElement ticket : tickets) {
-                WebElement titleElement = ticket.findElement(By.cssSelector("//*[contains(text(),'" + title + "')]"));
-                if (titleElement != null && !titleElement.getText().isEmpty()) {
-                    isTitlePresent = true;
-                    break;
-                }
-            }
-            Assert.assertTrue("The title '" + title + "' is not present in any of the tickets in the list.", isTitlePresent);
+        wait(2);
+        List<String> requiredTitles = Arrays.asList("Ticket ID", "Subject", "Priority", "Last Update");
+        List<WebElement> headers = Driver.getDriver().findElements(By.xpath("//table/thead/tr/th"));
+        for (String title : requiredTitles) {
+            boolean isTitlePresent = headers.stream().anyMatch(th -> th.getText().equalsIgnoreCase(title));
+            Assert.assertTrue("The title '" + title + "' is not present in the ticket list.", isTitlePresent);
         }
 
+        System.out.println("all title displayed");
+     }
 
 
 
 
+    @Given("Click on the ticket View button")
+    public void click_on_the_ticket_button() {
 
-
-    @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")
-    public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu_and_verify_that_the_navigate_to_support_ticket_page() {
-
-
-
-    }
-    @Given("Click on the ticket {string} button")
-    public void click_on_the_ticket_button(String string) {
-
-
-
+        clickWithJS(userDashboard.actionDetailSupportTicketButton);
+        wait(2);
 
     }
     @Given("Verify that Status, Priority, Category  text is displayed")
     public void verify_that_status_priority_category_text_is_displayed() {
 
+
+        assertTrue(userDashboard.labelStatus.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelPriority.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelCategory.isDisplayed());
+        wait(1);
+        System.out.println("all category displayed");
+
+
+    }
+
+    @Given("User should be able to display admin return message")
+    public void user_should_be_able_to_display_admin_return_message() {
+
+       assertTrue(userDashboard.labelCustomerMessage.isDisplayed());
+
+    }
+    @Given("User should be able to respond to admin message")
+    public void user_should_be_able_to_respond_to_admin_message() {
+        clickWithJS(userDashboard.replyButton);
+        wait(1);
+        userDashboard.replyMessageBox.sendKeys("deneme mesaj");
+        wait(1);
+        clickWithJS(userDashboard.replyNowButton);
+        wait(1);
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5)); // 10 saniye kadar bekle
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
 
 
     }
