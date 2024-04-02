@@ -213,9 +213,6 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id='error_term_check']")
     public WebElement labelWarningText;
 
-    @FindBy(xpath = "//*[text()='Continue To Shipping']")
-    public WebElement continueToShippingButton;
-
     @FindBy(xpath = "//*[text()='Return To Cart']")
     public WebElement returnToCartButton;
 
