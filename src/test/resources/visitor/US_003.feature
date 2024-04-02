@@ -1,4 +1,4 @@
-@nev
+
 Feature:US_003  When shopping on a website, I want a section where I can view the status of my orders.
 
   Background:
@@ -28,7 +28,7 @@ Feature:US_003  When shopping on a website, I want a section where I can view th
         * Show warning message on the page
         * Close the page
 
-
+@304
       Scenario:TC_04 Inquiring the current status of the order when the current order number is entered in the Order Tracking Number textbox
         * Click on the Track your Order link
         * Enter a valid "20240323000030" password in the Order Tracking Number field
