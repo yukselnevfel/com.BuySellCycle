@@ -26,6 +26,44 @@ public class UserDashboard extends Base{
 
     @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[3]")
     public WebElement linkMyOrder;
+    @FindBy(xpath = "(//a[@class=\"position-relative d-flex align-items-center\"])[2]")
+    public WebElement linkMyWishlist;
+    @FindBy(xpath = "(//div[@class=\"nice-select amaz_select4\"])[2]")
+    public WebElement linkNewBar;
+    @FindBy(xpath = "//li[@data-value=\"new\"]")
+    public WebElement linkNew;
+    @FindBy(xpath = "//li[@data-value=\"old\"]")
+    public WebElement linkOld;
+    @FindBy(xpath = "//li[@data-value=\"low_to_high\"]")
+    public WebElement linkLowtoHigh;
+    @FindBy(xpath = "//li[@data-value=\"high_to_low\"]")
+    public WebElement linkHightoLow;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[1]")
+    public WebElement imageFirst;
+    @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[2]")
+    public WebElement imageSecond;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/yuzuk\"])[2]")
+    public WebElement linkFirstProduct;
+    //@FindBy (xpath="(//div[@class='product_widget5 mb_30 style5 w-100'])[1]")
+   // public WebElement linkFirstProduct;
+    @FindBy (xpath="(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/blue-dress-1\"])[2]")
+    public WebElement linkSecondProduct;
+
+
+   @FindBy(xpath = "(//div[@class=\"product_widget5 mb_30 style5\"])[1]")
+    public WebElement linkFirstProductinWishlist;
+  // @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/glee-baby-stroller\"])[2]")
+  // public WebElement linkFirstProductinWishlist;
+    public String selectedSecondProduct;
+    public String selectedFirstProduct ;
+    public String actualFirstProduct;
+    @FindBy(xpath = "//a[@href=\"https://qa.buysellcycle.com/my-wishlist\"]")
+    public WebElement linkWishlistHeader;
+    @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/category/best_deals?item=product\"])[1]")
+    public WebElement linkNewProductDeals;
+
+    @FindBy(xpath = "//h5[@class=\"font_14 f_w_400 flex-fill mb-0\"]")
+    public WebElement textOfResult;
     @FindBy(xpath = "//button[@id=\"home-tab\"]")
     public WebElement linkAll;
     @FindBy(xpath = "//button[@id=\"Pay-tab\"]")

@@ -226,8 +226,10 @@ public class VisitorHomePage extends Base{
     public WebElement iconCompare ;
 
 
-    @FindBy(xpath = "(//a[@id='wishlistbtn_1373'])[1]")
+    @FindBy(xpath = "(//i[@class=\"far fa-heart\"])[1]")
     public WebElement iconWishlist;
+    @FindBy(xpath = "(//i[@class=\"far fa-heart\"])[2]")
+    public WebElement iconSecondWishlist;
 
     @FindBy(xpath = "(//a[@data-product_id='1373'])[2]")
     public WebElement iconQuickView;

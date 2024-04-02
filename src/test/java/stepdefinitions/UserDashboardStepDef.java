@@ -142,8 +142,81 @@ public class UserDashboardStepDef extends Base {
     public void verify_that_the_paid_by_title_is_visible() {
         Assert.assertTrue(userDashboard.textOrderPage.getText().contains("Paid By"));
     }
+    @Given("Verify that My Wishlist link is visible in the Dashboard side bar")
+    public void verify_that_my_wishlist_link_is_visible_in_the_dashboard_side_bar() {
+        Assert.assertTrue(userDashboard.linkMyWishlist.isDisplayed());
+    }
+    @Given("Click on the My Wishlist link in the Dashboard side bar")
+    public void click_on_the_my_wishlist_link_in_the_dashboard_side_bar() {
+      clickWithJS(userDashboard.linkMyWishlist);
+    }
+    @Given("Verify that the products added to the Wishlist are listed")
+    public void verify_that_the_products_added_to_the_wishlist_are_listed() {
+     String result = String.valueOf(userDashboard.textOfResult.getText().subSequence(17,26));
+     int resultt = Integer.parseInt(result.replaceAll("\\D",""));
+       Assert.assertTrue(resultt>0);
+    }
+    @Given("Verify that the New bar is visible")
+    public void verify_that_the_new_bar_is_visible() {
+        Assert.assertTrue(userDashboard.linkNewBar.isDisplayed());
+    }
+    @Given("Click on the New bar")
+    public void click_on_the_new_bar() {
+       clickWithJS(userDashboard.linkNewBar);
+    }
+    @Given("Click on the New button")
+    public void click_on_the_new_button() {
+       clickWithJS(userDashboard.linkNew);
+    }
+    @Given("Click on the New Product Deals")
+    public void click_on_the_new_product_deals() {
+      clickWithJS(userDashboard.linkNewProductDeals);
+    }
+    String select;
+    @Given("Add to wishlist first product")
+    public void add_to_wishlist_first_product() {
+       actions.moveToElement(userDashboard.imageFirst).perform();
+       wait(1);
+       clickWithJS(visitorHomePage.iconWishlist);
+       userDashboard.selectedFirstProduct = userDashboard.linkFirstProduct.getText();
 
+    }
+    @Given("Add to wishlist second product")
+    public void add_to_wishlist_second_product() {
+        actions.moveToElement(userDashboard.imageSecond).perform();
+        wait(1);
+        clickWithJS(visitorHomePage.iconSecondWishlist);
+        userDashboard.selectedSecondProduct = userDashboard.linkSecondProduct.getText();
 
+    }
+
+    @Given("Click on the Wishlist link in the header")
+    public void click_on_the_wishlist_link_in_the_header() {
+       clickWithJS(userDashboard.linkWishlistHeader);
+    }
+
+    @Given("Verify that the products are sorted from newest to oldest")
+    public void verify_that_the_products_are_sorted_from_newest_to_oldest() {
+      userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println(userDashboard.selectedFirstProduct);
+      Assert.assertTrue(userDashboard.actualFirstProduct.contains(userDashboard.selectedFirstProduct));
+    }
+    @Given("Click on the Old button")
+    public void click_on_the_old_button() {
+       clickWithJS(userDashboard.linkOld);
+       wait(2);
+    }
+    @Given("Verify that the products are sorted from oldest to newest")
+    public void verify_that_the_products_are_sorted_from_oldest_to_newest() {
+        userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
+        System.out.println(userDashboard.actualFirstProduct);
+        System.out.println();
+        System.out.println();
+        System.out.println(userDashboard.selectedSecondProduct);
+
+       Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
+    }
 
 
 
