@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
@@ -225,7 +226,7 @@ public class UserDashboardStepDef extends Base {
 
 
 
-      
+
 
     //----------------------------SIMGE STEPS BITIS--------------------------//}
 
@@ -357,6 +358,26 @@ public class UserDashboardStepDef extends Base {
     }
 
     //-------------Login Steps FIKRET-----------------/
+    @Then("Stripe select")
+    public void stripe_select() {
+        clickWithJS(userDashboard.stripeCheckRadioButton);
+    }
+
+    @When("Click paynow button")
+    public void Click_paynow_button() {
+        clickWithJS(userDashboard.payNow);
+
+    }
+
+
+    @When("Close on stripe window")
+    public void close_on_stripe_window() {
+        Driver.getDriver().switchTo().frame(0);
+        userDashboard.stripeCardNumberTextBox.sendKeys("4242 42");
+        wait(6);
+        clickWithJS(userDashboard.stripeEscape);
+    }
+
     @And("{int} saniye bekler")
     public void saniyeBekler(int saniye) {
 
@@ -371,6 +392,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_should_see_the_menu_in_the_dashboard_sidebar() {
        assertTrue(userDashboard.linkPurchaseHistory.isDisplayed());
     }
+
     @Then("the user verifies that the Purchase History link is active")
     public void the_user_verifies_that_the_link_is_active() {
         assertTrue(userDashboard.linkPurchaseHistory.isEnabled());
@@ -380,6 +402,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_clicks_on_the_link_in_the_dashboard_sidebar() {
         clickWithJS(userDashboard.linkPurchaseHistory);
     }
+
     @Then("the user verifies the presence of details such as Details, Amount, Delivery Status, Payment Status, and Action")
     public void the_user_verifies_the_presence_of_details_such_as_details_amount_delivery_status_payment_status_and_action() {
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -391,6 +414,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.allHistoryFilter);
         clickWithJS(userDashboard.pendingPurchase);
     }
+
     @Then("the user verifies that the filtering is applied correctly")
     public void the_user_verifies_that_the_filtering_is_applied_correctly() {
         assertTrue(userDashboard.pendingText.isDisplayed());
@@ -401,6 +425,7 @@ public class UserDashboardStepDef extends Base {
 
         clickWithJS(userDashboard.iconDownload);
     }
+
     @Then("the user verifies that the invoice is downloaded successfully")
     public void the_user_verifies_that_the_invoice_is_downloaded_successfully() {
         String dosyaYolu = "C:\\Users\\ZEYBEK\\Downloads\\Documents\\20240323000043.pdf";
@@ -412,6 +437,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.iconBurgerPurchase);
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
+
     @Then("the user verifies the displayed invoice details such as Order code, Package code, Delivery Process, Order Details, Order Summary, and Payment Type")
     public void the_user_verifies_the_displayed_invoice_details_such_as_order_code_package_code_delivery_process_order_details_order_summary_and_payment_type() {
         System.out.println(userDashboard.invoicePageText.getText());
@@ -423,7 +449,6 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.invoicePageText.getText().contains("Delivered"));
         assertTrue(userDashboard.paymentTypeText.getText().contains("No Gateway"));
     }
-
 
 
     @Given("Verify that page url is {string}")
@@ -628,7 +653,6 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Verify that the Dasboard link is visible and functional")
@@ -819,6 +843,7 @@ public class UserDashboardStepDef extends Base {
     public void return_to_notifications_page() {
         Driver.getDriver().navigate().back();
     }
+
     @Given("Click on the Setting button and reach the relevant page")
     public void click_on_the_button_and_reach_the_relevant_page() {
        clickWithJS(userDashboard.buttonSetting);
@@ -827,6 +852,7 @@ public class UserDashboardStepDef extends Base {
        assertEquals(expectedURL,actualURL);
 
     }
+
     @Given("Updates the Types of Events in the Setting list")
     public void updates_the_types_of_events_in_the_setting_list() {
         clickWithJS(userDashboard.buttonEventType);
@@ -849,8 +875,8 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.linkSupportTicket);
         wait(2);
 
-
     }
+
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
@@ -884,7 +910,6 @@ public class UserDashboardStepDef extends Base {
 
         clickWithJS(userDashboard.actionDetailSupportTicketButton);
         wait(2);
-
     }
     @Given("Verify that Status, Priority, Category  text is displayed")
     public void verify_that_status_priority_category_text_is_displayed() {
@@ -965,6 +990,7 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.orderNowButton);
     }
 }
+
 
 
 

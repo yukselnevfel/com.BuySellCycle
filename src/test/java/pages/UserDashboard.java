@@ -348,5 +348,20 @@ public WebElement continueToShippingButton;
     public WebElement labelReferralCode;
 
 
+    @FindBy(xpath = "//*[@data-name='Stripe']")
+    public WebElement stripeCheckRadioButton;
+    @FindBy(xpath = "//*[@id='payment_btn_trigger']")
+    public WebElement payNow;
+    @FindBy(xpath = "//*[@class='close right']")
+    public WebElement stripeEscape;
+    @FindBy(xpath = "//*[@id='card_number']")
+    public WebElement stripeCardNumberTextBox;
+
+
+
+
+
+
+
 
 }

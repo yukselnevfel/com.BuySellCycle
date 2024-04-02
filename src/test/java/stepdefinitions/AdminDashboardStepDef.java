@@ -3,9 +3,12 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import io.cucumber.java.en.Given;
+import java.util.List;
+import java.util.ArrayList;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.Base;
@@ -16,6 +19,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import utils.ConfigReader;
 import utils.Driver;
+
+import java.awt.*;
 
 import static org.junit.Assert.*;
 
@@ -104,6 +109,15 @@ public class AdminDashboardStepDef extends Base {
 
 
     //-------------Login Steps FIKRET-----------------/
+    @Given("Clicks and confirms the registration request")
+    public void clicks_and_confirms_the_registration_request() {
+        clickWithJS(adminDashboard.confirmedRegisterSelect);
+    }
+    @Given("Click demo register View")
+    public void click_demo_register_view() {
+        clickWithJS(adminDashboard.demoRegesterVievButton);
+    }
+
     @Given("Open browser and Go to admin {string}")
     public void open_browser_and_go_to(String adminUrl) {
         Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
@@ -126,6 +140,7 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Click the notification icon at the top of the page")
     public void click_the_notification_icon_at_the_top_of_the_page() {
+
         clickWithJS(adminDashboard.iconNotificiaton);
     }
     @Given("Click on the Personal Notification Setting option from the menu")
@@ -139,6 +154,7 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Click togle status")
     public void click_togle_status() {
+
         clickWithJS(adminDashboard.togleAktivePassive);
     }
 
@@ -208,13 +224,13 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("clicks on the Details option to view detailed information")
     public void clicks_on_the_details_option_to_view_detailed_information() {
-        clickWithJS(adminDashboard.notificiationRelevantViewButton);
-        clickWithJS(adminDashboard.notificiationRelevantSelectButton);
-        clickWithJS(adminDashboard.notificiationRelevantDetailsButton);
+        clickWithJS(adminDashboard.pendingActionButton);
+        clickWithJS(adminDashboard.confirmedSelectButton);
+        clickWithJS(adminDashboard.confirmedDetailsSelectButton);
     }
     @Given("verifies that detailed information of the selected pending order is displayed")
     public void verifies_that_detailed_information_of_the_selected_pending_order_is_displayed() {
-        assertTrue(adminDashboard.notificiationRelevantDetailsText.isDisplayed());
+        assertTrue(adminDashboard.confirmedOrderConfirmText.isDisplayed());
     }
 
     @Given("updates the order confirmation, payment status, and completion status randomly")
@@ -232,6 +248,131 @@ public class AdminDashboardStepDef extends Base {
     public void verifies_that_the_changes_are_saved_successfully() {
         assertEquals("Updated successfully!",adminDashboard.updateSuccesfully.getText());
     }
+
+    @Given("approves the order")
+    public void approves_the_order() {
+        clickWithJS(adminDashboard.pendingOrderAction);
+        clickWithJS(adminDashboard.notificiationRelevantSelectButton);
+    }
+    @Given("verifies that the order status is updated to confirmed")
+    public void verifies_that_the_order_status_is_updated_to_confirmed() {
+        clickWithJS(adminDashboard.confirmedOrderSelect);
+        assertEquals("Status Updated successfully!",adminDashboard.updateSuccesfully.getText());
+    }
+    @Given("enters a search query in the Quick Search text box in the Pending Orders List")
+    public void enters_a_search_query_in_the_quick_search_text_box_in_the_pending_orders_list() {
+        clickWithJS(adminDashboard.pendingQuickSearch);
+        adminDashboard.pendingQuickSearch.sendKeys("nobady" + Keys.ENTER);
+    }
+    @Given("verifies that results matching the search query are displayed")
+    public void verifies_that_results_matching_the_search_query_are_displayed() {
+        System.out.println(adminDashboard.quickSearchResultText.getText());
+        assertTrue(adminDashboard.quickSearchResultText.getText().contains("nobady"));
+    }
+    @Given("selects the Confirmed Orders option")
+    public void selects_the_confirmed_orders_option() {
+        clickWithJS(adminDashboard.confirmedOrderButtonLink);
+
+    }
+    @Given("enters a search query in the Quick Search text box in the Confirmed Orders List")
+    public void enters_a_search_query_in_the_quick_search_text_box_in_the_confirmed_orders_list() {
+        clickWithJS(adminDashboard.confirmedQuickSearch);
+        adminDashboard.confirmedQuickSearch.sendKeys("......." + Keys.ENTER);
+
+    }
+
+    @Given("verifies that results matching the search query3 are displayed")
+    public void verifies_that_results_matching_the_search_query3_are_displayed() {
+
+    }
+
+    @Given("selects a confirmed order from the list")
+    public void selects_a_confirmed_order_from_the_list() {
+        clickWithJS(adminDashboard.confirmedOrderButtonLink);
+        clickWithJS(adminDashboard.confirmedActionButton);
+        clickWithJS(adminDashboard.confirmedSelectButton);
+        clickWithJS(adminDashboard.confirmedDetailsSelectButton);
+    }
+    @Given("verifies that detailed information of the selected confirmed order is displayed")
+    public void verifies_that_detailed_information_of_the_selected_confirmed_order_is_displayed() {
+
+    }
+
+    @Given("selects the Completed Orders option")
+    public void selects_the_completed_orders_option() {
+
+    }
+    @Given("enters a search query in the Quick Search text box in the Completed Orders List")
+    public void enters_a_search_query_in_the_quick_search_text_box_in_the_completed_orders_list() {
+
+    }
+    @Given("verifies that results matching the search query2 are displayed")
+    public void verifies_that_results_matching_the_search_query2_are_displayed() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Given("selects a completed order from the list")
+    public void selects_a_completed_order_from_the_list() {
+        clickWithJS(adminDashboard.completedOrderButtonLink);
+        clickWithJS(adminDashboard.completedActionButton);
+        clickWithJS(adminDashboard.confirmedSelectButton);
+        clickWithJS(adminDashboard.completedDetail);
+    }
+
+    @Given("verifies that detailed information of the selected completed order is displayed")
+    public void verifies_that_detailed_information_of_the_selected_completed_order_is_displayed() {
+        assertTrue(adminDashboard.confirmedOrderConfirmText.isDisplayed());
+    }
+
+    @Given("selects the Pending Payment Orders option")
+    public void selects_the_pending_payment_orders_option() {
+        clickWithJS(adminDashboard.paymentOrderButtonLink);
+    }
+
+    @Given("enters a search query in the Quick Search text box in the Pending Payment Orders List")
+    public void enters_a_search_query_in_the_quick_search_text_box_in_the_pending_payment_orders_list() {
+        clickWithJS(adminDashboard.paymentSerchBox);
+        adminDashboard.paymentSerchBox.sendKeys("......." + Keys.ENTER);
+    }
+
+    @Given("selects a pending payment order from the list")
+    public void selects_a_pending_payment_order_from_the_list() {
+        clickWithJS(adminDashboard.paymentOrderButtonLink);
+    }
+
+    @Given("verifies that detailed information of the selected pending payment order is displayed")
+    public void verifies_that_detailed_information_of_the_selected_pending_payment_order_is_displayed() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Given("selects the Refused\\/Cancelled Orders option")
+    public void selects_the_refused_cancelled_orders_option() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Given("enters a search query in the Quick Search text box in the Refused\\/Cancelled Orders List")
+    public void enters_a_search_query_in_the_quick_search_text_box_in_the_refused_cancelled_orders_list() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Given("selects a refused\\/cancelled order from the list")
+    public void selects_a_refused_cancelled_order_from_the_list() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Given("verifies that detailed information of the selected refused\\/cancelled order is displayed")
+    public void verifies_that_detailed_information_of_the_selected_refused_cancelled_order_is_displayed() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
 
 
 
