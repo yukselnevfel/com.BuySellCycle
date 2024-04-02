@@ -1,10 +1,10 @@
-
+@nv
 Feature:US_017 As a registered user, I would like to have a dedicated dashboard page on the site to check my actions and settings on the site.
 
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
-  @nv
+
     Scenario: TC_01 Verify that the Dashboard link is visible and active on the home page
       * Click on the login link, Enter "nevfelCustomerEmail" and "password" and click sign in
       * Verify that the Dasboard link is visible and functional
@@ -24,7 +24,7 @@ Feature:US_017 As a registered user, I would like to have a dedicated dashboard 
       * Verify that user summary information boards are displayed on the Dashboard page
       * Verify that user summary information boards are active on the Dashboard page
       * Close the page
-  @n
+
     Scenario: TC_04 Viewing the information of related transactions
     (Purchase History, My Wishlist, Recent Order, Product in Cart) in the body section of the Dashboard page
       * Click on the login link, Enter "nevfelCustomerEmail" and "password" and click sign in

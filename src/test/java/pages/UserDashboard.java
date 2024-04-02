@@ -1,10 +1,12 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import utils.Driver;
 
 import java.util.List;
 
@@ -95,14 +97,28 @@ public WebElement continueToShippingButton;
     public WebElement invoicePageText;
     @FindBy(xpath = "//*[text()='No Gateway']")
     public WebElement paymentTypeText;
-
     @FindBys({
             @FindBy(xpath = "//*[@class='accordion-item']")
     })
     public List<WebElement> radioButtonListOnSelectPaymentPage;
-
-    @FindBy (xpath = "//*[text()='Order Now']")
+    @FindBy(xpath = "//*[text()='Order Now']")
     public WebElement orderNowButton;
+    @FindBy (xpath= "(//label[@class='primary_checkbox d-inline-flex style4 gap_10 w-100'])[2]")
+    public WebElement stripePayment;
+
+    @FindBy(xpath = "//*[contains(text(),'Pay now')]")
+    public WebElement payNowButton;
+
+    public void orderPayButton (String string){
+        WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='+string+'])"));
+        waitAndClick(element);
+    }
+
+    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
+    public WebElement emailStripePayment;
+
+    @FindBy (id = "submitButton")
+    public WebElement submitPayment;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
@@ -188,7 +204,7 @@ public WebElement continueToShippingButton;
     public WebElement linkDassboardSideBarLogout;
 
 
-    //Cart page
+    //Cart page ve yönlendirilen sayfa
     @FindBy(xpath = "//*[text()='Proceed to checkout']")
     public WebElement proceedToCheckoutButton;
 
@@ -197,6 +213,29 @@ public WebElement continueToShippingButton;
 
     @FindBy(xpath = "//*[@class='total_amount d-flex align-items-center flex-wrap']")
     public WebElement labelTotalPrice;
+
+    @FindBy(xpath = "//*[text()='Contact Information']")
+    public WebElement labelContactInformationTitle;
+
+    @FindBy(xpath = "//*[@name='news_letter']")
+    public WebElement radioButtonSubscriber;
+
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement textBoxNote;
+
+    @FindBy(xpath = "(//*[@class='label_name f_w_400 '])[2]")
+    public WebElement radioButtonAgreeWithTheTermsAndConditions;
+
+    @FindBy(xpath = "//*[@id='error_term_check']")
+    public WebElement labelWarningText;
+
+    @FindBy(xpath = "//*[text()='Return To Cart']")
+    public WebElement returnToCartButton;
+
+
+
+
+
 
 
    //---- SUPPORT TICKET AYCA--------//
