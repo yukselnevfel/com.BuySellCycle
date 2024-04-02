@@ -1,45 +1,24 @@
 package stepdefinitions;
 
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import org.junit.Assert;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
-import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
-
-
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import static org.junit.Assert.*;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-
-import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
 //------------------------- SIMGE STEPS BASLANGIC ---------------------------//
@@ -933,6 +912,7 @@ public class UserDashboardStepDef extends Base {
     public void clickOnThePayNowButtonlink() {
         scrollIntoViewJS(userDashboard.payNowButton);
         waitAndClick(userDashboard.payNowButton);
+        Driver.getDriver().switchTo().frame(userDashboard.stripePaymentIframe);
     }
 
     @And("I should be able to click on email box on Stripe Payment")
