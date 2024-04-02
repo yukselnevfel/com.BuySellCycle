@@ -31,9 +31,13 @@ public class AdminDashboardStepDef extends Base {
         visitorHomePage.textBoxUserPassword.sendKeys(ConfigReader.getProperty(password));
 
         visitorHomePage.signInButton.click();
-        String expectedUrl="https://qa.buysellcycle.com/admin-dashboard";
-        String actualUrl = Driver.getDriver().getCurrentUrl();
-        assertEquals(expectedUrl,actualUrl);
+       
+        String expectedMessage="Logged In Successfully!";
+        String actualMessage=adminDashboard.popUpMessage.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
+        // String expectedUrl="https://qa.buysellcycle.com/admin-dashboard";
+        // String actualUrl = Driver.getDriver().getCurrentUrl();
+        // assertEquals(expectedUrl,actualUrl);
         wait(1);
 
     }

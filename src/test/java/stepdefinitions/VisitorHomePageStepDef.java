@@ -1545,6 +1545,18 @@ public class VisitorHomePageStepDef extends Base {
     public void user_verifies_that_sorting_ddm_works() {
 
     }
+    @Given("User verifies that the Counter is visible")
+    public void user_verifies_that_the_counter_is_visible() {
+        Assert.assertTrue(visitorHomePage.labelcounter.isDisplayed());
+    }
+    @Given("User verifies that First product is visible")
+    public void user_verifies_that_first_product_is_visible() {
+        Assert.assertTrue(visitorHomePage.linkFirstProduct.isDisplayed());
+    }
+    @Given("Verify that referral code is visible")
+    public void verify_that_referral_code_is_visible() {
+        Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
+    }
 
     @Then("I should be directed to the {string} page")
     public void iShouldBeDirectedToThePage(String page) {

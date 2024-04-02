@@ -1,5 +1,9 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -315,6 +319,9 @@ public WebElement continueToShippingButton;
       public WebElement buttonEventType;
 
 
+     // User Dashboard Page Left Panel
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
 
 
 
