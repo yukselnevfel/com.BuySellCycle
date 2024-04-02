@@ -9,7 +9,7 @@ Feature: US_006 As a user, I want to be able to see all the categories on the si
     * Click All Categories dropdown menu
     * Displays the subheadings of the dropdown menu that opens
     * Close the page
-  @esra
+
   Scenario: TC_03 Displaying sub-menus of menus under All Categories dropdown
     * Click All Categories dropdown menu
     * Click the Electronics link
@@ -35,9 +35,25 @@ Feature: US_006 As a user, I want to be able to see all the categories on the si
     * Click the Auto-Garden-DiyStore link
     * Displays Auto-Garden-DiyStore subcategories
     * Close the page
-
+   @esra
   Scenario: TC_04 Click on sub-menus of menus under All Categories dropdown and redirect to related pages
-    * Click All Categories dropdown menu
+     * Click All Categories dropdown menu
+     * Click the Electronics link
+     * Click on the Mobile Phone and go to relevant page.
+     * Return to Home page
+     * Click All Categories dropdown menu
+     * Click the Fashion link
+     * Click on the Woman Dress and go to relevant page.
+     * Return to Home page
+     * Click All Categories dropdown menu
+     * Click the Baby link
+     * Click on the Baby Cradle and go to relevant page.
+     * Return to Home page
+     * Click All Categories dropdown menu
+     * Click the Home-Furniture link
+     * Click on the Living Room and go to relevant page.
+     * Return to Home page
+
 
 
 

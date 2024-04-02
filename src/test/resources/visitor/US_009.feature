@@ -31,11 +31,11 @@ Feature: US_009 There should be an informative blog page on the site
     And Select a category from the Category section
     Then Verify that blogs related to the selected category are listed
     Then Close the page
-
+@1
   Scenario:TC_06 Test of displaying relevant blogs according to the titles in the keyword section
-
     When Click on the Blog link
     And Select a keyword from the Keyword section
+    * 3 saniye bekler
     Then Verify that relevant blogs are listed based on the selected keyword
     Then Close the page
 

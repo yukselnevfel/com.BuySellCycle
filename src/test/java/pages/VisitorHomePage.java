@@ -1,6 +1,7 @@
 package pages;
 
 import org.junit.Assert;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,9 @@ import org.openqa.selenium.support.FindBys;
 import java.util.List;
 
 
-public class VisitorHomePage extends Base {
+import java.util.Locale;
+
+public class VisitorHomePage extends Base{
 
 
     //Register User Login Locate Homepage>> LoginButton AYCA LOCATE
@@ -54,16 +57,19 @@ public class VisitorHomePage extends Base {
     public WebElement textLoginErrorMessage;
 
     //---US-13 Slider Locate-----//
-    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+    @FindBy(xpath = "//*[@title='woman fashion']")
     public WebElement imageSlider;
 
-    @FindBy(xpath = "//div[@class='owl-dot active']")
+    @FindBy (xpath = "//div[@class='owl-dots']")
+    public WebElement navigationButtons;
+
+    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
     public WebElement secondSlideNavigatorButton;
 
     @FindBy(xpath = "(//div[@class='owl-dot'])[2]")
     public WebElement thirdSlideNavigatorButton;
 
-    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+    @FindBy(xpath = "(//div[@class='owl-dot active']")
     public WebElement firstSlideNavigatorButton;
 
     @FindBy(xpath = "//*[@title='sport']")
@@ -147,13 +153,7 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "//*[@id='back-top']")
     public WebElement goTopButton;
 
-    //------US_26 User Dashboar Support Ticket Locate AYCA--------//
 
-    @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
-    public WebElement linkDashboardSupportTicket;
-
-
-    //===============================AYCA=====================//
 
 
     @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/contact-us\"])[1]")
@@ -208,10 +208,23 @@ public class VisitorHomePage extends Base {
     public WebElement labelElectronicAccessories;
     @FindBy(xpath = "//div[@class=\"product_details_wrapper\"]")
     public WebElement detailOfQuickView;
+    @FindBy (xpath="//h3[@class=\"branding_text\"]")
+    public WebElement labelElectronicsPage;
+    @FindBy (xpath="(//div[@class=\"product_widget5 mb_30 style5 w-100\"])[1]")
+    public WebElement imageElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"ti-control-shuffle\"])[1]")
+    public WebElement iconCompareElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"far fa-heart\"])[1]")
+    public WebElement iconWishlistElectronicsPage;
+    @FindBy (xpath="(//i[@class=\"ti-eye\"])[1]")
+    public WebElement iconQuickViewElectronicsPage;
+    @FindBy (xpath="(//a[@title=\"Add to Cart\"])[1]")
+    public WebElement iconAddToCartElectronicsPage;
+    @FindBy (xpath="(//div[@class=\"col-md-6\"])[2]")
+    public WebElement linkBuyNowElectronicsPage;
+    @FindBy (xpath="(//a[@data-product-sku='1373'])[1]")
+    public WebElement iconCompare ;
 
-
-    @FindBy(xpath = "(//a[@data-product-sku='1373'])[1]")
-    public WebElement iconCompare;
 
     @FindBy(xpath = "(//a[@id='wishlistbtn_1373'])[1]")
     public WebElement iconWishlist;
@@ -221,6 +234,8 @@ public class VisitorHomePage extends Base {
 
     @FindBy(xpath = "(//a[@data-product-id='1373'])[2]")
     public WebElement iconAddToCart;
+    @FindBy (xpath="//div[@class=\"product_checked_box d-flex flex-column justify-content-center align-items-center\"]")
+    public WebElement alertAddToCart;
 
     @FindBy(xpath = "(//span[text()='More Deals'])[1]")
     public WebElement linkMoreDeals;
@@ -231,6 +246,10 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "(//a[@id='wishlistbtn_1534'])[1]")
     public WebElement iconWishlistElectronics;
 
+    @FindBy(xpath = "//a[text()='shopping']")
+    public WebElement labelShoppingText;
+    @FindBy(xpath = "//*[@class='font_14 f_w_500 m-0']")
+    public WebElement labelTagShoppingText;
     @FindBy(xpath = "(//a[@data-product_id='1534'])[2]")
     public WebElement iconQuickViewElectronics;
 
@@ -383,6 +402,39 @@ public class VisitorHomePage extends Base {
     @FindBy(xpath = "//a[text()='Mobile Phone']")
     public WebElement textMobilePhone;
 
+    @FindBy(xpath = "//a[text()='Woman Dress']")
+    public WebElement textWomanDress;
+
+
+    @FindBy(xpath = "//a[text()='Baby cradle']")
+    public WebElement textBabyCradle;
+
+    @FindBy(xpath = "//a[text()='Living Room']")
+    public WebElement textLivingRoom;
+
+    @FindBy(xpath = "//a[text()='Sportswear-Sneakers']")
+    public WebElement textSportswear;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[6]/ul/li[1]/ul/li[1]/a")
+    public WebElement womansBag;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[7]/ul/li[1]/ul/li[1]/a")
+    public WebElement eyeMakeup;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[8]/ul/li[1]/ul/li[1]/a")
+    public WebElement examPreparationBooks;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[9]/ul/li[1]/ul/li[1]/a")
+    public WebElement puzzle;
+
+    @FindBy(xpath = "//*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[10]/ul/li[1]/ul/li[1]/a")
+    public WebElement washing;
+
+    @FindBy(xpath = " //*[@id=\"sticky-header\"]/div[3]/div/div/div/div/div[2]/ul/li[11]/ul/li[1]/ul/li[1]/a")
+    public WebElement powerTools;
+
+
+
 
     //Site ust barinda kolay linkler
 
@@ -390,6 +442,58 @@ public class VisitorHomePage extends Base {
 
     @FindBy(id = "order_number")
     public WebElement textBoxOrderTrackingNumber;
+
+    //===================US_004==================
+    @FindBy(xpath = "//*[text()='/ Register']")
+    public WebElement linkRegister;
+    @FindBy(xpath = "//*[@src='https://qa.buysellcycle.com/public/frontend/amazy/img/banner/login_img.png']")
+    public WebElement logoBuySell;
+    @FindBy(xpath = "//*[@class='img-fluid']")
+    public WebElement picturePNG;
+    @FindBy(xpath = "//*[text() = 'Turn your ideas into reality.']")
+    public WebElement labelPictureText;
+    @FindBy(xpath = "//*[@class='amazy_login_form']")
+    public WebElement tableRegisterForm;
+    @FindBy(id = "first_name")
+    public WebElement textBoxFirstName;
+    @FindBy(id = "last_name")
+    public WebElement textBoxLastName;
+    @FindBy(id = "email")
+    public WebElement textRegisterBoxEmail;
+    @FindBy(id = "password-confirm")
+    public WebElement textBoxPasswordConfirm;
+    @FindBy(id = "sign_in_btn")
+    public WebElement signUpButton;
+    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/login']")
+    public WebElement linkSignIn;
+    @FindBy(xpath = "//*[text()='Registration successfull, Please wait for active your account']")
+    public WebElement labelRegistrationAlert;
+    @FindBy(xpath = "(//*[@class='text-danger'])[1]")
+    public WebElement labelNameError;
+    @FindBy(xpath = "(//*[@class='text-danger'])[3]")
+    public WebElement labelEmailandPhoneError;
+    @FindBy(xpath = "(//*[@class='text-danger'])[5]")
+    public WebElement labelPasswordError;
+    @FindBy(xpath = "//*[text()='Sign Up']")
+    public WebElement labelSignUpText;
+    @FindBy(xpath = "//*[@class='label_name f_w_400']")
+    public WebElement signUpRadyoButton;
+    @FindBy(xpath = "//*[@class='m-0']")
+    public WebElement labelSignInText;
+    @FindBy(xpath = "//*[@aria-live='assertive']")
+    public WebElement rBERROR;
+    @FindBy(xpath = "//*[text()='Error']")
+    public WebElement radyoButtonError;
+    public String generateRandomPhoneNumber() {
+        faker = new Faker(new Locale("tr-TR"));
+        String phone =  faker.phoneNumber().phoneNumber();
+        return phone;
+    }
+    public String generateRandomEmail() {
+        String email = faker.internet().emailAddress();
+        return email;
+    }
+
 
     @FindBy(xpath = "//*[text()='Track Now']")
     public WebElement trackNowButton;
