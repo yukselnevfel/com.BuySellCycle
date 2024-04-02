@@ -94,7 +94,7 @@ public class UserDashboard extends Base{
     public WebElement linkDassboardSideBarLogout;
 
 
-    //Cart page
+    //Cart page ve yönlendirilen sayfa
     @FindBy(xpath = "//*[text()='Proceed to checkout']")
     public WebElement proceedToCheckoutButton;
 
@@ -103,6 +103,32 @@ public class UserDashboard extends Base{
 
     @FindBy(xpath = "//*[@class='total_amount d-flex align-items-center flex-wrap']")
     public WebElement labelTotalPrice;
+
+    @FindBy(xpath = "//*[text()='Contact Information']")
+    public WebElement labelContactInformationTitle;
+
+    @FindBy(xpath = "//*[@name='news_letter']")
+    public WebElement radioButtonSubscriber;
+
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement textBoxNote;
+
+    @FindBy(xpath = "(//*[@class='label_name f_w_400 '])[2]")
+    public WebElement radioButtonAgreeWithTheTermsAndConditions;
+
+    @FindBy(xpath = "//*[@id='error_term_check']")
+    public WebElement labelWarningText;
+
+    @FindBy(xpath = "//*[text()='Continue To Shipping']")
+    public WebElement continueToShippingButton;
+
+    @FindBy(xpath = "//*[text()='Return To Cart']")
+    public WebElement returnToCartButton;
+
+
+
+
+
 
 
 

@@ -209,7 +209,9 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Proceed to Checkout button")
     public void click_on_the_proceed_to_checkout_button() {
+        scrollIntoViewJS(userDashboard.proceedToCheckoutButton);
         clickWithJS(userDashboard.proceedToCheckoutButton);
+        wait(2);
     }
 
     @Given("Displays the information of the product she wants to buy on the navigated page")
@@ -220,6 +222,61 @@ public class UserDashboardStepDef extends Base {
     @Given("Verify that it displays the total price")
     public void verify_that_it_displays_the_total_price() {
         assertTrue(userDashboard.labelTotalPrice.isDisplayed());
+
+    }
+
+    @Given("Scrolls the page until you see the Contact Information heading")
+    public void scrolls_the_page_until_you_see_the_contact_information_heading() {
+        scrollIntoViewJS(userDashboard.labelContactInformationTitle);
+        wait(1);
+    }
+    @Given("Verify that contact details are displayed")
+    public void verify_that_contact_details_are_displayed() {
+        assertTrue(userDashboard.labelContactInformationTitle.isDisplayed());
+        wait(1);
+    }
+    @Given("Click on the subscriber button")
+    public void click_on_the_subscriber_button() {
+        clickWithJS(userDashboard.radioButtonSubscriber);
+        wait(1);
+
+    }
+    @Given("Click on the Note textbox")
+    public void click_on_the_note_textbox() {
+        scrollIntoViewJS(userDashboard.textBoxNote);
+        clickWithJS(userDashboard.textBoxNote);
+
+    }
+    @Given("Enters message {string} in Note section")
+    public void enters_message_in_note_section(String note) {
+        userDashboard.textBoxNote.sendKeys(note);
+        wait(1);
+    }
+
+    @Given("Scrolls the page until you see the Continue To Shipping Button")
+    public void scrolls_the_page_until_you_see_the_continue_to_shipping_button() {
+        scrollIntoViewJS(userDashboard.continueToShippingButton);
+        wait(2);
+
+    }
+    @Given("Verify that the Return To Cart button is active")
+    public void verify_that_the_return_to_cart_button_is_active() {
+        userDashboard.returnToCartButton.isEnabled();
+        wait(2);
+    }
+    @Given("Click on the Continue To Shipping")
+    public void click_on_the_continue_to_shipping() {
+        clickWithJS(userDashboard.continueToShippingButton);
+        wait(1);
+
+    }
+    @Given("Verify that there is an obligation to check the checkBox {string}")
+    public void verify_that_there_is_an_obligation_to_check_the_check_box(String text) {
+        String expectedResult=text;
+        String actualResult=userDashboard.labelWarningText.getText();
+        assertEquals(expectedResult,actualResult);
+
+
 
     }
 
