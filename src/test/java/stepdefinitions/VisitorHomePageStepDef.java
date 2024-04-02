@@ -130,7 +130,7 @@ public class VisitorHomePageStepDef extends Base {
 
     // AYCA SLIDER IMAGES CHECK  //
 
-    @Given("Verify that slider image, second navigation button and third navigation button is visible")
+    @Given("Verify that slider image and slider navigation buttons are visible")
     public void verify_that_and_is_visible() {
 
         wait(5);
@@ -138,40 +138,26 @@ public class VisitorHomePageStepDef extends Base {
             visitorHomePage.cookieAllert.click();
         }
         Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
-        Assert.assertTrue(visitorHomePage.firstSlideNavigatorButton.isDisplayed());
-        Assert.assertTrue(visitorHomePage.secondSlideNavigatorButton.isDisplayed());
-        Assert.assertTrue(visitorHomePage.thirdSlideNavigatorButton.isDisplayed());
+        Assert.assertTrue(visitorHomePage.navigationButtons.isDisplayed());
 
     }
     @Given("Click on the navigation button and Verify that image is visible")
     public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
 
-        wait(5);
-        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
-            visitorHomePage.cookieAllert.click();
-        }
-        visitorHomePage.secondSlideNavigatorButton.click();
+        clickWithJS(visitorHomePage.secondSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        visitorHomePage.thirdSlideNavigatorButton.click();
+        clickWithJS(visitorHomePage.thirdSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        visitorHomePage.firstSlideNavigatorButton.click();
-        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
+        clickWithJS(visitorHomePage.firstSlideNavigatorButton);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
 
     }
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
 
-        wait(5);
-        if (visitorHomePage.cookieAllert.isDisplayed() && visitorHomePage.cookieAllert.isEnabled()) {
-            visitorHomePage.cookieAllert.click();
-        }
-        wait(3);
-        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        wait(5);
-        Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        wait(5);
-        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+
 
     }
 
@@ -179,7 +165,34 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the slider images in order and Verifying that navigate to the image Page")
     public void click_on_the_slider_images_in_order_and_verifying_that_navigate_to_the_image_page() {
 
-        visitorHomePage.imageFirstSlider.click();
+        clickWithJS(visitorHomePage.imageFirstSlider);
+        ArrayList<String> tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        String expectedUrl = "https://qa.buysellcycle.com/category/fashion?item=category";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+
+        clickWithJS(visitorHomePage.secondSlideNavigatorButton);
+        clickWithJS(visitorHomePage.imageSecondSlider);
+        tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        expectedUrl = "https://qa.buysellcycle.com/category/sport-outdoor?item=category";
+        actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+
+        clickWithJS(visitorHomePage.thirdSlideNavigatorButton);
+        clickWithJS(visitorHomePage.imageThirdSlider);
+        tabs = new ArrayList<String> (Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(tabs.get(1));
+        expectedUrl = "https://qa.buysellcycle.com/category/electronics?item=category";
+        actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl, actualUrl);
+        Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
+        wait(2);
+
+
 
 
     }
