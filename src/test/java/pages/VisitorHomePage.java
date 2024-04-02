@@ -57,16 +57,19 @@ public class VisitorHomePage extends Base{
     public WebElement textLoginErrorMessage;
 
     //---US-13 Slider Locate-----//
-    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+    @FindBy(xpath = "//*[@title='woman fashion']")
     public WebElement imageSlider;
 
-    @FindBy(xpath = "//div[@class='owl-dot active']")
+    @FindBy (xpath = "//div[@class='owl-dots']")
+    public WebElement navigationButtons;
+
+    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
     public WebElement secondSlideNavigatorButton;
 
     @FindBy(xpath = "(//div[@class='owl-dot'])[2]")
     public WebElement thirdSlideNavigatorButton;
 
-    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+    @FindBy(xpath = "(//div[@class='owl-dot active']")
     public WebElement firstSlideNavigatorButton;
 
     @FindBy(xpath = "//*[@title='sport']")

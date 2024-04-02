@@ -13,18 +13,26 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import pages.Base;
 import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
+
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 
 import static org.junit.Assert.assertTrue;
 
@@ -210,9 +218,14 @@ public class UserDashboardStepDef extends Base {
        Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
     }
 
+
+
+      
+
     //----------------------------SIMGE STEPS BITIS--------------------------//}
 
-      //============================ SAMET =============================
+    //============================ SAMET =============================
+
 
     @Given("Log in to the page with valid {string} and {string} information.")
     public void log_in_to_the_page_with_valid_and_information(String user, String password) {
@@ -296,6 +309,38 @@ public class UserDashboardStepDef extends Base {
     @When("I click on the {string} button")
     public void iClickOnTheButton(String arg0) {
 
+    }
+
+    @When("I submit on the Continue to shipping button")
+    public void iSubmitOnTheContinueToShippingButton() {
+        waitAndClick(userDashboard.continueToShippingButton);
+    }
+
+    @Then("Click on the Proceed to Checkout buttonlink")
+    public void clickOnTheProceedToCheckoutButtonlink() {
+        waitAndClick(userDashboard.proceedToCheckoutButton);
+    }
+
+    @When("Click on the {string} buttonlink")
+    public void clickOnTheButtonlink(String payMethod) {
+        userDashboard.orderPayButton(payMethod);
+    }
+
+    @And("I should be able to select the Snipe Payment Method")
+    public void iShouldBeAbleToSelectTheSnipePaymentMethod() {
+        waitAndClick(userDashboard.stripePayment);
+    }
+
+
+    @Then("Click on the {string} link on the top")
+    public void clickOnTheLinkOnTheTop(String arg0) {
+        clickWithJS(userDashboard.cartLinkOnTheTop);
+        wait(2);
+    }
+
+    @Given("I am on the \\{Checkout} Page")
+    public void iAmOnTheCheckoutPage() {
+        waitForPageToLoad(2);
     }
 
     //Asli
@@ -394,6 +439,7 @@ public class UserDashboardStepDef extends Base {
     public void sayfada_adet_urun_oldugu_dogrulanir(Integer int1) {
         String sonuc = userDashboard.resultsWishlist.getText();
         int result = Integer.parseInt(sonuc.substring(11, 15).replaceAll("\\D", ""));
+        System.out.println(result);
         assertTrue(result == int1);
         wait(1);
     }
@@ -428,18 +474,20 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.priceHighToLow);
         wait(2);
     }
+
     @Given("Verify that products are sorted from low price to high price")
     public void verify_that_products_are_sorted_from_low_price_to_high_price() {
         String sonuc = userDashboard.pruduct1.getText();
         int price1 = Integer.parseInt(sonuc.replaceAll("\\D", ""));
-         sonuc = userDashboard.pruduct2.getText();
+        sonuc = userDashboard.pruduct2.getText();
         int price2 = Integer.parseInt(sonuc.replaceAll("\\D", ""));
-         sonuc = userDashboard.pruduct3.getText();
+        sonuc = userDashboard.pruduct3.getText();
         int price3 = Integer.parseInt(sonuc.replaceAll("\\D", ""));
-        System.out.println("prices = " + price1+" "+price2+" "+price3);
-        assertTrue(price1<price2 && price2<price3);
+        System.out.println("prices = " + price1 + " " + price2 + " " + price3);
+        assertTrue(price1 < price2 && price2 < price3);
 
     }
+
     @Given("Verify that products are sorted from high price to low price")
     public void verify_that_products_are_sorted_from_high_price_to_low_price() {
         String sonuc = userDashboard.pruduct1.getText();
@@ -448,101 +496,207 @@ public class UserDashboardStepDef extends Base {
         int price2 = Integer.parseInt(sonuc.replaceAll("\\D", ""));
         sonuc = userDashboard.pruduct3.getText();
         int price3 = Integer.parseInt(sonuc.replaceAll("\\D", ""));
-        System.out.println("prices = " + price1+" "+price2+" "+price3);
-        assertTrue(price1>price2 && price2>price3);
+        System.out.println("prices = " + price1 + " " + price2 + " " + price3);
+        assertTrue(price1 > price2 && price2 > price3);
     }
+
     @Given("Add a product to the Compare list and verify that it has been added")
     public void add_a_product_to_the_compare_list_and_verify_that_it_has_been_added() {
-     actions.moveToElement(userDashboard.comparePruduct).perform();
+        actions.moveToElement(userDashboard.comparePruduct).perform();
         userDashboard.comparePruduct.click();
         wait(1);
         userDashboard.addToCompare.click();
         wait(2);
-        String count = userDashboard.compareCount.getText().replaceAll("//D","");
+        String count = userDashboard.compareCount.getText().replaceAll("//D", "");
         int countCompare = Integer.parseInt(count);
         System.out.println("countCompare = " + countCompare);
-        assertTrue(countCompare>0);
+        assertTrue(countCompare > 0);
     }
+
     @Given("Click the Quick View button and verify that the product information is displayed")
     public void click_the_quick_view_button_and_verify_that_the_product_information_is_displayed() {
-
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        userDashboard.quickViewButton.click();
+        wait(3);
+        assertTrue(userDashboard.puroductDetails.isDisplayed());
+        userDashboard.closePage.click();
 
     }
+
     @Given("Click the Add To Cart button and confirm that the product has been added to the cart")
     public void click_the_add_to_cart_button_and_confirm_that_the_product_has_been_added_to_the_cart() {
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        wait(3);
+        userDashboard.quickViewButton.click();
+        wait(3);
+        userDashboard.addToCart.click();
+        wait(3);
+        String message = userDashboard.itemAdded.getText();
+        assertTrue(message.contains("Item added to your cart"));
+        userDashboard.closePage2.click();
 
     }
+
     @Given("Click on the Delete button and confirm that the product has been deleted from Wishlist")
     public void click_on_the_delete_button_and_confirm_that_the_product_has_been_deleted_from_wishlist() {
+        String sonuc = userDashboard.resultsWishlist.getText();
+        int result = Integer.parseInt(sonuc.substring(17).replaceAll("\\D", ""));
+        actions.moveToElement(userDashboard.comparePruduct).perform();
+        wait(2);
+        userDashboard.deleteButton.click();
+        wait(1);
+        userDashboard.dataDeleteBtn.click();
+        wait(5);
+        sonuc = userDashboard.resultsWishlist.getText();
+        int result2 = Integer.parseInt(sonuc.substring(17).replaceAll("\\D", ""));
+        System.out.println(result2 + "   " + result);
+        assertTrue(result2 < result);
+    }
+
+    @Given("Go on the next page")
+    public void go_on_the_next_page() {
+        waitAndClick(userDashboard.nextPage);
+        wait(3);
+    }
+
+    @Given("Verify that the My Couppons menu is visible")
+    public void verify_that_the_my_couppon_menu_is_visible() {
+        assertTrue(userDashboard.myCouponsListMenu.isDisplayed());
+    }
+
+    @Given("Click on My Couppons")
+    public void click_on_my_couppon() {
+        waitAndClick(userDashboard.myCouponsListMenu);
+    }
+
+    @Given("Write {string} in the code section")
+    public void write_in_the_code_section(String code) {
+        userDashboard.codePlaceHolder.sendKeys(ConfigReader.getProperty(code));
+    }
+
+    @Given("Click on the Add Coupon button")
+    public void click_on_the_add_coupon_button() {
+        waitAndClick(userDashboard.addCouppon);
+        wait(3);
+    }
+
+    @Given("Verify that the Add Coupons is visible")
+    public void verify_that_the_add_coupons_is_visible() {
+        assertTrue(userDashboard.addCouppon.isDisplayed());
+    }
+
+    @Given("Verify that the {string} has been added")
+    public void verify_that_the_has_been_added(String code) {
+        String actualCode = userDashboard.coupponCode.getText();
+        String expectedCode = ConfigReader.getProperty(code);
+        assertEquals(expectedCode, actualCode);
+    }
+
+    @Given("Verify that coupons are listed under the Collected Coupons heading")
+    public void verify_that_coupons_are_listed_under_the_collected_coupons_heading() {
+        assertTrue(userDashboard.coupponCode.isDisplayed());
+    }
+
+    @Given("Click on the copy icon under the Action heading of the coupon")
+    public void click_on_the_copy_icon_under_the_action_heading_of_the_coupon() {
+        waitAndClick(userDashboard.coppyCode);
+        wait(2);
+    }
+
+    @Given("Confirms that copying has occurred")
+    public void confirms_that_copying_has_occurred() {
+        assertTrue(userDashboard.coupponCode.isDisplayed());
 
     }
 
+    @Given("Click on the delete icon under the Action heading of the coupon")
+    public void click_on_the_delete_icon_under_the_action_heading_of_the_coupon() {
+        userDashboard.deleteCouppon.click(); wait(1);
+        userDashboard.deleteSure.click(); wait(3);
+
+    }
+
+    @Given("Verify that the deletion has occurred")
+    public void verify_that_the_deletion_has_occurred() {
+
+        assertTrue(userDashboard.emptyList.isDisplayed());
+
+    }
 
 
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Verify that the Dasboard link is visible and functional")
     public void verify_that_the_dasboard_link_is_visible_and_functional() {
-       assertTrue(userDashboard.linkHeaderDashboard.isDisplayed() && userDashboard.linkHeaderDashboard.isEnabled());
+        assertTrue(userDashboard.linkHeaderDashboard.isDisplayed() && userDashboard.linkHeaderDashboard.isEnabled());
     }
 
     @Given("Click on the Dasboard link")
     public void click_on_the_dasboard_link() {
-      userDashboard.linkHeaderDashboard.click();
+        userDashboard.linkHeaderDashboard.click();
 
     }
+
     @Given("Verify that user profile information is displayed on the Dashboard page")
     public void verify_that_user_profile_information_is_displayed_on_the_dashboard_page() {
-       assertTrue( userDashboard.labelUserProfileInformationText.isDisplayed());
+        assertTrue(userDashboard.labelUserProfileInformationText.isDisplayed());
 
     }
+
     @Given("Verify that user balance information is displayed on the Dashboard page")
     public void verify_that_user_balance_information_is_displayed_on_the_dashboard_page() {
-      assertTrue(userDashboard.labelUserBalanceInformationText.isDisplayed());
+        assertTrue(userDashboard.labelUserBalanceInformationText.isDisplayed());
 
     }
+
     @Given("Verify that user recent transaction information is displayed on the Dashboard page")
     public void verify_that_user_recent_transaction_information_is_displayed_on_the_dashboard_page() {
-      assertTrue(userDashboard.labelLastTransactionText.isDisplayed());
+        assertTrue(userDashboard.labelLastTransactionText.isDisplayed());
 
     }
 
     @Given("Verify that user summary information boards are displayed on the Dashboard page")
     public void verify_that_user_summary_information_boards_are_displayed_on_the_dashboard_page() {
-       assertTrue(userDashboard.labelSummaryInformationBoards.isDisplayed());
+        assertTrue(userDashboard.labelSummaryInformationBoards.isDisplayed());
     }
+
     @Given("Verify that user summary information boards are active on the Dashboard page")
     public void verify_that_user_summary_information_boards_are_active_on_the_dashboard_page() {
-        assertTrue(userDashboard.labelSummaryInformationBoard1.isEnabled());}
+        assertTrue(userDashboard.labelSummaryInformationBoard1.isEnabled());
+    }
 
-        @Given("Verify that Purchase History information is displayed on the Dashboard page")
-         public void verify_that_purchase_history_information_is_displayed_on_the_dashboard_page() {
-         assertTrue(userDashboard.columnPurchaseHistory.isDisplayed());
+    @Given("Verify that Purchase History information is displayed on the Dashboard page")
+    public void verify_that_purchase_history_information_is_displayed_on_the_dashboard_page() {
+        assertTrue(userDashboard.columnPurchaseHistory.isDisplayed());
 
-        }
-        @Given("Verify that My Wishlist is displayed on the Dashboard page")
-        public void verify_that_my_wishlist_is_displayed_on_the_dashboard_page() {
-            assertTrue(userDashboard.columnMyWishlist.isDisplayed());
+    }
 
-        }
-        @Given("Verify that Recent Order is displayed on the Dashboard page")
-        public void verify_that_recent_order_is_displayed_on_the_dashboard_page() {
+    @Given("Verify that My Wishlist is displayed on the Dashboard page")
+    public void verify_that_my_wishlist_is_displayed_on_the_dashboard_page() {
+        assertTrue(userDashboard.columnMyWishlist.isDisplayed());
+
+    }
+
+    @Given("Verify that Recent Order is displayed on the Dashboard page")
+    public void verify_that_recent_order_is_displayed_on_the_dashboard_page() {
         scrollIntoViewJS(userDashboard.columnRecentOrder);
-            assertTrue(userDashboard.columnRecentOrder.isDisplayed());
+        assertTrue(userDashboard.columnRecentOrder.isDisplayed());
 
-        }
-        @Given("Confirm that Product in Cart is displayed on the Dashboard page")
-        public void confirm_that_product_in_cart_is_displayed_on_the_dashboard_page() {
+    }
+
+    @Given("Confirm that Product in Cart is displayed on the Dashboard page")
+    public void confirm_that_product_in_cart_is_displayed_on_the_dashboard_page() {
         scrollIntoViewJS(userDashboard.columnProductInCart);
-            assertTrue(userDashboard.columnProductInCart.isDisplayed());
+        assertTrue(userDashboard.columnProductInCart.isDisplayed());
 
-        }
+    }
 
     @Given("Verify that the Logout link on the home page is visible")
     public void verify_that_the_logout_link_on_the_home_page_is_visible() {
         assertTrue(userDashboard.linkHeaderLogout.isDisplayed());
 
     }
+
     @Given("Click on the Logout link")
     public void click_on_the_logout_link() {
         userDashboard.linkHeaderLogout.click();
@@ -551,19 +705,21 @@ public class UserDashboardStepDef extends Base {
     @Given("Verify that Logout is visible and functional in the Dashboard sidebar")
     public void verify_that_logout_is_visible_and_functional_in_the_dashboard_sidebar() {
         scrollIntoViewJS(userDashboard.linkDassboardSideBarLogout);
-        assertTrue( userDashboard.linkDassboardSideBarLogout.isDisplayed() &&
-                            userDashboard.linkDassboardSideBarLogout.isEnabled());
+        assertTrue(userDashboard.linkDassboardSideBarLogout.isDisplayed() &&
+                userDashboard.linkDassboardSideBarLogout.isEnabled());
     }
 
 
     @Given("Click on the Proceed to Checkout button")
     public void click_on_the_proceed_to_checkout_button() {
+        scrollIntoViewJS(userDashboard.proceedToCheckoutButton);
         clickWithJS(userDashboard.proceedToCheckoutButton);
+        wait(2);
     }
 
     @Given("Displays the information of the product she wants to buy on the navigated page")
     public void displays_the_information_of_the_product_he_she_wants_to_buy_on_the_navigated_page() {
-       assertTrue(userDashboard.productDetailContentInCart.isDisplayed());
+        assertTrue(userDashboard.productDetailContentInCart.isDisplayed());
     }
 
     @Given("Verify that it displays the total price")
@@ -572,17 +728,62 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @Given("Scrolls the page until you see the Contact Information heading")
+    public void scrolls_the_page_until_you_see_the_contact_information_heading() {
+        scrollIntoViewJS(userDashboard.labelContactInformationTitle);
+        wait(1);
+    }
+    @Given("Verify that contact details are displayed")
+    public void verify_that_contact_details_are_displayed() {
+        assertTrue(userDashboard.labelContactInformationTitle.isDisplayed());
+        wait(1);
+    }
+    @Given("Click on the subscriber button")
+    public void click_on_the_subscriber_button() {
+        clickWithJS(userDashboard.radioButtonSubscriber);
+        wait(1);
 
-    @Then("Click on the {string} link on the top")
-    public void clickOnTheLinkOnTheTop(String arg0) {
-        clickWithJS(userDashboard.cartLinkOnTheTop);
+    }
+    @Given("Click on the Note textbox")
+    public void click_on_the_note_textbox() {
+        scrollIntoViewJS(userDashboard.textBoxNote);
+        clickWithJS(userDashboard.textBoxNote);
+
+    }
+    @Given("Enters message {string} in Note section")
+    public void enters_message_in_note_section(String note) {
+        userDashboard.textBoxNote.sendKeys(note);
+        wait(1);
+    }
+
+    @Given("Scrolls the page until you see the Continue To Shipping Button")
+    public void scrolls_the_page_until_you_see_the_continue_to_shipping_button() {
+        scrollIntoViewJS(userDashboard.continueToShippingButton);
+        wait(2);
+
+    }
+    @Given("Verify that the Return To Cart button is active")
+    public void verify_that_the_return_to_cart_button_is_active() {
+        userDashboard.returnToCartButton.isEnabled();
         wait(2);
     }
+    @Given("Click on the Continue To Shipping")
+    public void click_on_the_continue_to_shipping() {
+        clickWithJS(userDashboard.continueToShippingButton);
+        wait(1);
 
-    @Given("I am on the \\{Checkout} Page")
-    public void iAmOnTheCheckoutPage() {
-        waitForPageToLoad(2);
     }
+    @Given("Verify that there is an obligation to check the checkBox {string}")
+    public void verify_that_there_is_an_obligation_to_check_the_check_box(String text) {
+        String expectedResult=text;
+        String actualResult=userDashboard.labelWarningText.getText();
+        assertEquals(expectedResult,actualResult);
+
+
+
+    }
+
+
     //===============STEPS ESRA BASLADI=========================================
 
     @Given("Scroll down to the bottom of the dashboard page")
@@ -637,28 +838,47 @@ public class UserDashboardStepDef extends Base {
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
     public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
 
-        scrollIntoViewJS(userDashboard.linkSupportTicket);
+        wait(1);
+        Actions action = new Actions(Driver.getDriver());
+        action.scrollToElement(userDashboard.linkSupportTicket);
+        wait(1);
         Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
-
+        clickWithJS(userDashboard.linkSupportTicket);
 
 
     }
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
-
-
+        String expectedSupportTicketUrl = "https://qa.buysellcycle.com/support-ticket";
+        String actualSupportTicketUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
 
 
     }
+
 
     @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
-    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String string) {
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String title) {
+
+
+            boolean isTitlePresent = false;
+            List<WebElement> tickets = Driver.getDriver().findElements(By.xpath("//*[contains(text(),'" + title + "')]"));
+
+            for (WebElement ticket : tickets) {
+                WebElement titleElement = ticket.findElement(By.cssSelector("//*[contains(text(),'" + title + "')]"));
+                if (titleElement != null && !titleElement.getText().isEmpty()) {
+                    isTitlePresent = true;
+                    break;
+                }
+            }
+            Assert.assertTrue("The title '" + title + "' is not present in any of the tickets in the list.", isTitlePresent);
+        }
 
 
 
 
-    }
+
 
 
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")
@@ -681,25 +901,44 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-    @When("I submit on the Continue to shipping button")
-    public void iSubmitOnTheContinueToShippingButton() {
-        waitAndClick(userDashboard.continueToShippingButton);
+
+    @When("Click on the Pay Now buttonlink")
+    public void clickOnThePayNowButtonlink() {
+        scrollIntoViewJS(userDashboard.payNowButton);
+        waitAndClick(userDashboard.payNowButton);
     }
 
-    @Then("Click on the Proceed to Checkout buttonlink")
-    public void clickOnTheProceedToCheckoutButtonlink() {
-        waitAndClick(userDashboard.proceedToCheckoutButton);
+    @And("I should be able to click on email box on Stripe Payment")
+    public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
+        waitAndClick(userDashboard.emailStripePayment);
+    }
+
+    @And("I should be able to enter {string} on the email box")
+    public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
+        waitAndSendText(userDashboard.emailStripePayment, email);
+    }
+
+    @When("I should be able to enter {string} on the card number box")
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
+
+    }
+
+    @When("I should be able to enter {string} on the exp box")
+    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
+
+    }
+
+    @Then("I should be able to enter {string} on the cvc box")
+    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
     }
 
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
+        scrollIntoViewJS(userDashboard.orderNowButton);
         waitAndClick(userDashboard.orderNowButton);
     }
+}
 
-
-
-
- }
 
 
 

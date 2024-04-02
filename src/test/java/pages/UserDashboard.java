@@ -1,10 +1,12 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import utils.Driver;
 
 import java.util.List;
 
@@ -133,14 +135,28 @@ public WebElement continueToShippingButton;
     public WebElement invoicePageText;
     @FindBy(xpath = "//*[text()='No Gateway']")
     public WebElement paymentTypeText;
-
     @FindBys({
             @FindBy(xpath = "//*[@class='accordion-item']")
     })
     public List<WebElement> radioButtonListOnSelectPaymentPage;
-
-    @FindBy (xpath = "//*[text()='Order Now']")
+    @FindBy(xpath = "//*[text()='Order Now']")
     public WebElement orderNowButton;
+    @FindBy (xpath= "(//label[@class='primary_checkbox d-inline-flex style4 gap_10 w-100'])[2]")
+    public WebElement stripePayment;
+
+    @FindBy(xpath = "//*[contains(text(),'Pay now')]")
+    public WebElement payNowButton;
+
+    public void orderPayButton (String string){
+        WebElement element = Driver.getDriver().findElement(By.xpath("(//a[text()='+string+'])"));
+        waitAndClick(element);
+    }
+
+    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
+    public WebElement emailStripePayment;
+
+    @FindBy (id = "submitButton")
+    public WebElement submitPayment;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
@@ -148,6 +164,7 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id='sign_in_btn']") public WebElement sigInButton;
     //________________________ WishList____________________-
     @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[3]") public WebElement myWishListMenu;
+    @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[7]") public WebElement myCouponsListMenu;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[1]/h5") public WebElement resultsWishlist;
     @FindBy(xpath = "(//*[@class=\"current\"])[3]") public WebElement show8Items;
     @FindBy(xpath = "(//*[@class=\"option\"])[1]") public WebElement show12Items;
@@ -159,9 +176,27 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[2]/div/div[3]/div/p/strong") public WebElement pruduct2;
     @FindBy(xpath = "//*[@id=\"productShow\"]/div/div[2]/div/div[3]/div/div[3]/div/p/strong") public WebElement pruduct3;
     @FindBy(xpath = "//i[@title=\"Compare\"]") public WebElement comparePruduct;
+    @FindBy(xpath = "//i[@title=\"Quick View\"]") public WebElement quickViewButton;
+    @FindBy(xpath = "//i[@title=\"Delete\"]") public WebElement deleteButton;
     @FindBy(id = "add_to_compare_btn") public WebElement addToCompare;
     @FindBy(xpath = "//*[@class=\"compare_count\"]") public WebElement compareCount;
+    @FindBy(xpath = "//*[@class=\"product_details_img\"]") public WebElement puroductDetails;
+    @FindBy(id ="add_to_cart_btn_modal") public WebElement addToCart;
+    @FindBy(id ="dataDeleteBtn") public WebElement dataDeleteBtn;
+   @FindBy(xpath = "//*[text()='Item added to your cart']") public WebElement itemAdded;
+   @FindBy(xpath = "(//*[@class=\"close_modal_icon\"])[3]") public WebElement closePage;
+   @FindBy(xpath = "(//*[@class=\"close_modal_icon\"])[2]") public WebElement closePage2;
+   @FindBy(xpath = "//*[@class='fas fa-chevron-right']") public WebElement nextPage;
 
+
+    //________________________ Add Couppons____________________-
+   @FindBy(xpath = "//*[@placeholder=\"Code\"]") public WebElement codePlaceHolder;
+   @FindBy(xpath = "//button[@class=\"amaz_primary_btn style2 text-nowrap \"]") public WebElement addCouppon;
+   @FindBy(xpath = "//*[@id=\"couponDiv\"]/div/div/table/tbody/tr/td[3]") public WebElement coupponCode;
+   @FindBy(xpath = "(//*[@width=\"15\"])[2]") public WebElement coppyCode;
+   @FindBy(id = "Path_4222") public WebElement deleteCouppon;
+   @FindBy(xpath = "(//*[@type=\"submit\"])[3]") public WebElement deleteSure;
+   @FindBy(xpath = "//*[@id=\"couponDiv\"]/p") public WebElement emptyList;
 
 
 
@@ -207,7 +242,7 @@ public WebElement continueToShippingButton;
     public WebElement linkDassboardSideBarLogout;
 
 
-    //Cart page
+    //Cart page ve yönlendirilen sayfa
     @FindBy(xpath = "//*[text()='Proceed to checkout']")
     public WebElement proceedToCheckoutButton;
 
@@ -217,6 +252,29 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@class='total_amount d-flex align-items-center flex-wrap']")
     public WebElement labelTotalPrice;
 
+    @FindBy(xpath = "//*[text()='Contact Information']")
+    public WebElement labelContactInformationTitle;
+
+    @FindBy(xpath = "//*[@name='news_letter']")
+    public WebElement radioButtonSubscriber;
+
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement textBoxNote;
+
+    @FindBy(xpath = "(//*[@class='label_name f_w_400 '])[2]")
+    public WebElement radioButtonAgreeWithTheTermsAndConditions;
+
+    @FindBy(xpath = "//*[@id='error_term_check']")
+    public WebElement labelWarningText;
+
+    @FindBy(xpath = "//*[text()='Return To Cart']")
+    public WebElement returnToCartButton;
+
+
+
+
+
+
 
    //---- SUPPORT TICKET AYCA--------//
 
@@ -225,6 +283,9 @@ public WebElement continueToShippingButton;
 
    @FindBy (xpath = "//tr/th")
     public WebElement labelTicketTitle;
+
+   @FindBy(xpath = "selector-for-your-ticket-list")
+    private List<WebElement> ticketListElements;
 
 
 
@@ -252,11 +313,6 @@ public WebElement continueToShippingButton;
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
-
-
-
-
-
 
 
 
