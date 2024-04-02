@@ -1075,9 +1075,77 @@ public class VisitorHomePageStepDef extends Base {
         String actualTitle = Driver.getDriver().getTitle();
         assertEquals(expectedTitle, actualTitle);
     }
+    @Given("Add an item to the cart")
+    public void add_an_item_to_the_cart() {
+        waitAndClick(visitorHomePage.addToCartPrdct);
+        waitAndClick(visitorHomePage.viewCart);
+    }
+    @Given("Verify that PRODUCTS, PRICE, QUANTITY, SUBTOTAL information appears")
+    public void verify_that_products_price_quantity_subtotal_information_appears() {
+assertTrue(visitorHomePage.prd.isDisplayed());
+assertTrue(visitorHomePage.prs.isDisplayed());
+assertTrue(visitorHomePage.qnt.isDisplayed());
+assertTrue(visitorHomePage.sbttl.isDisplayed());
+
+    }
+    @Given("Click on the product")
+    public void click_on_the_product() {
+    waitAndClick(visitorHomePage.pruductDetail);
+    }
+
+    @Given("Verify that you have navigated to the product detail page")
+    public void verify_that_you_have_navigated_to_the_product_detail_page() {
+        System.out.println(visitorHomePage.sorry.getText());
+    assertFalse(visitorHomePage.sorry.getText().contains("Sorry"));
+    }
+    static  int fiyat=0;
+    static  int fiyat2=0;
+    @Given("Click on the + button to the right of the product and verify that the product quantity increased by one")
+    public void click_on_the_button_to_the_right_of_the_product() {
+        wait(2);
+        String price=visitorHomePage.productPrice.getText().substring(1).replaceAll("\\D", "");
+        System.out.println("price = " + price);
+        fiyat=Integer.parseInt(price);
+        //String tane=visitorHomePage.productAdet.getText();
+       // System.out.println("tane = " + tane);
+       // int adet= Integer.parseInt(tane);
+       waitAndClick(visitorHomePage.plusButton);
+        //int adet2= Integer.parseInt(visitorHomePage.productAdet.getText());
+       // assertEquals(adet2, adet + 1);
+    }
+    @Given("Verify that the product price has doubled")
+    public void verify_that_the_product_price_has_doubled() {
+        wait(2);
+        String price=visitorHomePage.productPrice.getText().substring(1).replaceAll("\\D", "");
+        System.out.println("price = " + price);
+        fiyat2=Integer.parseInt(price);
+        assertEquals(fiyat2,fiyat*2);
+    }
+    @Given("Click on the delete button to the right of the product")
+    public void click_on_the_delete_button_to_the_right_of_the_product() {
+       visitorHomePage.deleteProductButton.click();
+    }
+    @Given("Verify that the product has been deleted")
+    public void verify_that_the_product_has_been_deleted() {
+     assertTrue(visitorHomePage.product_not_found.isDisplayed());
+    }
+
+    @Given("Click on the View Cart")
+    public void click_on_the_view_cart() {
+
+    }
+    @Given("Click on Return to Cart")
+    public void click_on_return_to_cart() {
+
+    }
+    @Given("Click on the Continue Shopping link")
+    public void click_on_the_continue_shopping_link() {
+
+    }
 
 
- //---------------- Steps Asli----------------------/
+
+    //---------------- Steps Asli----------------------/
     //US_8 - AboutPage
 
     @When("I should click on the {string} on the header")
