@@ -140,15 +140,17 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertTrue(visitorHomePage.imageSlider.isDisplayed());
         Assert.assertTrue(visitorHomePage.navigationButtons.isDisplayed());
 
+
     }
     @Given("Click on the navigation button and Verify that image is visible")
     public void click_on_the_navigation_button_and_verify_that_image_is_visible() {
 
-        clickWithJS(visitorHomePage.secondSlideNavigatorButton);
+        wait(2);
+        waitAndClick(visitorHomePage.secondSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        clickWithJS(visitorHomePage.thirdSlideNavigatorButton);
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageThirdSlider.isDisplayed());
-        clickWithJS(visitorHomePage.firstSlideNavigatorButton);
+        waitAndClick(visitorHomePage.firstSlideNavigatorButton);
         Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
 
 
@@ -156,8 +158,12 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-
-
+        wait(6);
+        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
+        wait(6);
+        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
+        wait(6);
+        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
 
     }
 
@@ -191,8 +197,6 @@ public class VisitorHomePageStepDef extends Base {
         Assert.assertEquals(expectedUrl, actualUrl);
         Driver.getDriver().navigate().to("https://qa.buysellcycle.com/");
         wait(2);
-
-
 
 
     }

@@ -282,17 +282,41 @@ public WebElement continueToShippingButton;
 
    //---- SUPPORT TICKET AYCA--------//
 
-   @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+   @FindBy (xpath = "//*[@title='ads bar']")
+   public WebElement imageAdsBar;
+
+   @FindBy (xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[12]/a")
    public WebElement linkSupportTicket;
 
-   @FindBy (xpath = "//tr/th")
-    public WebElement labelTicketTitle;
+   @FindBy (xpath = "//*[text()='Status']")
+   public WebElement labelStatus;
 
-   @FindBy(xpath = "selector-for-your-ticket-list")
-    private List<WebElement> ticketListElements;
+   @FindBy (xpath = "//*[text()='Priority']")
+   public WebElement labelPriority;
 
+    @FindBy (xpath = "(//*[text()='Category'])[2]")
+    public WebElement labelCategory;
 
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[2]/div/table/tbody/tr/td[6]/a")
+    public WebElement actionDetailSupportTicketButton;
 
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[1]")
+    public WebElement labelCustomerMessage;
+
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[2]")
+    public WebElement labelAdminMessage;
+
+    @FindBy(id = "replay_box_toggler")
+    public WebElement replyButton;
+
+    @FindBy (xpath = "//*[@class='note-editable']")
+    public WebElement replyMessageBox;
+
+    @FindBy (xpath = "//*[text()='Reply now']")
+    public WebElement replyNowButton;
+
+    @FindBy (xpath = "/html/body/script[4]/text()")
+    public WebElement successMessagePopup;
 
 
     //=========Notifications links ve buttons=======================
