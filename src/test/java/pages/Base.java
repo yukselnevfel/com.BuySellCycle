@@ -437,21 +437,7 @@ public abstract class Base {
         return stringlerList;
     }
 
-    public static List<Integer> intListeOlustur(List<WebElement> elementler) {
-        List<Integer> integerList = new ArrayList<>();
-        for (WebElement each : elementler) {
-            try {
-                String text = each.getText();
-                Integer intValue = Integer.parseInt(text);
-                integerList.add(intValue);
-            } catch (NumberFormatException e) {
-                System.out.println("Geçersiz sayı: " + each.getText());
-            }
-        }
-        return integerList;
-    }
-
-    public  static void clickWebElement(String textName) {
+     public  static void clickWebElement(String textName) {
 
         WebElement element = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + textName + "')]"));
         waitAndClick(element);
