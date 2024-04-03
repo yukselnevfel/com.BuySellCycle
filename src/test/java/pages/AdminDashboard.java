@@ -11,6 +11,17 @@ public class AdminDashboard extends Base{
     //*[@class='toast-message']
     @FindBy(xpath = "//*[@class='toast-message']")
     public WebElement popUpMessage;
+    @FindBy(xpath = "//*[@class='toast-close-button']")
+    public WebElement popUpCloseMessage;
+    @FindBy(xpath = "//*[@id='profile_pic']")
+    public WebElement iconAdminProfile;
+    @FindBy(xpath = "//h5")
+    public WebElement textName;
+
+    @FindBy(xpath = "//*[text()='My Profile']")
+    public WebElement linkMyProfile;
+    @FindBy(xpath = "//*[text()='Log out']")
+    public WebElement linkLogOut;
 
 // -------------------------End of Beytullah's Locates----------------------------
 

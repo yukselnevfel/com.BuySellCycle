@@ -403,10 +403,14 @@ public WebElement continueToShippingButton;
       public WebElement buttonEventType;
 
 
-     // User Dashboard Page Left Panel
+    // ====================== Beytullah's Steps =====================
     @FindBy(xpath = "//*[@id='code']")
     public WebElement labelReferralCode;
+    //*[text()='Referral']
+    @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center'])[9]")
+    public WebElement buttonReferral;
 
+    // ====================== End Of Beytullah's Steps End =====================
 
     @FindBy(xpath = "//*[@data-name='Stripe']")
     public WebElement stripeCheckRadioButton;

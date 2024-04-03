@@ -11,6 +11,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.WebElement;
+
+import org.testng.asserts.SoftAssert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
@@ -1775,7 +1778,24 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
 
 
     //===================== Beytullah's Steps =========================
-    @Given("User verifies that the New Product Deals link is visible")
+
+    static SoftAssert softAssert=new SoftAssert();
+    static List<Integer> integerList = new ArrayList<>();
+    public static List<Integer> intListeOlustur(List<WebElement> elementler) {
+
+        for (WebElement each : elementler) {
+            try {
+                String text = each.getText();
+                text = text.replaceAll("[^0-9]", "");
+                Integer intValue = Integer.parseInt(text);
+                integerList.add(intValue);
+            } catch (NumberFormatException e) {
+                System.out.println("Geçersiz sayı: " + each.getText());
+            }
+        }
+        return integerList;
+    }
+        @Given("User verifies that the New Product Deals link is visible")
     public void user_verifies_that_the_new_product_deals_link_is_visible() {
         Assert.assertTrue(visitorHomePage.linkNewProductDeals.isDisplayed());
     }
@@ -1825,43 +1845,62 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     @Given("User clicks on the Listing button and verifies that button works")
     public void user_clicks_on_the_listing_button_and_verifies_that_button_works() {
         clickWithJS(visitorHomePage.buttonlistWiew);
-        Assert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed());
+        scrollIntoViewJS(visitorHomePage.elementFirstProduct);
+        softAssert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed(),"Listing button not working");
         wait(5);
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the items DDM and clicks on second item")
     public void user_clicks_on_the_items_ddm_and_clicks_second_item() {
         clickWithJS(visitorHomePage.ddmItems);
+        wait(3);
         clickWithJS(visitorHomePage.ddmSecondItem);
         wait(3);
-        String pageSizeType = visitorHomePage.labelProductnumber.getText();
-        pageSizeType = pageSizeType.substring(8, 14);
-        String expPageSizeType = "1 - 12";
-        String actPageSizeType = pageSizeType;
-        Assert.assertEquals(expPageSizeType, actPageSizeType);
+
     }
 
     @Given("User verifies that items DDM works")
     public void user_verifies_that_items_ddm_works() {
-        List<Integer> productPrice=new ArrayList<>();
-
-        for (int i = 0; i < visitorHomePage.textProductprice.size(); i++) {
-
-
-        }
-
-        String strProductPrice = visitorHomePage.labelProductnumber.getText();
-        System.out.println("strProductPrice = " + strProductPrice);
-
+        String pageSizeType = visitorHomePage.labelProductnumber.getText();
+        pageSizeType = pageSizeType.substring(8, 14);
+        String expPageSizeType = "1 - 12";
+        String actPageSizeType = pageSizeType;
+        System.out.println("actPageSizeType = " + actPageSizeType);
+        softAssert.assertEquals(expPageSizeType, actPageSizeType,"items DDM not working");
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the sorting DDM and clicks on fifth item")
     public void user_clicks_on_the_sorting_ddm_and_clicks_fifth_item() {
-
+        wait(5);
+        waitAndClick(visitorHomePage.ddmSorting);
+        wait(5);
+        waitAndClick(visitorHomePage.ddmFifthSorting);
+        wait(5);
     }
 
     @Given("User verifies that sorting DDM works")
     public void user_verifies_that_sorting_ddm_works() {
+        int firstProduct=intListeOlustur(visitorHomePage.textProductprice).get(0);
+        int secondProduct=intListeOlustur(visitorHomePage.textProductprice).get(1);
+        int thirdProduct=intListeOlustur(visitorHomePage.textProductprice).get(2);
+
+        softAssert.assertTrue(firstProduct<secondProduct,"Sorting DDM not working");
+        softAssert.assertTrue(secondProduct<thirdProduct,"Sorting DDM not working");
+
+       /* for (int i = 0; i <integerList.size()-1 ; i++) {
+            if (integerList.get(i)<integerList.get(i+1)){
+                System.out.println("sıralama doğru" );
+            }else {
+                System.out.println("sıralama yanlış");
+            }
+
+
+        }
+
+        */
+
 
     }
     @Given("User verifies that the Counter is visible")
@@ -1876,6 +1915,59 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     public void verify_that_referral_code_is_visible() {
         Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
     }
+    @Given("Click on the Woman's Apperal checkbox")
+    public void click_on_the_woman_s_apperal_checkbox() {
+     clickWithJS(visitorHomePage.checkBoxWomansApperal);
+    }
+    @Given("Click on the Pull And Bear checkbox")
+    public void click_on_the_pull_and_bear_checkbox() {
+
+        visitorHomePage.checkBoxPullAndBear.click();
+    }
+    @Given("Verify that the page is redirected to the top")
+    public void verify_that_the_page_is_redirected_to_the_top() {
+     assertTrue(visitorHomePage.textPageTitle.isDisplayed());
+    }
+
+    @Given("Verify that the Refresh button is visible")
+    public void verify_that_the_refresh_button_is_visible() {
+        assertTrue(visitorHomePage.buttonRefresh.isDisplayed());
+    }
+    @Given("Click on the Refresh button")
+    public void click_on_the_refresh_button() {
+        clickWithJS(visitorHomePage.buttonRefresh);
+    }
+    @Given("Verify that the page is refreshed")
+    public void verify_that_the_page_is_refreshed() {
+       String expUrl="https://qa.buysellcycle.com/category/best_deals?item=product";
+       String actUrl=Driver.getDriver().getCurrentUrl();
+       assertEquals(expUrl,actUrl);
+    }
+    @Given("Verify that the compare, wishlist, quickwiew, addtocart button is visible")
+    public void verify_that_the_compare_wishlist_quickwiew_addtocart_button_is_visible() {
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+    }
+    @Given("Click on the quickwiew button")
+    public void click_on_the_quickwiew_button() {
+
+    }
+    @Given("Click on the compare button and verify that successfully pop up is visible")
+    public void click_on_the_compare_button_and_verify_that_successfully_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that please login first pop up is visible")
+    public void click_on_the_wishlist_button_and_verify_that_please_login_first_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that Item added to your cart\" text is visible")
+    public void click_on_the_wishlist_button_and_verify_that_item_added_to_your_cart_text_is_visible() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
     @Then("I should be directed to the {string} page")
     public void iShouldBeDirectedToThePage(String page) {

@@ -1133,6 +1133,43 @@ public class UserDashboardStepDef extends Base {
     public void iApplyCouponCode() {
         waitAndSubmit(userDashboard.applyButtonCouponCode);
     }
+
+    // ====================== Beytullah's Steps =====================
+    @Given("User clicks on the {string}")
+    public void user_clicks_on_the(String text) {
+        WebElement element=Driver.getDriver().findElement(By.xpath("//*[text()='"+text
+                +"']"));
+        wait(3);
+        clickWebElement(text);
+
+    }
+
+    @Given("User verifies that the {string} is visible")
+    public void user_verifies_that_the_is_visible(String text) {
+
+        WebElement element=Driver.getDriver().findElement(By.xpath("//*[text()='"+text
+                +"']"));
+        scrollIntoViewJS(element);
+        assertTrue(element.isDisplayed());
+
+
+    }
+
+    @Given("User clicks on the Referral")
+    public void user_clicks_on_the_referral() {
+        scrollIntoViewJS(userDashboard.buttonReferral);
+
+        clickWithJS(userDashboard.buttonReferral);
+    }
+    @Given("Verify that the Copied Successfully pup up is visible")
+    public void verify_that_the_copied_successfully_pup_up_is_visible() {
+        String expPopUpMessage="Code Copied Successfully.";
+        String actPopUpMessage=adminDashboard.popUpMessage.getText();
+       assertEquals(expPopUpMessage,actPopUpMessage);
+    }
+
+
+    // ====================== End Of Beytullah's Steps End =====================
 }
 
 

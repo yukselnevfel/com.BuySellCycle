@@ -666,8 +666,14 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement ddmSorting;
     @FindBy(xpath = "//*[@data-value='low_to_high']")
     public WebElement ddmFifthSorting;
-    @FindBy(xpath = "//*[@id=\"profile\"]//strong/text()")
+    @FindBy(xpath = "//*[@id='profile']//strong")
     public List<WebElement> textProductprice;
+    @FindBy(xpath = "(//*[@id='profile']//strong)[1]")
+    public WebElement textProductprice01;
+    @FindBy(xpath = "(//*[@id='profile']//strong)[2]")
+    public WebElement textProductprice02;
+    @FindBy(xpath = "(//*[@id='profile']//strong)[3]")
+    public WebElement textProductprice03;
     @FindBy(xpath = "//*[@id='count_down']")
     public WebElement labelcounter;
     @FindBy(xpath = "(//*[@class='lazyload'])[1]")
@@ -680,6 +686,16 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement buttonAddingCompare;
     @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
     public WebElement buttonAddingToCart;
+    @FindBy(xpath = "(//*[@class='checkmark mr_10'])[1]")
+    public WebElement checkBoxWomansApperal;
+    @FindBy(xpath = "(//*[@class='label_name'])[27]")
+    public WebElement checkBoxPullAndBear;
+    @FindBy(xpath = "//*[@class='branding_text']")
+    public WebElement textPageTitle;
+    @FindBy(xpath = "//*[@id='refresh_btn']")
+    public WebElement buttonRefresh;
+
+
 
     // -------------------------End of Beytullah's Locates----------------------------
 
