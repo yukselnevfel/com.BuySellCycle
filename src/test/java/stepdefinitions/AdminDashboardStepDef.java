@@ -576,6 +576,92 @@ public class AdminDashboardStepDef extends Base {
 
     }
 
+    @Given("Verify that there is a Variant option")
+    public void verify_that_there_is_a_variant_option() {
+        assertTrue(adminDashboard.checkMark2.isDisplayed());
+    }
+
+    @Given("Verify that at least one of the options is selectable")
+    public void verify_that_at_least_one_of_the_options_is_selectable() {
+        adminDashboard.checkMark2.click();
+        wait(2);
+        assertTrue(adminDashboard.checkMark.isEnabled());
+    }
+
+    @Given("The product information to be added is entered")
+    public void the_product_information_to_be_added_is_entered() {
+        adminDashboard.nameProduct.sendKeys("SmrWatch");
+        waitAndClick(adminDashboard.categoryProduct);
+        wait(2);
+        waitAndClick(adminDashboard.electronic);
+        waitAndClick(adminDashboard.unitProduct);
+        waitAndClick(adminDashboard.pair);
+        actions.sendKeys(adminDashboard.tags, "car").sendKeys(Keys.ENTER).perform();
+        adminDashboard.sellinPrice.sendKeys("230");
+
+    }
+
+    @Given("Add image for product")
+    public void add_image_for_product() {
+        waitAndClick(adminDashboard.chooseImages);
+        waitAndClick(adminDashboard.secilecekResim);
+        waitAndClick(adminDashboard.addFilesButton);
+
+    }
+
+    @Given("Select Related Product")
+    public void select_related_product() {
+        waitAndClick(adminDashboard.related);
+        wait(1);
+
+    }
+
+    @Given("Select Up Sale Product")
+    public void select_up_sale_product() {
+        waitAndClick(adminDashboard.upSale);
+        wait(1);
+    }
+
+    @Given("Select Cross Sale Product")
+    public void select_cross_sale_product() {
+        waitAndClick(adminDashboard.crossSale);
+    }
+
+    @Given("Click on General Information")
+    public void click_on_general_information() {
+        wait(2);
+        waitAndClick(adminDashboard.generalInformation);
+    }
+
+    @Given("Click Save and Publish")
+    public void click_save_and_publish() {
+        wait(2);
+        waitAndClick(adminDashboard.savePublish);
+    }
+
+    @Given("Write the product {string} on the search button and search.")
+    public void write_the_product_on_the_search_button_and_search(String string) {
+        visitorHomePage.searchTextBox.sendKeys(string + Keys.ENTER);
+        wait(2);
+
+    }
+
+    @Given("Verify that the product has been installed")
+    public void verify_that_the_product_has_been_installed() {
+assertTrue(adminDashboard.updatedProduct.isDisplayed());
+    }
+
+    @Given("Click on the saved product")
+    public void click_on_the_saved_product() {
+        waitAndClick(adminDashboard.myProduct);
+    }
+
+    @Given("Verify Cross Sale, Up Sale and Related Product")
+    public void verify_cross_sale_up_sale_and_related_product() {
+assertTrue(adminDashboard.crossUrun.isDisplayed());
+assertTrue(adminDashboard.upSellUrun.isDisplayed());
+assertTrue(adminDashboard.relatedUrun.isDisplayed());
+    }
 
 
 }

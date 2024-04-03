@@ -263,6 +263,36 @@ public class AdminDashboard extends Base{
 
 
 
+    //   ================================  SAMET ===========================
+    //--------------------------- Ad New Product --------------------------
+@FindBy(xpath = "(//*[@class=\"nav_title\"])[8]") public WebElement puroductsMenu;
+@FindBy(xpath = "//*[@class=\"checkmark\"]") public WebElement checkMark;
+@FindBy(xpath = "(//*[@class=\"checkmark\"])[2]") public WebElement checkMark2;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[1]") public WebElement nameProduct;
+@FindBy(xpath = "//*[@class=\"select2-selection__rendered\"]") public WebElement categoryProduct;
+@FindBy(xpath = "//*[@class=\"select2-results__option\"]") public WebElement electronic;
+@FindBy(xpath = "//*[@class=\"nice-select primary_select mb-15 unit\"]") public WebElement unitProduct;
+@FindBy(xpath = "//*[@id=\"unit_select_div\"]/div/div[2]/ul/li[6]") public WebElement pair;
+@FindBy(xpath = "//*[@id=\"selling_price\"]") public WebElement sellinPrice;
+@FindBy(xpath = "//*[@data-value=\"save_publish\"]") public WebElement savePublish;
+@FindBy(xpath = "//*[@placeholder=\"Choose Images\"]") public WebElement chooseImages;
+@FindBy(xpath = "(//*[@class=\"img-box\"])[3]") public WebElement secilecekResim;
+@FindBy(xpath = "//*[@id=\"media_modal\"]/div/div/div[3]/div/div[2]/button[3]") public WebElement addFilesButton;
+@FindBy(xpath = "//*[@id=\"2\"]") public WebElement related;
+@FindBy(xpath = "//*[@id=\"1\"]") public WebElement generalInformation;
+@FindBy(xpath = "//*[@id=\"3\"]") public WebElement upSale;
+@FindBy(xpath = "//*[@id=\"4\"]") public WebElement crossSale;
+@FindBy(id = "rsearch_products") public WebElement searchB;
+@FindBy(xpath = "(//*[@class=\"primary_checkbox d-flex\"") public WebElement relatedProduct;
+@FindBy(xpath = "//*[@id=\"up_sale_17\"]") public WebElement upSaleProduct;
+@FindBy(xpath = "//*[@id=\"cross_sale_18\"]") public WebElement crossSaleProduct;
+@FindBy(xpath = "//*[@id=\"GenaralInfo\"]/div/div[1]/div/div[1]/div[15]/div[2]/div/input") public WebElement tags;
+@FindBy(xpath = "(//*[@class=\"product_thumb_upper\"])[1]") public WebElement myProduct;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div[1]/h3") public WebElement updatedProduct;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div[2]/h4") public WebElement upSellUrun;
+@FindBy(xpath = "/html/body/div[4]/div/div[1]/div/div/h3") public WebElement relatedUrun;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[4]/div[1]/div/div/h3") public WebElement crossUrun;
+
 
 
 

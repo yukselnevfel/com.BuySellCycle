@@ -581,7 +581,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Open browser and Go to {string}")
     public void open_browser_and_go_to(String bSCUrl) {
-        Driver.getDriver().get(ConfigReader.getProperty("bSCUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty(bSCUrl));
     }
 
     @Given("Close the pop-up message")
