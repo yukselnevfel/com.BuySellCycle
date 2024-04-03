@@ -397,6 +397,108 @@ public class AdminDashboardStepDef extends Base {
         adminDashboard.searchBoxQuickSearch.sendKeys(validmaill);
 
     }
+    @Given("Is Active icon changes the active-passive status of the customer")
+    public void is_active_icon_changes_the_active_passive_status_of_the_customer() {
+       clickWithJS(adminDashboard.iconIsActive);
+    }
+    @Given("Click on the Active Customer")
+    public void click_on_the_active_customer() {
+        clickWithJS(adminDashboard.activeCustomerButton);
+
+    }
+    @Given("Click on  the EDID from the select dropdown menu")
+    public void click_on_the_edid_from_the_select_dropdown_menu() {
+       if (adminDashboard.activeCustomerActionButton.isDisplayed()){
+           clickWithJS(adminDashboard.activeCustomerActionButton);
+           clickWithJS(adminDashboard.activeCustomerSelectButton);
+           clickWithJS(adminDashboard.activeCustomerEditButton);
+           clickWithJS(adminDashboard.basicInfoActiveButton);
+       }else {
+           clickWithJS(adminDashboard.InActiveCustomerActionButton);
+           clickWithJS(adminDashboard.InActiveCustomerActionButton);
+           clickWithJS(adminDashboard.inActiveCustomerEditButton);
+           clickWithJS(adminDashboard.basicInfoInActiveButton);
+
+
+
+       }
+
+
+    }
+    @Given("Click on the Update button")
+    public void click_on_the_update_button() {
+        clickWithJS(adminDashboard.updateButton);
+    }
+
+    @Given("Click on  the DELETE from the select dropdown menu")
+    public void click_on_the_delete_from_the_select_dropdown_menu() {
+        if(adminDashboard.activeCustomerButton.isDisplayed()){
+            clickWithJS(adminDashboard.activeCustomerActionButton);
+            clickWithJS(adminDashboard.activeCustomerSelectButton);
+            clickWithJS(adminDashboard.activeCustomerDeleteButton);
+            clickWithJS(adminDashboard.popUpDeleteButton);
+        }else {
+            clickWithJS(adminDashboard.InActiveCustomerActionButton);
+            clickWithJS(adminDashboard.inActiveCustomerSelectButton);
+            clickWithJS(adminDashboard.inActiveCustomerDeleteButton);
+            clickWithJS(adminDashboard.popUpDeleteButton);
+        }
+
+
+
+    }
+    @Given("Clicks on  the Delete button in the resulting alert")
+    public void clicks_on_the_delete_button_in_the_resulting_alert() {
+       clickWithJS(adminDashboard.popUpDeleteButton);
+    }
+
+    @Given("Click on  the DETAIL  from the select dropdown menu")
+    public void click_on_the_detail_from_the_select_dropdown_menu() {
+        if (adminDashboard.activeCustomerButton.isDisplayed()){
+            clickWithJS(adminDashboard.activeCustomerActionButton);
+            clickWithJS(adminDashboard.activeCustomerSelectButton);
+            clickWithJS(adminDashboard.activeCustomerDetailButton);
+        }else {
+            clickWithJS(adminDashboard.InActiveCustomerActionButton);
+            clickWithJS(adminDashboard.inActiveCustomerSelectButton);
+            clickWithJS(adminDashboard.inActiveCustomerDetailButton);
+        }
+
+
+
+
+    }
+    @Given("Verify that Customer Profile, Order Summary, Wallet Summary information is displayed")
+    public void verify_that_customer_profile_order_summary_wallet_summary_information_is_displayed() {
+        assertTrue(adminDashboard.customerProfileDetailWindow.isDisplayed());
+
+    }
+
+    @Given("Verify that the order list can be accessed")
+    public void verify_that_the_order_list_can_be_accessed() {
+        scrollIntoViewJS(adminDashboard.ordersIsDisplayedText);
+        assertTrue(adminDashboard.ordersIsDisplayedText.isEnabled());
+
+    }
+    @Given("Verify that the list of Wallet Histories can be accessed")
+    public void verify_that_the_list_of_wallet_histories_can_be_accessed() {
+        scrollIntoViewJS(adminDashboard.walletHistoriesIsDisplayedText);
+        assertTrue(adminDashboard.walletHistoriesIsDisplayedText.isEnabled());
+
+    }
+    @Given("Verify that the Addresses list can be accessed")
+    public void verify_that_the_addresses_list_can_be_accessed() {
+        scrollIntoViewJS(adminDashboard.addressesIsDisplayedText);
+        assertTrue(adminDashboard.addressesIsDisplayedText.isEnabled());
+
+    }
+
+    @Given("Click on the Inactive Customer")
+    public void click_on_the_inactive_customer() {
+        clickWithJS(adminDashboard.inActiveCustomerButton);
+
+    }
+
 
 
 
