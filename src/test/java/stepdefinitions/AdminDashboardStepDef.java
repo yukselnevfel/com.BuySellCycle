@@ -587,10 +587,15 @@ public class AdminDashboardStepDef extends Base {
         wait(2);
         assertTrue(adminDashboard.checkMark.isEnabled());
     }
+    @Given("Click on the Products menu")
+    public void click_on_the_products_menu() {
+        waitAndClick(adminDashboard.puroductsMenu);
+    }
 
     @Given("The product information to be added is entered")
     public void the_product_information_to_be_added_is_entered() {
         adminDashboard.nameProduct.sendKeys("SmrWatch");
+        wait(1);
         waitAndClick(adminDashboard.categoryProduct);
         wait(2);
         waitAndClick(adminDashboard.electronic);
@@ -604,7 +609,9 @@ public class AdminDashboardStepDef extends Base {
     @Given("Add image for product")
     public void add_image_for_product() {
         waitAndClick(adminDashboard.chooseImages);
+        wait(1);
         waitAndClick(adminDashboard.secilecekResim);
+        wait(1);
         waitAndClick(adminDashboard.addFilesButton);
 
     }
@@ -653,11 +660,13 @@ assertTrue(adminDashboard.updatedProduct.isDisplayed());
 
     @Given("Click on the saved product")
     public void click_on_the_saved_product() {
+        wait(2);
         waitAndClick(adminDashboard.myProduct);
     }
 
     @Given("Verify Cross Sale, Up Sale and Related Product")
     public void verify_cross_sale_up_sale_and_related_product() {
+        wait(2);
 assertTrue(adminDashboard.crossUrun.isDisplayed());
 assertTrue(adminDashboard.upSellUrun.isDisplayed());
 assertTrue(adminDashboard.relatedUrun.isDisplayed());
