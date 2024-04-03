@@ -16,10 +16,12 @@ import java.security.KeyStore;
                 "rerun:target/failedRerun.txt"
         },
         features = "src/test/resources",
-        glue = {"stepdefinitions", "hooks"},
-        tags = "@US_035",
-        dryRun = false
+        glue = {"stepdefinitions","hooks"},
 
+
+        tags = "@e2e",
+
+        dryRun =false
 )
 
 public class Runner {

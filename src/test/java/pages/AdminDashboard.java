@@ -13,6 +13,17 @@ public class AdminDashboard extends Base{
     //*[@class='toast-message']
     @FindBy(xpath = "//*[@class='toast-message']")
     public WebElement popUpMessage;
+    @FindBy(xpath = "//*[@class='toast-close-button']")
+    public WebElement popUpCloseMessage;
+    @FindBy(xpath = "//*[@id='profile_pic']")
+    public WebElement iconAdminProfile;
+    @FindBy(xpath = "//h5")
+    public WebElement textName;
+
+    @FindBy(xpath = "//*[text()='My Profile']")
+    public WebElement linkMyProfile;
+    @FindBy(xpath = "//*[text()='Log out']")
+    public WebElement linkLogOut;
 
 // -------------------------End of Beytullah's Locates----------------------------
 
@@ -185,6 +196,71 @@ public class AdminDashboard extends Base{
     public WebElement searchBoxQuickSearch;
     @FindBy(xpath = "(//*[@id='active_checkbox265'])[1]")
     public WebElement iconIsActive;
+    @FindBy(xpath = "(//*[text()='Active Customer'])[1]")
+    public WebElement activeCustomerButton;
+    @FindBy(xpath = "//*[text()='Inactive customer']")
+    public WebElement inActiveCustomerButton;
+    @FindBy(xpath = "(//*[@id='dropdownMenu2'])[11]")
+    public WebElement dropDownSelect;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[1]")
+    public WebElement dropDownSelectDetailButton;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[2]")
+    public WebElement dropDownSelectEditButton;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
+    public WebElement dropDownSelectDeleteButton;
+    @FindBy(id = "status_inactive")
+    public WebElement radioButtonInactiveStatus;
+    @FindBy(id = "save_button_parent")
+    public WebElement updateButton;
+    @FindBy(xpath = "//*[@id='delete_link']")
+    public WebElement  popUpDeleteButton;
+
+    @FindBy(xpath = "(//tr[1]/td[1])[1]")
+    public WebElement allCustomerActionButton;
+    @FindBy(xpath = "(//tr[1]/td[1])[2]")
+    public WebElement activeCustomerActionButton;
+    @FindBy(xpath = "(//tr[1]/td[1])[3]")
+    public WebElement InActiveCustomerActionButton;
+
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[14]")
+    public WebElement activeCustomerSelectButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[2]")
+    public WebElement allCustomerSelectButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[25]")
+    public WebElement inActiveCustomerSelectButton;
+
+    @FindBy(xpath = "(//a[text()='Details'])[12]")
+    public WebElement activeCustomerDetailButton;
+    @FindBy(xpath = "(//a[text()='Details'])[23]")
+    public WebElement inActiveCustomerDetailButton;
+
+    @FindBy(xpath = "(//a[text()='Edit'])[12]")
+    public WebElement activeCustomerEditButton;
+    @FindBy(xpath = "(//a[text()='Edit'])[23]")
+    public WebElement inActiveCustomerEditButton;
+
+    @FindBy(xpath = "(//a[text()='Delete'])[12]")
+    public WebElement activeCustomerDeleteButton;
+    @FindBy(xpath = "(//a[text()='Delete'])[23]")
+    public WebElement inActiveCustomerDeleteButton;
+
+    @FindBy(xpath = "//*[text()='orders']")
+    public WebElement ordersIsDisplayedText;
+    @FindBy(xpath = "//*[text()='wallet histories']")
+    public WebElement walletHistoriesIsDisplayedText;
+    @FindBy(xpath = "//*[text()='Addresses']")
+    public WebElement addressesIsDisplayedText;
+
+
+    @FindBy(xpath = "(//*[@*='checkmark'])[2]")
+    public WebElement basicInfoActiveButton;
+    @FindBy(xpath = "(//*[@*='checkmark'])[1]")
+    public WebElement basicInfoInActiveButton;
+
+    @FindBy(xpath = "(//*[@*='white_box_50px box_shadow_white'])[1]")
+    public WebElement customerProfileDetailWindow;
+
+
 
 
 
