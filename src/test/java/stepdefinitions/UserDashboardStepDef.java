@@ -1125,7 +1125,7 @@ public class UserDashboardStepDef extends Base {
     @And("I should be able to enter {string} as coupon code on Code Box")
     public void iShouldBeAbleToEnterAsCouponCodeOnCodeBox(String code) {
         waitAndClick(userDashboard.couponBoxPaymentPage);
-        waitAndSendText(userDashboard.couponBoxPaymentPage, code);
+        waitAndSendText(userDashboard.couponBoxPaymentPage, ConfigReader.getProperty(code));
     }
 
     @When("I apply coupon code.")

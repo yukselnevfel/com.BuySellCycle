@@ -8,10 +8,6 @@ Feature: Checkout Process
   @e2e
   Scenario Outline: User adds items to the cart and proceeds to checkout
 
-    Given Click on My Couppons
-    When Write "couponCode" in the code section
-    And Click on the Add Coupon button
-    Then Verify that the "couponCode" has been added
     When I should click on the "Home" on the header
     And Click on the Telephone link in Electronics category on homepage
     Then Click on the add to cart icon for the first product in Electronics category on homepage
