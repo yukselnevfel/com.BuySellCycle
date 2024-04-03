@@ -152,8 +152,17 @@ public WebElement continueToShippingButton;
         waitAndClick(element);
     }
 
-    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
+    @FindBy (xpath = "(//*[@tabindex='1'])[1]")
     public WebElement emailStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[2]")
+    public WebElement stripeCardNoBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[3]")
+    public WebElement expDateStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[4]")
+    public WebElement cvcStripePaymentBox;
 
     @FindBy (id = "submitButton")
     public WebElement submitPayment;
