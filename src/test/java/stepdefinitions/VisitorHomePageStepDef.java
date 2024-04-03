@@ -1079,7 +1079,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the Item added to your cart warning is visible")
     public void verify_that_the_item_added_to_your_cart_warning_is_visible() {
-
+        wait(2);
         Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
     }
     @Given("Verify that the Deal More link is visible in Electronics category on homepage")

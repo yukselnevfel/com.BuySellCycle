@@ -1,10 +1,11 @@
+
 Feature: As a registered user, I would like to have a page on my Dashboard where I can view my orders.
 
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
     * Click on the login link, Enter "simgeCostumerEmail" and "password" and click sign in
-
+@simge
   Scenario: Access to My Wishlist page must be provided
     * Verify that My Wishlist link is visible in the Dashboard side bar
     * Close the page
@@ -104,7 +105,7 @@ Feature: As a registered user, I would like to have a page on my Dashboard where
     * Click on the Delete button
     * Verify that the relevant product has been deleted"
     * Close the page
-@simge
+
   Scenario: The selected product in Wishlist must be able to be added to the shopping cart
      * Click on the My Wishlist link in the Dashboard side bar
      * Verify that the add to cart icon is visible for the first product in  My Wishlist page

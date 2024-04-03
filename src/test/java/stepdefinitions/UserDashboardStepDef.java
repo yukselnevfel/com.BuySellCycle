@@ -278,8 +278,8 @@ public class UserDashboardStepDef extends Base {
     }
     @Given("Verify that the compare icon is visible for the first product on My Wishlist page")
     public void verify_that_the_compare_icon_is_visible_for_the_first_product_on_my_wishlist_page() {
-         actions.moveToElement(userDashboard.imageFirst);
-         wait(1);
+         actions.moveToElement(userDashboard.imageFirst).perform();
+         wait(2);
          Assert.assertTrue(userDashboard.iconCompareInWishlist.isDisplayed());
     }
     @Given("Click on the compare icon for the first product on My Wishlist page")
