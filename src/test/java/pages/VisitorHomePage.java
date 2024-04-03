@@ -1,5 +1,6 @@
 package pages;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.Assert;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
@@ -441,6 +442,82 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//i[@title='Wishlist'])[1]")
     public WebElement buttonWishList;
+
+    @FindBy(xpath = "(//span[text()='View All'])[2]")
+    public WebElement textViewAll;
+
+    @FindBy(xpath = "(//a[@class='amaz_primary_btn addToCartFromThumnail'])[1]")
+    public WebElement buttonAddtocart;
+
+    @FindBy(xpath = "(//a[@class='amaz_primary_btn addToCartFromThumnail'])[107]")
+    public WebElement buttonAddtocartTrouser;
+
+    @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
+    public WebElement buttonADDTOCART;
+
+    @FindBy(id = "top_rating_title")
+    public WebElement titleTopRating;
+
+    @FindBy(xpath = "(//img[@data-src='https://qa.buysellcycle.com/public/uploads/images/19-02-2024/65d3daf758c09.webp'])[1]")
+    public WebElement imageTrouser;
+
+    @FindBy(xpath = "(//i[@class='ti-close'])[5]")
+    public WebElement buttonCloseTrouser;
+    
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[107]")
+    public WebElement buttonCompareTrouser;
+
+    @FindBy(xpath = "//a[@id='add_to_compare_btn']")
+    public WebElement buttonADDTOCOMPARE;
+
+    @FindBy(xpath = "(//img[@title='APPLE iPhone 13 128 GB'])[4]")
+    public WebElement imageApple13;
+
+    @FindBy(xpath = "(//img[@data-src='https://qa.buysellcycle.com/public/uploads/images/22-02-2024/65d7eb6d79476.webp'])[4]")
+    public WebElement imageTELE;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[153]")
+    public WebElement addToCartApple;
+
+    @FindBy(xpath = "(//button[@class='close_modal_icon'])[1]")
+    public WebElement buttonCloseApple;
+
+    @FindBy(xpath = "//img[@title='Stradivarius']")
+    public WebElement linkStradivarius;
+
+    @FindBy(xpath = "//img[@title='GAP']")
+    public WebElement linkGap;
+
+    @FindBy(xpath = "//img[@title='MANGO']")
+    public WebElement linkMango;
+
+    @FindBy(xpath = "//img[@title='Pull & Bear']")
+    public WebElement linkPullBear;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[1]")
+    public WebElement iconSepet;
+
+    @FindBy(xpath = "(//a[@id='add_to_cart_btn_modal'])[1]")
+    public WebElement ADDTOCARTStradivarious;
+
+    @FindBy(xpath = "(//button[@class='close_modal_icon'])[2]")
+    public WebElement closeStradivarious;
+
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[1]")
+    public WebElement compareIcon;
+
+    @FindBy(xpath = "(//a[@id='add_to_compare_btn'])[1]")
+    public WebElement textAddToCart;
+
+    @FindBy(xpath = "(//img[@title='Belted smart trousers'])[3]")
+    public WebElement imgBeltedTrouser;
+
+    @FindBy(xpath = "(//i[@class='far fa-heart'])[1]")
+    public WebElement wishIcon;
+
+
+
+
 
 
 
