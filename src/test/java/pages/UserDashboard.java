@@ -1,5 +1,9 @@
 package pages;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -307,14 +311,90 @@ public WebElement continueToShippingButton;
 
    //---- SUPPORT TICKET AYCA--------//
 
-   @FindBy (xpath = "(//*[@class='position-relative d-flex align-items-center '])[2]")
+   @FindBy (xpath = "//*[@title='ads bar']")
+   public WebElement imageAdsBar;
+
+   @FindBy (xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div/ul/li[12]/a")
    public WebElement linkSupportTicket;
 
-   @FindBy (xpath = "//tr/th")
-    public WebElement labelTicketTitle;
+   @FindBy (xpath = "//*[text()='Status']")
+   public WebElement labelStatus;
 
-   @FindBy(xpath = "selector-for-your-ticket-list")
-    private List<WebElement> ticketListElements;
+   @FindBy (xpath = "//*[text()='Priority']")
+   public WebElement labelPriority;
+
+    @FindBy (xpath = "(//*[text()='Category'])[2]")
+    public WebElement labelCategory;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[2]/div/table/tbody/tr/td[6]/a")
+    public WebElement actionDetailSupportTicketButton;
+
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[1]")
+    public WebElement labelCustomerMessage;
+
+    @FindBy (xpath = "(//*[@class='ticket_view_box_body'])[2]")
+    public WebElement labelAdminMessage;
+
+    @FindBy(id = "replay_box_toggler")
+    public WebElement replyButton;
+
+    @FindBy (xpath = "//*[@class='note-editable']")
+    public WebElement replyMessageBox;
+
+    @FindBy (xpath = "//*[text()='Reply now']")
+    public WebElement replyNowButton;
+
+    @FindBy (xpath = "/html/body/script[4]/text()")
+    public WebElement successMessagePopup;
+
+    @FindBy (xpath = "(//*[text()='All Ticket'])[2]")
+    public WebElement filterDropDownMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[1]")
+    public WebElement allTicketSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[2]")
+    public WebElement pendingSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[3]")
+    public WebElement onGoingSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[4]")
+    public WebElement completedSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[5]")
+    public WebElement closedSubMenu;
+
+    @FindBy (xpath = "//*[text()='+ Add New']")
+    public WebElement addNewSupportTicketButton;
+
+    @FindBy (xpath = "//*[text()='Create new ticket ']")
+    public WebElement textCreateNewTicket;
+
+    @FindBy (id="subject")
+    public WebElement subjectButton;
+
+    @FindBy (xpath = "(//*[@class='nice-select theme_select style2 wide'])[1]")
+    public WebElement categorySubmenu;
+
+    @FindBy (xpath = "(//*[text()='Others'])[2]")
+    public WebElement othersCategorySubMenuButton;
+
+    @FindBy (xpath = "(//*[@class='nice-select theme_select style2 wide'])[2]")
+    public WebElement priorityDropDownMenuButton;
+
+    @FindBy (xpath = "(//*[text()='Medium'])[2]")
+    public WebElement priorityMediumSubmenuButton;
+
+    @FindBy (xpath = "//*[@class='note-editable']")
+    public WebElement descriptionBox;
+
+    @FindBy (xpath = "//*[text()='+ Create Now']")
+    public WebElement createNowSupportTicketButton;
+
+    @FindBy (xpath = "(//*[@class='font_14 f_w_500 mute_text'])[2]")
+    public WebElement ticketFirstRow;
+
 
 
 
@@ -342,6 +422,24 @@ public WebElement continueToShippingButton;
 
      @FindBy(xpath = "(//span[@class='checkmark mr_15'])[1]")
       public WebElement buttonEventType;
+
+
+     // User Dashboard Page Left Panel
+    @FindBy(xpath = "//*[@id='code']")
+    public WebElement labelReferralCode;
+
+
+    @FindBy(xpath = "//*[@data-name='Stripe']")
+    public WebElement stripeCheckRadioButton;
+    @FindBy(xpath = "//*[@id='payment_btn_trigger']")
+    public WebElement payNow;
+    @FindBy(xpath = "//*[@class='close right']")
+    public WebElement stripeEscape;
+    @FindBy(xpath = "//*[@id='card_number']")
+    public WebElement stripeCardNumberTextBox;
+
+
+
 
 
 

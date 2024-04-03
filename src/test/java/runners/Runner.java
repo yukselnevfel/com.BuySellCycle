@@ -19,12 +19,14 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@simge",
-        dryRun = false
+        tags = "@adminProductList",
+
+        dryRun =false
+
 
 
 
 )
 
-        public class Runner {
+public class Runner {
 }

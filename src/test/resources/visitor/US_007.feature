@@ -3,7 +3,6 @@ Feature:
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
-    * Close the pop-up message
 
 
   Scenario: The New Product deals menu title should be visible and redirectable on the homepage navBar.

@@ -1,9 +1,11 @@
 package stepdefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
@@ -17,6 +19,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
 import pages.UserDashboard;
 import utils.ConfigReader;
@@ -24,6 +28,8 @@ import utils.Driver;
 
 
 import java.util.ArrayList;
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -464,6 +470,26 @@ public class UserDashboardStepDef extends Base {
     }
 
     //-------------Login Steps FIKRET-----------------/
+    @Then("Stripe select")
+    public void stripe_select() {
+        clickWithJS(userDashboard.stripeCheckRadioButton);
+    }
+
+    @When("Click paynow button")
+    public void Click_paynow_button() {
+        clickWithJS(userDashboard.payNow);
+
+    }
+
+
+    @When("Close on stripe window")
+    public void close_on_stripe_window() {
+        Driver.getDriver().switchTo().frame(0);
+        userDashboard.stripeCardNumberTextBox.sendKeys("4242 42");
+        wait(6);
+        clickWithJS(userDashboard.stripeEscape);
+    }
+
     @And("{int} saniye bekler")
     public void saniyeBekler(int saniye) {
 
@@ -478,6 +504,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_should_see_the_menu_in_the_dashboard_sidebar() {
        assertTrue(userDashboard.linkPurchaseHistory.isDisplayed());
     }
+
     @Then("the user verifies that the Purchase History link is active")
     public void the_user_verifies_that_the_link_is_active() {
         assertTrue(userDashboard.linkPurchaseHistory.isEnabled());
@@ -487,6 +514,7 @@ public class UserDashboardStepDef extends Base {
     public void the_user_clicks_on_the_link_in_the_dashboard_sidebar() {
         clickWithJS(userDashboard.linkPurchaseHistory);
     }
+
     @Then("the user verifies the presence of details such as Details, Amount, Delivery Status, Payment Status, and Action")
     public void the_user_verifies_the_presence_of_details_such_as_details_amount_delivery_status_payment_status_and_action() {
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -498,6 +526,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.allHistoryFilter);
         clickWithJS(userDashboard.pendingPurchase);
     }
+
     @Then("the user verifies that the filtering is applied correctly")
     public void the_user_verifies_that_the_filtering_is_applied_correctly() {
         assertTrue(userDashboard.pendingText.isDisplayed());
@@ -508,6 +537,7 @@ public class UserDashboardStepDef extends Base {
 
         clickWithJS(userDashboard.iconDownload);
     }
+
     @Then("the user verifies that the invoice is downloaded successfully")
     public void the_user_verifies_that_the_invoice_is_downloaded_successfully() {
         String dosyaYolu = "C:\\Users\\ZEYBEK\\Downloads\\Documents\\20240323000043.pdf";
@@ -519,6 +549,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.iconBurgerPurchase);
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
+
     @Then("the user verifies the displayed invoice details such as Order code, Package code, Delivery Process, Order Details, Order Summary, and Payment Type")
     public void the_user_verifies_the_displayed_invoice_details_such_as_order_code_package_code_delivery_process_order_details_order_summary_and_payment_type() {
         System.out.println(userDashboard.invoicePageText.getText());
@@ -530,7 +561,6 @@ public class UserDashboardStepDef extends Base {
         assertTrue(userDashboard.invoicePageText.getText().contains("Delivered"));
         assertTrue(userDashboard.paymentTypeText.getText().contains("No Gateway"));
     }
-
 
 
     @Given("Verify that page url is {string}")
@@ -735,7 +765,6 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Verify that the Dasboard link is visible and functional")
@@ -926,6 +955,7 @@ public class UserDashboardStepDef extends Base {
     public void return_to_notifications_page() {
         Driver.getDriver().navigate().back();
     }
+
     @Given("Click on the Setting button and reach the relevant page")
     public void click_on_the_button_and_reach_the_relevant_page() {
        clickWithJS(userDashboard.buttonSetting);
@@ -934,6 +964,7 @@ public class UserDashboardStepDef extends Base {
        assertEquals(expectedURL,actualURL);
 
     }
+
     @Given("Updates the Types of Events in the Setting list")
     public void updates_the_types_of_events_in_the_setting_list() {
         clickWithJS(userDashboard.buttonEventType);
@@ -950,68 +981,195 @@ public class UserDashboardStepDef extends Base {
     @Given("Scroll down to the bottom of the page.Click on the support ticket menu")
     public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu() {
 
+       scrollIntoViewJS(userDashboard.imageAdsBar);
         wait(1);
-        Actions action = new Actions(Driver.getDriver());
-        action.scrollToElement(userDashboard.linkSupportTicket);
-        wait(1);
-        Assert.assertTrue(userDashboard.linkSupportTicket.isDisplayed());
+        assertTrue(userDashboard.linkSupportTicket.isDisplayed());
         clickWithJS(userDashboard.linkSupportTicket);
-
+        wait(2);
 
     }
+
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
         String expectedSupportTicketUrl = "https://qa.buysellcycle.com/support-ticket";
         String actualSupportTicketUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
+        assertEquals(expectedSupportTicketUrl,actualSupportTicketUrl);
 
 
     }
 
+    @Given("Verify that the Tickets should be listed with title information in All Submitted Ticket List.")
+    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list() {
 
-    @Given("Verify that the Tickets should be listed with {string} information in All Submitted Ticket List.")
-    public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list(String title) {
-
-
-            boolean isTitlePresent = false;
-            List<WebElement> tickets = Driver.getDriver().findElements(By.xpath("//*[contains(text(),'" + title + "')]"));
-
-            for (WebElement ticket : tickets) {
-                WebElement titleElement = ticket.findElement(By.cssSelector("//*[contains(text(),'" + title + "')]"));
-                if (titleElement != null && !titleElement.getText().isEmpty()) {
-                    isTitlePresent = true;
-                    break;
-                }
-            }
-            Assert.assertTrue("The title '" + title + "' is not present in any of the tickets in the list.", isTitlePresent);
+        wait(2);
+        List<String> requiredTitles = Arrays.asList("Ticket ID", "Subject", "Priority", "Last Update");
+        List<WebElement> headers = Driver.getDriver().findElements(By.xpath("//table/thead/tr/th"));
+        for (String title : requiredTitles) {
+            boolean isTitlePresent = headers.stream().anyMatch(th -> th.getText().equalsIgnoreCase(title));
+            Assert.assertTrue("The title '" + title + "' is not present in the ticket list.", isTitlePresent);
         }
 
+        System.out.println("all title displayed");
+     }
 
 
+    @Given("Click on the ticket View button")
+    public void click_on_the_ticket_button() {
 
-
-
-
-    @Given("Scroll down to the bottom of the page.Click on the support ticket menu and verify that the navigate to Support Ticket Page.")
-    public void scroll_down_to_the_bottom_of_the_page_click_on_the_support_ticket_menu_and_verify_that_the_navigate_to_support_ticket_page() {
-
-
-
-    }
-    @Given("Click on the ticket {string} button")
-    public void click_on_the_ticket_button(String string) {
-
-
-
-
+        clickWithJS(userDashboard.actionDetailSupportTicketButton);
+        wait(2);
     }
     @Given("Verify that Status, Priority, Category  text is displayed")
     public void verify_that_status_priority_category_text_is_displayed() {
 
 
+        assertTrue(userDashboard.labelStatus.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelPriority.isDisplayed());
+        wait(1);
+        assertTrue(userDashboard.labelCategory.isDisplayed());
+        wait(1);
+        System.out.println("all category displayed");
+
 
     }
+
+    @Given("User should be able to display admin return message")
+    public void user_should_be_able_to_display_admin_return_message() {
+
+       assertTrue(userDashboard.labelCustomerMessage.isDisplayed());
+
+    }
+    @Given("User should be able to respond to admin message")
+    public void user_should_be_able_to_respond_to_admin_message() {
+        clickWithJS(userDashboard.replyButton);
+        wait(1);
+        userDashboard.replyMessageBox.sendKeys("deneme mesaj");
+        wait(1);
+        clickWithJS(userDashboard.replyNowButton);
+        wait(1);
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5)); // 10 saniye kadar bekle
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
+
+    }
+
+    @Given("Click on the all ticket filter menu")
+    public void click_on_the_all_ticket_filter_menu() {
+
+        wait(2);
+        clickWithJS(userDashboard.filterDropDownMenu);
+        wait(1);
+
+
+    }
+    @Given("Click on the Pending submenu and verify if any tickets appear in the list")
+    public void click_on_the_pending_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.pendingSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the On Going submenu and verify if any tickets appear in the list")
+    public void click_on_the_on_going_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.onGoingSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the Completed submenu and verify if any tickets appear in the list")
+    public void click_on_the_completed_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+        clickWithJS(userDashboard.completedSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the Closed submenu and verify if any tickets appear in the list")
+    public void click_on_the_closed_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.closedSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the All Ticket submenu and verify if any tickets appear in the list")
+    public void click_on_the_all_ticket_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+        clickWithJS(userDashboard.allTicketSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+    }
+
+    @Given("Click on the add new button")
+    public void click_on_the_add_new_button() {
+
+
+        clickWithJS(userDashboard.addNewSupportTicketButton);
+
+    }
+    @Given("Required information is entered in the required fields")
+    public void required_information_is_entered_in_the_required_fields() {
+
+        wait(2);
+        clickWithJS(userDashboard.subjectButton);
+        userDashboard.subjectButton.sendKeys("Order Information");
+        clickWithJS(userDashboard.categorySubmenu);
+        wait(1);
+        clickWithJS(userDashboard.othersCategorySubMenuButton);
+        clickWithJS(userDashboard.priorityDropDownMenuButton);
+        clickWithJS(userDashboard.priorityMediumSubmenuButton);
+
+
+    }
+    @Given("Click on the description text and enter message")
+    public void click_on_the_description_text_and_enter_message() {
+
+
+        clickWithJS(userDashboard.descriptionBox);
+        wait(1);
+        userDashboard.descriptionBox.sendKeys("want to change my address");
+        wait(1);
+        scrollIntoViewJS(userDashboard.createNowSupportTicketButton);
+
+    }
+    @Given("Click on the create now button and verify that the message create successfully")
+    public void click_on_the_create_now_button_and_verify_that_the_message_create_successfully() {
+
+        wait(1);
+        clickWithJS(userDashboard.createNowSupportTicketButton);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
+
+
+    }
+
+
+
+    //----------------AYCA Support Ticket SON-----------------------//
 
 
     @When("Click on the Pay Now buttonlink")
@@ -1050,6 +1208,7 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.orderNowButton);
     }
 }
+
 
 
 
