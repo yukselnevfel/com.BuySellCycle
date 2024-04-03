@@ -41,12 +41,33 @@ Feature: As a registered user, I would like to have a page where I can open supp
   * Close the page
 
 
+
+  Scenario: All Sent Ticket Lists should be filtered and listed according to the filter information.
+
+  * Scroll down to the bottom of the page.Click on the support ticket menu
+  * Click on the all ticket filter menu
+  * Click on the Pending submenu and verify if any tickets appear in the list
+  * Click on the all ticket filter menu
+  * Click on the On Going submenu and verify if any tickets appear in the list
+  * Click on the all ticket filter menu
+  * Click on the Completed submenu and verify if any tickets appear in the list
+  * Click on the all ticket filter menu
+  * Click on the Closed submenu and verify if any tickets appear in the list
+  * Click on the all ticket filter menu
+  * Click on the All Ticket submenu and verify if any tickets appear in the list
+  * Close the page
+
+
   @supportTicket
-  Scenario: All Submitted Ticket List should be listed by filtering according to All Ticket, Pending, On Going, Completed, Closed information.
+  Scenario: User should be possible to create a new Ticket within the page (by entering Subject, Category, Priority and Description information).
+
+    * Scroll down to the bottom of the page.Click on the support ticket menu
+    * Click on the add new button
+    * Required information is entered in the required fields
+    * Click on the description text and enter message
+    * Click on the create now button and verify that the message create successfully
 
 
-
-  Scenario: It should be possible to create a new Ticket within the page (by entering Subject, Category, Priority and Description information).
 
 
 

@@ -17,7 +17,10 @@ import java.security.KeyStore;
         },
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
-        tags = "@esra",
+
+      
+        tags = "@e2e",
+
         dryRun =false
 )
 
