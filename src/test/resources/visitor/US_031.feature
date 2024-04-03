@@ -41,6 +41,7 @@ Feature: As a user, I would like to have a cart page where I can throw the produ
     * Verify that page url is "https://qa.buysellcycle.com/"
     * Close the page
 
+  @samet
   Scenario: Order Summary information should be visible on the cart page, and discount amounts of the products should be displayed
     * Open browser and Go to "bSCUrl"
     * Close the pop-up message

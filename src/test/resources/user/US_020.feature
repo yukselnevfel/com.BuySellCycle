@@ -1,4 +1,4 @@
-@simge
+
 Feature: As a registered user, I would like to have a page on my Dashboard where I can view my orders.
 
   Background:
