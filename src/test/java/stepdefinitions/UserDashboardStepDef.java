@@ -710,7 +710,7 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Logout link")
     public void click_on_the_logout_link() {
-        userDashboard.linkHeaderLogout.click();
+        waitAndClick(userDashboard.linkHeaderLogout);
     }
 
     @Given("Verify that Logout is visible and functional in the Dashboard sidebar")
@@ -1087,6 +1087,7 @@ public class UserDashboardStepDef extends Base {
     public void iShouldBeAbleToSubmitThePayment() {
         waitAndSubmit(userDashboard.submitPayment);
     }
+
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
        // scrollIntoViewJS(userDashboard.orderNowButton);
@@ -1117,7 +1118,21 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @And("I should be able to write a note {string}")
+    public void iShouldBeAbleToWriteANote(String note) {
+        waitAndSendText(userDashboard.notePad, note);
+    }
 
+    @And("I should be able to enter {string} as coupon code on Code Box")
+    public void iShouldBeAbleToEnterAsCouponCodeOnCodeBox(String code) {
+        waitAndClick(userDashboard.couponBoxPaymentPage);
+        waitAndSendText(userDashboard.couponBoxPaymentPage, ConfigReader.getProperty(code));
+    }
+
+    @When("I apply coupon code.")
+    public void iApplyCouponCode() {
+        waitAndSubmit(userDashboard.applyButtonCouponCode);
+    }
 }
 
 
