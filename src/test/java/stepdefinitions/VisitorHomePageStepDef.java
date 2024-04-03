@@ -11,19 +11,21 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.WebElement;
+
+import org.testng.asserts.SoftAssert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
 
+import java.sql.Time;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Locale;
-import java.util.Map;
-
 import static org.junit.Assert.*;
 
 public class VisitorHomePageStepDef extends Base {
@@ -1555,7 +1557,9 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
         String actualUrl=Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,actualUrl);
     }
-        //US_014 STEPS
+
+
+    //========US_014 STEPS============
     @Given("Click the View All button next to the Best Deals menu item and navigates to the relevant page")
     public void click_the_view_all_button_next_to_the_best_deals_menu_item_and_navigates_to_the_relevant_page() {
         clickWithJS(visitorHomePage.buttonViewAll);
@@ -1600,6 +1604,170 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
         clickWithJS(visitorHomePage.buttonWishList);
     }
 
+    @Given("Click the View All button next to the Feature Categories menu item and navigates to the relevant page")
+    public void click_the_view_all_button_next_to_the_feature_categories_menu_item_and_navigates_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.textViewAll);
+        String expectedURL="https://qa.buysellcycle.com/category";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+
+    @Given("Displays the products in the Category menu")
+    public void displays_the_products_in_the_category_menu() {
+        assertTrue(visitorHomePage.imageBag.isDisplayed());
+        assertTrue(visitorHomePage.image.isDisplayed());
+        assertTrue(visitorHomePage.imageChicco.isDisplayed());
+    }
+
+    @Given("Add products from the Category menu on the home page body to the cart")
+    public void add_products_from_the_category_menu_on_the_home_page_body_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddtocart);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonClose);
+    }
+
+    @Given("Select products in the Category menu in the body section of the home page for comparison")
+    public void select_products_in_the_category_menu_in_the_body_section_of_the_home_page_for_comparison() {
+        actions.moveToElement(visitorHomePage.imageBag).perform();
+        wait(2);
+        assertTrue(visitorHomePage.buttonCompare.isDisplayed());
+    }
+
+    @Given("Add products from the Category menu on the home page body to the favorites list")
+    public void add_products_from_the_category_menu_on_the_home_page_body_to_the_favorites_list() {
+        clickWithJS(visitorHomePage.buttonWishList);
+    }
+
+    @Given("Click the Top Rating menu item")
+    public void click_the_top_rating_menu_item() {
+        clickWithJS(visitorHomePage.titleTopRating);
+    }
+
+    @Given("Displays the products in the Top Rating menu")
+    public void displays_the_products_in_the_top_rating_menu() {
+        assertTrue(visitorHomePage.imageTrouser.isDisplayed());
+    }
+
+    @Given("Add products from the Top Rating menu in the body section of the home page to the cart")
+    public void add_products_from_the_top_rating_menu_in_the_body_section_of_the_home_page_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddtocartTrouser);
+        clickWithJS(visitorHomePage.buttonADDTOCART);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonCloseTrouser);
+
+    }
+
+    @When("Select products in the Top Rating menu in the body section of the home page for comparison")
+    public void selectProductsInTheTopRatingMenuInTheBodySectionOfTheHomePageForComparison() {
+        actions.moveToElement(visitorHomePage.imageTrouser).perform();
+        wait(2);
+        scrollIntoViewJS(visitorHomePage.imageTrouser);
+        assertTrue(visitorHomePage.buttonCompareTrouser.isDisplayed());
+    }
+
+
+    //TC06 STEPS
+    @Given("Displays the products in the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body")
+    public void displays_the_products_in_the_more_products_that_you_may_love_menu_on_the_home_page_body() {
+        assertTrue(visitorHomePage.imageApple13.isDisplayed());
+        assertTrue(visitorHomePage.imageTELE.isDisplayed());
+    }
+
+    @Given("Add products from the MORE PRODUCTS THAT YOU MAY LOVE  menu in the body section of the home page to the cart")
+    public void add_products_from_the_more_products_that_you_may_love_menu_in_the_body_section_of_the_home_page_to_the_cart() {
+        clickWithJS(visitorHomePage.addToCartApple);
+        wait(3);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
+        clickWithJS(visitorHomePage.buttonCloseApple);
+
+    }
+
+    @Given("Select products in the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to make comparison")
+    public void select_products_in_the_more_products_that_you_may_love_menu_on_the_home_page_body_to_make_comparison() {
+
+    }
+
+    @Given("Add products from the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to the favorites list")
+    public void add_products_from_the_more_products_that_you_may_love_menu_on_the_home_page_body_to_the_favorites_list() {
+
+    }
+
+    //TC_07===
+    @Given("Displays brands under the Top Brands menu heading")
+    public void displays_brands_under_the_top_brands_menu_heading() {
+        assertTrue(visitorHomePage.linkStradivarius.isDisplayed());
+        assertTrue(visitorHomePage.linkGap.isDisplayed());
+        assertTrue(visitorHomePage.linkMango.isDisplayed());
+        assertTrue(visitorHomePage.linkPullBear.isDisplayed());
+
+    }
+    @Given("Click on the Stradivarius under the Top Brands heading")
+    public void click_on_the_brands_under_the_top_brands_heading() {
+        clickWithJS(visitorHomePage.linkStradivarius);
+
+    }
+    @Given("Access the products of the relevant brand")
+    public void access_the_products_of_the_relevant_brand() {
+        String expectedURL="https://qa.buysellcycle.com/category/stradivarius?item=brand";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+
+    }
+
+    @When("Add products of the relevant brand to the cart")
+    public void addProductsOfTheRelevantBrandToTheCart() {
+        clickWithJS(visitorHomePage.iconSepet);
+        clickWithJS(visitorHomePage.ADDTOCARTStradivarious);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.closeStradivarious);
+
+    }
+
+    @When("Select products in the Stradivarius menu for comparison")
+    public void selectProductsInTheStradivariusMenuForComparison() {
+        actions.moveToElement(visitorHomePage.imgBeltedTrouser).perform();
+        wait(2);
+        clickWithJS(visitorHomePage.compareIcon);
+        clickWithJS(visitorHomePage.textAddToCart);
+        //wait(3);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+        clickWithJS(visitorHomePage.closeStradivarious);
+    }
+
+    @When("Add products from the Stradivarius menu to the favorites list")
+    public void addProductsFromTheStradivariusMenuToTheFavoritesList() {
+        clickWithJS(visitorHomePage.wishIcon);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
+
+
+
+
+
 
 
 
@@ -1611,7 +1779,24 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
 
 
     //===================== Beytullah's Steps =========================
-    @Given("User verifies that the New Product Deals link is visible")
+
+    static SoftAssert softAssert=new SoftAssert();
+    static List<Integer> integerList = new ArrayList<>();
+    public static List<Integer> intListeOlustur(List<WebElement> elementler) {
+
+        for (WebElement each : elementler) {
+            try {
+                String text = each.getText();
+                text = text.replaceAll("[^0-9]", "");
+                Integer intValue = Integer.parseInt(text);
+                integerList.add(intValue);
+            } catch (NumberFormatException e) {
+                System.out.println("Geçersiz sayı: " + each.getText());
+            }
+        }
+        return integerList;
+    }
+        @Given("User verifies that the New Product Deals link is visible")
     public void user_verifies_that_the_new_product_deals_link_is_visible() {
         Assert.assertTrue(visitorHomePage.linkNewProductDeals.isDisplayed());
     }
@@ -1661,43 +1846,62 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     @Given("User clicks on the Listing button and verifies that button works")
     public void user_clicks_on_the_listing_button_and_verifies_that_button_works() {
         clickWithJS(visitorHomePage.buttonlistWiew);
-        Assert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed());
+        scrollIntoViewJS(visitorHomePage.elementFirstProduct);
+        softAssert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed(),"Listing button not working");
         wait(5);
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the items DDM and clicks on second item")
     public void user_clicks_on_the_items_ddm_and_clicks_second_item() {
         clickWithJS(visitorHomePage.ddmItems);
+        wait(3);
         clickWithJS(visitorHomePage.ddmSecondItem);
         wait(3);
-        String pageSizeType = visitorHomePage.labelProductnumber.getText();
-        pageSizeType = pageSizeType.substring(8, 14);
-        String expPageSizeType = "1 - 12";
-        String actPageSizeType = pageSizeType;
-        Assert.assertEquals(expPageSizeType, actPageSizeType);
+
     }
 
     @Given("User verifies that items DDM works")
     public void user_verifies_that_items_ddm_works() {
-        List<Integer> productPrice=new ArrayList<>();
-
-        for (int i = 0; i < visitorHomePage.textProductprice.size(); i++) {
-
-
-        }
-
-        String strProductPrice = visitorHomePage.labelProductnumber.getText();
-        System.out.println("strProductPrice = " + strProductPrice);
-
+        String pageSizeType = visitorHomePage.labelProductnumber.getText();
+        pageSizeType = pageSizeType.substring(8, 14);
+        String expPageSizeType = "1 - 12";
+        String actPageSizeType = pageSizeType;
+        System.out.println("actPageSizeType = " + actPageSizeType);
+        softAssert.assertEquals(expPageSizeType, actPageSizeType,"items DDM not working");
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the sorting DDM and clicks on fifth item")
     public void user_clicks_on_the_sorting_ddm_and_clicks_fifth_item() {
-
+        wait(5);
+        waitAndClick(visitorHomePage.ddmSorting);
+        wait(5);
+        waitAndClick(visitorHomePage.ddmFifthSorting);
+        wait(5);
     }
 
     @Given("User verifies that sorting DDM works")
     public void user_verifies_that_sorting_ddm_works() {
+        int firstProduct=intListeOlustur(visitorHomePage.textProductprice).get(0);
+        int secondProduct=intListeOlustur(visitorHomePage.textProductprice).get(1);
+        int thirdProduct=intListeOlustur(visitorHomePage.textProductprice).get(2);
+
+        softAssert.assertTrue(firstProduct<secondProduct,"Sorting DDM not working");
+        softAssert.assertTrue(secondProduct<thirdProduct,"Sorting DDM not working");
+
+       /* for (int i = 0; i <integerList.size()-1 ; i++) {
+            if (integerList.get(i)<integerList.get(i+1)){
+                System.out.println("sıralama doğru" );
+            }else {
+                System.out.println("sıralama yanlış");
+            }
+
+
+        }
+
+        */
+
 
     }
     @Given("User verifies that the Counter is visible")
@@ -1712,6 +1916,59 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     public void verify_that_referral_code_is_visible() {
         Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
     }
+    @Given("Click on the Woman's Apperal checkbox")
+    public void click_on_the_woman_s_apperal_checkbox() {
+     clickWithJS(visitorHomePage.checkBoxWomansApperal);
+    }
+    @Given("Click on the Pull And Bear checkbox")
+    public void click_on_the_pull_and_bear_checkbox() {
+
+        visitorHomePage.checkBoxPullAndBear.click();
+    }
+    @Given("Verify that the page is redirected to the top")
+    public void verify_that_the_page_is_redirected_to_the_top() {
+     assertTrue(visitorHomePage.textPageTitle.isDisplayed());
+    }
+
+    @Given("Verify that the Refresh button is visible")
+    public void verify_that_the_refresh_button_is_visible() {
+        assertTrue(visitorHomePage.buttonRefresh.isDisplayed());
+    }
+    @Given("Click on the Refresh button")
+    public void click_on_the_refresh_button() {
+        clickWithJS(visitorHomePage.buttonRefresh);
+    }
+    @Given("Verify that the page is refreshed")
+    public void verify_that_the_page_is_refreshed() {
+       String expUrl="https://qa.buysellcycle.com/category/best_deals?item=product";
+       String actUrl=Driver.getDriver().getCurrentUrl();
+       assertEquals(expUrl,actUrl);
+    }
+    @Given("Verify that the compare, wishlist, quickwiew, addtocart button is visible")
+    public void verify_that_the_compare_wishlist_quickwiew_addtocart_button_is_visible() {
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+    }
+    @Given("Click on the quickwiew button")
+    public void click_on_the_quickwiew_button() {
+
+    }
+    @Given("Click on the compare button and verify that successfully pop up is visible")
+    public void click_on_the_compare_button_and_verify_that_successfully_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that please login first pop up is visible")
+    public void click_on_the_wishlist_button_and_verify_that_please_login_first_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that Item added to your cart\" text is visible")
+    public void click_on_the_wishlist_button_and_verify_that_item_added_to_your_cart_text_is_visible() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
     @Then("I should be directed to the {string} page")
     public void iShouldBeDirectedToThePage(String page) {
@@ -1722,6 +1979,8 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     @Then("I should see each section contains a numeric value representing the relevant metric")
     public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
     }
+
+
 
 
 // ====================== End Of Beytullah's Steps End =====================

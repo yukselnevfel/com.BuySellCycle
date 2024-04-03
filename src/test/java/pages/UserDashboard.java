@@ -1,9 +1,5 @@
 package pages;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -185,11 +181,23 @@ public WebElement continueToShippingButton;
         waitAndClick(element);
     }
 
-    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
-    public WebElement emailStripePayment;
+    @FindBy (xpath = "(//*[@tabindex='1'])[1]")
+    public WebElement emailStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[2]")
+    public WebElement stripeCardNoBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[3]")
+    public WebElement expDateStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[4]")
+    public WebElement cvcStripePaymentBox;
 
     @FindBy (id = "submitButton")
     public WebElement submitPayment;
+
+    @FindBy(xpath = "//div[@class='layoutView contentView']")
+    public WebElement stripePaymentIframe;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
@@ -424,10 +432,14 @@ public WebElement continueToShippingButton;
       public WebElement buttonEventType;
 
 
-     // User Dashboard Page Left Panel
+    // ====================== Beytullah's Steps =====================
     @FindBy(xpath = "//*[@id='code']")
     public WebElement labelReferralCode;
+    //*[text()='Referral']
+    @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center'])[9]")
+    public WebElement buttonReferral;
 
+    // ====================== End Of Beytullah's Steps End =====================
 
     @FindBy(xpath = "//*[@data-name='Stripe']")
     public WebElement stripeCheckRadioButton;
@@ -438,11 +450,14 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id='card_number']")
     public WebElement stripeCardNumberTextBox;
 
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement notePad;
 
+    @FindBy(xpath = "//*[@id='coupon_code']")
+    public WebElement couponBoxPaymentPage;
 
-
-
-
+    @FindBy(xpath ="//button[text()='Apply']")
+    public WebElement applyButtonCouponCode;
 
 
 }
