@@ -604,9 +604,10 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     public WebElement checkBoxWomansApperal;
     @FindBy(xpath = "(//*[@class='label_name'])[27]")
     public WebElement checkBoxPullAndBear;
-    //*[@class='branding_text']
     @FindBy(xpath = "//*[@class='branding_text']")
     public WebElement textPageTitle;
+    @FindBy(xpath = "//*[@id='refresh_btn']")
+    public WebElement buttonRefresh;
 
 
 

@@ -51,9 +51,8 @@ Feature:
     * Verify that the page is redirected to the top
 
   @7/7
-  Scenario:
+  Scenario: The refresh button on the Best Deals page should be visible and functional.
 
-  Verify that the "Refresh" botton is visible
-  Click on the "Refresh" botton
-  Verify that the "Refresh" botton is visible
-  Verify that the changes is done
+    * Verify that the Refresh button is visible
+    * Click on the Refresh button
+    * Verify that the page is refreshed

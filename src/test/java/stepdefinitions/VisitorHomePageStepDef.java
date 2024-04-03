@@ -1561,6 +1561,46 @@ public class VisitorHomePageStepDef extends Base {
      assertTrue(visitorHomePage.textPageTitle.isDisplayed());
     }
 
+    @Given("Verify that the Refresh button is visible")
+    public void verify_that_the_refresh_button_is_visible() {
+        assertTrue(visitorHomePage.buttonRefresh.isDisplayed());
+    }
+    @Given("Click on the Refresh button")
+    public void click_on_the_refresh_button() {
+        clickWithJS(visitorHomePage.buttonRefresh);
+    }
+    @Given("Verify that the page is refreshed")
+    public void verify_that_the_page_is_refreshed() {
+       String expUrl="https://qa.buysellcycle.com/category/best_deals?item=product";
+       String actUrl=Driver.getDriver().getCurrentUrl();
+       assertEquals(expUrl,actUrl);
+    }
+    @Given("Verify that the compare, wishlist, quickwiew, addtocart button is visible")
+    public void verify_that_the_compare_wishlist_quickwiew_addtocart_button_is_visible() {
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+        assertTrue(visitorHomePage.iconCompare.isDisplayed());
+    }
+    @Given("Click on the quickwiew button")
+    public void click_on_the_quickwiew_button() {
+
+    }
+    @Given("Click on the compare button and verify that successfully pop up is visible")
+    public void click_on_the_compare_button_and_verify_that_successfully_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that please login first pop up is visible")
+    public void click_on_the_wishlist_button_and_verify_that_please_login_first_pop_up_is_visible() {
+
+    }
+    @Given("Click on the wishlist button and verify that Item added to your cart\" text is visible")
+    public void click_on_the_wishlist_button_and_verify_that_item_added_to_your_cart_text_is_visible() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
     @Then("I should be directed to the {string} page")
     public void iShouldBeDirectedToThePage(String page) {
         waitForPageToLoad(3);
