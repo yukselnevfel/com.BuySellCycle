@@ -1058,28 +1058,28 @@ public class UserDashboardStepDef extends Base {
     @And("I should be able to enter {string} on the email box")
     public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
         waitAndSendText(userDashboard.emailStripePaymentBox, ConfigReader.getProperty(email));
-        wait(3);
+        wait(1);
         userDashboard.emailStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the card number box")
     public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
         actions.sendKeys(userDashboard.stripeCardNoBox, ConfigReader.getProperty(cardNumber)).perform();
-        wait(3);
+        wait(1);
         userDashboard.stripeCardNoBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the exp box")
     public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
         actions.sendKeys(userDashboard.expDateStripePaymentBox, ConfigReader.getProperty(expDate)).perform();
-        wait(3);
+        wait(1);
         userDashboard.expDateStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
     public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
         waitAndSendText(userDashboard.cvcStripePaymentBox, ConfigReader.getProperty(cvc));
-        wait(3);
+        wait(1);
         userDashboard.cvcStripePaymentBox.sendKeys(Keys.TAB);
     }
 
@@ -1101,6 +1101,7 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Verify that the {string} menu is visible and enabled in the sidebar")
     public void verify_that_the_menu_is_visible_and_enabled_in_the_sidebar(String string) {
+
 
     }
 
