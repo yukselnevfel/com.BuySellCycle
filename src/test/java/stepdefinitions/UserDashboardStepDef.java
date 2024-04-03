@@ -1117,7 +1117,21 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+    @And("I should be able to write a note {string}")
+    public void iShouldBeAbleToWriteANote(String note) {
+        waitAndSendText(userDashboard.notePad, note);
+    }
 
+    @And("I should be able to enter {string} as coupon code on Code Box")
+    public void iShouldBeAbleToEnterAsCouponCodeOnCodeBox(String code) {
+        waitAndClick(userDashboard.couponBoxPaymentPage);
+        waitAndSendText(userDashboard.couponBoxPaymentPage, code);
+    }
+
+    @When("I apply coupon code.")
+    public void iApplyCouponCode() {
+        waitAndSubmit(userDashboard.applyButtonCouponCode);
+    }
 }
 
 

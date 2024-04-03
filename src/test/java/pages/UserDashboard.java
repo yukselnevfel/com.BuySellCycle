@@ -417,11 +417,14 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id='card_number']")
     public WebElement stripeCardNumberTextBox;
 
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement notePad;
 
+    @FindBy(xpath = "//*[@id='coupon_code']")
+    public WebElement couponBoxPaymentPage;
 
-
-
-
+    @FindBy(xpath ="//button[text()='Apply']")
+    public WebElement applyButtonCouponCode;
 
 
 }
