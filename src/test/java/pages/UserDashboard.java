@@ -1,9 +1,5 @@
 package pages;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -156,11 +152,23 @@ public WebElement continueToShippingButton;
         waitAndClick(element);
     }
 
-    @FindBy (xpath = "//*[@id='email' and @type='email' and @class ='primary_input3 style5 radius_3px']//self::input ")
-    public WebElement emailStripePayment;
+    @FindBy (xpath = "(//*[@tabindex='1'])[1]")
+    public WebElement emailStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[2]")
+    public WebElement stripeCardNoBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[3]")
+    public WebElement expDateStripePaymentBox;
+
+    @FindBy (xpath = "(//*[@tabindex='1'])[4]")
+    public WebElement cvcStripePaymentBox;
 
     @FindBy (id = "submitButton")
     public WebElement submitPayment;
+
+    @FindBy(xpath = "//div[@class='layoutView contentView']")
+    public WebElement stripePaymentIframe;
 
      //________________________ valid user Login____________________-
     @FindBy(xpath = "//*[@id='text']") public WebElement loginEmail;
@@ -318,6 +326,58 @@ public WebElement continueToShippingButton;
     @FindBy (xpath = "/html/body/script[4]/text()")
     public WebElement successMessagePopup;
 
+    @FindBy (xpath = "(//*[text()='All Ticket'])[2]")
+    public WebElement filterDropDownMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[1]")
+    public WebElement allTicketSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[2]")
+    public WebElement pendingSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[3]")
+    public WebElement onGoingSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[4]")
+    public WebElement completedSubMenu;
+
+    @FindBy (xpath = "//*[@id=\"dataShow\"]/div[1]/div/div/ul/li[5]")
+    public WebElement closedSubMenu;
+
+    @FindBy (xpath = "//*[text()='+ Add New']")
+    public WebElement addNewSupportTicketButton;
+
+    @FindBy (xpath = "//*[text()='Create new ticket ']")
+    public WebElement textCreateNewTicket;
+
+    @FindBy (id="subject")
+    public WebElement subjectButton;
+
+    @FindBy (xpath = "(//*[@class='nice-select theme_select style2 wide'])[1]")
+    public WebElement categorySubmenu;
+
+    @FindBy (xpath = "(//*[text()='Others'])[2]")
+    public WebElement othersCategorySubMenuButton;
+
+    @FindBy (xpath = "(//*[@class='nice-select theme_select style2 wide'])[2]")
+    public WebElement priorityDropDownMenuButton;
+
+    @FindBy (xpath = "(//*[text()='Medium'])[2]")
+    public WebElement priorityMediumSubmenuButton;
+
+    @FindBy (xpath = "//*[@class='note-editable']")
+    public WebElement descriptionBox;
+
+    @FindBy (xpath = "//*[text()='+ Create Now']")
+    public WebElement createNowSupportTicketButton;
+
+    @FindBy (xpath = "(//*[@class='font_14 f_w_500 mute_text'])[2]")
+    public WebElement ticketFirstRow;
+
+
+
+
+
 
     //=========Notifications links ve buttons=======================
      @FindBy(xpath = "(//a[@class='position-relative d-flex align-items-center'])[11]")
@@ -357,11 +417,14 @@ public WebElement continueToShippingButton;
     @FindBy(xpath = "//*[@id='card_number']")
     public WebElement stripeCardNumberTextBox;
 
+    @FindBy(xpath = "//*[@id='note']")
+    public WebElement notePad;
 
+    @FindBy(xpath = "//*[@id='coupon_code']")
+    public WebElement couponBoxPaymentPage;
 
-
-
-
+    @FindBy(xpath ="//button[text()='Apply']")
+    public WebElement applyButtonCouponCode;
 
 
 }
