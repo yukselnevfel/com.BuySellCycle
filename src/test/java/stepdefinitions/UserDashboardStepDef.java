@@ -1,45 +1,26 @@
 package stepdefinitions;
 
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import org.junit.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
-import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import static org.junit.Assert.*;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-
 import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
@@ -226,7 +207,7 @@ public class UserDashboardStepDef extends Base {
 
 
 
-
+      
 
     //----------------------------SIMGE STEPS BITIS--------------------------//}
 
@@ -653,6 +634,7 @@ public class UserDashboardStepDef extends Base {
 
     }
 
+
     //=========================== STEPS  NEVFEL ====================================/
 
     @Given("Verify that the Dasboard link is visible and functional")
@@ -843,7 +825,6 @@ public class UserDashboardStepDef extends Base {
     public void return_to_notifications_page() {
         Driver.getDriver().navigate().back();
     }
-
     @Given("Click on the Setting button and reach the relevant page")
     public void click_on_the_button_and_reach_the_relevant_page() {
        clickWithJS(userDashboard.buttonSetting);
@@ -852,7 +833,6 @@ public class UserDashboardStepDef extends Base {
        assertEquals(expectedURL,actualURL);
 
     }
-
     @Given("Updates the Types of Events in the Setting list")
     public void updates_the_types_of_events_in_the_setting_list() {
         clickWithJS(userDashboard.buttonEventType);
@@ -875,8 +855,8 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.linkSupportTicket);
         wait(2);
 
-    }
 
+    }
     @Given("Verify that the navigate to Support Ticket Page.")
     public void verify_that_the_navigate_to_support_ticket_page() {
 
@@ -907,6 +887,7 @@ public class UserDashboardStepDef extends Base {
 
         clickWithJS(userDashboard.actionDetailSupportTicketButton);
         wait(2);
+
     }
     @Given("Verify that Status, Priority, Category  text is displayed")
     public void verify_that_status_priority_category_text_is_displayed() {
@@ -1064,39 +1045,80 @@ public class UserDashboardStepDef extends Base {
     public void clickOnThePayNowButtonlink() {
         scrollIntoViewJS(userDashboard.payNowButton);
         waitAndClick(userDashboard.payNowButton);
+
     }
 
     @And("I should be able to click on email box on Stripe Payment")
     public void iShouldBeAbleToClickOnEmailBoxOnStripePayment() {
-        waitAndClick(userDashboard.emailStripePayment);
+        Driver.getDriver().switchTo().frame(0);
+        userDashboard.emailStripePaymentBox.click();
+        System.out.println("iframe is changed");
     }
 
     @And("I should be able to enter {string} on the email box")
     public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
-        waitAndSendText(userDashboard.emailStripePayment, email);
+        waitAndSendText(userDashboard.emailStripePaymentBox, ConfigReader.getProperty(email));
+        wait(3);
+        userDashboard.emailStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the card number box")
-    public void iShouldBeAbleToEnterOnTheCardNumberBox(String arg0) {
-
+    public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
+        actions.sendKeys(userDashboard.stripeCardNoBox, ConfigReader.getProperty(cardNumber)).perform();
+        wait(3);
+        userDashboard.stripeCardNoBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the exp box")
-    public void iShouldBeAbleToEnterOnTheExpBox(String arg0) {
-
+    public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
+        actions.sendKeys(userDashboard.expDateStripePaymentBox, ConfigReader.getProperty(expDate)).perform();
+        wait(3);
+        userDashboard.expDateStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
-    public void iShouldBeAbleToEnterOnTheCvcBox(String arg0) {
+    public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
+        waitAndSendText(userDashboard.cvcStripePaymentBox, ConfigReader.getProperty(cvc));
+        wait(3);
+        userDashboard.cvcStripePaymentBox.sendKeys(Keys.TAB);
     }
 
+    @And("I should be able to submit the payment")
+    public void iShouldBeAbleToSubmitThePayment() {
+        waitAndSubmit(userDashboard.submitPayment);
+    }
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
-        scrollIntoViewJS(userDashboard.orderNowButton);
-        waitAndClick(userDashboard.orderNowButton);
+       // scrollIntoViewJS(userDashboard.orderNowButton);
+        //waitAndClick(userDashboard.orderNowButton);
     }
-}
 
+    @Given("Navigate to Dashboard")
+    public void navigate_to_dashboard() {
+        waitAndClick(userDashboard.linkHeaderDashboard);
+    }
+
+    @Given("Verify that the {string} menu is visible and enabled in the sidebar")
+    public void verify_that_the_menu_is_visible_and_enabled_in_the_sidebar(String string) {
+
+    }
+
+    @Given("Verify that the {string} displayed")
+    public void verify_that_the_displayed(String string) {
+
+    }
+
+    @Given("Verify that the selected seller is removed from the Follow Seller History List")
+    public void verify_that_the_selected_seller_is_removed_from_the_follow_seller_history_list() {
+    }
+
+    @Given("Verify that the Empty List text ist displayed.")
+    public void verify_that_the_empty_list_text_ist_displayed() {
+
+    }
+
+
+}
 
 
 
