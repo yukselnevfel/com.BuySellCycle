@@ -867,7 +867,6 @@ public class UserDashboardStepDef extends Base {
 
     }
 
-
     @Given("Verify that the Tickets should be listed with title information in All Submitted Ticket List.")
     public void verify_that_the_tickets_should_be_listed_with_information_in_all_submitted_ticket_list() {
 
@@ -881,8 +880,6 @@ public class UserDashboardStepDef extends Base {
 
         System.out.println("all title displayed");
      }
-
-
 
 
     @Given("Click on the ticket View button")
@@ -931,8 +928,117 @@ public class UserDashboardStepDef extends Base {
         String messageText = toastrMessage.getText();
         System.out.println("Toastr message text: " + messageText);
 
+    }
+
+    @Given("Click on the all ticket filter menu")
+    public void click_on_the_all_ticket_filter_menu() {
+
+        wait(2);
+        clickWithJS(userDashboard.filterDropDownMenu);
+        wait(1);
+
 
     }
+    @Given("Click on the Pending submenu and verify if any tickets appear in the list")
+    public void click_on_the_pending_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.pendingSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the On Going submenu and verify if any tickets appear in the list")
+    public void click_on_the_on_going_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.onGoingSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the Completed submenu and verify if any tickets appear in the list")
+    public void click_on_the_completed_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+        clickWithJS(userDashboard.completedSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the Closed submenu and verify if any tickets appear in the list")
+    public void click_on_the_closed_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+
+        clickWithJS(userDashboard.closedSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+
+    }
+    @Given("Click on the All Ticket submenu and verify if any tickets appear in the list")
+    public void click_on_the_all_ticket_submenu_and_verify_if_any_tickets_appear_in_the_list() {
+
+        clickWithJS(userDashboard.allTicketSubMenu);
+        wait(2);
+        assertTrue(userDashboard.ticketFirstRow.isDisplayed());
+
+    }
+
+    @Given("Click on the add new button")
+    public void click_on_the_add_new_button() {
+
+
+        clickWithJS(userDashboard.addNewSupportTicketButton);
+
+    }
+    @Given("Required information is entered in the required fields")
+    public void required_information_is_entered_in_the_required_fields() {
+
+        wait(2);
+        clickWithJS(userDashboard.subjectButton);
+        userDashboard.subjectButton.sendKeys("Order Information");
+        clickWithJS(userDashboard.categorySubmenu);
+        wait(1);
+        clickWithJS(userDashboard.othersCategorySubMenuButton);
+        clickWithJS(userDashboard.priorityDropDownMenuButton);
+        clickWithJS(userDashboard.priorityMediumSubmenuButton);
+
+
+    }
+    @Given("Click on the description text and enter message")
+    public void click_on_the_description_text_and_enter_message() {
+
+
+        clickWithJS(userDashboard.descriptionBox);
+        wait(1);
+        userDashboard.descriptionBox.sendKeys("want to change my address");
+        wait(1);
+        scrollIntoViewJS(userDashboard.createNowSupportTicketButton);
+
+    }
+    @Given("Click on the create now button and verify that the message create successfully")
+    public void click_on_the_create_now_button_and_verify_that_the_message_create_successfully() {
+
+        wait(1);
+        clickWithJS(userDashboard.createNowSupportTicketButton);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + messageText);
+
+
+    }
+
+
+
+    //----------------AYCA Support Ticket SON-----------------------//
 
 
     @When("Click on the Pay Now buttonlink")
