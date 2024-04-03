@@ -6,7 +6,7 @@ Feature: Checkout Process
 
 
   @e2e
-  Scenario Outline: User adds items to the cart and proceeds to checkout
+  Scenario: User adds items to the cart and proceeds to checkout
 
     When I should click on the "Home" on the header
     And Click on the Telephone link in Electronics category on homepage
@@ -17,19 +17,17 @@ Feature: Checkout Process
     When I submit on the Continue to shipping button
     Then I am on the "Payment" Page
     Given I should be able to select the Snipe Payment Method
-    And  I should be able to enter "Coupon Code" as coupon code on Code Box
-    When I apply coupon code.
+    Then I should be able to enter "couponCode" as coupon code on Code Box
+    And  I apply coupon code.
     When Click on the Pay Now buttonlink
-    And I should be able to click on email box on Stripe Payment
-    And I should be able to enter <email> on the email box
-    When I should be able to enter <cardNumber> on the card number box
-    When I should be able to enter <expDate> on the exp box
-    Then I should be able to enter <cvc> on the cvc box
+    Then I should be able to click on email box on Stripe Payment
+    And I should be able to enter "asliCostumerEmail" on the email box
+    When  I should be able to enter "cardNo" on the card number box
+    When  I should be able to enter "expDate" on the exp box
+    Then  I should be able to enter "cvc" on the cvc box
     And I should be able to submit the payment
-    Given I should see the message <message>
+    Given I should see the message "Thank you for your purchase!"
     And the Order Number should be displayed
-    Examples:
-      | email               | cardNumber           | expDate   | cvc   | message                        |
-      | "asliCostumerEmail" | "4242424242424242"   | "1229"    | "352" | "Thank you for your purchase!" |
+    Then Click on the Logout link
 
 

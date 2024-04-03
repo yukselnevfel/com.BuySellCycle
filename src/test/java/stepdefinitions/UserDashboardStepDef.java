@@ -710,7 +710,7 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Logout link")
     public void click_on_the_logout_link() {
-        userDashboard.linkHeaderLogout.click();
+        waitAndClick(userDashboard.linkHeaderLogout);
     }
 
     @Given("Verify that Logout is visible and functional in the Dashboard sidebar")
@@ -1087,6 +1087,7 @@ public class UserDashboardStepDef extends Base {
     public void iShouldBeAbleToSubmitThePayment() {
         waitAndSubmit(userDashboard.submitPayment);
     }
+
     @When("Click on the Order Now buttonlink")
     public void clickOnTheOrderNowButtonlink() {
        // scrollIntoViewJS(userDashboard.orderNowButton);
