@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
@@ -1408,7 +1410,24 @@ public class VisitorHomePageStepDef extends Base {
 
 
     //===================== Beytullah's Steps =========================
-    @Given("User verifies that the New Product Deals link is visible")
+
+    static SoftAssert softAssert=new SoftAssert();
+    static List<Integer> integerList = new ArrayList<>();
+    public static List<Integer> intListeOlustur(List<WebElement> elementler) {
+
+        for (WebElement each : elementler) {
+            try {
+                String text = each.getText();
+                text = text.replaceAll("[^0-9]", "");
+                Integer intValue = Integer.parseInt(text);
+                integerList.add(intValue);
+            } catch (NumberFormatException e) {
+                System.out.println("Geçersiz sayı: " + each.getText());
+            }
+        }
+        return integerList;
+    }
+        @Given("User verifies that the New Product Deals link is visible")
     public void user_verifies_that_the_new_product_deals_link_is_visible() {
         Assert.assertTrue(visitorHomePage.linkNewProductDeals.isDisplayed());
     }
@@ -1458,43 +1477,62 @@ public class VisitorHomePageStepDef extends Base {
     @Given("User clicks on the Listing button and verifies that button works")
     public void user_clicks_on_the_listing_button_and_verifies_that_button_works() {
         clickWithJS(visitorHomePage.buttonlistWiew);
-        Assert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed());
+        scrollIntoViewJS(visitorHomePage.elementFirstProduct);
+        softAssert.assertTrue(visitorHomePage.elementFirstProduct.isDisplayed(),"Listing button not working");
         wait(5);
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the items DDM and clicks on second item")
     public void user_clicks_on_the_items_ddm_and_clicks_second_item() {
         clickWithJS(visitorHomePage.ddmItems);
+        wait(3);
         clickWithJS(visitorHomePage.ddmSecondItem);
         wait(3);
-        String pageSizeType = visitorHomePage.labelProductnumber.getText();
-        pageSizeType = pageSizeType.substring(8, 14);
-        String expPageSizeType = "1 - 12";
-        String actPageSizeType = pageSizeType;
-        Assert.assertEquals(expPageSizeType, actPageSizeType);
+
     }
 
     @Given("User verifies that items DDM works")
     public void user_verifies_that_items_ddm_works() {
-        List<Integer> productPrice=new ArrayList<>();
-
-        for (int i = 0; i < visitorHomePage.textProductprice.size(); i++) {
-
-
-        }
-
-        String strProductPrice = visitorHomePage.labelProductnumber.getText();
-        System.out.println("strProductPrice = " + strProductPrice);
-
+        String pageSizeType = visitorHomePage.labelProductnumber.getText();
+        pageSizeType = pageSizeType.substring(8, 14);
+        String expPageSizeType = "1 - 12";
+        String actPageSizeType = pageSizeType;
+        System.out.println("actPageSizeType = " + actPageSizeType);
+        softAssert.assertEquals(expPageSizeType, actPageSizeType,"items DDM not working");
+        softAssert.assertAll();
     }
 
     @Given("User clicks on the sorting DDM and clicks on fifth item")
     public void user_clicks_on_the_sorting_ddm_and_clicks_fifth_item() {
-
+        wait(5);
+        waitAndClick(visitorHomePage.ddmSorting);
+        wait(5);
+        waitAndClick(visitorHomePage.ddmFifthSorting);
+        wait(5);
     }
 
     @Given("User verifies that sorting DDM works")
     public void user_verifies_that_sorting_ddm_works() {
+        int firstProduct=intListeOlustur(visitorHomePage.textProductprice).get(0);
+        int secondProduct=intListeOlustur(visitorHomePage.textProductprice).get(1);
+        int thirdProduct=intListeOlustur(visitorHomePage.textProductprice).get(2);
+
+        softAssert.assertTrue(firstProduct<secondProduct,"Sorting DDM not working");
+        softAssert.assertTrue(secondProduct<thirdProduct,"Sorting DDM not working");
+
+       /* for (int i = 0; i <integerList.size()-1 ; i++) {
+            if (integerList.get(i)<integerList.get(i+1)){
+                System.out.println("sıralama doğru" );
+            }else {
+                System.out.println("sıralama yanlış");
+            }
+
+
+        }
+
+        */
+
 
     }
     @Given("User verifies that the Counter is visible")
@@ -1508,6 +1546,19 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Verify that referral code is visible")
     public void verify_that_referral_code_is_visible() {
         Assert.assertTrue(userDashboard.labelReferralCode.isDisplayed());
+    }
+    @Given("Click on the Woman's Apperal checkbox")
+    public void click_on_the_woman_s_apperal_checkbox() {
+     clickWithJS(visitorHomePage.checkBoxWomansApperal);
+    }
+    @Given("Click on the Pull And Bear checkbox")
+    public void click_on_the_pull_and_bear_checkbox() {
+
+        visitorHomePage.checkBoxPullAndBear.click();
+    }
+    @Given("Verify that the page is redirected to the top")
+    public void verify_that_the_page_is_redirected_to_the_top() {
+     assertTrue(visitorHomePage.textPageTitle.isDisplayed());
     }
 
     @Then("I should be directed to the {string} page")

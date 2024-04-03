@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -43,6 +44,25 @@ public class AdminDashboardStepDef extends Base {
         String expText="Follow seller History";
         String actText=adminDashboard.searchBoxAdminDashboard.getText();
         assertEquals(expText,actText);
+    }
+    @Given("Close the succesfull pop-up message")
+    public void close_the_succesfull_pop_up_message() {
+        adminDashboard.popUpMessage.click();
+    }
+    @Given("Verify that profile icon is visible")
+    public void verify_that_profile_icon_is_visible() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Given("Hover mouse cursor over profile icon")
+    public void hover_mouse_cursor_over_profile_icon() {
+        Actions actions=new Actions(Driver.getDriver());
+        actions.moveToElement(adminDashboard.iconAdminProfile)
+                .perform();
+    }
+    @Given("Verify that Name text is visible")
+    public void verify_that_name_text_is_visible() {
+        assertTrue(adminDashboard.textName.isDisplayed());
     }
 
     // -------------------------Beytullah---------------------------------
