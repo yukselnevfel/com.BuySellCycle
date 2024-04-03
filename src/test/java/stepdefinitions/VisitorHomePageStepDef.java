@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import org.openqa.selenium.WebElement;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
@@ -156,8 +157,6 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-
-
 
     }
 
@@ -997,6 +996,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the detail window for the relevant product has opened")
     public void verify_that_the_detail_window_for_the_relevant_product_has_opened() {
+        wait(1);
         Assert.assertTrue(visitorHomePage.linkBuyNowElectronicsPage.isDisplayed());
       //String quickViewDetail=visitorHomePage.detailOfQuickView.getText();
      // Assert.assertTrue(quickViewDetail.contains("Phone"));
