@@ -71,6 +71,71 @@ Feature:As an administrator, I would like to have a page on the site where I can
     * Verify that the Addresses list can be accessed
     * Close the page
 
+      Scenario: TC_11 A new customer should be created by entering basic information on the Add New Customer page
+        and display it in the list.(Positive test)
+      * Click on the Create Customer
+      * Enters a name in the FirstName textbox
+      * Enters last name in LastName textbox
+      * Password enters "123456789A." password suitable for the criteria in the textbox
+      * Enters "123456789A." the same password in the Confirm Password textbox
+      * Enters an email suitable for the criteria in the email or phone textbox.
+      * Click on the Create button
+      * Verify that the Create operation has occurred
+      * Close the page
+
+    Scenario: TC_12 Verifying that the mandatory basic information cannot be
+       left blank on the Add New Customer page.(Negative test)
+      * Click on the Create Customer
+      * Leaves the FirstName textbox empty
+      * Click on the Create button
+      * Verify that login is not available
+      * Close the page
+  @xxx
+    Scenario: TC_13 Verifying that login is not possible when the password and
+       confirm password are not the same on the Add New Customer page (Negative test)
+    * Click on the Create Customer
+    * Enters a password suitable for the criteria in the Password textbox
+    * Password enters a different password in the textbox.
+    * Click on the Create button
+    * Verify that the Passwords do not match.
+    * Close the page
+
+  @xxx
+    Scenario: TC_14 Verifying that the password on the Add New Customer page cannot be
+      entered if it does not meet the criteria (Min 8 characters) (Negative Test)
+    * Click on the Create Customer
+    * Enters a password "1234" that does not meet the criteria in the password textbox
+    * Click on the Create button
+    * Verify that you cannot log in
+    * Close the page
+  @xxx
+    Scenario: TC_15 Verifying that only digit expressions can be entered in Phone textbox
+        on Add New Customer page(Negative)
+      * Click on the Create Customer
+      * Enters a name in the FirstName textbox
+      * Enters last name in LastName textbox
+      * Password enters "123456789A." password suitable for the criteria in the textbox
+      * Enters "123456789A." the same password in the Confirm Password textbox
+      * Enters a special character  in the iPhone textbox.
+      * Click on the Create button
+      * Verify that the Create operation has occurred
+      * Close the page
+  @xxx
+  Scenario: TC_16
+    * Click on the Create Customer
+    * Enters a name in the FirstName textbox
+    * Enters last name in LastName textbox
+    * Password enters "123456789A." password suitable for the criteria in the textbox
+    * Enters "123456789A." the same password in the Confirm Password textbox
+    * Email enters a mail that does not meet the criteria  in the textbox
+    * Click on the Create button
+    * Verify that the Create operation has occurred
+    * Close the page
+
+
+
+
+
 
 
 
