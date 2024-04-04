@@ -20,9 +20,8 @@ import java.security.KeyStore;
 
 
 
- 
+        tags = "@login",
 
-        tags = "@samet",
 
 
         dryRun =false
