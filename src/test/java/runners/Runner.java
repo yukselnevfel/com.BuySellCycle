@@ -19,7 +19,11 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@esra",
+
+ 
+
+        tags = "@samet",
+
 
         dryRun =false
 )
