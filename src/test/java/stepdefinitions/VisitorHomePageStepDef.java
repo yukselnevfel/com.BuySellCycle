@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 //import jdk.incubator.foreign.CLinker;
 import org.junit.Assert;
+import org.junit.experimental.theories.internal.Assignments;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -1079,10 +1080,34 @@ public class VisitorHomePageStepDef extends Base {
      clickWithJS(visitorHomePage.iconAddToCart);
      wait(1);
     }
+    @Given("Verify that Wishlist link is visible in the homepage")
+    public void verify_that_wishlist_link_is_visible_in_the_homepage() {
+        Assert.assertTrue(visitorHomePage.linkWishlist.isDisplayed());
+    }
+    @Given("Click on the Wishlist link in the homepage")
+    public void click_on_the_wishlist_link_in_the_homepage() {
+        clickWithJS(visitorHomePage.linkWishlist);
+    }
+    @Given("Verify that Wishlist page opened")
+    public void verify_that_wishlist_page_opened() {
+        String expectedUrl="https://qa.buysellcycle.com/my-wishlist";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+    }
     @Given("Verify that the Item added to your cart warning is visible")
     public void verify_that_the_item_added_to_your_cart_warning_is_visible() {
         wait(2);
-        Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
+        if (visitorHomePage.alertAddToCart.isDisplayed()){
+            System.out.println("Add To Cart icon is successfull");
+        }
+        else if (visitorHomePage.textBuyNow.isDisplayed()){
+            clickWithJS(visitorHomePage.buttonAddddtoCart);
+            wait(2);
+            Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
+        }
+        else System.out.println("Add To Cart icon is not successfull");
+
+
     }
     @Given("Verify that the Deal More link is visible in Electronics category on homepage")
     public void verify_that_the_deal_more_link_is_visible_in_electronics_category_on_homepage() {

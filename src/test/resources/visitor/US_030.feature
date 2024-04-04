@@ -4,14 +4,15 @@ Feature: As a registered user, I would like to have a page on my Dashboard where
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
-    * Click on the login link, Enter "simgeCostumerEmail" and "password" and click sign in
 @simge
   Scenario: Access to My Wishlist page must be provided
-    * Verify that My Wishlist link is visible in the Dashboard side bar
+    * Verify that Wishlist link is visible in the homepage
+    * Click on the Wishlist link in the homepage
+    * Verify that Wishlist page opened
     * Close the page
 
   Scenario: The products that the user likes/chooses should be listed on the My Wishlist page
-    * Click on the My Wishlist link in the Dashboard side bar
+    * Click on the Wishlist link in the Dashboard side bar
     * Verify that the products added to the Wishlist are listed
     * Close the page
 

@@ -70,6 +70,7 @@ public class UserDashboard extends Base{
     public WebElement imageFirst;
     @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[2]")
     public WebElement imageSecond;
+
     @FindBy(xpath = "(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/yuzuk\"])[2]")
     public WebElement linkFirstProduct;
     //@FindBy (xpath="(//div[@class='product_widget5 mb_30 style5 w-100'])[1]")

@@ -298,6 +298,7 @@ public class UserDashboardStepDef extends Base {
        clickWithJS(userDashboard.linkDelete);
        wait(1);
     }
+
     @Given("Verify that the relevant product has been deleted\"")
     public void verify_that_the_relevant_product_has_been_deleted() {
       String expedtedAllert ="Deleted successfully!";
