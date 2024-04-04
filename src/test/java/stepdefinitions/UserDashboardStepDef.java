@@ -472,7 +472,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.stripeEscape);
     }
 
-    @And("{int} saniye bekler")
+    @And("{int} seconds pause")
     public void saniyeBekler(int saniye) {
 
         try {
