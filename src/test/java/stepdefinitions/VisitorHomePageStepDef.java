@@ -1257,8 +1257,6 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     }
 
 
-
-
     //---------------- Steps Asli----------------------/
 
 
@@ -1984,7 +1982,6 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     @Then("I should see each section contains a numeric value representing the relevant metric")
     public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
     }
-
 
 
 
