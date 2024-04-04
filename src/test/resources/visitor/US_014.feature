@@ -25,12 +25,29 @@
 
 
    Scenario:TC_03 Listing products under the Top Rating menu title on the home page body bol section, making transactions
-     * Click the Top Rating menu item
+     * Displays the Top Rating menu item
      * Displays the products in the Top Rating menu
      * Add products from the Top Rating menu in the body section of the home page to the cart
      * Select products in the Top Rating menu in the body section of the home page for comparison
+     * Add products from the Top Rating menu on the home page body to the favorites list and displays
+     * Close the page
 
+    Scenario:TC_04 Listing products under the People Choices menu item in the body section of the home page, making transactions
+      * Click the People Choices menu item in the body section of the home page
+      * Displays the products in the People Choices menu
+      * Add products from the People Choices menu in the body section of the home page to the cart
+      * Select products in the People Choices menu in the body section of the home page for comparison
+      * Add products from the People Choices menu on the home page body to the favorites list and displays
+      * Close the page
 
+   @esra
+    Scenario:TC_05 Listing products under the Top Picks menu title on the home page body bol section, making transactions
+      * Click the Top Picks menu item in the body section of the home page
+      * Displays the products in the Top Picks menu
+      * Add products from the Top Picks menu in the body section of the home page to the cart
+      * Select products in the Top Picks menu in the body section of the home page for comparison
+      * Add products from the Top Picks menu on the home page body to the favorites list and displays
+      * Close the page
 
 
    Scenario:TC_06 Listing products under the MORE PRODUCTS THAT YOU MAY MAY LOVE menu item on the main page body section, making transactions
@@ -38,10 +55,9 @@
      * Add products from the MORE PRODUCTS THAT YOU MAY LOVE  menu in the body section of the home page to the cart
      * Select products in the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to make comparison
      * Add products from the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to the favorites list
-     * Verify that the Please Login First warning is visible
      * Close the page
 
-   @esra
+
    Scenario:TC_07 Listing brands under the Top Brands menu item in the home page body section, making transactions
      * Displays brands under the Top Brands menu heading
      * Click on the Stradivarius under the Top Brands heading
@@ -52,4 +68,6 @@
      * Close the page
 
 
-
+   Scenario:TC_08 Display About text under About menu heading in home page body section
+      * Displays About text under the About menu heading in the home page body section
+      * Close the page

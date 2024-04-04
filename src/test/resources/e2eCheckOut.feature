@@ -9,10 +9,10 @@ Feature: Checkout Process
   Scenario: User adds items to the cart and proceeds to checkout
 
     When I should click on the "Home" on the header
-    And Click on the Telephone link in Electronics category on homepage
-    Then Click on the add to cart icon for the first product in Electronics category on homepage
-    And Click on the "Cart" link on the top
-    Then Click on the Proceed to Checkout buttonlink
+    And   Click on the Telephone link in Electronics category on homepage
+    Then  Click on the add to cart icon for the first product in Electronics category on homepage
+    And   Click on the "Cart" link on the top
+    Then  Click on the Proceed to Checkout buttonlink
     And  I should be able to write a note "Hi, there! TEAM 3 :)"
     When I submit on the Conti nue to shipping button
     Then I am on the "Payment" Page

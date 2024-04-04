@@ -54,21 +54,25 @@ public class AdminDashboardStepDef extends Base {
         String actText = adminDashboard.searchBoxAdminDashboard.getText();
         assertEquals(expText, actText);
     }
+
     @Given("Close the succesfull pop-up message")
     public void close_the_succesfull_pop_up_message() {
         adminDashboard.popUpMessage.click();
     }
+
     @Given("Verify that profile icon is visible")
     public void verify_that_profile_icon_is_visible() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @Given("Hover mouse cursor over profile icon")
     public void hover_mouse_cursor_over_profile_icon() {
-        Actions actions=new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(adminDashboard.iconAdminProfile)
                 .perform();
     }
+
     @Given("Verify that Name text is visible")
     public void verify_that_name_text_is_visible() {
         assertTrue(adminDashboard.textName.isDisplayed());
@@ -279,6 +283,7 @@ public class AdminDashboardStepDef extends Base {
     public void verifies_that_the_changes_are_saved_successfully() {
         assertEquals("Updated successfully!", adminDashboard.updateSuccesfully.getText());
     }
+
     @Given("clicks on the pending Confirm option to view detailed information")
     public void clicks_on_the_pending_confirm_option_to_view_detailed_information() {
         clickWithJS(adminDashboard.pendingActionButton);
@@ -403,7 +408,7 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("selects the RefusedCancelled Orders option")
     public void selects_the_refused_cancelled_orders_option() {
-       clickWithJS(adminDashboard.refusedCancelledButtonLink);
+        clickWithJS(adminDashboard.refusedCancelledButtonLink);
     }
 
     @Given("enters a search query in the Quick Search text box in the RefusedCancelled Orders List")
@@ -430,7 +435,7 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Click on RefusedCancelled Orders at the top")
     public void click_on_refused_cancelled_orders_at_the_top() {
-       clickWithJS(adminDashboard.refusedCancelledButtonLink);
+        clickWithJS(adminDashboard.refusedCancelledButtonLink);
     }
 
     @Given("Clicks any Action in the RefusedCancelled Orders List")
@@ -474,29 +479,37 @@ public class AdminDashboardStepDef extends Base {
         adminDashboard.searchBoxQuickSearch.sendKeys(validmaill);
 
     }
+
     @Given("Is Active icon changes the active-passive status of the customer")
     public void is_active_icon_changes_the_active_passive_status_of_the_customer() {
-       clickWithJS(adminDashboard.iconIsActive);
+        clickWithJS(adminDashboard.iconIsActive);
     }
+
     @Given("Click on the Active Customer")
     public void click_on_the_active_customer() {
         clickWithJS(adminDashboard.activeCustomerButton);
 
     }
+
     @Given("Click on  the EDID from the select dropdown menu")
     public void click_on_the_edid_from_the_select_dropdown_menu() {
-       if (adminDashboard.activeCustomerActionButton.isDisplayed()){
-           clickWithJS(adminDashboard.activeCustomerActionButton);
-           clickWithJS(adminDashboard.activeCustomerSelectButton);
-           clickWithJS(adminDashboard.activeCustomerEditButton);
-           clickWithJS(adminDashboard.basicInfoActiveButton);
-       }else {
-           clickWithJS(adminDashboard.InActiveCustomerActionButton);
-           clickWithJS(adminDashboard.InActiveCustomerActionButton);
-           clickWithJS(adminDashboard.inActiveCustomerEditButton);
-           clickWithJS(adminDashboard.basicInfoInActiveButton);
-       }
+        if (adminDashboard.activeCustomerActionButton.isDisplayed()) {
+            clickWithJS(adminDashboard.activeCustomerActionButton);
+            clickWithJS(adminDashboard.activeCustomerSelectButton);
+            clickWithJS(adminDashboard.activeCustomerEditButton);
+            clickWithJS(adminDashboard.basicInfoActiveButton);
+        } else {
+            clickWithJS(adminDashboard.InActiveCustomerActionButton);
+            clickWithJS(adminDashboard.InActiveCustomerActionButton);
+            clickWithJS(adminDashboard.inActiveCustomerEditButton);
+            clickWithJS(adminDashboard.basicInfoInActiveButton);
+
+
+        }
+
+
     }
+
     @Given("Click on the Update button")
     public void click_on_the_update_button() {
         clickWithJS(adminDashboard.updateButton);
@@ -504,30 +517,33 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Click on  the DELETE from the select dropdown menu")
     public void click_on_the_delete_from_the_select_dropdown_menu() {
-        if(adminDashboard.activeCustomerButton.isDisplayed()){
+        if (adminDashboard.activeCustomerButton.isDisplayed()) {
             clickWithJS(adminDashboard.activeCustomerActionButton);
             clickWithJS(adminDashboard.activeCustomerSelectButton);
             clickWithJS(adminDashboard.activeCustomerDeleteButton);
             clickWithJS(adminDashboard.popUpDeleteButton);
-        }else {
+        } else {
             clickWithJS(adminDashboard.InActiveCustomerActionButton);
             clickWithJS(adminDashboard.inActiveCustomerSelectButton);
             clickWithJS(adminDashboard.inActiveCustomerDeleteButton);
             clickWithJS(adminDashboard.popUpDeleteButton);
         }
+
+
     }
+
     @Given("Clicks on  the Delete button in the resulting alert")
     public void clicks_on_the_delete_button_in_the_resulting_alert() {
-       clickWithJS(adminDashboard.popUpDeleteButton);
+        clickWithJS(adminDashboard.popUpDeleteButton);
     }
 
     @Given("Click on  the DETAIL  from the select dropdown menu")
     public void click_on_the_detail_from_the_select_dropdown_menu() {
-        if (adminDashboard.activeCustomerButton.isDisplayed()){
+        if (adminDashboard.activeCustomerButton.isDisplayed()) {
             clickWithJS(adminDashboard.activeCustomerActionButton);
             clickWithJS(adminDashboard.activeCustomerSelectButton);
             clickWithJS(adminDashboard.activeCustomerDetailButton);
-        }else {
+        } else {
             clickWithJS(adminDashboard.InActiveCustomerActionButton);
             clickWithJS(adminDashboard.inActiveCustomerSelectButton);
             clickWithJS(adminDashboard.inActiveCustomerDetailButton);
@@ -616,6 +632,7 @@ public class AdminDashboardStepDef extends Base {
     }
 
 
+
     @Given("Enters a special character  in the iPhone textbox.")
     public void enters_a_special_character_in_the_i_phone_textbox() {
         adminDashboard.textBoxEmailOrPhoneCreateCustomer.sendKeys(faker.number().digit());
@@ -654,12 +671,14 @@ public class AdminDashboardStepDef extends Base {
         assertTrue(adminDashboard.ordersIsDisplayedText.isEnabled());
 
     }
+
     @Given("Verify that the list of Wallet Histories can be accessed")
     public void verify_that_the_list_of_wallet_histories_can_be_accessed() {
         scrollIntoViewJS(adminDashboard.walletHistoriesIsDisplayedText);
         assertTrue(adminDashboard.walletHistoriesIsDisplayedText.isEnabled());
 
     }
+
     @Given("Verify that the Addresses list can be accessed")
     public void verify_that_the_addresses_list_can_be_accessed() {
         scrollIntoViewJS(adminDashboard.addressesIsDisplayedText);
@@ -685,9 +704,15 @@ public class AdminDashboardStepDef extends Base {
         assertTrue(adminDashboard.checkMark.isEnabled());
     }
 
+    @Given("Click on the Products menu")
+    public void click_on_the_products_menu() {
+        waitAndClick(adminDashboard.puroductsMenu);
+    }
+
     @Given("The product information to be added is entered")
     public void the_product_information_to_be_added_is_entered() {
         adminDashboard.nameProduct.sendKeys("SmrWatch");
+        wait(1);
         waitAndClick(adminDashboard.categoryProduct);
         wait(2);
         waitAndClick(adminDashboard.electronic);
@@ -701,7 +726,9 @@ public class AdminDashboardStepDef extends Base {
     @Given("Add image for product")
     public void add_image_for_product() {
         waitAndClick(adminDashboard.chooseImages);
+        wait(1);
         waitAndClick(adminDashboard.secilecekResim);
+        wait(1);
         waitAndClick(adminDashboard.addFilesButton);
 
     }
@@ -745,19 +772,120 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Verify that the product has been installed")
     public void verify_that_the_product_has_been_installed() {
-assertTrue(adminDashboard.updatedProduct.isDisplayed());
+        assertTrue(adminDashboard.updatedProduct.isDisplayed());
     }
 
     @Given("Click on the saved product")
     public void click_on_the_saved_product() {
+        wait(2);
         waitAndClick(adminDashboard.myProduct);
     }
 
     @Given("Verify Cross Sale, Up Sale and Related Product")
     public void verify_cross_sale_up_sale_and_related_product() {
-assertTrue(adminDashboard.crossUrun.isDisplayed());
-assertTrue(adminDashboard.upSellUrun.isDisplayed());
-assertTrue(adminDashboard.relatedUrun.isDisplayed());
+        wait(2);
+        assertTrue(adminDashboard.crossUrun.isDisplayed());
+        assertTrue(adminDashboard.upSellUrun.isDisplayed());
+        assertTrue(adminDashboard.relatedUrun.isDisplayed());
+    }
+
+    @Given("Verify that the Name Text Box is visible")
+    public void verify_that_the_name_text_box_is_visible() {
+        assertTrue(adminDashboard.nameProduct.isDisplayed());
+    }
+
+    @Given("Verify that the Product SKU Text Box is visible")
+    public void verify_that_the_product_sku_text_box_is_visible() {
+        assertTrue(adminDashboard.sku.isDisplayed());
+    }
+
+    @Given("Verify that the Model Number Text Box is visible")
+    public void verify_that_the_model_number_text_box_is_visible() {
+        assertTrue(adminDashboard.modelNumber.isDisplayed());
+    }
+
+    @Given("Verify that the Category Text Box is visible")
+    public void verify_that_the_category_text_box_is_visible() {
+        assertTrue(adminDashboard.categoryProduct.isDisplayed());
+    }
+
+    @Given("Verify that the Brand Text Box is visible")
+    public void verify_that_the_brand_text_box_is_visible() {
+        assertTrue(adminDashboard.brand.isDisplayed());
+
+    }
+
+    @Given("Verify that the Unit Text Box is visible")
+    public void verify_that_the_unit_text_box_is_visible() {
+        assertTrue(adminDashboard.unitProduct.isDisplayed());
+    }
+
+    @Given("Verify that the Barcode Type Text Box is visible")
+    public void verify_that_the_barcode_type_text_box_is_visible() {
+        assertTrue(adminDashboard.barcodeType.isDisplayed());
+    }
+
+    @Given("Verify that the Minimum Order QTY Text Box is visible")
+    public void verify_that_the_minimum_order_qty_text_box_is_visible() {
+        assertTrue(adminDashboard.minOrder.isDisplayed());
+    }
+
+    @Given("Verify that the Max Order QTY Text Box is visible")
+    public void verify_that_the_max_order_qty_text_box_is_visible() {
+        assertTrue(adminDashboard.maxOrder.isDisplayed());
+    }
+
+    @Given("Verify that the Tags\\(Comma Separated) Text Box is visible")
+    public void verify_that_the_tags_comma_separated_text_box_is_visible() {
+        assertTrue(adminDashboard.tags.isDisplayed());
+    }
+
+
+    @Given("Click on the CTEGORY \\(ADD NEW) link.")
+    public void click_on_the_ctegory_add_new_link() {
+        adminDashboard.categoryAddNew.click();
+        wait(1);
+    }
+
+    @Given("Click on the BRAND \\(ADD NEW) link.")
+    public void click_on_the_brand_add_new_link() {
+        adminDashboard.closePage.click();
+        wait(1);
+        adminDashboard.brandAddNew.click();
+        wait(1);
+    }
+
+    @Given("Click on the UNIT \\(ADD NEW) link.")
+    public void click_on_the_unit_add_new_link() {
+        adminDashboard.closePage2.click();
+        wait(1);
+        adminDashboard.unitAddNew.click();
+        wait(1);
+    }
+
+    @Given("Verify that {string} can be entered in the WEIGHT [GM], LENGTH [CM], BREADTH [CM], HEIGHT [CM] and ADDITIONAL SHIPPING CHARGE boxes")
+    public void verify_that_can_be_entered_in_the_weight_gm_length_cm_breadth_cm_height_cm_and_additional_shipping_charge_boxes(String value) {adminDashboard.weight.sendKeys(value);
+    adminDashboard.lenght.sendKeys(value);
+    adminDashboard.breadth.sendKeys(value);
+    adminDashboard.height.sendKeys(value);
+    adminDashboard.asc.sendKeys(value);
+    wait(1);
+    }
+
+    @Given("Verify that image is uploaded")
+    public void verify_that_image_is_uploaded() {
+        wait(1);
+    assertTrue(adminDashboard.uploadedImage.isDisplayed());
+    }
+    @Given("Verify that Save Button is displayed and click")
+    public void verify_that_save_button_is_displayed_and_active() {
+        assertTrue(adminDashboard.saveOnly.isDisplayed());
+        waitAndClick(adminDashboard.saveOnly);
+    }
+    @Given("Verify that Save and Publish Button is displayed and click")
+    public void verify_that_save_and_publish_button_is_displayed_and_active() {
+        assertTrue(adminDashboard.savePublish.isDisplayed());
+        waitAndClick(adminDashboard.savePublish);
     }
 
 
