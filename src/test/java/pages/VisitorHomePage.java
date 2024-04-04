@@ -515,9 +515,11 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//i[@class='far fa-heart'])[1]")
     public WebElement wishIcon;
 
+    @FindBy(xpath = "//div[@class='section__title d-flex align-items-center gap-3 mb_20']")
+    public WebElement titleAbout;
 
-
-
+    @FindBy(xpath = "//span[@style='font-size: 16px; background-color: rgb(244, 247, 249);']")
+    public WebElement textAbout;
 
 
 

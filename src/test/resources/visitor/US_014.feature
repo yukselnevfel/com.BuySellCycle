@@ -41,7 +41,7 @@
      * Verify that the Please Login First warning is visible
      * Close the page
 
-   @esra
+
    Scenario:TC_07 Listing brands under the Top Brands menu item in the home page body section, making transactions
      * Displays brands under the Top Brands menu heading
      * Click on the Stradivarius under the Top Brands heading
@@ -51,5 +51,7 @@
      * Add products from the Stradivarius menu to the favorites list
      * Close the page
 
-
-
+   @esra
+   Scenario:TC_08 Display About text under About menu heading in home page body section
+      * Displays About text under the About menu heading in the home page body section
+      * Close the page
