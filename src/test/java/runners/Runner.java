@@ -19,7 +19,11 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@simge2",
+
+
+        tags = "@login",
+
+
 
         dryRun =false
 )

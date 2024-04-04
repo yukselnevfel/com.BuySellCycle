@@ -1,7 +1,6 @@
-
 @us19
 Feature:As a registered user, I would like to have a My Wishlist page on my Dashboar
-        where I can view the products I like
+  where I can view the products I like
 
   Scenario: The My Wishlist menu title appears in the Dashboard sideBar and should be active
     * Log in to the page with valid "userSamet" and "password" information.
@@ -42,11 +41,12 @@ Feature:As a registered user, I would like to have a My Wishlist page on my Dash
     * Click on the Delete button and confirm that the product has been deleted from Wishlist
     * Close the page
 
-    Scenario: It should be possible to switch between product list pages in My Wishlist
+  Scenario: It should be possible to switch between product list pages in My Wishlist
     * Log in to the page with valid "userSamet" and "password" information.
     * Click on My Wishlist
     * Go on the next page
     * It is verified that there are 16 products on the page
     * Close the page
+
 
 

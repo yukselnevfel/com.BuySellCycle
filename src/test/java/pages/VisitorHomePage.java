@@ -454,38 +454,53 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//a[@class='amaz_primary_btn addToCartFromThumnail'])[1]")
     public WebElement buttonAddtocart;
 
-    @FindBy(xpath = "(//a[@class='amaz_primary_btn addToCartFromThumnail'])[107]")
-    public WebElement buttonAddtocartTrouser;
-
     @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
     public WebElement buttonADDTOCART;
 
     @FindBy(id = "top_rating_title")
     public WebElement titleTopRating;
 
-    @FindBy(xpath = "(//img[@data-src='https://qa.buysellcycle.com/public/uploads/images/19-02-2024/65d3daf758c09.webp'])[1]")
-    public WebElement imageTrouser;
+    @FindBy(xpath = "(//img[@title='Black Pleated Long Skirt'])[2]")
+    public WebElement imageEtek;
+
+    @FindBy(xpath = "//*[@id=\"home\"]/div/div[1]/div/div[21]/div/div[3]/div/a")
+    public WebElement buttonAddTocart;
 
     @FindBy(xpath = "(//i[@class='ti-close'])[5]")
-    public WebElement buttonCloseTrouser;
+    public WebElement buttonCLOSE;
     
-    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[107]")
-    public WebElement buttonCompareTrouser;
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[105]")
+    public WebElement buttonCompareEtek;
 
     @FindBy(xpath = "//a[@id='add_to_compare_btn']")
     public WebElement buttonADDTOCOMPARE;
 
-    @FindBy(xpath = "(//img[@title='APPLE iPhone 13 128 GB'])[4]")
-    public WebElement imageApple13;
+    @FindBy(xpath = "(//i[@title='Wishlist'])[105]")
+    public WebElement iconWishlistEtek;
 
-    @FindBy(xpath = "(//img[@data-src='https://qa.buysellcycle.com/public/uploads/images/22-02-2024/65d7eb6d79476.webp'])[4]")
-    public WebElement imageTELE;
+    @FindBy(xpath = "//span[@id='people_choice_title']")
+    public WebElement titlePeopleChoice;
 
-    @FindBy(xpath = "(//a[@title='Add to Cart'])[153]")
-    public WebElement addToCartApple;
+    @FindBy(xpath = "(//img[@title='zara Leg Trousers'])[3]")
+    public WebElement imgZaraLeg;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[149]")
+    public WebElement addToCartZaraLeg;
+
+    @FindBy(xpath = "(//img[@title='SmrWatch'])[13]")
+    public WebElement imageSmrWatch;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[152]")
+    public WebElement addToCartSmrWatch;
 
     @FindBy(xpath = "(//button[@class='close_modal_icon'])[1]")
-    public WebElement buttonCloseApple;
+    public WebElement buttonCloseSmrWatch;
+
+    @FindBy(xpath = "(//*[@title='Compare'])[152]")
+    public WebElement compareSmrWatch;
+
+    @FindBy(xpath = "(//*[@title='Wishlist'])[152]")
+    public WebElement wishListSmrWatch;
 
     @FindBy(xpath = "//img[@title='Stradivarius']")
     public WebElement linkStradivarius;
@@ -520,11 +535,17 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//i[@class='far fa-heart'])[1]")
     public WebElement wishIcon;
 
+    @FindBy(xpath = "//div[@class='section__title d-flex align-items-center gap-3 mb_20']")
+    public WebElement titleAbout;
 
+    @FindBy(xpath = "//span[@style='font-size: 16px; background-color: rgb(244, 247, 249);']")
+    public WebElement textAbout;
 
+    @FindBy(xpath = "//span[@id='top_picks_title']")
+    public WebElement titleTopPicks;
 
-
-
+    @FindBy(xpath = "(//img[@title='Red Front Zipper Long Dress'])[3]")
+    public WebElement imgRedDress;
 
 
 

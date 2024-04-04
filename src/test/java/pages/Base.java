@@ -6,6 +6,7 @@ import org.junit.Assert;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
 import utils.Driver;
@@ -461,6 +462,7 @@ public abstract class Base {
         assertTrue(actualText.contains(title));
 
     }
-
+    @FindBy(xpath = "//h3[text()='Thank you for your purchase!']")
+    public WebElement thankyouText;
 
 }
