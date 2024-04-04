@@ -948,6 +948,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the Telephone link in Electronics category on homepage")
     public void click_on_the_telephone_link_in_electronics_category_on_homepage() {
+        wait(2);
         Assert.assertTrue(visitorHomePage.labelTelephone.isEnabled());
        clickWithJS(visitorHomePage.labelTelephone);
 
@@ -1077,7 +1078,7 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the add to cart icon for the first product in Electronics category on homepage")
     public void click_on_the_add_to_cart_icon_for_the_first_product_in_electronics_category_on_homepage() {
      clickWithJS(visitorHomePage.iconAddToCart);
-     wait(1);
+     wait(2);
     }
     @Given("Verify that the Item added to your cart warning is visible")
     public void verify_that_the_item_added_to_your_cart_warning_is_visible() {

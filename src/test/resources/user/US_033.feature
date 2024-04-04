@@ -1,4 +1,4 @@
-
+@asli033
 Feature: Checkout and Payment Process
 
   Background: : Directed to the Payment Page
@@ -35,7 +35,7 @@ Feature: Checkout and Payment Process
     When I apply coupons
     Then they should be redeemable
 
-  @asli033
+
   Scenario: Navigate from Payment Page to Order Completion
     Given I am on the "Payment" Page
     When Click on the Order Now buttonlink
