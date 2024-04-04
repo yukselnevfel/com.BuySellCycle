@@ -450,7 +450,7 @@ public class AdminDashboardStepDef extends Base {
     }
 
 
-    //-------------Login Steps NEVFEL-----------------/
+    //=====================STEPS NEVFEL====================================/
 
     @Given("Click on the  Customer  in Dashboard side bar")
     public void click_on_the_customer_in_dashboard_side_bar() {
@@ -495,12 +495,7 @@ public class AdminDashboardStepDef extends Base {
            clickWithJS(adminDashboard.InActiveCustomerActionButton);
            clickWithJS(adminDashboard.inActiveCustomerEditButton);
            clickWithJS(adminDashboard.basicInfoInActiveButton);
-
-
-
        }
-
-
     }
     @Given("Click on the Update button")
     public void click_on_the_update_button() {
@@ -520,9 +515,6 @@ public class AdminDashboardStepDef extends Base {
             clickWithJS(adminDashboard.inActiveCustomerDeleteButton);
             clickWithJS(adminDashboard.popUpDeleteButton);
         }
-
-
-
     }
     @Given("Clicks on  the Delete button in the resulting alert")
     public void clicks_on_the_delete_button_in_the_resulting_alert() {
@@ -541,10 +533,115 @@ public class AdminDashboardStepDef extends Base {
             clickWithJS(adminDashboard.inActiveCustomerDetailButton);
         }
 
+    }
+    @Given("Click on the Create Customer")
+    public void click_on_the_create_customer() {
+        clickWithJS(adminDashboard.labelCreateCustomer);
+    }
+    @Given("Enters a name in the FirstName textbox")
+    public void enters_a_name_in_the_first_name_textbox() {
+        adminDashboard.textBoxFirstNameCreateCustomer.sendKeys(faker.name().firstName());
+        wait(1);
+    }
+    @Given("Enters last name in LastName textbox")
+    public void enters_last_name_in_last_name_textbox() {
+        adminDashboard.textBoxLastNameCreateCustomer.sendKeys(faker.name().lastName());
+        wait(1);
+    }
+    @Given("Password enters {string} password suitable for the criteria in the textbox")
+    public void password_enters_password_suitable_for_the_criteria_in_the_textbox(String password) {;
+        adminDashboard.textBoxPasswordCreateCustomer.sendKeys(password);
+        wait(1);
+    }
+    @Given("Enters {string} the same password in the Confirm Password textbox")
+    public void enters_the_same_password_in_the_confirm_password_textbox(String confirmPass) {
+        adminDashboard.textBoxConfirmPasswordCreateCustomer.sendKeys(confirmPass);
+        wait(1);
+    }
+    @Given("Enters an email suitable for the criteria in the email or phone textbox.")
+    public void enters_an_email_suitable_for_the_criteria_in_the_email_or_phone_textbox(String email) {
+        adminDashboard.textBoxEmailOrPhoneCreateCustomer.sendKeys(faker.internet().emailAddress());
+        wait(1);
+    }
+    @Given("Click on the Create button")
+    public void click_on_the_create_button() {
+        clickWithJS(adminDashboard.createButtonCreateCustomer);
+        wait(1);
+
+    }
+    @Given("Verify that the Create operation has occurred")
+    public void verify_that_the_create_operation_has_occurred() {
+        assertTrue(adminDashboard.labelAllCutomer.isDisplayed());
+        wait(1);
+    }
+
+    @Given("Leaves the FirstName textbox empty")
+    public void leaves_the_first_name_textbox_empty() {
+       adminDashboard.textBoxFirstNameCreateCustomer.sendKeys("");
+
+    }
+    @Given("Verify that login is not available")
+    public void verify_that_login_is_not_available() {
+        assertTrue(adminDashboard.textBoxFirstNameCreateCustomer.isDisplayed());
+    }
+
+    @Given("Enters a password suitable for the criteria in the Password textbox")
+    public void enters_a_password_suitable_for_the_criteria_in_the_password_textbox() {
+        adminDashboard.textBoxPasswordCreateCustomer.sendKeys(faker.code().isbn10());
+        wait(1);
+
+    }
+    @Given("Password enters a different password in the textbox.")
+    public void password_enters_a_different_password_in_the_textbox() {
+        adminDashboard.textBoxConfirmPasswordCreateCustomer.sendKeys(faker.code().gtin8());
+        wait(1);
+
+    }
+    @Given("Verify that the Passwords do not match.")
+    public void verify_that_the_passwords_do_not_match() {
+        assertTrue(adminDashboard.incorrectPassportNumbertext.isDisplayed());
+    }
+
+    @Given("Enters a password {string} that does not meet the criteria in the password textbox")
+    public void enters_a_password_that_does_not_meet_the_criteria_in_the_password_textbox(String pass) {
+        adminDashboard.textBoxPasswordCreateCustomer.sendKeys(pass);
 
 
 
     }
+    @Given("Verify that you cannot log in")
+    public void verify_that_you_cannot_log_in() {
+        assertTrue(adminDashboard.textBoxPasswordCreateCustomer.isDisplayed());
+
+    }
+
+
+    @Given("Enters a special character  in the iPhone textbox.")
+    public void enters_a_special_character_in_the_i_phone_textbox() {
+        adminDashboard.textBoxEmailOrPhoneCreateCustomer.sendKeys(faker.number().digit());
+
+    }
+    @Given("Email enters a mail that does not meet the criteria  in the textbox")
+    public void email_enters_a_mail_that_does_not_meet_the_criteria_in_the_textbox() {
+        adminDashboard.textBoxEmailOrPhoneCreateCustomer.sendKeys(faker.name().fullName());
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //====================NEVFEL STEPS END===============================================
+
+
+
     @Given("Verify that Customer Profile, Order Summary, Wallet Summary information is displayed")
     public void verify_that_customer_profile_order_summary_wallet_summary_information_is_displayed() {
         assertTrue(adminDashboard.customerProfileDetailWindow.isDisplayed());

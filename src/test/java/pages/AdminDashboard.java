@@ -190,6 +190,9 @@ public class AdminDashboard extends Base{
     public WebElement labelCustomer;
     @FindBy(xpath = "//*[text()='All Customer']")
     public WebElement labelAllCutomer;
+    @FindBy(xpath = "//*[text()='Create Customer']")
+    public WebElement labelCreateCustomer;
+
     @FindBy(xpath = "//*[@id='all_customer']")
     public WebElement columnAllCustomerList;
     @FindBy(xpath = "//*[@*='Quick Search']")
@@ -201,15 +204,21 @@ public class AdminDashboard extends Base{
     @FindBy(xpath = "//*[text()='Inactive customer']")
     public WebElement inActiveCustomerButton;
     @FindBy(xpath = "(//*[@id='dropdownMenu2'])[11]")
-    public WebElement dropDownSelect;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[1]")
-    public WebElement dropDownSelectDetailButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[2]")
-    public WebElement dropDownSelectEditButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
-    public WebElement dropDownSelectDeleteButton;
-    @FindBy(id = "status_inactive")
-    public WebElement radioButtonInactiveStatus;
+    public WebElement createCustomerButton;
+    @FindBy(xpath = "//*[@placeholder='First Name']")
+    public WebElement textBoxFirstNameCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Last Name']")
+    public WebElement textBoxLastNameCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Email or Phone']")
+    public WebElement textBoxEmailOrPhoneCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Password']")
+    public WebElement textBoxPasswordCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Confirm password']")
+    public WebElement textBoxConfirmPasswordCreateCustomer;
+    @FindBy(id = "save_button_parent")
+    public WebElement createButtonCreateCustomer;
+
+
     @FindBy(id = "save_button_parent")
     public WebElement updateButton;
     @FindBy(xpath = "//*[@id='delete_link']")
@@ -259,6 +268,11 @@ public class AdminDashboard extends Base{
 
     @FindBy(xpath = "(//*[@*='white_box_50px box_shadow_white'])[1]")
     public WebElement customerProfileDetailWindow;
+
+    //Create Costomer page
+    @FindBy(xpath = "//*[text()='The password confirmation does not match.']")
+    public WebElement incorrectPassportNumbertext;
+
 
 
 

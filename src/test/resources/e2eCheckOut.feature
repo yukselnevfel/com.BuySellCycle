@@ -14,7 +14,7 @@ Feature: Checkout Process
     And Click on the "Cart" link on the top
     Then Click on the Proceed to Checkout buttonlink
     And  I should be able to write a note "Hi, there! TEAM 3 :)"
-    When I submit on the Continue to shipping button
+    When I submit on the Conti nue to shipping button
     Then I am on the "Payment" Page
     Given I should be able to select the Snipe Payment Method
     Then I should be able to enter "couponCode" as coupon code on Code Box
