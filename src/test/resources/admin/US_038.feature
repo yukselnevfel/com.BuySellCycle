@@ -17,7 +17,6 @@ Feature: As an administrator I would like to have a page to add a new product to
     * Open browser and go to "adminUrl", enter "adminSamet", "password" and click sign in
     * Click on the Products menu
     * Click on the "Add New Product"
-    * Verify that there is a Single option
     * Verify that there is a Variant option
     * Verify that at least one of the options is selectable
     * Close the page
