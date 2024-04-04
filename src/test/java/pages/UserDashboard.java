@@ -459,5 +459,24 @@ public WebElement continueToShippingButton;
     @FindBy(xpath ="//button[text()='Apply']")
     public WebElement applyButtonCouponCode;
 
+    //U27
+    @FindBy(xpath = "(//a [@class='position-relative d-flex align-items-center'])[10]")
+    public WebElement followMenuItem;
 
+    @FindBys({
+            @FindBy(xpath = "//th[starts-with(@class,'font_14 f_w_700 ')])")
+    })
+    public List<WebElement> followListHeaders;
+
+    @FindBy(xpath = "//div[@class='dashboard_white_box bg-white mb_25']")
+    public WebElement followListDashboard;
+
+    @FindBy(xpath = "//button[@type='btn']")
+    public WebElement unFollowButton;
+
+    @FindBy(xpath = "//p[text()='Empty List.']")
+    public WebElement emptyText;
+
+    @FindBy(xpath = "//table[@class='table amazy_table style4 mb-0']//tbody/tr/td[1]")
+    public  WebElement followSeller;
 }
