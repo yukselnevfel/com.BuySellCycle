@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class AdminDashboard extends Base{
 
     // -------------------------Beytullah's Locates----------------------------
@@ -11,6 +13,17 @@ public class AdminDashboard extends Base{
     //*[@class='toast-message']
     @FindBy(xpath = "//*[@class='toast-message']")
     public WebElement popUpMessage;
+    @FindBy(xpath = "//*[@class='toast-close-button']")
+    public WebElement popUpCloseMessage;
+    @FindBy(xpath = "//*[@id='profile_pic']")
+    public WebElement iconAdminProfile;
+    @FindBy(xpath = "//h5")
+    public WebElement textName;
+
+    @FindBy(xpath = "//*[text()='My Profile']")
+    public WebElement linkMyProfile;
+    @FindBy(xpath = "//*[text()='Log out']")
+    public WebElement linkLogOut;
 
 // -------------------------End of Beytullah's Locates----------------------------
 
@@ -81,20 +94,22 @@ public class AdminDashboard extends Base{
     public WebElement demoRegesterVievButton;
     @FindBy(xpath = "//*[text()='Notifications']")
     public WebElement notificationListText;
-    @FindBy(xpath = "//*[@class='sorting_1']")
-    public WebElement notificiationRelevantActionButton;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/ordermanage/total-sales-list']")
     public WebElement notificiationRelevantViewButton;
     @FindBy(xpath = "//*[@class='btn btn-secondary dropdown-toggle']")
     public WebElement notificiationRelevantSelectButton;
-    @FindBy(xpath = "//span[2]/div/button")
+    @FindBy(xpath = "(//*[@id='dropdownMenu2'])[13]")
     public WebElement confirmedSelectButton;
-    @FindBy(xpath = "(//tbody/tr[1]/td[1])[2]")
+    @FindBy(xpath = "(//tr[1]/td[1])[2]")
     public WebElement confirmedActionButton;
     @FindBy(xpath = "(//td[1])[1]")
     public WebElement pendingActionButton;
-    @FindBy(xpath = "//span[2]//a")
-    public WebElement confirmedDetailsSelectButton;
+    @FindBy(xpath = "//span//div/a[1]")
+    public WebElement pendingDetails;
+    @FindBy(xpath = "//span[2]/div/button")
+    public WebElement pendingSelectButton;
+    @FindBy(xpath = "(//*[text()='Details'])[13]")
+    public WebElement confirmedDetailsSelect;
     @FindBy(xpath = "(//*[@class='primary_input_label'])[1]")
     public WebElement confirmedOrderConfirmText;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/ordermanage/sales-details/142']")
@@ -109,20 +124,14 @@ public class AdminDashboard extends Base{
     public WebElement totalOrderLists;
     @FindBy(xpath = "(//*[@class='nice-select primary_select mb-25'])[1]")
     public WebElement orderConfirmationSelect;
-    @FindBy(xpath = "(//*[@class='nice-select primary_select mb-25'])[3]")
-    public WebElement paymentStatusSelect;
-    @FindBy(xpath = "(//*[@class='nice-select primary_select mb-25'])[4]")
-    public WebElement complationStatusSelect;
     @FindBy(xpath = "//*[@data-value='1']")
     public WebElement updateRandomSelectSub;
-    @FindBy(xpath = "//*[@class='primary_btn_2']")
+    @FindBy(xpath = "//*[@id='add_product']//button")
     public WebElement confirmUpdateButton;
-    @FindBy(xpath = "//*[@class='toast-message']")
+    @FindBy(xpath = "//*[@id='toast-container']/div/div[2]")
     public WebElement updateSuccesfully;
-    @FindBy(xpath = "//*[@class='sorting_1']")
-    public WebElement pendingOrderAction;
-    @FindBy(xpath = "(//*[text()='Confirm'])[2]")
-    public WebElement confirmedOrderSelect;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[4]")
+    public WebElement pendingconfirmedOrder;
     @FindBy(xpath = "(//*[@class='update_active_status'])[1]")
     public WebElement confirmedRegisterSelect;
     @FindBy(xpath = "//*[@placeholder='Quick Search']")
@@ -133,10 +142,10 @@ public class AdminDashboard extends Base{
     public WebElement confirmedOrderButtonLink;
     @FindBy(xpath = "(//tr[1]/td[1])[3]")
     public WebElement completedActionButton;
-    @FindBy(xpath = "//span[2]/div/button")
-    public WebElement completedSelectButton;
     @FindBy(xpath = "//span[2]/div/div/a")
     public WebElement completedDetail;
+    @FindBy(xpath = "(//*[@placeholder='Quick Search'])[3]")
+    public WebElement completedQuickSearch;
     @FindBy(xpath = "//*[text()='Completed Orders']")
     public WebElement completedOrderButtonLink;
     @FindBy(xpath = "(//*[@placeholder='Quick Search'])[2]")
@@ -145,6 +154,32 @@ public class AdminDashboard extends Base{
     public WebElement paymentSerchBox;
     @FindBy(xpath = "//*[text()='Pending Payment Orders']")
     public WebElement paymentOrderButtonLink;
+    @FindBy(xpath = "(//tr[1]/td[1])[4]")
+    public WebElement paymentActionButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[32]")
+    public WebElement paymentSelectButton;
+    @FindBy(xpath = "(//a[text()='Details'])[32]")
+    public WebElement paymentDetailsLink;
+    @FindBy(xpath = "//*[@id='5']")
+    public WebElement refusedCancelledButtonLink;
+    @FindBy(xpath = "(//tr[1]/td[1])[5]")
+    public WebElement refusedCancelledActionButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[46]")
+    public WebElement refusedCancelledSelectButton;
+    @FindBy(xpath = "(//a[text()='Details'])[46]")
+    public WebElement refusedCancelledDetailsLink;
+    @FindBy(xpath = "(//*[@class='primary_input_label red'])[2]")
+    public WebElement orderCancelledText;
+    @FindBy(xpath = "//*[@id='canceledTable']/tbody/tr/td[4]")
+    public List<WebElement> refusedSearchResult;
+    @FindBy(xpath = "(//*[@*='Quick Search'])[5]")
+    public WebElement refusedQuickSerchBox;
+    @FindBy(xpath = "//*[@id='pendingPaymentTable']/tbody/tr/td[4]")
+    public List<WebElement> paymentSearchResult;
+    @FindBy(xpath = "//*[@id='completedTable']/tbody//td[4]")
+    public List<WebElement> completedSearchResult;
+    @FindBy(xpath = "//*[@id='confirmedTable']/tbody//td[4]")
+    public List<WebElement> confirmedSearchResult;
 
 
 
@@ -161,7 +196,102 @@ public class AdminDashboard extends Base{
     public WebElement searchBoxQuickSearch;
     @FindBy(xpath = "(//*[@id='active_checkbox265'])[1]")
     public WebElement iconIsActive;
+    @FindBy(xpath = "(//*[text()='Active Customer'])[1]")
+    public WebElement activeCustomerButton;
+    @FindBy(xpath = "//*[text()='Inactive customer']")
+    public WebElement inActiveCustomerButton;
+    @FindBy(xpath = "(//*[@id='dropdownMenu2'])[11]")
+    public WebElement dropDownSelect;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[1]")
+    public WebElement dropDownSelectDetailButton;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[2]")
+    public WebElement dropDownSelectEditButton;
+    @FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
+    public WebElement dropDownSelectDeleteButton;
+    @FindBy(id = "status_inactive")
+    public WebElement radioButtonInactiveStatus;
+    @FindBy(id = "save_button_parent")
+    public WebElement updateButton;
+    @FindBy(xpath = "//*[@id='delete_link']")
+    public WebElement  popUpDeleteButton;
 
+    @FindBy(xpath = "(//tr[1]/td[1])[1]")
+    public WebElement allCustomerActionButton;
+    @FindBy(xpath = "(//tr[1]/td[1])[2]")
+    public WebElement activeCustomerActionButton;
+    @FindBy(xpath = "(//tr[1]/td[1])[3]")
+    public WebElement InActiveCustomerActionButton;
+
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[14]")
+    public WebElement activeCustomerSelectButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[2]")
+    public WebElement allCustomerSelectButton;
+    @FindBy(xpath = "(//button[contains(text(),'Select')])[25]")
+    public WebElement inActiveCustomerSelectButton;
+
+    @FindBy(xpath = "(//a[text()='Details'])[12]")
+    public WebElement activeCustomerDetailButton;
+    @FindBy(xpath = "(//a[text()='Details'])[23]")
+    public WebElement inActiveCustomerDetailButton;
+
+    @FindBy(xpath = "(//a[text()='Edit'])[12]")
+    public WebElement activeCustomerEditButton;
+    @FindBy(xpath = "(//a[text()='Edit'])[23]")
+    public WebElement inActiveCustomerEditButton;
+
+    @FindBy(xpath = "(//a[text()='Delete'])[12]")
+    public WebElement activeCustomerDeleteButton;
+    @FindBy(xpath = "(//a[text()='Delete'])[23]")
+    public WebElement inActiveCustomerDeleteButton;
+
+    @FindBy(xpath = "//*[text()='orders']")
+    public WebElement ordersIsDisplayedText;
+    @FindBy(xpath = "//*[text()='wallet histories']")
+    public WebElement walletHistoriesIsDisplayedText;
+    @FindBy(xpath = "//*[text()='Addresses']")
+    public WebElement addressesIsDisplayedText;
+
+
+    @FindBy(xpath = "(//*[@*='checkmark'])[2]")
+    public WebElement basicInfoActiveButton;
+    @FindBy(xpath = "(//*[@*='checkmark'])[1]")
+    public WebElement basicInfoInActiveButton;
+
+    @FindBy(xpath = "(//*[@*='white_box_50px box_shadow_white'])[1]")
+    public WebElement customerProfileDetailWindow;
+
+
+
+
+    //   ================================  SAMET ===========================
+    //--------------------------- Ad New Product --------------------------
+@FindBy(xpath = "(//*[@class=\"nav_title\"])[8]") public WebElement puroductsMenu;
+@FindBy(xpath = "//*[@class=\"checkmark\"]") public WebElement checkMark;
+@FindBy(xpath = "(//*[@class=\"checkmark\"])[2]") public WebElement checkMark2;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[1]") public WebElement nameProduct;
+@FindBy(xpath = "//*[@class=\"select2-selection__rendered\"]") public WebElement categoryProduct;
+@FindBy(xpath = "//*[@class=\"select2-results__option\"]") public WebElement electronic;
+@FindBy(xpath = "//*[@class=\"nice-select primary_select mb-15 unit\"]") public WebElement unitProduct;
+@FindBy(xpath = "//*[@id=\"unit_select_div\"]/div/div[2]/ul/li[6]") public WebElement pair;
+@FindBy(xpath = "//*[@id=\"selling_price\"]") public WebElement sellinPrice;
+@FindBy(xpath = "//*[@data-value=\"save_publish\"]") public WebElement savePublish;
+@FindBy(xpath = "//*[@placeholder=\"Choose Images\"]") public WebElement chooseImages;
+@FindBy(xpath = "(//*[@class=\"img-box\"])[3]") public WebElement secilecekResim;
+@FindBy(xpath = "//*[@id=\"media_modal\"]/div/div/div[3]/div/div[2]/button[3]") public WebElement addFilesButton;
+@FindBy(xpath = "//*[@id=\"2\"]") public WebElement related;
+@FindBy(xpath = "//*[@id=\"1\"]") public WebElement generalInformation;
+@FindBy(xpath = "//*[@id=\"3\"]") public WebElement upSale;
+@FindBy(xpath = "//*[@id=\"4\"]") public WebElement crossSale;
+@FindBy(id = "rsearch_products") public WebElement searchB;
+@FindBy(xpath = "(//*[@class=\"primary_checkbox d-flex\"") public WebElement relatedProduct;
+@FindBy(xpath = "//*[@id=\"up_sale_17\"]") public WebElement upSaleProduct;
+@FindBy(xpath = "//*[@id=\"cross_sale_18\"]") public WebElement crossSaleProduct;
+@FindBy(xpath = "//*[@id=\"GenaralInfo\"]/div/div[1]/div/div[1]/div[15]/div[2]/div/input") public WebElement tags;
+@FindBy(xpath = "(//*[@class=\"product_thumb_upper\"])[1]") public WebElement myProduct;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div[1]/h3") public WebElement updatedProduct;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div[2]/h4") public WebElement upSellUrun;
+@FindBy(xpath = "/html/body/div[4]/div/div[1]/div/div/h3") public WebElement relatedUrun;
+@FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[4]/div[1]/div/div/h3") public WebElement crossUrun;
 
 
 

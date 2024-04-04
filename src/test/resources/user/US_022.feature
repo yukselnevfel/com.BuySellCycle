@@ -8,7 +8,7 @@ Feature: As a registered user, I would like to have a page on my dashboard
     * Click on My Couppons
     * Verify that page url is "https://qa.buysellcycle.com/profile/coupons"
     * Close the page
-
+@coupon
   Scenario: The Add Coupons window should be visible on the MY Coupons page and a new coupon should be added
     * Log in to the page with valid "userSamet" and "password" information.
     * Click on My Couppons

@@ -3,9 +3,10 @@ Feature:As an administrator, I want to have an admin panel to access site data, 
   Background:
     * Open browser and go to "adminUrl", enter "nevfelAdminEmail", "password" and click sign in
 
-  @byt
+  @34/2
   Scenario:
     * User searches "Follow Seller" on the admin Dashboard and verifies that the search result is true
 
   Scenario:
+    *
 
