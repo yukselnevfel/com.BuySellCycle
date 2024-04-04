@@ -1,4 +1,4 @@
-@us38
+
 Feature: As an administrator I would like to have a page to add a new product to the site.
 
   Scenario: The Add New Product page should be accessible from the Dashboard Side Bar, and the (General Information,
@@ -20,7 +20,8 @@ Feature: As an administrator I would like to have a page to add a new product to
     * Verify that there is a Variant option
     * Verify that at least one of the options is selectable
     * Close the page
-  @samet
+
+  @e2eadmin
   Scenario:A product should be added to the site by entering the requested information,
            the product should be associated with Related product, up sale and cross sale
     * Open browser and go to "adminUrl", enter "adminSamet", "password" and click sign in

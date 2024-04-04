@@ -11,6 +11,7 @@ Feature: New member register
     * 1 seconds pause
     * Close the page
 
+@smoke
   Scenario: "Buysellcycle" admin approves the registration
     * Open browser and Go to admin "adminUrl"
     * Enter "fikretAdminEmail" and "password" and click sign in
