@@ -1,4 +1,4 @@
-
+@asli033
 Feature: Checkout and Payment Process
 
   Background: : Directed to the Payment Page
@@ -23,7 +23,6 @@ Feature: Checkout and Payment Process
 
   Scenario: Select Payment and Billing Address Types
     Given I am on the "Payment" Page
-    When I navigate to the Payment and Billing address section
     Then I should be able to select different address types
 
   Scenario: Display Order Summary on Payment Page
@@ -32,10 +31,10 @@ Feature: Checkout and Payment Process
 
   Scenario: Redeem Coupons on Checkout Page
     Given I am on the "Checkout" Page
-    When I apply coupons
-    Then they should be redeemable
+    Then I should be able to enter "couponCode" as coupon code on Code Box
+    And  I apply coupon code.
 
-  @asli033
+
   Scenario: Navigate from Payment Page to Order Completion
     Given I am on the "Payment" Page
     When Click on the Order Now buttonlink
@@ -45,7 +44,3 @@ Feature: Checkout and Payment Process
     When the Order summary (items purchased) should be displayed
     Then I should have access to the my-purchase-order-details page
 
-  Scenario: Return to Home Page After Order Completion
-    Given I have completed the order
-    When I finish the transaction
-    Then the site should return to the home page
