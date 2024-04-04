@@ -16,6 +16,8 @@ import utils.Driver;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import java.util.ArrayList;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
@@ -179,14 +181,13 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Wishlist link in the header")
     public void click_on_the_wishlist_link_in_the_header() {
-       clickWithJS(userDashboard.linkWishlistHeader);
+
+        clickWithJS(userDashboard.linkWishlistHeader);
     }
 
     @Given("Verify that the products are sorted from newest to oldest")
     public void verify_that_the_products_are_sorted_from_newest_to_oldest() {
       userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
-        System.out.println(userDashboard.actualFirstProduct);
-        System.out.println(userDashboard.selectedFirstProduct);
       Assert.assertTrue(userDashboard.actualFirstProduct.contains(userDashboard.selectedFirstProduct));
     }
     @Given("Click on the Old button")
@@ -197,17 +198,129 @@ public class UserDashboardStepDef extends Base {
     @Given("Verify that the products are sorted from oldest to newest")
     public void verify_that_the_products_are_sorted_from_oldest_to_newest() {
         userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
-        System.out.println(userDashboard.actualFirstProduct);
-        System.out.println();
-        System.out.println();
-        System.out.println(userDashboard.selectedSecondProduct);
-
        Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
+    }
+    @Given("Click on the Price \\(Low to high) button")
+    public void click_on_the_price_low_to_high_button() {
+     clickWithJS(userDashboard.linkLowtoHigh);
+     wait(2);
+    }
+    @Given("Verify that products are sorted from low to high prices")
+    public void verify_that_products_are_sorted_from_low_to_high_prices() {
+         ArrayList <Integer> prices = new ArrayList<>();
+         int pricess=0;
+        for (WebElement price:userDashboard.textPriceOfProduct) {
+
+           pricess= Integer.parseInt(price.getText().replaceAll("\\D",""));
+           prices.add(pricess);
+        }
+        for (int i=0;i<prices.size();i++) {
+
+           Assert.assertTrue(prices.get(i)<prices.get(i+1));
+
+
+        }
+
+    }
+    @Given("Click on the Price \\(High to low) button")
+    public void click_on_the_price_high_to_low_button() {
+        clickWithJS(userDashboard.linkHightoLow);
+        wait(2);
+    }
+    @Given("Verify that products are sorted from high to low prices")
+    public void verify_that_products_are_sorted_from_high_to_low_prices() {
+        ArrayList <Integer> prices = new ArrayList<>();
+        int pricess=0;
+        for (WebElement price:userDashboard.textPriceOfProduct) {
+
+            pricess= Integer.parseInt(price.getText().replaceAll("\\D",""));
+            prices.add(pricess);
+        }
+        for (int i=0;i<prices.size();i++) {
+
+            Assert.assertTrue(prices.get(i)>prices.get(i+1));
+        }
+    }
+    @Given("Verify that the Show Item's bar is visible")
+    public void verify_that_the_show_item_s_bar_is_visible() {
+        Assert.assertTrue(userDashboard.linkShowItemBar.isDisplayed());
+        clickWithJS(userDashboard.linkShowItemBar);
+        wait(2);
+    }
+    @Given("Click on the Show {int} Item's  button")
+    public void click_on_the_show_item_s_button(Integer int1) {
+        WebElement secim = userDashboard.selectItemBar(int1);
+
+        secim.click();
+        wait(2);
+    }
+    @Given("Verify that {int} products are displayed on the page")
+    public void verify_that_products_are_displayed_on_the_page(Integer int1) {
+        assertEquals(userDashboard.textPriceOfProduct.size(), (int) int1);
+    }
+    @Given("Verify that the compare icon is visible for the first product on My Wishlist page")
+    public void verify_that_the_compare_icon_is_visible_for_the_first_product_on_my_wishlist_page() {
+         actions.moveToElement(userDashboard.imageFirst).perform();
+         wait(2);
+         Assert.assertTrue(userDashboard.iconCompareInWishlist.isDisplayed());
+    }
+    @Given("Click on the compare icon for the first product on My Wishlist page")
+    public void click_on_the_compare_icon_for_the_first_product_on_my_wishlist_page() {
+        clickWithJS(userDashboard.iconCompareInWishlist);
+    }
+    @Given("Verify that the quick view icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_quick_view_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        actions.moveToElement(userDashboard.imageFirst).perform();
+        wait(1);
+       Assert.assertTrue(userDashboard.iconQuickViewInWishlist.isDisplayed());
+    }
+    @Given("Click on the quick view icon for the first product in My Wishlist page")
+    public void click_on_the_quick_view_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconQuickViewInWishlist);
+    }
+    @Given("Verify that the delete icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_delete_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        actions.moveToElement(userDashboard.imageFirst).perform();
+        wait(1);
+        Assert.assertTrue(userDashboard.iconDeleteInWishlist.isDisplayed());
+    }
+    @Given("Click on the delete icon for the first product in My Wishlist page")
+    public void click_on_the_delete_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconDeleteInWishlist);
+    }
+    @Given("Verify that the Are you sure to delete?  query screen is visible")
+    public void verify_that_the_are_you_sure_to_delete_query_screen_is_visible() {
+        wait(2);
+        Assert.assertTrue(userDashboard.textDelete.isDisplayed());
+    }
+    @Given("Click on the Delete button")
+    public void click_on_the_delete_button() {
+       clickWithJS(userDashboard.linkDelete);
+       wait(1);
+    }
+    @Given("Verify that the relevant product has been deleted\"")
+    public void verify_that_the_relevant_product_has_been_deleted() {
+      String expedtedAllert ="Deleted successfully!";
+      String actualAllert = visitorHomePage.successfullAllert.getText();
+      Assert.assertEquals(expedtedAllert,actualAllert);
+    }
+    @Given("Verify that the add to cart icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_add_to_cart_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        Assert.assertTrue(userDashboard.iconAddToCartInWishlist.isDisplayed());
+    }
+    @Given("Click on the add to cart icon for the first product in My Wishlist page")
+    public void click_on_the_add_to_cart_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconAddToCartInWishlist);
+        wait(2);
     }
 
 
 
-      
+
+
+
+
+
 
     //----------------------------SIMGE STEPS BITIS--------------------------//}
 

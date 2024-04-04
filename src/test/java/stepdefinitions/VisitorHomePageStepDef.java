@@ -1065,6 +1065,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify that the detail window for the relevant product has opened")
     public void verify_that_the_detail_window_for_the_relevant_product_has_opened() {
+        wait(1);
         Assert.assertTrue(visitorHomePage.linkBuyNowElectronicsPage.isDisplayed());
       //String quickViewDetail=visitorHomePage.detailOfQuickView.getText();
      // Assert.assertTrue(quickViewDetail.contains("Phone"));
@@ -1080,7 +1081,7 @@ public class VisitorHomePageStepDef extends Base {
     }
     @Given("Verify that the Item added to your cart warning is visible")
     public void verify_that_the_item_added_to_your_cart_warning_is_visible() {
-
+        wait(2);
         Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
     }
     @Given("Verify that the Deal More link is visible in Electronics category on homepage")
@@ -1764,7 +1765,11 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     }
 
 
-
+    @When("Displays About text under the About menu heading in the home page body section")
+    public void displaysAboutTextUnderTheAboutMenuHeadingInTheHomePageBodySection() {
+        assertTrue(visitorHomePage.titleAbout.isDisplayed());
+        assertTrue(visitorHomePage.textAbout.getText().contains("At BuySellCycle.com"));
+    }
 
 
 

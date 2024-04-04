@@ -37,7 +37,35 @@ public class UserDashboard extends Base{
     @FindBy(xpath = "//li[@data-value=\"low_to_high\"]")
     public WebElement linkLowtoHigh;
     @FindBy(xpath = "//li[@data-value=\"high_to_low\"]")
-    public WebElement linkHightoLow;
+    public  WebElement linkHightoLow;
+    @FindBy(xpath = "(//div[@class=\"nice-select amaz_select4\"])[1]")
+    public  WebElement linkShowItemBar;
+    @FindBy(xpath = "//li[@data-value=\"8\"]")
+    public  WebElement link8Item;
+    @FindBy(xpath = "//li[@data-value=\"12\"]")
+    public  WebElement link12Item;
+    @FindBy(xpath = "//li[@data-value=\"16\"]")
+    public  WebElement link16Item;
+    @FindBy(xpath = "//li[@data-value=\"24\"]")
+    public  WebElement link24Item;
+    @FindBy(xpath = "//li[@data-value=\"32\"]")
+    public  WebElement link32Item;
+    public WebElement selectItemBar(int item){
+        return Driver.getDriver().findElement(By.xpath("//li[@data-value='" + item + "']"));
+    }
+
+    @FindBy(xpath = "(//i[@class=\"ti-control-shuffle\"])[1]")
+    public WebElement iconCompareInWishlist;
+    @FindBy(xpath = "(//i[@class=\"ti-eye\"])[1]")
+    public WebElement iconQuickViewInWishlist;
+    @FindBy(xpath = "(//a[@class=\"removeWishlist\"])[1]")
+    public WebElement iconDeleteInWishlist;
+    @FindBy(xpath = "//div[@class=\"text-center\"]")
+    public WebElement textDelete;
+    @FindBy(xpath = "//form[@id=\"wishlist_delete_form\"]")
+    public WebElement linkDelete;
+    @FindBy(xpath = "//strong")
+    public List<WebElement> textPriceOfProduct;
     @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[1]")
     public WebElement imageFirst;
     @FindBy(xpath = "(//div[@class=\"product_thumb_upper\"])[2]")
@@ -48,7 +76,8 @@ public class UserDashboard extends Base{
    // public WebElement linkFirstProduct;
     @FindBy (xpath="(//a[@href=\"https://qa.buysellcycle.com/product/buysellcycle/blue-dress-1\"])[2]")
     public WebElement linkSecondProduct;
-
+    @FindBy (xpath="(//a[@title=\"Add to Cart\"])[1]")
+    public WebElement iconAddToCartInWishlist;
 
    @FindBy(xpath = "(//div[@class=\"product_widget5 mb_30 style5\"])[1]")
     public WebElement linkFirstProductinWishlist;
