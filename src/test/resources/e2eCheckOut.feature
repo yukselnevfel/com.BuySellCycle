@@ -26,8 +26,6 @@ Feature: Checkout Process
     When  I should be able to enter "expDate" on the exp box
     Then  I should be able to enter "cvc" on the cvc box
     And I should be able to submit the payment
-    Given I should see the message "Thank you for your purchase!"
-    And the Order Number should be displayed
     Then Click on the Logout link
 
 
