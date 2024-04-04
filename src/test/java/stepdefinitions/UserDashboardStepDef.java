@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
+import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
@@ -22,8 +23,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class UserDashboardStepDef extends Base {
 //------------------------- SIMGE STEPS BASLANGIC ---------------------------//
@@ -1171,28 +1171,28 @@ public class UserDashboardStepDef extends Base {
     @And("I should be able to enter {string} on the email box")
     public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
         waitAndSendText(userDashboard.emailStripePaymentBox, ConfigReader.getProperty(email));
-        wait(3);
+        wait(1);
         userDashboard.emailStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the card number box")
     public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
         actions.sendKeys(userDashboard.stripeCardNoBox, ConfigReader.getProperty(cardNumber)).perform();
-        wait(3);
+        wait(1);
         userDashboard.stripeCardNoBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the exp box")
     public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
         actions.sendKeys(userDashboard.expDateStripePaymentBox, ConfigReader.getProperty(expDate)).perform();
-        wait(3);
+        wait(1);
         userDashboard.expDateStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
     public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
         waitAndSendText(userDashboard.cvcStripePaymentBox, ConfigReader.getProperty(cvc));
-        wait(3);
+        wait(1);
         userDashboard.cvcStripePaymentBox.sendKeys(Keys.TAB);
     }
 
@@ -1215,19 +1215,40 @@ public class UserDashboardStepDef extends Base {
     @Given("Verify that the {string} menu is visible and enabled in the sidebar")
     public void verify_that_the_menu_is_visible_and_enabled_in_the_sidebar(String string) {
 
+
     }
 
-    @Given("Verify that the {string} displayed")
-    public void verify_that_the_displayed(String string) {
+    @Given("Verify that the Follow menu is visible and enabled in the sidebar")
+    public void verify_that_the_follow_menu_is_visible_and_enabled_in_the_sidebar() {
+        assertTrue(userDashboard.followMenuItem.isDisplayed());
+    }
 
+
+
+    @Given("Click on Follow Menu Item")
+    public void click_on_follow_menu_item() {
+        waitAndClick(userDashboard.followMenuItem);
+    }
+    @Given("Verify that the Follow seller History List displayed")
+    public void verify_that_the_follow_seller_history_list_displayed() {
+        assertTrue(userDashboard.followListDashboard.isDisplayed());
+    }
+
+    @Given("Click on the Unfollow button on the Follow page")
+    public void click_on_the_unfollow_button_on_the_follow_page() {
+        UserDashboard.waitAndClick(userDashboard.unFollowButton);
     }
 
     @Given("Verify that the selected seller is removed from the Follow Seller History List")
     public void verify_that_the_selected_seller_is_removed_from_the_follow_seller_history_list() {
+        assertTrue(userDashboard.followSeller.isDisplayed());
+
     }
 
     @Given("Verify that the Empty List text ist displayed.")
     public void verify_that_the_empty_list_text_ist_displayed() {
+
+        assertTrue(userDashboard.emptyText.isDisplayed());
 
     }
 
