@@ -1249,7 +1249,9 @@ public class UserDashboardStepDef extends Base {
 
     @Given("I should see the message {string}")
     public void iShouldSeeTheMessage(String text) {
+        wait(3);
         assertTrue(userDashboard.thankyouText.isDisplayed());
+        wait(3);
     }
 
 
