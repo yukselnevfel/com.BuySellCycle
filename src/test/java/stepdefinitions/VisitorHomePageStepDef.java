@@ -1765,7 +1765,11 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     }
 
 
-
+    @When("Displays About text under the About menu heading in the home page body section")
+    public void displaysAboutTextUnderTheAboutMenuHeadingInTheHomePageBodySection() {
+        assertTrue(visitorHomePage.titleAbout.isDisplayed());
+        assertTrue(visitorHomePage.textAbout.getText().contains("At BuySellCycle.com"));
+    }
 
 
 
