@@ -6,6 +6,8 @@ Background:
 
   Scenario: Product List page should be accessible from Dashboard Side Bar
 
-  *
+  * Click on the Products menu
+  * Click on the "Product List"
+
 
 

@@ -170,12 +170,16 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-        wait(6);
-        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        wait(6);
-        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
-        wait(6);
-        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+        wait(4);
+
+        for (int i = 2; i < 5; i++) {
+            // visitorHomePage.slider7.get(i).toString();
+
+            Assert.assertTrue(visitorHomePage.slider7.get(i).isDisplayed());
+            System.out.println(visitorHomePage.slider7.get(i).getAttribute("title"));
+            wait(2);
+
+        }
 
     }
 
