@@ -10,6 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -810,6 +814,338 @@ public class AdminDashboardStepDef extends Base {
         clickWithJS(adminDashboard.inActiveCustomerButton);
 
     }
+    //------------------------SIMGE BASLANGIC------------------------
+    @Given("Verify that the Human Resource link is visible")
+    public void verify_that_the_human_resource_link_is_visible() {
+      Assert.assertTrue(adminDashboard.linkHumanResource.isDisplayed());
+    }
+    @Given("Click on the Human Resource link in the Dashboard side bar")
+    public void click_on_the_human_resource_link_in_the_dashboard_side_bar() {
+        clickWithJS(adminDashboard.linkHumanResource);
+    }
+    @Given("Verify that the Staff link is visible")
+    public void verify_that_the_staff_link_is_visible() {
+        Assert.assertTrue(adminDashboard.linkStaff.isDisplayed());
+    }
+    @Given("Click on the Staff link")
+    public void click_on_the_staff_link() {
+      clickWithJS(adminDashboard.linkStaff);
+    }
+    @Given("Verify that the Staff page is opened")
+    public void verify_that_the_staff_page_is_opened() {
+        String expectedUrl="https://qa.buysellcycle.com/hr/staffs";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+    }
+    @Given("Verify that the Staff List\\(SL, Name, Email, Phone, Role, Status, Department, Registered Date, Action) is visible")
+    public void verify_that_the_staff_list_sl_name_email_phone_role_status_department_registered_date_action_is_visible() {
+        for (WebElement list:adminDashboard.linkStaffList) {
+            Assert.assertTrue(list.isDisplayed());
+            Assert.assertTrue(list.isEnabled());
+        }
+    }
+    @Given("Verify that the the status of the first employee is active")
+    public void verify_that_the_the_status_of_the_first_employee_is_active() {
+        for (WebElement status: adminDashboard.linkStaffStatus) {
+            Assert.assertTrue(status.isEnabled());
+        }
+    }
+
+    @Given("Verify that the Select button is visible")
+    public void verify_that_the_select_button_is_visible() {
+        for (WebElement select: adminDashboard.linkStaffSelect) {
+            Assert.assertTrue(select.isDisplayed());
+        }
+    }
+    @Given("Click on the Select button")
+    public void click_on_the_select_button() {
+        for (int i = 0; i < 1; i++) {
+            clickWithJS(adminDashboard.linkStaffSelect.get(i));
+        }
+    }
+    @Given("Verify that the View link is visible")
+    public void verify_that_the_view_link_is_visible() {
+        Assert.assertTrue(adminDashboard.linkView.isDisplayed());
+    }
+    @Given("Click on the View link")
+    public void click_on_the_view_link() {
+        wait(2);
+       clickWithJS(adminDashboard.linkView);
+    }
+    @Given("Verify that the Staff Info page is opened")
+    public void verify_that_the_staff_info_page_is_opened() {
+     Assert.assertTrue(adminDashboard.labelStaffInfo.isDisplayed());
+    }
+    @Given("Verify that the Edit link is visible")
+    public void verify_that_the_edit_link_is_visible() {
+        wait(2);
+     Assert.assertTrue(adminDashboard.linkEdit.isDisplayed());
+    }
+    @Given("Click on the Edit link")
+    public void click_on_the_edit_link() {
+        clickWithJS(adminDashboard.linkEdit);
+    }
+    @Given("Verify that the employee's edit staff info page is opened")
+    public void verify_that_the_employee_s_edit_staff_info_page_is_opened() {
+     Assert.assertTrue(adminDashboard.labelEditStaffInfo.isDisplayed());
+    }
+    @Given("Verify that the Delete button is visible")
+    public void verify_that_the_delete_button_is_visible() {
+        Assert.assertTrue(adminDashboard.linkDelete.isDisplayed());
+    }
+    @Given("Click on the Delete button in Staff Page")
+    public void click_on_the_delete_button_in_staff_page() {
+       clickWithJS(adminDashboard.linkDelete);
+    }
+    @Given("Verify that the relevant employee has been deleted")
+    public void verify_that_the_relevant_employee_has_been_deleted() {
+        String expectedAllert ="Deleted successfully!";
+        String actualAllert=visitorHomePage.successfullAllert.getText();
+        Assert.assertEquals(expectedAllert,actualAllert);
+    }
+    @Given("Click on the Delete button in query")
+    public void click_on_the_delete_button_in_query() {
+       clickWithJS(adminDashboard.linkDelete2);
+    }
+    @Given("Verify that the Quick Search TextBox is visible")
+    public void verify_that_the_quick_search_text_box_is_visible() {
+      Assert.assertTrue(adminDashboard.textBoxSearch.isDisplayed());
+    }
+    @Given("Verify that the Quick Search TextBox is active")
+    public void verify_that_the_quick_search_text_box_is_active() {
+        Assert.assertTrue(adminDashboard.textBoxSearch.isEnabled());
+    }
+    @Given("Verify that the ADD NEW STAFF button is visible")
+    public void verify_that_the_add_new_staff_button_is_visible() {
+        Assert.assertTrue(adminDashboard.linkAddNewStaff.isDisplayed());
+    }
+    @Given("Click on the ADD NEW STAFF button")
+    public void click_on_the_add_new_staff_button() {
+       clickWithJS(adminDashboard.linkAddNewStaff);
+    }
+    @Given("Verify that the Add New Staff page is opened")
+    public void verify_that_the_add_new_staff_page_is_opened() {
+        String expectedUrl="https://qa.buysellcycle.com/hr/staffs/create";
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+    }
+    @Given("Verify that the Role bar is visible")
+    public void verify_that_the_role_bar_is_visible() {
+        Assert.assertTrue(adminDashboard.linkRoleTextBox.isDisplayed());
+    }
+    @Given("Click on the Role bar")
+    public void click_on_the_role_bar() {
+        clickWithJS(adminDashboard.linkRoleTextBox);
+    }
+    @Given("Click on the Staff")
+    public void click_on_the_staff() {
+        clickWithJS(adminDashboard.linkStaffDdm);
+    }
+    @Given("Verify that the Department bar is visible")
+    public void verify_that_the_department_bar_is_visible() {
+        Assert.assertTrue(adminDashboard.linkDepartmentTextBox.isDisplayed());
+    }
+    @Given("Click on the Department bar")
+    public void click_on_the_department_bar() {
+        clickWithJS(adminDashboard.linkDepartmentTextBox);
+    }
+    @Given("Click on the Marketing")
+    public void click_on_the_marketing() {
+        clickWithJS(adminDashboard.linkMarketingDdm);
+    }
+    @Given("Verify that the Email textbox is visible")
+    public void verify_that_the_email_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkEmailTextBox.isDisplayed());
+    }
+    @Given("Verify that the First Name textbox is visible")
+    public void verify_that_the_first_name_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkFirstNameTextBox.isDisplayed());
+    }
+    @Given("Verify that the Last Name textbox is visible")
+    public void verify_that_the_last_name_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkLastNameTextBox.isDisplayed());
+    }
+    @Given("Verify that the Phone textbox is visivle")
+    public void verify_that_the_phone_textbox_is_visivle() {
+        Assert.assertTrue(adminDashboard.linkPhoneTextBox.isDisplayed());
+    }
+    @Given("Verify that the Password textbox is visible")
+    public void verify_that_the_password_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkPasswordTextBox.isDisplayed());
+    }
+    @Given("Verify that the Date of Birth textbox is visible")
+    public void verify_that_the_date_of_birth_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkDateOfBirthTextBox.isDisplayed());
+    }
+    @Given("Verify that the Address textbox is visible")
+    public void verify_that_the_address_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkAddressTextBox.isDisplayed());
+    }
+    @Given("Verify that the Date of Joining textbox is visible")
+    public void verify_that_the_date_of_joining_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkDateOfJoiningTextBox.isDisplayed());
+    }
+    @Given("Verify that the APPLICABLE FOR LEAVE textbox is visible")
+    public void verify_that_the_applicable_for_leave_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkApplicableForLeaveTextBox.isDisplayed());
+    }
+    @Given("Verify that the Bank Name textbox is visible")
+    public void verify_that_the_bank_name_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkBankNameTextBox.isDisplayed());
+    }
+    @Given("Verify that the Branch Name textbox is visible")
+    public void verify_that_the_branch_name_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkBranchNameTextBox.isDisplayed());
+    }
+    @Given("Verify that the Account Name textbox is visible")
+    public void verify_that_the_account_name_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkAccountNameTextBox.isDisplayed());
+    }
+    @Given("Verify that the Account Number textbox is visible")
+    public void verify_that_the_account_number_textbox_is_visible() {
+        Assert.assertTrue(adminDashboard.linkAccountNumberTextBox.isDisplayed());
+    }
+    @Given("Click on the Email textbox")
+    public void click_on_the_email_textbox() {
+        clickWithJS(adminDashboard.linkEmailTextBox);
+    }
+    @Given("Random email is entered")
+    public void random_email_is_entered() {
+           adminDashboard.linkEmailTextBox.sendKeys(faker.internet().emailAddress());
+    }
+
+    @Given("Click on the First Name textbox")
+    public void click_on_the_first_name_textbox() {
+        clickWithJS(adminDashboard.linkFirstNameTextBox);
+    }
+    @Given("Random First Name is entered")
+    public void random_first_name_is_entered() {
+        adminDashboard.linkFirstNameTextBox.sendKeys(faker.name().firstName());
+    }
+
+    @Given("Click on the Last Name textbox")
+    public void click_on_the_last_name_textbox() {
+        clickWithJS(adminDashboard.linkLastNameTextBox);
+    }
+    @Given("Random Last Name is entered")
+    public void random_last_name_is_entered() {
+        adminDashboard.linkLastNameTextBox.sendKeys(faker.name().lastName());
+    }
+
+    @Given("Click on the Phone textbox")
+    public void click_on_the_phone_textbox() {
+        clickWithJS(adminDashboard.linkPhoneTextBox);
+    }
+    @Given("Random Phone is entered")
+    public void random_phone_is_entered() {
+        adminDashboard.linkPhoneTextBox.sendKeys(faker.phoneNumber().phoneNumber());
+    }
+
+    @Given("Click on the Password textbox")
+    public void click_on_the_password_textbox() {
+        clickWithJS(adminDashboard.linkPasswordTextBox);
+    }
+    @Given("Random Password is entered \\({int} character)")
+    public void random_password_is_entered_character(Integer int1) {
+        adminDashboard.linkPasswordTextBox.sendKeys(faker.internet().password(int1,15));
+    }
+
+    @Given("Click on the Date of Birth textbox")
+    public void click_on_the_date_of_birth_textbox() {
+        clickWithJS(adminDashboard.linkDateOfBirthTextBox);
+    }
+    @Given("Clean on the Date of Birth textbox")
+    public void clean_on_the_date_of_birth_textbox() {
+        adminDashboard.linkDateOfBirthTextBox.clear();
+    }
+    @Given("Random Date is entered \\(mm\\/dd\\/yyyy)")
+    public void random_date_is_entered_mm_dd_yyyy() {
+
+        adminDashboard.linkDateOfBirthTextBox.sendKeys("04/09/1993");
+    }
+    @Given("Click on the Address textbox")
+    public void click_on_the_address_textbox() {
+        clickWithJS(adminDashboard.linkAddressTextBox);
+    }
+    @Given("Random Address is entered")
+    public void random_address_is_entered() {
+        adminDashboard.linkAddressTextBox.sendKeys(faker.address().fullAddress());
+    }
+
+    @Given("Click on the Date of Joining textbox")
+    public void click_on_the_date_of_joining_textbox() {
+        clickWithJS(adminDashboard.linkDateOfJoiningTextBox);
+        adminDashboard.linkDateOfJoiningTextBox.clear();
+    }
+    @Given("Random Date of Joining is entered")
+    public void random_date_of_joining_is_entered() {
+        Date date = new Date();
+        SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("MM/dd/yyyy");
+
+        adminDashboard.linkDateOfJoiningTextBox.sendKeys(dateTimeFormatter.format(date.getTime()));
+    }
+
+    @Given("Click on the APPLICABLE FOR LEAVE textbox")
+    public void click_on_the_applicable_for_leave_textbox() {
+        clickWithJS(adminDashboard.linkApplicableForLeaveTextBox);
+    }
+    @Given("Random APPLICABLE FOR LEAVE is entered")
+    public void random_applicable_for_leave_is_entered() {
+        adminDashboard.linkApplicableForLeaveTextBox.clear();
+       adminDashboard.linkApplicableForLeaveTextBox.sendKeys("01/01/2025");
+    }
+
+    @Given("Click on the Bank Name textbox")
+    public void click_on_the_bank_name_textbox() {
+        clickWithJS(adminDashboard.linkBankNameTextBox);
+    }
+    @Given("Random Bank Name is entered")
+    public void random_bank_name_is_entered() {
+        adminDashboard.linkBankNameTextBox.sendKeys(faker.name().firstName()+"Bank");
+    }
+
+    @Given("Click on the Branch Name textbox")
+    public void click_on_the_branch_name_textbox() {
+        clickWithJS(adminDashboard.linkBranchNameTextBox);
+    }
+    @Given("Random Branch Name is entered")
+    public void random_branch_name_is_entered() {
+        adminDashboard.linkBranchNameTextBox.sendKeys(faker.name().title());
+    }
+
+    @Given("Click on the Account Name textbox")
+    public void click_on_the_account_name_textbox() {
+        clickWithJS(adminDashboard.linkAccountNameTextBox);
+    }
+    @Given("Random Account Name is entered")
+    public void random_account_name_is_entered() {
+        adminDashboard.linkAccountNameTextBox.sendKeys(faker.name().username());
+    }
+
+    @Given("Click on the Account Number textbox")
+    public void click_on_the_account_number_textbox() {
+       clickWithJS(adminDashboard.linkAccountNumberTextBox);
+    }
+    @Given("Random Account Number is entered")
+    public void random_account_number_is_entered() {
+        adminDashboard.linkAccountNumberTextBox.sendKeys(faker.number().digits(8));
+    }
+    @Given("Verify that the Save button is visible")
+    public void verify_that_the_save_button_is_visible() {
+        Assert.assertTrue(adminDashboard.linkSaveButton.isDisplayed());
+    }
+    @Given("Click on the Save button")
+    public void click_on_the_save_button() {
+        clickWithJS(adminDashboard.linkSaveButton);
+        wait(1);
+    }
+    @Given("Verify that the newly added staff is successfull")
+    public void verify_that_the_newly_added_staff_is_successfull() {
+        String expectedMessage ="Added successfully!";
+        String actualMessage = visitorHomePage.successfullAllert.getText();
+        Assert.assertEquals(expectedMessage,actualMessage);
+    }
+
 
     @Given("Verify that there is a Variant option")
     public void verify_that_there_is_a_variant_option() {

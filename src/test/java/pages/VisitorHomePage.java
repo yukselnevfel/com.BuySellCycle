@@ -234,9 +234,14 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//a[@data-product_id='1373'])[2]")
     public WebElement iconQuickView;
-
+    @FindBy(xpath = "//a[@href=\"https://qa.buysellcycle.com/my-wishlist\"]")
+    public WebElement linkWishlist;
     @FindBy(xpath = "(//a[@data-product-id='1373'])[2]")
     public WebElement iconAddToCart;
+    @FindBy(xpath = "(//*[text()=\"Buy now\"])[1]")
+    public WebElement textBuyNow;
+    @FindBy(xpath = "(//a[@id=\"add_to_cart_btn_modal\"])[1]")
+    public WebElement buttonAddddtoCart;
     @FindBy (xpath="//div[@class=\"product_checked_box d-flex flex-column justify-content-center align-items-center\"]")
     public WebElement alertAddToCart;
 

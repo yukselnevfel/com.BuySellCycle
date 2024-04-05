@@ -368,6 +368,73 @@ public class AdminDashboard extends Base{
     @FindBy(xpath = "//*[text()='The password confirmation does not match.']")
     public WebElement incorrectPassportNumbertext;
 
+    //--------------------sımge locate--------------------
+    @FindBy(xpath = "//*[text()=\"Human Resource\"]")
+    public WebElement linkHumanResource;
+    @FindBy(xpath = "//*[text()=\"Staff\"]")
+    public WebElement linkStaff;
+    @FindBy(xpath = "//th[@scope=\"col\"]")
+    public List<WebElement> linkStaffList;
+    @FindBy(xpath = "//label[@class=\"switch_toggle\"]")
+    public List<WebElement> linkStaffStatus;
+    @FindBy(xpath = "//button[@id=\"dropdownMenu2\"]")
+    public List<WebElement> linkStaffSelect;
+    @FindBy(xpath = "(//a[text()=\"View\"])[1]")
+    public WebElement linkView;
+    @FindBy(xpath = "(//a[text()=\"Delete\"])[1]")
+    public WebElement linkDelete;
+    @FindBy(xpath = "//div[@class=\"main-title\"]")
+    public WebElement labelStaffInfo;
+    @FindBy(xpath = "//a[@class=\"primary-btn small fix-gr-bg\"]")
+    public WebElement linkEdit;
+    @FindBy(xpath = "//h3[text()=\"Edit Staff Info\"]")
+    public WebElement labelEditStaffInfo;
+    @FindBy(xpath = "//a[@id=\"delete_link\"]")
+    public WebElement linkDelete2;
+    @FindBy(xpath = "//input[@type=\"search\"]")
+    public WebElement textBoxSearch;
+    @FindBy(xpath = "//*[text()=\"Add New Staff\"]")
+    public WebElement linkAddNewStaff;
+    @FindBy(xpath = "(//div[@class=\"nice-select primary_select mb-25\"])[1]")
+    public WebElement linkRoleTextBox;
+    @FindBy(xpath = "//li[@data-value=\"3-staff\"]")
+    public WebElement linkStaffDdm;
+    @FindBy(xpath = "(//div[@class=\"nice-select primary_select mb-25\"])[2]")
+    public WebElement linkDepartmentTextBox;
+    @FindBy(xpath = "//li[@data-value=\"2\"]")
+    public WebElement linkMarketingDdm;
+    @FindBy(xpath = "//input[@name=\"email\"]")
+    public WebElement linkEmailTextBox;
+    @FindBy(xpath = "//input[@name=\"first_name\"]")
+    public WebElement linkFirstNameTextBox;
+    @FindBy(xpath = "//input[@name=\"last_name\"]")
+    public WebElement linkLastNameTextBox;
+    @FindBy(xpath = "//input[@name=\"phone\"]")
+    public WebElement linkPhoneTextBox;
+    @FindBy(xpath = "//input[@name=\"password\"]")
+    public WebElement linkPasswordTextBox;
+    @FindBy(xpath = "//input[@name=\"address\"]")
+    public WebElement linkAddressTextBox;
+    @FindBy(xpath = "//input[@id=\"date_of_birth\"]")
+    public WebElement linkDateOfBirthTextBox;
+    @FindBy(xpath = "//input[@name=\"date_of_joining\"]")
+    public WebElement linkDateOfJoiningTextBox;
+    @FindBy(xpath = "//input[@name=\"leave_applicable_date\"]")
+    public WebElement linkApplicableForLeaveTextBox;
+    @FindBy(xpath = "//input[@name=\"bank_name\"]")
+    public WebElement linkBankNameTextBox;
+    @FindBy(xpath = "//input[@name=\"bank_branch_name\"]")
+    public WebElement linkBranchNameTextBox;
+    @FindBy(xpath = "//input[@name=\"bank_account_name\"]")
+    public WebElement linkAccountNameTextBox;
+    @FindBy(xpath = "//input[@name=\"bank_account_number\"]")
+    public WebElement linkAccountNumberTextBox;
+    @FindBy(xpath = "(//button[@type=\"submit\"])[2]")
+    public WebElement linkSaveButton;
+
+
+
+
 
 
 

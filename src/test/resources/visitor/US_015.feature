@@ -63,7 +63,7 @@ Feature: As a user I want to be able to see the categories and products of the e
   * Click on the add to cart icon for the first product in Electronics category on homepage
   * Verify that the Item added to your cart warning is visible
   * Close the page
-
+@simge2
  Scenario: "Add to Cart" operation should be possible on products in the "Electronics" category page
 
   * Verify that the Electronics category  is visible on homepage
