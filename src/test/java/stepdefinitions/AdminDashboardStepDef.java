@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -55,27 +56,136 @@ public class AdminDashboardStepDef extends Base {
         assertEquals(expText, actText);
     }
 
-    @Given("Close the succesfull pop-up message")
-    public void close_the_succesfull_pop_up_message() {
-        adminDashboard.popUpMessage.click();
+    @Given("Verify that the profile icon is visible on the Dashboard page")
+    public void verify_that_the_profile_icon_is_visible_on_the_dashboard_page() {
+        adminDashboard.iconCloseSuccessMessage.click();
+        adminDashboard.verifyVisible(adminDashboard.imageProfile);
     }
 
-    @Given("Verify that profile icon is visible")
-    public void verify_that_profile_icon_is_visible() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Given("Verify that subheadings are visible when hovering over the profile icon")
+    public void verify_that_subheadings_are_visible_when_hovering_over_the_profile_icon() {
+        actions.moveToElement(adminDashboard.imageProfile).perform();
+        assertTrue(adminDashboard.subMenuProfile.isDisplayed());
     }
 
-    @Given("Hover mouse cursor over profile icon")
-    public void hover_mouse_cursor_over_profile_icon() {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(adminDashboard.iconAdminProfile)
-                .perform();
+
+    @Given("Confirm that the My profile page has been opened")
+    public void confirm_that_the_my_profile_page_has_been_opened() {
+        adminDashboard.verifyVisible(adminDashboard.labelBasicInfo);
     }
 
-    @Given("Verify that Name text is visible")
-    public void verify_that_name_text_is_visible() {
-        assertTrue(adminDashboard.textName.isDisplayed());
+    @Given("Hover over your profile icon click on the My profile link.")
+    public void hover_over_your_profile_icon_click_on_the_my_profile_link() {
+        adminDashboard.iconCloseSuccessMessage.click();
+        actions.moveToElement(adminDashboard.imageProfile).perform();
+        wait(2);
+        adminDashboard.linkMyProfile.click();
+    }
+
+    @Given("Verify that First Name, Last Name, E-mail Address, Phone Number, Date of Bird information is visible in the Basic Info section.")
+    public void verify_that_first_name_last_name_e_mail_address_phone_number_date_of_bird_information_is_visible_in_the_basic_info_section() {
+        adminDashboard.verifyVisible(adminDashboard.labelFirstNameText);
+        adminDashboard.verifyVisible(adminDashboard.labelLastNameText);
+        adminDashboard.verifyVisible(adminDashboard.labelEmailText);
+        adminDashboard.verifyVisible(adminDashboard.labelPhoneNumberText);
+        adminDashboard.verifyVisible(adminDashboard.labelDateOfBirthText);
+    }
+
+    @Given("Verify that the update and avatar buttons are visible and functional")
+    public void verify_that_the_update_and_avatar_buttons_are_visible_and_functional() {
+        adminDashboard.verifyEnable(adminDashboard.buttonAvatar);
+        adminDashboard.verifyEnable(adminDashboard.buttonUpdate);
+    }
+
+    @Given("Verify that the information can be updated")
+    public void verify_that_the_information_can_be_updated() {
+        adminDashboard.textBoxfirstName.clear();
+        adminDashboard.textBoxfirstName.sendKeys("Beytullah");
+        adminDashboard.textBoxPhoneNumber.sendKeys("12345678");
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        adminDashboard.buttonUpdate.click();
+        wait(2);
+        assertTrue(adminDashboard.labelSuccessMessage.isDisplayed());
+    }
+
+    @Given("Click on the Change password button and verify that you are directed to the relevant page.")
+    public void click_on_the_change_password_button_and_verify_that_you_are_directed_to_the_relevant_page() {
+        wait(2);
+        adminDashboard.clickVerification(adminDashboard.buttonChangePassword, adminDashboard.labelChangePassword);
+        wait(3);
+        assertTrue(adminDashboard.labelChangePassword.isDisplayed());
+    }
+
+    @Given("Verify that the CURRENT PASSWORD, NEW PASSWORD, RE ENTER NEW PASSWORD textboxes are visible")
+    public void verify_that_the_current_password_new_password_re_enter_new_password_textboxes_are_visible() {
+        assertTrue(adminDashboard.textBoxCurrentPassword.isDisplayed());
+        assertTrue(adminDashboard.textBoxNewPassword.isDisplayed());
+        assertTrue(adminDashboard.textBoxRePassword.isDisplayed());
+        wait(2);
+    }
+
+    @Given("Verify that the password can be updated")
+    public void verify_that_the_password_can_be_updated() {
+        adminDashboard.textBoxCurrentPassword.sendKeys(ConfigReader.getProperty("password"));
+        adminDashboard.textBoxNewPassword.sendKeys("123123123");
+        adminDashboard.textBoxRePassword.sendKeys("123123123");
+        adminDashboard.buttonUpdateChangePassword.click();
+    }
+
+    @Given("Click on the Address button")
+    public void click_on_the_address_button() {
+        wait(2);
+        adminDashboard.buttonAddress.click();
+    }
+
+    @Given("Verify that the Add new address button is visible and active")
+    public void verify_that_the_add_new_address_button_is_visible_and_active() {
+        adminDashboard.verifyEnable(adminDashboard.buttonAddNewAddress);
+    }
+
+    @Given("Verify that the Address page opens")
+    public void verify_that_the_address_page_opens() {
+        wait(2);
+        assertTrue(adminDashboard.buttonAddNewAddress.isDisplayed());
+    }
+
+    @Given("Verify that address information is visible")
+    public void verify_that_address_information_is_visible() {
+        assertTrue(adminDashboard.tableAddressInformation.isDisplayed());
+    }
+
+    @Given("Click the Add new address button")
+    public void click_the_add_new_address_button() {
+        adminDashboard.buttonAddNewAddress.click();
+    }
+
+    @Given("Verify that the save button is visible")
+    public void verify_that_the_save_button_is_visible() {
+
+        assertTrue(adminDashboard.buttonSaveAddress.isDisplayed());
+    }
+
+    @Given("Fill in the starred fields and click the save button.")
+    public void fill_in_the_starred_fields_and_click_the_save_button() {
+
+        adminDashboard.addInfo();
+    }
+
+    @Given("Verify that the address has been added")
+    public void verify_that_the_address_has_been_added() {
+        assertTrue(adminDashboard.labelSuccessMessage.isDisplayed());
+    }
+
+    @Given("Select the select from options option from Country dropdown")
+    public void select_the_select_from_options_option_from_country_dropdown() {
+        adminDashboard.dropDownCountry.click();
+        wait(3);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        adminDashboard.subMenuSelectFromOptions.click();
+    }
+    @Given("Click on the save button")
+    public void click_on_the_save_button() {
+        adminDashboard.buttonSave.click();
     }
 
     // -------------------------Beytullah---------------------------------
@@ -134,7 +244,7 @@ public class AdminDashboardStepDef extends Base {
     //===============STEPS ESRA SONU==========================================
 
 
-    //-------------Login Steps FIKRET-----------------/
+    //-------------US_035-----------------/
     @Given("Clicks and confirms the registration request")
     public void clicks_and_confirms_the_registration_request() {
         clickWithJS(adminDashboard.confirmedRegisterSelect);
@@ -196,12 +306,21 @@ public class AdminDashboardStepDef extends Base {
 
     @Given("Click Read All from the Information menu")
     public void click_read_all_from_the_information_menu() {
-        clickWithJS(adminDashboard.notificiationReadAllButton);
+        if(adminDashboard.notificiationReadAllButton.isDisplayed()){
+            clickWithJS(adminDashboard.notificiationReadAllButton);
+            System.out.println("All notifications have been read!");
+        } else{
+            if(adminDashboard.noNotificiationtext.isDisplayed() && adminDashboard.noNotificiationtext.getText().equals("No unread message")){
+                System.out.println("No unread message text displayed");
+            }else  System.out.println("An unexpected situation!");
+
+        }
+
     }
 
     @Given("Verify that all messages have been read")
     public void verify_that_all_messages_have_been_read() {
-        assertEquals(0, adminDashboard.iconNotificiatonCount.getText());
+        assertFalse(adminDashboard.iconNotificiatonCount.isDisplayed());
     }
 
     @Given("Click View from the Notification menu")

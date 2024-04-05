@@ -422,7 +422,7 @@ public class VisitorHomePageStepDef extends Base {
     //---------------------------Ayca Login Step Finish-------------------------------------------------------------------//
 
 
-    //-------------Login Steps FIKRET-----------------/
+    //-------------US_004-----------------/
 
 
     @Given("the user verifies that the Register button link is visible on the home page")

@@ -481,13 +481,11 @@ public class UserDashboardStepDef extends Base {
     @Given("the user clicks on the invoice view link under Action")
     public void the_user_clicks_on_the_invoice_view_link_under_action() {
         clickWithJS(userDashboard.iconBurgerPurchase);
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
 
     @Then("the user verifies the displayed invoice details such as Order code, Package code, Delivery Process, Order Details, Order Summary, and Payment Type")
     public void the_user_verifies_the_displayed_invoice_details_such_as_order_code_package_code_delivery_process_order_details_order_summary_and_payment_type() {
         System.out.println(userDashboard.invoicePageText.getText());
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
         assertTrue(userDashboard.invoicePageText.getText().contains("Order code"));
         assertTrue(userDashboard.invoicePageText.getText().contains("Package code"));
         assertTrue(userDashboard.invoicePageText.getText().contains("Order Details"));

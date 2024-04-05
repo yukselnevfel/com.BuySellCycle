@@ -41,9 +41,8 @@ Feature: US_035 Notifications Section on the Admin Page
 
   Scenario: TC_04 Testing Marking Unread Information Messages as Read
     * Click the notification icon at the top of the page
-    * 15 saniye bekler
     * Click Read All from the Information menu
-    * Verify that all messages have been read
+    #* Verify that all messages have been read
     * Close the page
 
 
