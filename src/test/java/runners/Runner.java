@@ -19,7 +19,7 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@e2e",
+        tags = "@12/4",
         dryRun =false
 
 

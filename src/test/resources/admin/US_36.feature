@@ -12,6 +12,7 @@ Feature:As an administrator, I want to have an admin panel to access site data, 
   @36/2
   Scenario:
     * Hover mouse cursor over profile icon
+    * Verify that Name text is visible
     * Verify that the "My Profile" is visible
     * Verify that the "Log out" is visible
 

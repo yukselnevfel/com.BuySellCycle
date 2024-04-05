@@ -430,6 +430,8 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//a[@title='Add to Cart'])[1]")
     public WebElement buttonAddToCart;
 
+    @FindBy(xpath = "//*[@class='amaz_primary_btn addToCartFromThumnail']")
+    public WebElement iconProduct;
     @FindBy(xpath = "//*[text()='Item added to your cart']")
     public WebElement  textSucces;
 
@@ -618,6 +620,8 @@ public void verifyTheTeamMembersInfo(String teamMember) {
     @FindBy(xpath = "//*[@id='refresh_btn']")
     public WebElement buttonRefresh;
 
+    @FindBy(xpath = "//*[@class='toast-message']")
+    public WebElement labelPopUpMessage;
 
 
     // -------------------------End of Beytullah's Locates----------------------------

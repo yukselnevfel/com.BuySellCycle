@@ -406,9 +406,12 @@ public WebElement continueToShippingButton;
     // ====================== Beytullah's Steps =====================
     @FindBy(xpath = "//*[@id='code']")
     public WebElement labelReferralCode;
-    //*[text()='Referral']
     @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center'])[9]")
     public WebElement buttonReferral;
+    @FindBy(xpath = "//body//table//tr")
+    public WebElement tableHead;
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement buttonDelete;
 
     // ====================== End Of Beytullah's Steps End =====================
 
@@ -429,6 +432,8 @@ public WebElement continueToShippingButton;
 
     @FindBy(xpath ="//button[text()='Apply']")
     public WebElement applyButtonCouponCode;
+    @FindBy(xpath ="//*[text()='Empty List.']")
+    public WebElement labelEmptyText;
 
 
 }
