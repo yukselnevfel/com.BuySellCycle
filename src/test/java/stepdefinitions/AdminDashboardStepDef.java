@@ -1185,20 +1185,21 @@ public class AdminDashboardStepDef extends Base {
         waitAndClick(adminDashboard.secilecekResim);
         wait(1);
         waitAndClick(adminDashboard.addFilesButton);
+        wait(2);
 
     }
 
     @Given("Select Related Product")
     public void select_related_product() {
         waitAndClick(adminDashboard.related);
-        wait(1);
+        wait(2);
 
     }
 
     @Given("Select Up Sale Product")
     public void select_up_sale_product() {
         waitAndClick(adminDashboard.upSale);
-        wait(1);
+        wait(2);
     }
 
     @Given("Select Cross Sale Product")
@@ -1210,34 +1211,39 @@ public class AdminDashboardStepDef extends Base {
     public void click_on_general_information() {
         wait(2);
         waitAndClick(adminDashboard.generalInformation);
+        wait(1);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
 
     @Given("Click Save and Publish")
     public void click_save_and_publish() {
-        wait(2);
         waitAndClick(adminDashboard.savePublish);
+        wait(2);
     }
 
     @Given("Write the product {string} on the search button and search.")
     public void write_the_product_on_the_search_button_and_search(String string) {
-        visitorHomePage.searchTextBox.sendKeys(string + Keys.ENTER);
         wait(2);
+        visitorHomePage.searchTextBox.sendKeys(string + Keys.ENTER);
 
     }
 
     @Given("Verify that the product has been installed")
     public void verify_that_the_product_has_been_installed() {
         assertTrue(adminDashboard.updatedProduct.isDisplayed());
+
     }
 
     @Given("Click on the saved product")
     public void click_on_the_saved_product() {
-        wait(2);
         waitAndClick(adminDashboard.myProduct);
+        wait(3);
     }
 
     @Given("Verify Cross Sale, Up Sale and Related Product")
     public void verify_cross_sale_up_sale_and_related_product() {
+        wait(2);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         wait(2);
         assertTrue(adminDashboard.crossUrun.isDisplayed());
         assertTrue(adminDashboard.upSellUrun.isDisplayed());
