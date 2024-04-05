@@ -55,7 +55,7 @@ Feature: US_004 User Registration on the Site
   Scenario: TC_08 - Transition Test from SignUp Page to SignIn Page
     * the user clicks the Register button link on the home page
     * the user clicks the SignIn buttonLink
-    * 3 saniye bekler
+    * 3 seconds pause
     * the user verifies that it is possible to navigate to the SignIn page
     * Close the page
 

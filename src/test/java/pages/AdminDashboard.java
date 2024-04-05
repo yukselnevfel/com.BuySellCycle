@@ -1,9 +1,12 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class AdminDashboard extends Base{
 
@@ -15,15 +18,104 @@ public class AdminDashboard extends Base{
     public WebElement popUpMessage;
     @FindBy(xpath = "//*[@class='toast-close-button']")
     public WebElement popUpCloseMessage;
-    @FindBy(xpath = "//*[@id='profile_pic']")
+    @FindBy(xpath = "//div[@class='user_avatar_div']")
     public WebElement iconAdminProfile;
-    @FindBy(xpath = "//h5")
-    public WebElement textName;
-
+    @FindBy(xpath = "//h3[normalize-space()='Basic Info']")
+    public WebElement basicInfoText;
+    @FindBy(className = "user_avatar_div")
+    public WebElement imageProfile;
+    @FindBy(className = "profile_info_iner")
+    public WebElement subMenuProfile;
     @FindBy(xpath = "//*[text()='My Profile']")
     public WebElement linkMyProfile;
-    @FindBy(xpath = "//*[text()='Log out']")
-    public WebElement linkLogOut;
+    @FindBy(xpath = "//*[@class='toast-close-button']")
+    public WebElement iconCloseSuccessMessage;
+    @FindBy(xpath = "//*[text()='Basic Info']")
+    public WebElement labelBasicInfo;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[1]")
+    public WebElement labelFirstNameText;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[2]")
+    public WebElement labelLastNameText;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[3]")
+    public WebElement labelEmailText;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[4]")
+    public WebElement labelPhoneNumberText;
+    @FindBy(xpath = "(//*[@class='primary_input_label'])[5]")
+    public WebElement labelDateOfBirthText;
+    @FindBy(xpath = "//*[@class='primary-btn small fix-gr-bg']")
+    public WebElement buttonAvatar;
+    @FindBy(xpath = "//*[@id='update_info']")
+    public WebElement buttonUpdate;
+    public void verifyVisible(WebElement element){
+        element.isDisplayed();
+    }
+    public void verifyEnable(WebElement element){
+        element.isDisplayed();
+        element.isEnabled();
+    }
+    @FindBy(xpath = "//*[@class='primary_input_field first_name']")
+    public WebElement textBoxfirstName;
+    @FindBy(xpath = "//*[@class='primary_input_field phone']")
+    public WebElement textBoxPhoneNumber;
+    @FindBy(xpath = "//*[@class='toast-message']")
+    public WebElement labelSuccessMessage;
+    @FindBy(xpath = "(//*[@class='nav-link'])[1]")
+    public WebElement buttonChangePassword;
+    @FindBy(xpath = "(//*[@class='nav-link'])[2]")
+    public WebElement buttonAddress;
+    @FindBy(xpath = "(//*[@class='mb-0 mr-30 mb_xs_15px mb_sm_20px'])[2]")
+    public WebElement labelChangePassword;
+    public void clickVerification(WebElement element1,WebElement element2){
+        element1.click();
+        wait(3);
+        assertTrue(element2.isDisplayed());
+    }
+    @FindBy(xpath = "//*[@id='currentPassword']")
+    public WebElement textBoxCurrentPassword;
+    @FindBy(xpath = "//*[@id='newPass']")
+    public WebElement textBoxNewPassword;
+    @FindBy(xpath = "//*[@id='rePass']")
+    public WebElement textBoxRePassword;
+    @FindBy(xpath = "//*[@class='primary-btn semi_large2 fix-gr-bg change_password']")
+    public WebElement buttonUpdateChangePassword;
+    @FindBy(xpath = "//*[@class='primary-btn radius_30px mr-10 fix-gr-bg add_new_address']")
+    public WebElement buttonAddNewAddress;
+    @FindBy(xpath = "(//*[@id='address_table'])[1]")
+    public WebElement tableAddressInformation;
+    @FindBy(xpath = "(//*[@class='primary-btn semi_large2 fix-gr-bg float-none'])[1]")
+    public WebElement buttonSaveAddress;
+    @FindBy(xpath = "//*[@id='address_name']")
+    public WebElement textBoxNameAddress;
+    @FindBy(xpath = "//*[@id='Email_Address1']")
+    public WebElement textBoxEmailAddress;
+    @FindBy(xpath ="//*[@id='customer_phn']")
+    public WebElement textBoxPhoneAddress;
+    @FindBy(xpath = "//*[@id='Address']")
+    public WebElement textBoxAddress;
+    @FindBy(xpath = "(//*[@class='nice-select form-control primary_select'])[1]")
+    public WebElement dropDownCountry;
+    @FindBy(xpath = "(//*[@class='nice-select form-control primary_select'])[2]")
+    public WebElement dropDownState;
+    @FindBy(xpath = "(//*[@class='nice-select form-control primary_select'])[3]")
+    public WebElement dropDownCity;
+    @FindBy(xpath ="//*[@id='postal_code']")
+    public WebElement textBoxPostalCode;
+    public void addInfo(){
+        textBoxNameAddress.sendKeys("Home");
+        textBoxEmailAddress.sendKeys("nobody@nobody.com");
+        textBoxPhoneAddress.sendKeys("123456789");
+        textBoxAddress.sendKeys("Everywhere");
+        dropDownState.sendKeys("Newyork");
+        dropDownCity.sendKeys("NewyorkCity");
+        textBoxPostalCode.sendKeys("45454545");
+        buttonSaveAddress.click();
+    }
+    @FindBy(xpath = "//*[text()='Something Went Wrong!']")
+    public WebElement labelErrorMessage;
+    @FindBy(xpath = "//*[@id='address_form']//button")
+    public WebElement buttonSave;
+    @FindBy(xpath = "//li[normalize-space()='Albania']")
+    public WebElement subMenuSelectFromOptions;
 
 // -------------------------End of Beytullah's Locates----------------------------
 
@@ -78,7 +170,7 @@ public class AdminDashboard extends Base{
 
     @FindBy(xpath = "//*[@class='fa fa-bell']")
     public WebElement iconNotificiaton;
-    @FindBy(xpath = "//*[@class='notification_count']")
+    @FindBy(xpath = "(//*[@id='main-content']//a/span[1])[1]")
     public WebElement iconNotificiatonCount;
     @FindBy(xpath = "//*[text()='Setting']")
     public WebElement linkNotificiationSetting;
@@ -88,11 +180,13 @@ public class AdminDashboard extends Base{
     public WebElement togleAktivePassive;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/profile/mark-as-read']")
     public WebElement notificiationReadAllButton;
-    @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/profile/notifications']")
+    @FindBy(xpath = "(//*[@id='main-content']//a[3])[1]")
     public WebElement notificiationViewButton;
+    @FindBy(xpath = "//*[@class='notify_content']")
+    public WebElement noNotificiationtext;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/customer/active-customer-list']")
     public WebElement demoRegesterVievButton;
-    @FindBy(xpath = "//*[text()='Notifications']")
+    @FindBy(xpath = "(//*[text()='Notifications'])[2]")
     public WebElement notificationListText;
     @FindBy(xpath = "//*[@href='https://qa.buysellcycle.com/ordermanage/total-sales-list']")
     public WebElement notificiationRelevantViewButton;
@@ -180,6 +274,7 @@ public class AdminDashboard extends Base{
     public List<WebElement> completedSearchResult;
     @FindBy(xpath = "//*[@id='confirmedTable']/tbody//td[4]")
     public List<WebElement> confirmedSearchResult;
+
 
 
 

@@ -36,7 +36,7 @@ Feature: US_044 Admin Order Management
 
   Scenario: TC_06 - Searching in Pending Orders List
     * enters a search query in the Quick Search text box in the Pending Orders List
-    * 2 saniye bekler
+    * 2 seconds pause
     * verifies that results matching the search query are displayed
     * Close the page
 
