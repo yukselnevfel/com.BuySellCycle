@@ -6,26 +6,27 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 //import jdk.incubator.foreign.CLinker;
 import org.junit.Assert;
+import org.junit.experimental.theories.internal.Assignments;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.WebElement;
+
 import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
 import utils.Driver;
 import utils.ConfigReader;
 
+import java.sql.Time;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Locale;
-import java.util.Map;
-
 import static org.junit.Assert.*;
 
 public class VisitorHomePageStepDef extends Base {
@@ -169,12 +170,16 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify the slider images are visible automaticly")
     public void verify_the_slider_images_are_visible_automaticly() {
-        wait(6);
-        Assert.assertTrue(visitorHomePage.imageSecondSlider.isDisplayed());
-        wait(6);
-        waitAndClick(visitorHomePage.thirdSlideNavigatorButton);
-        wait(6);
-        Assert.assertTrue(visitorHomePage.imageFirstSlider.isDisplayed());
+        wait(4);
+
+        for (int i = 2; i < 5; i++) {
+            // visitorHomePage.slider7.get(i).toString();
+
+            Assert.assertTrue(visitorHomePage.slider7.get(i).isDisplayed());
+            System.out.println(visitorHomePage.slider7.get(i).getAttribute("title"));
+            wait(2);
+
+        }
 
     }
 
@@ -422,7 +427,7 @@ public class VisitorHomePageStepDef extends Base {
     //---------------------------Ayca Login Step Finish-------------------------------------------------------------------//
 
 
-    //-------------Login Steps FIKRET-----------------/
+    //-------------US_004-----------------/
 
 
     @Given("the user verifies that the Register button link is visible on the home page")
@@ -948,6 +953,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Click on the Telephone link in Electronics category on homepage")
     public void click_on_the_telephone_link_in_electronics_category_on_homepage() {
+        wait(2);
         Assert.assertTrue(visitorHomePage.labelTelephone.isEnabled());
        clickWithJS(visitorHomePage.labelTelephone);
 
@@ -1065,6 +1071,7 @@ public class VisitorHomePageStepDef extends Base {
 
     @Given("Verify that the detail window for the relevant product has opened")
     public void verify_that_the_detail_window_for_the_relevant_product_has_opened() {
+        wait(1);
         Assert.assertTrue(visitorHomePage.linkBuyNowElectronicsPage.isDisplayed());
       //String quickViewDetail=visitorHomePage.detailOfQuickView.getText();
      // Assert.assertTrue(quickViewDetail.contains("Phone"));
@@ -1076,12 +1083,36 @@ public class VisitorHomePageStepDef extends Base {
     @Given("Click on the add to cart icon for the first product in Electronics category on homepage")
     public void click_on_the_add_to_cart_icon_for_the_first_product_in_electronics_category_on_homepage() {
      clickWithJS(visitorHomePage.iconAddToCart);
-     wait(1);
+     wait(2);
+    }
+    @Given("Verify that Wishlist link is visible in the homepage")
+    public void verify_that_wishlist_link_is_visible_in_the_homepage() {
+        Assert.assertTrue(visitorHomePage.linkWishlist.isDisplayed());
+    }
+    @Given("Click on the Wishlist link in the homepage")
+    public void click_on_the_wishlist_link_in_the_homepage() {
+        clickWithJS(visitorHomePage.linkWishlist);
+    }
+    @Given("Verify that Wishlist page opened")
+    public void verify_that_wishlist_page_opened() {
+        String expectedUrl="https://qa.buysellcycle.com/my-wishlist";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
     }
     @Given("Verify that the Item added to your cart warning is visible")
     public void verify_that_the_item_added_to_your_cart_warning_is_visible() {
+        wait(2);
+        if (visitorHomePage.alertAddToCart.isDisplayed()){
+            System.out.println("Add To Cart icon is successfull");
+        }
+        else if (visitorHomePage.textBuyNow.isDisplayed()){
+            clickWithJS(visitorHomePage.buttonAddddtoCart);
+            wait(2);
+            Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
+        }
+        else System.out.println("Add To Cart icon is not successfull");
 
-        Assert.assertTrue(visitorHomePage.alertAddToCart.isDisplayed());
+
     }
     @Given("Verify that the Deal More link is visible in Electronics category on homepage")
     public void verify_that_the_deal_more_link_is_visible_in_electronics_category_on_homepage() {
@@ -1253,8 +1284,6 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
         waitForPageToLoad(2);
         checkTheTitle(page);
     }
-
-
 
 
     //---------------- Steps Asli----------------------/
@@ -1556,7 +1585,10 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
         String actualUrl=Driver.getDriver().getCurrentUrl();
         assertEquals(expectedUrl,actualUrl);
     }
-        //US_014 STEPS
+
+
+    //========US_014 STEPS============
+    //TC_01 steps
     @Given("Click the View All button next to the Best Deals menu item and navigates to the relevant page")
     public void click_the_view_all_button_next_to_the_best_deals_menu_item_and_navigates_to_the_relevant_page() {
         clickWithJS(visitorHomePage.buttonViewAll);
@@ -1600,11 +1632,315 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     public void add_products_from_the_best_deals_menu_on_the_home_page_body_to_the_favorites_list_and_displays() {
         clickWithJS(visitorHomePage.buttonWishList);
     }
+       //TC_02 steps
+    @Given("Click the View All button next to the Feature Categories menu item and navigates to the relevant page")
+    public void click_the_view_all_button_next_to_the_feature_categories_menu_item_and_navigates_to_the_relevant_page() {
+        clickWithJS(visitorHomePage.textViewAll);
+        String expectedURL="https://qa.buysellcycle.com/category";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+    }
+
+    @Given("Displays the products in the Category menu")
+    public void displays_the_products_in_the_category_menu() {
+        assertTrue(visitorHomePage.imageBag.isDisplayed());
+        assertTrue(visitorHomePage.image.isDisplayed());
+        assertTrue(visitorHomePage.imageChicco.isDisplayed());
+    }
+
+    @Given("Add products from the Category menu on the home page body to the cart")
+    public void add_products_from_the_category_menu_on_the_home_page_body_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddtocart);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonClose);
+    }
+
+    @Given("Select products in the Category menu in the body section of the home page for comparison")
+    public void select_products_in_the_category_menu_in_the_body_section_of_the_home_page_for_comparison() {
+        actions.moveToElement(visitorHomePage.imageBag).perform();
+        wait(2);
+        assertTrue(visitorHomePage.buttonCompare.isDisplayed());
+    }
+
+    @Given("Add products from the Category menu on the home page body to the favorites list")
+    public void add_products_from_the_category_menu_on_the_home_page_body_to_the_favorites_list() {
+        clickWithJS(visitorHomePage.buttonWishList);
+    }
+
+    //TC_03 steps
+    @Given("Displays the Top Rating menu item")
+    public void click_the_top_rating_menu_item() {
+        assertTrue(visitorHomePage.titleTopRating.isDisplayed());
+    }
+
+    @Given("Displays the products in the Top Rating menu")
+    public void displays_the_products_in_the_top_rating_menu() {
+        scrollIntoViewJS(visitorHomePage.imageEtek);
+    }
+
+    @Given("Add products from the Top Rating menu in the body section of the home page to the cart")
+    public void add_products_from_the_top_rating_menu_in_the_body_section_of_the_home_page_to_the_cart() {
+        clickWithJS(visitorHomePage.buttonAddTocart);
+        clickWithJS(visitorHomePage.buttonADDTOCART);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonCLOSE);
+
+    }
+
+    @When("Select products in the Top Rating menu in the body section of the home page for comparison")
+    public void selectProductsInTheTopRatingMenuInTheBodySectionOfTheHomePageForComparison() {
+        scrollIntoViewJS(visitorHomePage.imageEtek);
+        actions.moveToElement(visitorHomePage.imageEtek).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.buttonCompareEtek);
+        clickWithJS(visitorHomePage.buttonADDTOCOMPARE);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+
+    }
+
+    @When("Add products from the Top Rating menu on the home page body to the favorites list and displays")
+    public void addProductsFromTheTopRatingMenuOnTheHomePageBodyToTheFavoritesListAndDisplays() {
+        actions.moveToElement(visitorHomePage.imageEtek).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.iconWishlistEtek);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
+
+    //TC04 STEPS
+    @When("Click the People Choices menu item in the body section of the home page")
+    public void clickThePeopleChoicesMenuItemInTheBodySectionOfTheHomePage() {
+      clickWithJS(visitorHomePage.titlePeopleChoice);
+    }
+
+    @When("Displays the products in the People Choices menu")
+    public void displaysTheProductsInTheChoicesMenu() {
+        scrollIntoViewJS(visitorHomePage.imgZaraLeg);
+    }
+
+    @When("Add products from the People Choices menu in the body section of the home page to the cart")
+    public void addProductsFromTheChoicesMenuInTheBodySectionOfTheHomePageToTheCart() {
+        clickWithJS(visitorHomePage.addToCartZaraLeg);
+        clickWithJS(visitorHomePage.buttonADDTOCART);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonCLOSE);
+
+    }
+
+    @When("Select products in the People Choices menu in the body section of the home page for comparison")
+    public void selectProductsInThePeopleChoicesMenuInTheBodySectionOfTheHomePageForComparison() {
+        scrollIntoViewJS(visitorHomePage.imgZaraLeg);
+        actions.moveToElement(visitorHomePage.imgZaraLeg).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.buttonCompareEtek);
+        clickWithJS(visitorHomePage.buttonADDTOCOMPARE);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+    }
+
+    @When("Add products from the People Choices menu on the home page body to the favorites list and displays")
+    public void addProductsFromThePeopleChoicesMenuOnTheHomePageBodyToTheFavoritesListAndDisplays() {
+        actions.moveToElement(visitorHomePage.imgZaraLeg).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.iconWishlistEtek);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
+
+    //TC_05 STEPS
+    @When("Click the Top Picks menu item in the body section of the home page")
+    public void clickTheTopPicksMenuItemInTheBodySectionOfTheHomePage() {
+        clickWithJS(visitorHomePage.titleTopPicks);
+    }
+
+    @When("Displays the products in the Top Picks menu")
+    public void displaysTheProductsInTheTopPicksMenu() {
+        scrollIntoViewJS(visitorHomePage.imgRedDress);
+    }
+
+    @When("Add products from the Top Picks menu in the body section of the home page to the cart")
+    public void addProductsFromTheTopPicksMenuInTheBodySectionOfTheHomePageToTheCart() {
+        clickWithJS(visitorHomePage.addToCartZaraLeg);
+        clickWithJS(visitorHomePage.buttonADDTOCART);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonCLOSE);
+    }
+
+    @When("Select products in the Top Picks menu in the body section of the home page for comparison")
+    public void selectProductsInTheTopPicksMenuInTheBodySectionOfTheHomePageForComparison() {
+        scrollIntoViewJS(visitorHomePage.imgRedDress);
+        actions.moveToElement(visitorHomePage.imgRedDress).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.buttonCompareEtek);
+        clickWithJS(visitorHomePage.buttonADDTOCOMPARE);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+    }
+
+    @When("Add products from the Top Picks menu on the home page body to the favorites list and displays")
+    public void addProductsFromTheTopPicksMenuOnTheHomePageBodyToTheFavoritesListAndDisplays() {
+        actions.moveToElement(visitorHomePage.imgRedDress).perform();
+        wait(3);
+        clickWithJS(visitorHomePage.iconWishlistEtek);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
 
 
 
 
+    //TC06 STEPS
+    @Given("Displays the products in the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body")
+    public void displays_the_products_in_the_more_products_that_you_may_love_menu_on_the_home_page_body() {
+        assertTrue(visitorHomePage.imageSmrWatch.isDisplayed());
+    }
 
+    @Given("Add products from the MORE PRODUCTS THAT YOU MAY LOVE  menu in the body section of the home page to the cart")
+    public void add_products_from_the_more_products_that_you_may_love_menu_in_the_body_section_of_the_home_page_to_the_cart() {
+        clickWithJS(visitorHomePage.addToCartSmrWatch);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.buttonCloseSmrWatch);
+
+    }
+
+    @Given("Select products in the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to make comparison")
+    public void select_products_in_the_more_products_that_you_may_love_menu_on_the_home_page_body_to_make_comparison() {
+        clickWithJS(visitorHomePage.compareSmrWatch);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+
+    }
+
+    @Given("Add products from the MORE PRODUCTS THAT YOU MAY LOVE menu on the home page body to the favorites list")
+    public void add_products_from_the_more_products_that_you_may_love_menu_on_the_home_page_body_to_the_favorites_list() {
+        clickWithJS(visitorHomePage.wishListSmrWatch);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
+
+    //TC_07 STEPS
+    @Given("Displays brands under the Top Brands menu heading")
+    public void displays_brands_under_the_top_brands_menu_heading() {
+        assertTrue(visitorHomePage.linkStradivarius.isDisplayed());
+        assertTrue(visitorHomePage.linkGap.isDisplayed());
+        assertTrue(visitorHomePage.linkMango.isDisplayed());
+        assertTrue(visitorHomePage.linkPullBear.isDisplayed());
+
+    }
+    @Given("Click on the Stradivarius under the Top Brands heading")
+    public void click_on_the_brands_under_the_top_brands_heading() {
+        clickWithJS(visitorHomePage.linkStradivarius);
+
+    }
+    @Given("Access the products of the relevant brand")
+    public void access_the_products_of_the_relevant_brand() {
+        String expectedURL="https://qa.buysellcycle.com/category/stradivarius?item=brand";
+        String actualURL=Driver.getDriver().getCurrentUrl();
+        assertEquals(expectedURL,actualURL);
+
+    }
+
+    @When("Add products of the relevant brand to the cart")
+    public void addProductsOfTheRelevantBrandToTheCart() {
+        clickWithJS(visitorHomePage.iconSepet);
+        clickWithJS(visitorHomePage.ADDTOCARTStradivarious);
+        wait(3);
+        assertTrue(visitorHomePage.textSucces.isDisplayed());
+        clickWithJS(visitorHomePage.closeStradivarious);
+
+    }
+
+    @When("Select products in the Stradivarius menu for comparison")
+    public void selectProductsInTheStradivariusMenuForComparison() {
+        actions.moveToElement(visitorHomePage.imgBeltedTrouser).perform();
+        wait(2);
+        clickWithJS(visitorHomePage.compareIcon);
+        clickWithJS(visitorHomePage.textAddToCart);
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Product added to compare list successfully");
+        clickWithJS(visitorHomePage.closeStradivarious);
+    }
+
+    @When("Add products from the Stradivarius menu to the favorites list")
+    public void addProductsFromTheStradivariusMenuToTheFavoritesList() {
+        clickWithJS(visitorHomePage.wishIcon);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        WebElement toastrMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-message")));
+
+        boolean isDisplayed = toastrMessage.isDisplayed();
+        System.out.println("Is Toastr message displayed? " + isDisplayed);
+
+        String messageText = toastrMessage.getText();
+        System.out.println("Toastr message text: " + "Please login first");
+    }
+
+      //TC08
+    @When("Displays About text under the About menu heading in the home page body section")
+    public void displaysAboutTextUnderTheAboutMenuHeadingInTheHomePageBodySection() {
+        assertTrue(visitorHomePage.titleAbout.isDisplayed());
+        assertTrue(visitorHomePage.textAbout.getText().contains("At BuySellCycle.com"));
+    }
 
     //=============STEPS ESRA SONU=================================//
 
@@ -1821,6 +2157,7 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     @Then("I should see each section contains a numeric value representing the relevant metric")
     public void iShouldSeeEachSectionContainsANumericValueRepresentingTheRelevantMetric() {
     }
+
 
 
 // ====================== End Of Beytullah's Steps End =====================

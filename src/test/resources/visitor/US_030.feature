@@ -1,19 +1,21 @@
+
 Feature: As a registered user, I would like to have a page on my Dashboard where I can view my orders.
 
   Background:
     * Open browser and Go to "URL"
     * Close the pop-up message
-    * Click on the login link, Enter "simgeCostumerEmail" and "password" and click sign in
-
+@simge
   Scenario: Access to My Wishlist page must be provided
-    * Verify that My Wishlist link is visible in the Dashboard side bar
+    * Verify that Wishlist link is visible in the homepage
+    * Click on the Wishlist link in the homepage
+    * Verify that Wishlist page opened
     * Close the page
 
   Scenario: The products that the user likes/chooses should be listed on the My Wishlist page
-    * Click on the My Wishlist link in the Dashboard side bar
+    * Click on the Wishlist link in the Dashboard side bar
     * Verify that the products added to the Wishlist are listed
     * Close the page
-  @simge
+
   Scenario: In Wishlist, products should be filtered according to New
     * Click on the New Product Deals
     * Add to wishlist first product
@@ -49,31 +51,35 @@ Feature: As a registered user, I would like to have a page on my Dashboard where
 
  Scenario: 8 items to be displayed on the Wishlist page
     * Click on the My Wishlist link in the Dashboard side bar
-    * Verify that the Show 8 Item's bar is visible
+    * Verify that the Show Item's bar is visible
     * Click on the Show 8 Item's  button
     * Verify that 8 products are displayed on the page
     * Close the page
 
  Scenario: 12 items to be displayed on the Wishlist page
     * Click on the My Wishlist link in the Dashboard side bar
+    * Verify that the Show Item's bar is visible
     * Click on the Show 12 Item's  button
     * Verify that 12 products are displayed on the page
     * Close the page
 
  Scenario: 16 items to be displayed on the Wishlist page
     * Click on the My Wishlist link in the Dashboard side bar
+    * Verify that the Show Item's bar is visible
     * Click on the Show 16 Item's  button
     * Verify that 16 products are displayed on the page
     * Close the page
 
  Scenario: 24 items to be displayed on the Wishlist page
     * Click on the My Wishlist link in the Dashboard side bar
+    * Verify that the Show Item's bar is visible
     * Click on the Show 24 Item's  button
     * Verify that 24 products are displayed on the page
     * Close the page
 
  Scenario: 32 items to be displayed on the Wishlist page
     * Click on the My Wishlist link in the Dashboard side bar
+    * Verify that the Show Item's bar is visible
     * Click on the Show 32 Item's  button
     * Verify that 32 products are displayed on the page
     * Close the page
@@ -105,7 +111,5 @@ Feature: As a registered user, I would like to have a page on my Dashboard where
      * Click on the My Wishlist link in the Dashboard side bar
      * Verify that the add to cart icon is visible for the first product in  My Wishlist page
      * Click on the add to cart icon for the first product in My Wishlist page
-     * Verify that the Item added to your cart warning has been received
-     * Click on the View Cart button
-     * Verify that the product has been added to the cart
+     * Verify that the Item added to your cart warning is visible
      * Close the page

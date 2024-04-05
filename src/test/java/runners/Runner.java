@@ -19,12 +19,13 @@ import java.security.KeyStore;
         glue = {"stepdefinitions","hooks"},
 
 
-        tags = "@12/4",
+
+
+        tags = "@footer",
+
+
+
         dryRun =false
-
-
-
-
 )
 
 public class Runner {

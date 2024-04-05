@@ -1,5 +1,6 @@
 package pages;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.Assert;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
@@ -22,9 +23,6 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//*[@class='img-fluid']")
     public WebElement imageLoginPage;
 
-    @FindBy(xpath = "//*[text()='Turn your ideas into reality..']")
-    public WebElement textTurnIdea;
-
 
     @FindBy(xpath = "//*[@id='login_form']")
     public WebElement loginForm;
@@ -40,18 +38,6 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "//*[@id='password']")
     public WebElement textBoxUserPassword;
-
-    @FindBy(xpath = "//*[text()='Forgot Password? ']")
-    public WebElement textBoxForgotPassword;
-
-    @FindBy(xpath = "//*[text()='Click Here']")
-    public WebElement linkLoginClickHere;
-
-    @FindBy(xpath = "//*[text()='Don’t have an Account? ']")
-    public WebElement textBoxHaveAnAccount;
-
-    @FindBy(xpath = "//*[text()='Sign Up']")
-    public WebElement linkLoginSignUp;
 
     @FindBy(xpath = "//*[text()='These credentials do not match our records.']")
     public WebElement textLoginErrorMessage;
@@ -83,6 +69,9 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//*[@title='BuySellCycle'])[1]")
     public WebElement homeHeaderButton;
+
+    @FindBy(xpath = "(//div/a/img[@class=\"img-fluid\"])")
+    public List<WebElement> slider7;
 
     // -----US-16 Footer Locate AYCA------- //
 
@@ -233,9 +222,14 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//a[@data-product_id='1373'])[2]")
     public WebElement iconQuickView;
-
+    @FindBy(xpath = "//a[@href=\"https://qa.buysellcycle.com/my-wishlist\"]")
+    public WebElement linkWishlist;
     @FindBy(xpath = "(//a[@data-product-id='1373'])[2]")
     public WebElement iconAddToCart;
+    @FindBy(xpath = "(//*[text()=\"Buy now\"])[1]")
+    public WebElement textBuyNow;
+    @FindBy(xpath = "(//a[@id=\"add_to_cart_btn_modal\"])[1]")
+    public WebElement buttonAddddtoCart;
     @FindBy (xpath="//div[@class=\"product_checked_box d-flex flex-column justify-content-center align-items-center\"]")
     public WebElement alertAddToCart;
 
@@ -444,7 +438,104 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "(//i[@title='Wishlist'])[1]")
     public WebElement buttonWishList;
 
+    @FindBy(xpath = "(//span[text()='View All'])[2]")
+    public WebElement textViewAll;
 
+    @FindBy(xpath = "(//a[@class='amaz_primary_btn addToCartFromThumnail'])[1]")
+    public WebElement buttonAddtocart;
+
+    @FindBy(xpath = "//*[@id='add_to_cart_btn_modal']")
+    public WebElement buttonADDTOCART;
+
+    @FindBy(id = "top_rating_title")
+    public WebElement titleTopRating;
+
+    @FindBy(xpath = "(//img[@title='Black Pleated Long Skirt'])[2]")
+    public WebElement imageEtek;
+
+    @FindBy(xpath = "//*[@id=\"home\"]/div/div[1]/div/div[21]/div/div[3]/div/a")
+    public WebElement buttonAddTocart;
+
+    @FindBy(xpath = "(//i[@class='ti-close'])[5]")
+    public WebElement buttonCLOSE;
+    
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[105]")
+    public WebElement buttonCompareEtek;
+
+    @FindBy(xpath = "//a[@id='add_to_compare_btn']")
+    public WebElement buttonADDTOCOMPARE;
+
+    @FindBy(xpath = "(//i[@title='Wishlist'])[105]")
+    public WebElement iconWishlistEtek;
+
+    @FindBy(xpath = "//span[@id='people_choice_title']")
+    public WebElement titlePeopleChoice;
+
+    @FindBy(xpath = "(//img[@title='zara Leg Trousers'])[3]")
+    public WebElement imgZaraLeg;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[149]")
+    public WebElement addToCartZaraLeg;
+
+    @FindBy(xpath = "(//img[@title='SmrWatch'])[13]")
+    public WebElement imageSmrWatch;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[152]")
+    public WebElement addToCartSmrWatch;
+
+    @FindBy(xpath = "(//button[@class='close_modal_icon'])[1]")
+    public WebElement buttonCloseSmrWatch;
+
+    @FindBy(xpath = "(//*[@title='Compare'])[152]")
+    public WebElement compareSmrWatch;
+
+    @FindBy(xpath = "(//*[@title='Wishlist'])[152]")
+    public WebElement wishListSmrWatch;
+
+    @FindBy(xpath = "//img[@title='Stradivarius']")
+    public WebElement linkStradivarius;
+
+    @FindBy(xpath = "//img[@title='GAP']")
+    public WebElement linkGap;
+
+    @FindBy(xpath = "//img[@title='MANGO']")
+    public WebElement linkMango;
+
+    @FindBy(xpath = "//img[@title='Pull & Bear']")
+    public WebElement linkPullBear;
+
+    @FindBy(xpath = "(//a[@title='Add to Cart'])[1]")
+    public WebElement iconSepet;
+
+    @FindBy(xpath = "(//a[@id='add_to_cart_btn_modal'])[1]")
+    public WebElement ADDTOCARTStradivarious;
+
+    @FindBy(xpath = "(//button[@class='close_modal_icon'])[2]")
+    public WebElement closeStradivarious;
+
+    @FindBy(xpath = "(//i[@class='ti-control-shuffle'])[1]")
+    public WebElement compareIcon;
+
+    @FindBy(xpath = "(//a[@id='add_to_compare_btn'])[1]")
+    public WebElement textAddToCart;
+
+    @FindBy(xpath = "(//img[@title='Belted smart trousers'])[3]")
+    public WebElement imgBeltedTrouser;
+
+    @FindBy(xpath = "(//i[@class='far fa-heart'])[1]")
+    public WebElement wishIcon;
+
+    @FindBy(xpath = "//div[@class='section__title d-flex align-items-center gap-3 mb_20']")
+    public WebElement titleAbout;
+
+    @FindBy(xpath = "//span[@style='font-size: 16px; background-color: rgb(244, 247, 249);']")
+    public WebElement textAbout;
+
+    @FindBy(xpath = "//span[@id='top_picks_title']")
+    public WebElement titleTopPicks;
+
+    @FindBy(xpath = "(//img[@title='Red Front Zipper Long Dress'])[3]")
+    public WebElement imgRedDress;
 
 
 

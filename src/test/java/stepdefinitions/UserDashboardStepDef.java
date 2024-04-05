@@ -11,12 +11,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Base;
+import pages.UserDashboard;
 import utils.ConfigReader;
 import utils.Driver;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +26,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class UserDashboardStepDef extends Base {
-//------------------------- SIMGE STEPS BASLANGIC ---------------------------//
+
+    //------------------------- SIMGE STEPS BASLANGIC ---------------------------//
     @Given("Verify that My Order link is visible in the Dashboard side bar")
     public void verify_that_my_order_link_is_visible_in_the_dashboard_side_bar() {
         Assert.assertTrue(userDashboard.linkMyOrder.isDisplayed());
@@ -179,14 +182,13 @@ public class UserDashboardStepDef extends Base {
 
     @Given("Click on the Wishlist link in the header")
     public void click_on_the_wishlist_link_in_the_header() {
-       clickWithJS(userDashboard.linkWishlistHeader);
+
+        clickWithJS(userDashboard.linkWishlistHeader);
     }
 
     @Given("Verify that the products are sorted from newest to oldest")
     public void verify_that_the_products_are_sorted_from_newest_to_oldest() {
       userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
-        System.out.println(userDashboard.actualFirstProduct);
-        System.out.println(userDashboard.selectedFirstProduct);
       Assert.assertTrue(userDashboard.actualFirstProduct.contains(userDashboard.selectedFirstProduct));
     }
     @Given("Click on the Old button")
@@ -197,17 +199,123 @@ public class UserDashboardStepDef extends Base {
     @Given("Verify that the products are sorted from oldest to newest")
     public void verify_that_the_products_are_sorted_from_oldest_to_newest() {
         userDashboard.actualFirstProduct = userDashboard.linkFirstProductinWishlist.getText();
-        System.out.println(userDashboard.actualFirstProduct);
-        System.out.println();
-        System.out.println();
-        System.out.println(userDashboard.selectedSecondProduct);
-
        Assert.assertFalse(userDashboard.actualFirstProduct.contains(userDashboard.selectedSecondProduct));
     }
+    @Given("Click on the Price \\(Low to high) button")
+    public void click_on_the_price_low_to_high_button() {
+     clickWithJS(userDashboard.linkLowtoHigh);
+     wait(2);
+    }
+    @Given("Verify that products are sorted from low to high prices")
+    public void verify_that_products_are_sorted_from_low_to_high_prices() {
+         ArrayList <Integer> prices = new ArrayList<>();
+         int pricess=0;
+        for (WebElement price:userDashboard.textPriceOfProduct) {
+
+           pricess= Integer.parseInt(price.getText().replaceAll("\\D",""));
+           prices.add(pricess);
+        }
+        for (int i=0;i<prices.size();i++) {
+
+           Assert.assertTrue(prices.get(i)<prices.get(i+1));
 
 
+        }
 
-      
+    }
+    @Given("Click on the Price \\(High to low) button")
+    public void click_on_the_price_high_to_low_button() {
+        clickWithJS(userDashboard.linkHightoLow);
+        wait(2);
+    }
+    @Given("Verify that products are sorted from high to low prices")
+    public void verify_that_products_are_sorted_from_high_to_low_prices() {
+        ArrayList <Integer> prices = new ArrayList<>();
+        int pricess=0;
+        for (WebElement price:userDashboard.textPriceOfProduct) {
+
+            pricess= Integer.parseInt(price.getText().replaceAll("\\D",""));
+            prices.add(pricess);
+        }
+        for (int i=0;i<prices.size();i++) {
+
+            Assert.assertTrue(prices.get(i)>prices.get(i+1));
+        }
+    }
+    @Given("Verify that the Show Item's bar is visible")
+    public void verify_that_the_show_item_s_bar_is_visible() {
+        Assert.assertTrue(userDashboard.linkShowItemBar.isDisplayed());
+        clickWithJS(userDashboard.linkShowItemBar);
+        wait(2);
+    }
+    @Given("Click on the Show {int} Item's  button")
+    public void click_on_the_show_item_s_button(Integer int1) {
+        WebElement secim = userDashboard.selectItemBar(int1);
+
+        secim.click();
+        wait(2);
+    }
+    @Given("Verify that {int} products are displayed on the page")
+    public void verify_that_products_are_displayed_on_the_page(Integer int1) {
+        assertEquals(userDashboard.textPriceOfProduct.size(), (int) int1);
+    }
+    @Given("Verify that the compare icon is visible for the first product on My Wishlist page")
+    public void verify_that_the_compare_icon_is_visible_for_the_first_product_on_my_wishlist_page() {
+         actions.moveToElement(userDashboard.imageFirst).perform();
+         wait(2);
+         Assert.assertTrue(userDashboard.iconCompareInWishlist.isDisplayed());
+    }
+    @Given("Click on the compare icon for the first product on My Wishlist page")
+    public void click_on_the_compare_icon_for_the_first_product_on_my_wishlist_page() {
+        clickWithJS(userDashboard.iconCompareInWishlist);
+    }
+    @Given("Verify that the quick view icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_quick_view_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        actions.moveToElement(userDashboard.imageFirst).perform();
+        wait(1);
+       Assert.assertTrue(userDashboard.iconQuickViewInWishlist.isDisplayed());
+    }
+    @Given("Click on the quick view icon for the first product in My Wishlist page")
+    public void click_on_the_quick_view_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconQuickViewInWishlist);
+    }
+    @Given("Verify that the delete icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_delete_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        actions.moveToElement(userDashboard.imageFirst).perform();
+        wait(1);
+        Assert.assertTrue(userDashboard.iconDeleteInWishlist.isDisplayed());
+    }
+    @Given("Click on the delete icon for the first product in My Wishlist page")
+    public void click_on_the_delete_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconDeleteInWishlist);
+    }
+    @Given("Verify that the Are you sure to delete?  query screen is visible")
+    public void verify_that_the_are_you_sure_to_delete_query_screen_is_visible() {
+        wait(2);
+        Assert.assertTrue(userDashboard.textDelete.isDisplayed());
+    }
+    @Given("Click on the Delete button")
+    public void click_on_the_delete_button() {
+       clickWithJS(userDashboard.linkDelete);
+       wait(1);
+    }
+
+    @Given("Verify that the relevant product has been deleted\"")
+    public void verify_that_the_relevant_product_has_been_deleted() {
+      String expedtedAllert ="Deleted successfully!";
+      String actualAllert = visitorHomePage.successfullAllert.getText();
+      Assert.assertEquals(expedtedAllert,actualAllert);
+    }
+    @Given("Verify that the add to cart icon is visible for the first product in  My Wishlist page")
+    public void verify_that_the_add_to_cart_icon_is_visible_for_the_first_product_in_my_wishlist_page() {
+        Assert.assertTrue(userDashboard.iconAddToCartInWishlist.isDisplayed());
+    }
+    @Given("Click on the add to cart icon for the first product in My Wishlist page")
+    public void click_on_the_add_to_cart_icon_for_the_first_product_in_my_wishlist_page() {
+        clickWithJS(userDashboard.iconAddToCartInWishlist);
+        wait(2);
+    }
+
 
     //----------------------------SIMGE STEPS BITIS--------------------------//}
 
@@ -226,76 +334,36 @@ public class UserDashboardStepDef extends Base {
     public void verify_that_the_my_wishlist_menu_is_visible() {
         assertTrue(userDashboard.myWishListMenu.isDisplayed());
     }
-    //Asli
 
-    @Then("I should be able to modify the displayed information")
-    public void iShouldBeAbleToModifyTheDisplayedInformation() {
-
-    }
 
     @When("I should see relevant {string} about the Payment Page")
     public void iShouldSeeRelevantAboutThePaymentPage(String information) {
         userDashboard.verifyTheInformationsVisibility(information);
     }
 
-    @When("I navigate to the Payment and Billing address section")
-    public void iNavigateToThePaymentAndBillingAddressSection() {
-
-    }
-
     @Then("I should be able to select different address types")
     public void iShouldBeAbleToSelectDifferentAddressTypes() {
+        waitAndClick(userDashboard.useADifferentBillingAddress);
     }
 
     @Then("I should see the Order Summary information displayed correctly")
     public void iShouldSeeTheOrderSummaryInformationDisplayedCorrectly() {
-    }
-
-    @When("I apply coupons")
-    public void iApplyCoupons() {
-    }
-
-    @Then("they should be redeemable")
-    public void theyShouldBeRedeemable() {
-    }
-
-    @Then("I should be redirected to the order completion page immediately")
-    public void iShouldBeRedirectedToTheOrderCompletionPageImmediately() {
-    }
-
-    @Given("I have completed the order")
-    public void iHaveCompletedTheOrder() {
-    }
-
-    @Then("I should see the message {string}")
-    public void iShouldSeeTheMessage(String message) {
-
+        assertTrue(userDashboard.orderSummary.isDisplayed());
     }
 
     @And("the Order Number should be displayed")
     public void theOrderNumberShouldBeDisplayed() {
+        assertTrue(userDashboard.orderNumber.isDisplayed());
     }
 
     @And("the Order summary \\(items purchased) should be displayed")
     public void theOrderSummaryItemsPurchasedShouldBeDisplayed() {
+        assertTrue(userDashboard.orderSummary.isDisplayed());
     }
 
     @And("I should have access to the my-purchase-order-details page")
     public void iShouldHaveAccessToTheMyPurchaseOrderDetailsPage() {
-    }
-
-    @When("I finish the transaction")
-    public void iFinishTheTransaction() {
-    }
-
-    @Then("the site should return to the home page")
-    public void theSiteShouldReturnToTheHomePage() {
-    }
-
-
-    @When("I click on the {string} button")
-    public void iClickOnTheButton(String arg0) {
-
+        waitAndClick(userDashboard.viewOrderButton);
     }
 
     @When("I submit on the Continue to shipping button")
@@ -330,8 +398,6 @@ public class UserDashboardStepDef extends Base {
         waitForPageToLoad(2);
     }
 
-    //Asli
-
 
     @Given("Click on My Wishlist")
     public void click_on_my_wishlist() {
@@ -359,7 +425,7 @@ public class UserDashboardStepDef extends Base {
         clickWithJS(userDashboard.stripeEscape);
     }
 
-    @And("{int} saniye bekler")
+    @And("{int} seconds pause")
     public void saniyeBekler(int saniye) {
 
         try {
@@ -416,13 +482,11 @@ public class UserDashboardStepDef extends Base {
     @Given("the user clicks on the invoice view link under Action")
     public void the_user_clicks_on_the_invoice_view_link_under_action() {
         clickWithJS(userDashboard.iconBurgerPurchase);
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
     }
 
     @Then("the user verifies the displayed invoice details such as Order code, Package code, Delivery Process, Order Details, Order Summary, and Payment Type")
     public void the_user_verifies_the_displayed_invoice_details_such_as_order_code_package_code_delivery_process_order_details_order_summary_and_payment_type() {
         System.out.println(userDashboard.invoicePageText.getText());
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
         assertTrue(userDashboard.invoicePageText.getText().contains("Order code"));
         assertTrue(userDashboard.invoicePageText.getText().contains("Package code"));
         assertTrue(userDashboard.invoicePageText.getText().contains("Order Details"));
@@ -1058,28 +1122,28 @@ public class UserDashboardStepDef extends Base {
     @And("I should be able to enter {string} on the email box")
     public void iShouldBeAbleToEnterOnTheEmailBox(String email) {
         waitAndSendText(userDashboard.emailStripePaymentBox, ConfigReader.getProperty(email));
-        wait(3);
+        wait(1);
         userDashboard.emailStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the card number box")
     public void iShouldBeAbleToEnterOnTheCardNumberBox(String cardNumber) {
         actions.sendKeys(userDashboard.stripeCardNoBox, ConfigReader.getProperty(cardNumber)).perform();
-        wait(3);
+        wait(1);
         userDashboard.stripeCardNoBox.sendKeys(Keys.TAB);
     }
 
     @When("I should be able to enter {string} on the exp box")
     public void iShouldBeAbleToEnterOnTheExpBox(String expDate) {
         actions.sendKeys(userDashboard.expDateStripePaymentBox, ConfigReader.getProperty(expDate)).perform();
-        wait(3);
+        wait(1);
         userDashboard.expDateStripePaymentBox.sendKeys(Keys.TAB);
     }
 
     @Then("I should be able to enter {string} on the cvc box")
     public void iShouldBeAbleToEnterOnTheCvcBox(String cvc) {
         waitAndSendText(userDashboard.cvcStripePaymentBox, ConfigReader.getProperty(cvc));
-        wait(3);
+        wait(1);
         userDashboard.cvcStripePaymentBox.sendKeys(Keys.TAB);
     }
 
@@ -1099,22 +1163,36 @@ public class UserDashboardStepDef extends Base {
         waitAndClick(userDashboard.linkHeaderDashboard);
     }
 
-    @Given("Verify that the {string} menu is visible and enabled in the sidebar")
-    public void verify_that_the_menu_is_visible_and_enabled_in_the_sidebar(String string) {
 
+    @Given("Verify that the Follow menu is visible and enabled in the sidebar")
+    public void verify_that_the_follow_menu_is_visible_and_enabled_in_the_sidebar() {
+        assertTrue(userDashboard.followMenuItem.isDisplayed());
     }
 
-    @Given("Verify that the {string} displayed")
-    public void verify_that_the_displayed(String string) {
+    @Given("Click on Follow Menu Item")
+    public void click_on_follow_menu_item() {
+        waitAndClick(userDashboard.followMenuItem);
+    }
+    @Given("Verify that the Follow seller History List displayed")
+    public void verify_that_the_follow_seller_history_list_displayed() {
+        assertTrue(userDashboard.followListDashboard.isDisplayed());
+    }
 
+    @Given("Click on the Unfollow button on the Follow page")
+    public void click_on_the_unfollow_button_on_the_follow_page() {
+        UserDashboard.waitAndClick(userDashboard.unFollowButton);
     }
 
     @Given("Verify that the selected seller is removed from the Follow Seller History List")
     public void verify_that_the_selected_seller_is_removed_from_the_follow_seller_history_list() {
+        assertTrue(userDashboard.followSeller.isDisplayed());
+
     }
 
     @Given("Verify that the Empty List text ist displayed.")
     public void verify_that_the_empty_list_text_ist_displayed() {
+
+        assertTrue(userDashboard.emptyText.isDisplayed());
 
     }
 
@@ -1182,6 +1260,13 @@ public class UserDashboardStepDef extends Base {
         }else {
             assertTrue(userDashboard.labelEmptyText.isDisplayed());
         }
+    }
+
+    @Given("I should see the message {string}")
+    public void iShouldSeeTheMessage(String text) {
+        wait(3);
+        assertTrue(userDashboard.thankyouText.isDisplayed());
+        wait(3);
     }
 
 
