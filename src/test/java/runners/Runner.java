@@ -21,7 +21,7 @@ import java.security.KeyStore;
 
 
 
-        tags = "@login",
+        tags = "@footer",
 
 
 

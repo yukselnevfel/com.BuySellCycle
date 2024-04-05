@@ -23,9 +23,6 @@ public class VisitorHomePage extends Base{
     @FindBy(xpath = "//*[@class='img-fluid']")
     public WebElement imageLoginPage;
 
-    @FindBy(xpath = "//*[text()='Turn your ideas into reality..']")
-    public WebElement textTurnIdea;
-
 
     @FindBy(xpath = "//*[@id='login_form']")
     public WebElement loginForm;
@@ -41,18 +38,6 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "//*[@id='password']")
     public WebElement textBoxUserPassword;
-
-    @FindBy(xpath = "//*[text()='Forgot Password? ']")
-    public WebElement textBoxForgotPassword;
-
-    @FindBy(xpath = "//*[text()='Click Here']")
-    public WebElement linkLoginClickHere;
-
-    @FindBy(xpath = "//*[text()='Don’t have an Account? ']")
-    public WebElement textBoxHaveAnAccount;
-
-    @FindBy(xpath = "//*[text()='Sign Up']")
-    public WebElement linkLoginSignUp;
 
     @FindBy(xpath = "//*[text()='These credentials do not match our records.']")
     public WebElement textLoginErrorMessage;
@@ -84,6 +69,9 @@ public class VisitorHomePage extends Base{
 
     @FindBy(xpath = "(//*[@title='BuySellCycle'])[1]")
     public WebElement homeHeaderButton;
+
+    @FindBy(xpath = "(//div/a/img[@class=\"img-fluid\"])")
+    public List<WebElement> slider7;
 
     // -----US-16 Footer Locate AYCA------- //
 
