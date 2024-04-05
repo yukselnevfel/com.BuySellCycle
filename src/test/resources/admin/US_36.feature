@@ -15,7 +15,7 @@ Feature: US_36
     * Close the page
 
   Scenario:TC_03
-    * Hover over your profile icon and click on the My profile link.
+    * Hover over your profile icon click on the My profile link.
     * Confirm that the My profile page has been opened
     * Close the page
 
@@ -38,7 +38,7 @@ Feature: US_36
     * Close the page
 
   Scenario:TC_07
-    * Hover over your profile icon and click on the My profile link.
+    * Hover over your profile icon click on the My profile link.
     * Click on the Address button
     * Verify that the Address page opens
     * Verify that the Add new address button is visible and active
@@ -50,7 +50,7 @@ Feature: US_36
     * Close the page
 
   Scenario:TC_08
-    * Hover over your profile icon and click on the My profile link.
+    * Hover over your profile icon click on the My profile link.
     * Click on the Address button
     * Click the Add new address button
     * Select the select from options option from Country dropdown

@@ -68,13 +68,6 @@ public class AdminDashboardStepDef extends Base {
         assertTrue(adminDashboard.subMenuProfile.isDisplayed());
     }
 
-    @Given("Hover over your profile icon and click on the My profile link.")
-    public void hover_over_your_profile_icon_and_click_on_the_my_profile_link() {
-        adminDashboard.iconCloseSuccessMessage.click();
-        actions.moveToElement(adminDashboard.imageProfile).perform();
-        wait(2);
-        adminDashboard.linkMyProfile.click();
-    }
 
     @Given("Confirm that the My profile page has been opened")
     public void confirm_that_the_my_profile_page_has_been_opened() {
