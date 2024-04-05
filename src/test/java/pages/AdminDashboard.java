@@ -285,6 +285,9 @@ public class AdminDashboard extends Base{
     public WebElement labelCustomer;
     @FindBy(xpath = "//*[text()='All Customer']")
     public WebElement labelAllCutomer;
+    @FindBy(xpath = "//*[text()='Create Customer']")
+    public WebElement labelCreateCustomer;
+
     @FindBy(xpath = "//*[@id='all_customer']")
     public WebElement columnAllCustomerList;
     @FindBy(xpath = "//*[@*='Quick Search']")
@@ -296,15 +299,21 @@ public class AdminDashboard extends Base{
     @FindBy(xpath = "//*[text()='Inactive customer']")
     public WebElement inActiveCustomerButton;
     @FindBy(xpath = "(//*[@id='dropdownMenu2'])[11]")
-    public WebElement dropDownSelect;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[1]")
-    public WebElement dropDownSelectDetailButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[2]")
-    public WebElement dropDownSelectEditButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
-    public WebElement dropDownSelectDeleteButton;
-    @FindBy(id = "status_inactive")
-    public WebElement radioButtonInactiveStatus;
+    public WebElement createCustomerButton;
+    @FindBy(xpath = "//*[@placeholder='First Name']")
+    public WebElement textBoxFirstNameCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Last Name']")
+    public WebElement textBoxLastNameCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Email or Phone']")
+    public WebElement textBoxEmailOrPhoneCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Password']")
+    public WebElement textBoxPasswordCreateCustomer;
+    @FindBy(xpath = "//*[@placeholder='Confirm password']")
+    public WebElement textBoxConfirmPasswordCreateCustomer;
+    @FindBy(id = "save_button_parent")
+    public WebElement createButtonCreateCustomer;
+
+
     @FindBy(id = "save_button_parent")
     public WebElement updateButton;
     @FindBy(xpath = "//*[@id='delete_link']")
@@ -355,6 +364,11 @@ public class AdminDashboard extends Base{
     @FindBy(xpath = "(//*[@*='white_box_50px box_shadow_white'])[1]")
     public WebElement customerProfileDetailWindow;
 
+    //Create Costomer page
+    @FindBy(xpath = "//*[text()='The password confirmation does not match.']")
+    public WebElement incorrectPassportNumbertext;
+
+
 
 
 
@@ -364,12 +378,19 @@ public class AdminDashboard extends Base{
 @FindBy(xpath = "//*[@class=\"checkmark\"]") public WebElement checkMark;
 @FindBy(xpath = "(//*[@class=\"checkmark\"])[2]") public WebElement checkMark2;
 @FindBy(xpath = "(//*[@class=\"primary_input_field\"])[1]") public WebElement nameProduct;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[2]") public WebElement sku;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[6]") public WebElement modelNumber;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[7]") public WebElement minOrder;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[8]") public WebElement maxOrder;
+@FindBy(xpath = "//*[@id=\"select2-brand_id-container\"]") public WebElement brand;
+@FindBy(xpath = "//*[@id=\"GenaralInfo\"]/div/div[1]/div/div[1]/div[12]/div/div") public WebElement barcodeType;
 @FindBy(xpath = "//*[@class=\"select2-selection__rendered\"]") public WebElement categoryProduct;
 @FindBy(xpath = "//*[@class=\"select2-results__option\"]") public WebElement electronic;
 @FindBy(xpath = "//*[@class=\"nice-select primary_select mb-15 unit\"]") public WebElement unitProduct;
 @FindBy(xpath = "//*[@id=\"unit_select_div\"]/div/div[2]/ul/li[6]") public WebElement pair;
 @FindBy(xpath = "//*[@id=\"selling_price\"]") public WebElement sellinPrice;
 @FindBy(xpath = "//*[@data-value=\"save_publish\"]") public WebElement savePublish;
+@FindBy(xpath = "//*[@data-value=\"only_save\"]") public WebElement saveOnly;
 @FindBy(xpath = "//*[@placeholder=\"Choose Images\"]") public WebElement chooseImages;
 @FindBy(xpath = "(//*[@class=\"img-box\"])[3]") public WebElement secilecekResim;
 @FindBy(xpath = "//*[@id=\"media_modal\"]/div/div/div[3]/div/div[2]/button[3]") public WebElement addFilesButton;
@@ -387,6 +408,18 @@ public class AdminDashboard extends Base{
 @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[2]/div[2]/h4") public WebElement upSellUrun;
 @FindBy(xpath = "/html/body/div[4]/div/div[1]/div/div/h3") public WebElement relatedUrun;
 @FindBy(xpath = "/html/body/div[3]/div/div/div[1]/div/div[4]/div[1]/div/div/h3") public WebElement crossUrun;
+@FindBy(xpath = "//*[@id=\"add_new_category\"]") public WebElement categoryAddNew;
+@FindBy(xpath = "//*[@id=\"add_new_brand\"]") public WebElement brandAddNew;
+@FindBy(xpath = "//*[@id=\"add_new_unit\"]") public WebElement unitAddNew;
+@FindBy(xpath = "//*[@class=\"close \"]") public WebElement closePage;
+@FindBy(xpath = "(//*[@class=\"close \"])[2]") public WebElement closePage2;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[9]") public WebElement weight;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[10]") public WebElement lenght;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[11]") public WebElement breadth;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[12]") public WebElement height;
+@FindBy(xpath = "(//*[@class=\"primary_input_field\"])[13]") public WebElement asc;
+@FindBy(xpath = "//*[@id=\"GenaralInfo\"]/div/div[2]/div/div[1]/div[2]/div/div[2]") public WebElement uploadedImage;
+
 
 
 

@@ -17,7 +17,14 @@ import java.security.KeyStore;
         },
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
-        tags = "@US_035",
+
+
+
+
+        tags = "@login",
+
+
+
         dryRun =false
 )
 
