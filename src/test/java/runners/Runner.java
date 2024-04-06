@@ -17,14 +17,7 @@ import java.security.KeyStore;
         },
         features = "src/test/resources",
         glue = {"stepdefinitions","hooks"},
-
-
-
-
-        tags = "@36/",
-
-
-
+        tags = "@footer",
         dryRun =false
 )
 
