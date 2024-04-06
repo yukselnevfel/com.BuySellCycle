@@ -170,8 +170,8 @@ public class AdminDashboardStepDef extends Base {
         adminDashboard.buttonAddNewAddress.click();
     }
 
-    @Given("Verify that the save button is visible")
-    public void verify_that_the_save_button_is_visible() {
+    @Given("Verify that save button is visible")
+    public void verify_that_save_button_is_visible() {
 
         assertTrue(adminDashboard.buttonSaveAddress.isDisplayed());
     }
@@ -194,8 +194,8 @@ public class AdminDashboardStepDef extends Base {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         adminDashboard.subMenuSelectFromOptions.click();
     }
-    @Given("Click on the save button")
-    public void click_on_the_save_button() {
+    @Given("Clicks on the save button")
+    public void clicks_on_the_save_button() {
         adminDashboard.buttonSave.click();
     }
     @Given("Verify that the {string}, {string}, {string} ve {string} buttons is visible, click butons and verify that informations is changed")
