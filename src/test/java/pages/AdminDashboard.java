@@ -28,6 +28,24 @@ public class AdminDashboard extends Base{
     public WebElement subMenuProfile;
     @FindBy(xpath = "//*[text()='My Profile']")
     public WebElement linkMyProfile;
+    @FindBy(xpath = "//*[text()='Log out']")
+    public WebElement linkLogOut;
+    @FindBy(xpath = "//*[@class='gradient-color2 total_visitors']")
+    public WebElement labelVisitor;
+    @FindBy(xpath = "//*[@class='collaspe_icon open_miniSide']")
+    public WebElement buttonHamburgerMenu;
+    @FindBy(xpath = "//*[text()='My Purchase Orders']")
+    public WebElement buttonHamburgerMenuControl;
+    @FindBy(xpath = "//*[text()='Total Customer']") // Total Customer
+    public  WebElement totalCustomer;
+    @FindBy(xpath = "(//*[text()='All Customer'])[3]") // Total Product
+    public WebElement labelcontrolTotalCustomer;
+    @FindBy(xpath = "//*[text()='Active Customer']") // Active Customer
+    public  WebElement activeCustomer;
+    @FindBy(xpath = "(//*[text()='Active Customer'])[2]") // Active Customer
+    public  WebElement labelcontrolActiveCustomer;
+    @FindBy(xpath = "//*[text()='Website']") // Active Customer
+    public  WebElement linkWebsite;
     @FindBy(xpath = "//*[@class='toast-close-button']")
     public WebElement iconCloseSuccessMessage;
     @FindBy(xpath = "//*[text()='Basic Info']")

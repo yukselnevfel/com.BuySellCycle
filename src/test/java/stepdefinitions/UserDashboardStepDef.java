@@ -1245,6 +1245,22 @@ public class UserDashboardStepDef extends Base {
         String actPopUpMessage=adminDashboard.popUpMessage.getText();
        assertEquals(expPopUpMessage,actPopUpMessage);
     }
+    @Given("Verify that SL,User,Date,Status,Discount Amount,Action informations in User List is visible")
+    public void verify_that_sl_user_date_status_discount_amount_action_informations_in_user_list_is_visible() {
+        assertTrue(userDashboard.tableHead.isDisplayed());
+    }
+    @Given("Users in the user list can be deleted from the list")
+    public void users_in_the_user_list_can_be_deleted_from_the_list() {
+        assertTrue(userDashboard.buttonDelete.isDisplayed());
+    }
+    @Given("If the User List is empty, Empty List text should be displayed.")
+    public void if_the_user_list_is_empty_empty_list_text_should_be_displayed() {
+        if (userDashboard.tableHead.isDisplayed()){
+            assertTrue(userDashboard.tableHead.isDisplayed());
+        }else {
+            assertTrue(userDashboard.labelEmptyText.isDisplayed());
+        }
+    }
 
     @Given("I should see the message {string}")
     public void iShouldSeeTheMessage(String text) {

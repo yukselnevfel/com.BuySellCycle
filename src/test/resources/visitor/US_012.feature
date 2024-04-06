@@ -28,4 +28,4 @@ Feature:
     * Click on the quickwiew button
     * Click on the compare button and verify that successfully pop up is visible
     * Click on the wishlist button and verify that please login first pop up is visible
-    * Click on the wishlist button and verify that Item added to your cart" text is visible
+    * Click on the wishlist button and verify that Item added to your cart text is visible

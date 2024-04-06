@@ -343,9 +343,12 @@ public class UserDashboard extends Base {
     // ====================== Beytullah's Steps =====================
     @FindBy(xpath = "//*[@id='code']")
     public WebElement labelReferralCode;
-    //*[text()='Referral']
     @FindBy(xpath = "(//*[@class='position-relative d-flex align-items-center'])[9]")
     public WebElement buttonReferral;
+    @FindBy(xpath = "//body//table//tr")
+    public WebElement tableHead;
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement buttonDelete;
     @FindBy(xpath = "//*[@data-name='Stripe']")
     public WebElement stripeCheckRadioButton;
     @FindBy(xpath = "//*[@id='payment_btn_trigger']")
@@ -354,7 +357,8 @@ public class UserDashboard extends Base {
     public WebElement stripeEscape;
     @FindBy(xpath = "//*[@id='card_number']")
     public WebElement stripeCardNumberTextBox;
-
+    @FindBy(xpath ="//*[text()='Empty List.']")
+    public WebElement labelEmptyText;
     @FindBy (xpath = "//a[text()='View Order']")
     public  WebElement viewOrderButton;
 

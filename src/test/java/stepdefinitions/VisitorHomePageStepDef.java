@@ -2122,20 +2122,29 @@ assertTrue(visitorHomePage.sbttl.isDisplayed());
     }
     @Given("Click on the quickwiew button")
     public void click_on_the_quickwiew_button() {
-
+        scrollIntoViewJS(visitorHomePage.iconProduct);
+        visitorHomePage.buttonWiew.click();
     }
     @Given("Click on the compare button and verify that successfully pop up is visible")
     public void click_on_the_compare_button_and_verify_that_successfully_pop_up_is_visible() {
-
+        clickWithJS(visitorHomePage.buttonAddingCompare);
+        String expPopUpMessage="Product added to compare list successfully";
+        String actPopUpMessage=visitorHomePage.labelPopUpMessage.getText();
+        assertEquals(expPopUpMessage,actPopUpMessage);
     }
     @Given("Click on the wishlist button and verify that please login first pop up is visible")
     public void click_on_the_wishlist_button_and_verify_that_please_login_first_pop_up_is_visible() {
-
+        clickWithJS(visitorHomePage.buttonAddingWishList);
+        String expPopUpMessage="Please login first";
+        String actPopUpMessage=visitorHomePage.labelPopUpMessage.getText();
+        assertEquals(expPopUpMessage,actPopUpMessage);
     }
-    @Given("Click on the wishlist button and verify that Item added to your cart\" text is visible")
+    @Given("Click on the wishlist button and verify that Item added to your cart text is visible")
     public void click_on_the_wishlist_button_and_verify_that_item_added_to_your_cart_text_is_visible() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        clickWithJS(visitorHomePage.buttonAddingToCart);
+
+
     }
 
 

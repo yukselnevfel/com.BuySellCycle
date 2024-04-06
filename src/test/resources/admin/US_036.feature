@@ -44,15 +44,15 @@ Feature: US_36
     * Verify that the Add new address button is visible and active
     * Verify that address information is visible
     * Click the Add new address button
-    * Verify that the save button is visible
+    * Verify that save button is visible
     * Fill in the starred fields and click the save button.
     * Verify that the address has been added
     * Close the page
-
+@36/8
   Scenario:TC_08
     * Hover over your profile icon click on the My profile link.
     * Click on the Address button
     * Click the Add new address button
     * Select the select from options option from Country dropdown
-    * Click on the save button
+    * Clicks on the save button
     * Close the page

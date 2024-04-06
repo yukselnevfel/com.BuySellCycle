@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -35,6 +36,12 @@ import static org.junit.Assert.*;
 
 public class AdminDashboardStepDef extends Base {
     // -------------------------Beytullah---------------------------------
+
+    public static Integer returnTextToInteger(WebElement element){
+        String str=element.getText();
+        int price=Integer.parseInt(str);
+        return price;
+    }
     @Given("Open browser and go to {string}, enter {string}, {string} and click sign in")
     public void open_browser_and_go_to_enter_and_click_sign_in(String adminUrl, String adminMail, String password) {
         Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
@@ -163,8 +170,8 @@ public class AdminDashboardStepDef extends Base {
         adminDashboard.buttonAddNewAddress.click();
     }
 
-    @Given("Verify that the save button is visible")
-    public void verify_that_the_save_button_is_visible() {
+    @Given("Verify that save button is visible")
+    public void verify_that_save_button_is_visible() {
 
         assertTrue(adminDashboard.buttonSaveAddress.isDisplayed());
     }
@@ -187,10 +194,107 @@ public class AdminDashboardStepDef extends Base {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         adminDashboard.subMenuSelectFromOptions.click();
     }
-    @Given("Click on the save button")
-    public void click_on_the_save_button() {
+    @Given("Clicks on the save button")
+    public void clicks_on_the_save_button() {
         adminDashboard.buttonSave.click();
     }
+    @Given("Verify that the {string}, {string}, {string} ve {string} buttons is visible, click butons and verify that informations is changed")
+    public void verify_that_the_ve_buttons_is_visible_click_butons_and_verify_that_informations_is_changed(String today, String thisWeek, String thisMounth, String thisYear) {
+        WebElement elementToday = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + today + "')]"));
+        WebElement elementThisWeek = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + thisWeek + "')]"));
+        WebElement elementThisMonth = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + thisMounth + "')]"));
+        WebElement elementThisYear = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + thisYear + "')]"));
+
+        assertTrue(elementToday.isDisplayed());
+        assertTrue(elementThisWeek.isDisplayed());
+        assertTrue(elementThisMonth.isDisplayed());
+        assertTrue(elementThisYear.isDisplayed());
+
+        int intToday=returnTextToInteger(adminDashboard.labelVisitor);
+        waitAndClick(elementThisWeek);
+        wait(2);
+        int intThisWeek=returnTextToInteger(adminDashboard.labelVisitor);
+        waitAndClick(elementThisMonth);
+        wait(2);
+        int intThisMounth=returnTextToInteger(adminDashboard.labelVisitor);
+        waitAndClick(elementThisYear);
+        wait(2);
+        int intThisYear=returnTextToInteger(adminDashboard.labelVisitor);
+
+        System.out.println("intToday = " + intToday);
+        System.out.println("intThisWeek = " + intThisWeek);
+        System.out.println("intThisMounth = " + intThisMounth);
+        System.out.println("intThisYear = " + intThisYear);
+
+        assertNotEquals(intToday,intThisWeek);
+        assertNotEquals(intToday,intThisMounth);
+        assertNotEquals(intToday,intThisYear);
+        assertNotEquals(intThisWeek,intThisMounth);
+        assertNotEquals(intThisWeek,intThisYear);
+        assertNotEquals(intThisMounth,intThisYear);
+    }
+    @Given("Verify that the Hambuger menu is visible")
+    public void verify_that_the_hambuger_menu_is_visible() {
+        assertTrue(adminDashboard.buttonHamburgerMenu.isDisplayed());
+    }
+    @Given("Verify that the hamburger menu opened or closed when clicked")
+    public void verify_that_the_hamburger_menu_opened_or_closed_when_clicked() {
+
+        clickWithJS(adminDashboard.buttonHamburgerMenu);
+        if (adminDashboard.buttonHamburgerMenuControl.isDisplayed()) {
+
+            assertTrue(adminDashboard.buttonHamburgerMenuControl.isDisplayed());
+        } else {
+
+            assertFalse(adminDashboard.buttonHamburgerMenuControl.isDisplayed());
+        }
+        clickWithJS(adminDashboard.buttonHamburgerMenu);
+        if (adminDashboard.buttonHamburgerMenuControl.isDisplayed()) {
+
+            assertTrue(adminDashboard.buttonHamburgerMenuControl.isDisplayed());
+        } else {
+
+            assertFalse(adminDashboard.buttonHamburgerMenuControl.isDisplayed());
+        }
+
+    }
+    @Given("The user clicks Total Customer.")
+    public void the_user_clicks_total_customer() {
+        adminDashboard.totalCustomer.click();
+    }
+
+    @Given("Redirect to the Total Customer page.")
+    public void redirect_to_the_total_customer_page() {
+        String anasayfaWHD = Driver.getDriver().getWindowHandle();
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB).get("https://qa.buysellcycle.com/customer/active-customer-list");
+        Assert.assertTrue(adminDashboard.labelcontrolTotalCustomer.isDisplayed());
+        Driver.getDriver().switchTo().window(anasayfaWHD);
+        waitForPageToLoad(5);
+    }
+    @Given("The user clicks Active Customer.")
+    public void the_user_clicks_active_customer() {
+        adminDashboard.activeCustomer.click();
+    }
+
+    @Given("Redirect to the Active Customer page.")
+    public void redirect_to_the_active_customer_page() {
+        String anaSayfaWHD = Driver.getDriver().getWindowHandle();
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB).get("https://qa.buysellcycle.com/customer/active-customer-list");
+        Assert.assertTrue(adminDashboard.labelcontrolActiveCustomer.isDisplayed());
+        Driver.getDriver().switchTo().window(anaSayfaWHD);
+
+    }
+    @Given("Click on the Website and Verify that the Home Page is opened that on new tab")
+    public void click_on_the_website_and_verify_that_the_home_page_is_opened_that_on_new_tab() {
+        clickWithJS(adminDashboard.linkWebsite);
+        String expUrl="https://qa.buysellcycle.com/";
+
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB).get(expUrl);
+        String actUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expUrl,actUrl);
+
+    }
+
 
     // -------------------------Beytullah---------------------------------
 
