@@ -1130,15 +1130,7 @@ public class AdminDashboardStepDef extends Base {
     public void random_account_number_is_entered() {
         adminDashboard.linkAccountNumberTextBox.sendKeys(faker.number().digits(8));
     }
-    @Given("Verify that the Save button is visible")
-    public void verify_that_the_save_button_is_visible() {
-        Assert.assertTrue(adminDashboard.linkSaveButton.isDisplayed());
-    }
-    @Given("Click on the Save button")
-    public void click_on_the_save_button() {
-        clickWithJS(adminDashboard.linkSaveButton);
-        wait(1);
-    }
+
     @Given("Verify that the newly added staff is successfull")
     public void verify_that_the_newly_added_staff_is_successfull() {
         String expectedMessage ="Added successfully!";
